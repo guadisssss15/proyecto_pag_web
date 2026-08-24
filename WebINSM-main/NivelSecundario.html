@@ -359,6 +359,17 @@
                 margin-right: 0;
             }
 
+            /* Título de egreso (dentro de la tarjeta de especialidad) */
+            .card-specialty .degree-title {
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.95em;
+                font-weight: bold;
+                color: #f39c12;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin: -10px auto 18px auto;
+            }
+
             .specialties-showcase {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -454,6 +465,12 @@
                 margin: 0 auto 20px auto;
                 color: white;
                 max-width: 90%;
+
+
+
+
+
+                
                 width: 100%;
                 opacity: 1;
             }
@@ -1843,7 +1860,7 @@
                     <div class="main-text">
                         
                         <div class="content-block">
-                            <h2>Bienvenida de la Directora</h2>
+                            <h2>Bienvenida del Director</h2>
                             <div class="director-section">
                                 <div class="director-text">
                                     <p class="specialties-intro">
@@ -1860,7 +1877,7 @@
                                         visitarnos en persona para conocernos mejor y satisfacer sus necesidades.
                                     </p>
                                     <p class="director-signature">
-                                        <strong>Marisa Brisio</strong>
+                                        <strong>Gerardo Lemos</strong>
                                     </p>
                                 </div>
                                 <img
@@ -1868,6 +1885,35 @@
                                     alt="Foto del Director de Nivel Secundario"
                                     class="director-image"
                                 />
+                            </div>
+                        </div>
+
+                        <div id="informacion-general" class="content-block">
+                            <h2>Información General</h2>
+                            <p class="specialties-intro">
+                                El Nivel Secundario cuenta actualmente con aproximadamente <strong>330 estudiantes</strong>.
+                                La propuesta educativa ofrece distintas orientaciones para acompañar a los estudiantes
+                                en su formación y preparación para el futuro académico y profesional.
+                            </p>
+
+                            <div class="uniform-grid">
+                                <div class="uniform-card">
+                                    <i class="fas fa-users"></i>
+                                    <h3>330 estudiantes</h3>
+                                    <p>Comunidad educativa del Nivel Secundario.</p>
+                                </div>
+
+                                <div class="uniform-card">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <h3>Orientación en Ciencias Sociales</h3>
+                                    <p>Orientación correspondiente al área de Humanidades.</p>
+                                </div>
+
+                                <div class="uniform-card">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <h3>Informática</h3>
+                                    <p>Especialidad orientada a la formación informática.</p>
+                                </div>
                             </div>
                         </div>
 
@@ -1883,6 +1929,7 @@
                                     <div class="card-specialty-content">
                                         <h3>Informática</h3>
                                         <p>Programación, Robótica y Desarrollo de Software para el mundo digital.</p>
+                                        <p class="degree-title">Título: Informática</p>
                                         <a href="info/Plan de Estudios - Informática.pdf" target="_blank" class="view-more-btn">Ver Plan</a>
                                     </div>
                                 </div>
@@ -1891,6 +1938,7 @@
                                     <div class="card-specialty-content">
                                         <h3>Humanidades</h3>
                                         <p>Ciencias Sociales, Comunicación y Ciudadanía con pensamiento crítico.</p>
+                                        <p class="degree-title">Título: Orientación en Ciencias Sociales</p>
                                         <a href="info/Plan de Estudios - Ciencias Sociales y Humanidades..pdf" target="_blank" class="view-more-btn">Ver Plan</a>
                                     </div>
                                 </div>
@@ -1960,6 +2008,27 @@
                                 En lugar de clases tradicionales por año escolar, los alumnos son agrupados en cursos según su conocimiento 
                                 y manejo real de la lengua, permitiendo un avance más efectivo y personalizado.
                             </p>
+
+                            <div class="uniform-grid">
+                                <div class="uniform-card">
+                                    <i class="fas fa-language"></i>
+                                    <h3>Prof. Belén Guzmán</h3>
+                                    <ul>
+                                        <li>Nivel 1</li>
+                                        <li>Nivel 2</li>
+                                        <li>Nivel 3A</li>
+                                    </ul>
+                                </div>
+                                <div class="uniform-card">
+                                    <i class="fas fa-language"></i>
+                                    <h3>Prof. Ivana Marioni</h3>
+                                    <ul>
+                                        <li>Nivel 3B</li>
+                                        <li>Nivel 4</li>
+                                        <li>Nivel 5</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
 
                         <div id="uniforme" class="content-block">
@@ -2016,8 +2085,8 @@
                             <div class="staff-layout-grid">
                                 <div class="staff-left-panel">
                                     <div class="staff-active-info" id="staffInfoBox">
-                                        <h3 id="staffActiveName">Marisa Brisio</h3>
-                                        <span id="staffActiveRole">Directora</span>
+                                        <h3 id="staffActiveName">Gerardo Lemos</h3>
+                                        <span id="staffActiveRole">Director</span>
                                     </div>
                                     
                                     <div class="staff-nav-controls">
@@ -2029,20 +2098,20 @@
 
                                 <div class="staff-carousel-viewport" id="staffViewport">
                                     <div class="staff-carousel-track" id="staffTrack">
-                                        <div class="staff-carousel-item" data-name="Marisa Brisio" data-role="Profesora de Matemáticas">
-                                            <img src="img/usuario_default.png" alt="Marisa Brisio" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Gerardo Lemos" data-role="Director">
+                                            <img src="img/usuario_default.png" alt="Gerardo Lemos" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Adela" data-role="Secretaria">
-                                            <img src="img/usuario_default.png" alt="Adela" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Anahí Botta" data-role="Secretaria">
+                                            <img src="img/usuario_default.png" alt="Anahí Botta" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Prof. Juan Pérez" data-role="Coordinador de Curso">
-                                            <img src="img/usuario_default.png" alt="Prof. Juan Pérez" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Karina Lucero" data-role="Preceptora">
+                                            <img src="img/usuario_default.png" alt="Karina Lucero" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Lic. María García" data-role="Gabinete Psicopedagógico">
-                                            <img src="img/usuario_default.png" alt="Lic. María García" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Zulma Moreira" data-role="Preceptora">
+                                            <img src="img/usuario_default.png" alt="Zulma Moreira" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Prof. Carlos López" data-role="Educación Física">
-                                            <img src="img/usuario_default.png" alt="Prof. Carlos López" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Victoria Celi" data-role="Preceptora">
+                                            <img src="img/usuario_default.png" alt="Victoria Celi" class="staff-carousel-img">
                                         </div>
                                     </div>
                                 </div>
@@ -2166,7 +2235,12 @@
                 <ul class="side-menu-links">
                     <li>
                         <a href="#bienvenida" onclick="toggleSideMenu()">
-                            <i class="fas fa-hand-holding-heart"></i> Bienvenida de la Directora
+                            <i class="fas fa-hand-holding-heart"></i> Bienvenida del Director
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#informacion-general" onclick="toggleSideMenu()">
+                            <i class="fas fa-school"></i> Información General
                         </a>
                     </li>
                     <li>
