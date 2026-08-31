@@ -345,9 +345,7 @@
             }
             .director-signature { font-size: 1.1em; font-weight: bold; margin-top: 15px; display: block;}
 
-            /* --- NUEVO ESTILO: Especialidades (Tarjetas Dark Style - Minimalista Blanco) --- */
-
-            /* Párrafo introductorio */
+            /* --- Proyectos y Jardín --- */
             .specialties-intro {
                 font-size: 1.1em;
                 line-height: 1.8;
@@ -359,127 +357,147 @@
                 margin-right: 0;
             }
 
-            .specialties-showcase {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 20px;
-                justify-content: center;
-            }
-
-            @media (max-width: 1024px) {
-                .specialties-showcase {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            /* Tarjeta Base */
-            .card-specialty {
+            .projects-showcase {
                 position: relative;
-                height: 380px;
-                border-radius: 12px;
+                min-height: 420px;
                 overflow: hidden;
-                box-shadow: none;
+            }
+
+            .project-slide {
+                display: none;
+                align-items: stretch;
+                gap: 24px;
+                background: #f8f8f8;
+                border: 1px solid #eaeaea;
+                border-radius: 18px;
+                overflow: hidden;
+                box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+            }
+
+            .project-slide.active {
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                text-decoration: none;
-                color: white;
-                /* Animación para cuando aparezca la sombra */
-                transition: box-shadow 0.4s ease;
             }
 
-            /* Sombra activada únicamente al hacer hover sobre el BOTÓN en Escritorio */
-            @media (min-width: 1025px) {
-                .card-specialty:has(.view-more-btn:hover) {
-                    box-shadow: 0 40px 80px -10px rgba(0, 0, 0, 0.9);
-                }
+            .project-slide-image {
+                flex: 1.1;
+                min-height: 320px;
             }
 
-            /* Rutas de imagen locales */
-            .card-bg-informatica {
-                background: url('img/sala2.jpg') no-repeat center center;
-                background-size: cover;
-            }
-
-            .card-bg-humanidades {
-                background: url('img/HUERTA1.jpg') no-repeat center center;
-                background-size: cover
-            }
-
-            /* Capa oscura (Overlay) Muy oscura para resaltar el texto */
-            .card-specialty::before {
-                content: '';
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                z-index: 1;
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%);
-                opacity: 0.85; /* Mucho más oscuro */
-            }
-
-            /* Contenido interno */
-            .card-specialty-content {
-                position: relative;
-                z-index: 2;
-                padding: 35px 30px 0 30px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+            .project-slide-image img {
+                width: 100%;
                 height: 100%;
-                width: 100%;
-                box-sizing: border-box;
-                text-align: center;
+                object-fit: cover;
+                display: block;
             }
 
-            /* Título */
-            .card-specialty h3 {
+            .project-slide-info {
+                flex: 1;
+                padding: 32px 28px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background: #fff;
+            }
+
+            .project-slide-info h3 {
                 font-family: 'Heuristica', serif;
-                font-size: 2.7em;
-                margin: 0 auto 10px auto;
-                width: 100%;
+                font-size: 2.2em;
+                margin: 0 0 12px 0;
+                color: #cf0621;
                 font-weight: normal;
-                color: white;
-                text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
                 line-height: 1.1;
             }
 
-            /* Descripción */
-            .card-specialty p {
+            .project-slide-info p {
                 font-family: 'ProximaNova', sans-serif;
-                font-size: 1.15em;
-                font-weight: normal;
-                line-height: 1.4;
-                margin: 0 auto 20px auto;
-                color: white;
-                max-width: 90%;
-                width: 100%;
-                opacity: 1;
+                font-size: 1.05em;
+                line-height: 1.7;
+                color: #555;
+                margin: 0;
             }
 
-            /* Botón Ver Plan */
-            .view-more-btn {
+            .project-controls {
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+                margin-top: 18px;
+            }
+
+            .project-arrow-btn {
+                width: 46px;
+                height: 46px;
+                border: none;
+                background: #f39c12;
+                color: #fff;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 18px rgba(243, 156, 18, 0.2);
+            }
+
+            .project-arrow-btn:hover {
+                background: #cf0621;
+                transform: translateY(-2px);
+            }
+
+            .garden-pdf-card {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 24px;
+                padding: 28px 30px;
+                background: linear-gradient(135deg, #fdf4e5, #fff);
+                border: 1px solid #f3d59d;
+                border-radius: 18px;
+                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+            }
+
+            .garden-pdf-card p {
+                margin: 0;
+                font-family: 'ProximaNova', sans-serif;
+                color: #555;
+                line-height: 1.7;
+                font-size: 1.05em;
+                max-width: 700px;
+            }
+
+            .garden-pdf-btn {
                 background-color: #f39c12;
                 color: #ffffff;
                 border: 2px solid #f39c12;
-                padding: 8px 22px;
+                padding: 12px 24px;
                 font-family: 'ProximaNova', sans-serif;
-                font-size: 1.0em;
+                font-size: 1em;
                 font-weight: bold;
                 border-radius: 50px;
-                cursor: pointer;
-                transition: all 0.3s ease;
                 text-decoration: none;
                 display: inline-block;
-                margin: 0 auto;
+                transition: all 0.3s ease;
+                white-space: nowrap;
             }
-            @media (min-width: 1025px) {
-                .view-more-btn:hover {
-                    background-color: #cf0621;
-                    border-color: #cf0621;
-                    transform: translateY(-3px);
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+            .garden-pdf-btn:hover {
+                background-color: #cf0621;
+                border-color: #cf0621;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 18px rgba(207, 6, 33, 0.2);
+            }
+
+            @media (max-width: 768px) {
+                .project-slide.active {
+                    flex-direction: column;
+                }
+
+                .project-slide-info {
+                    padding: 24px 20px;
+                }
+
+                .garden-pdf-card {
+                    flex-direction: column;
+                    align-items: flex-start;
                 }
             }
 
@@ -1831,7 +1849,7 @@
                         <span class="hero-line-2">Inicial</span>
                     </h1>
                     <p>
-                        <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;">
+                        <a href="formulario-inscripcion.html" target="_blank" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;">
                             Inscripciones Abiertas para el Ciclo 2026<span class="hero-arrow"></span>
                         </a>
                     </p>
@@ -1871,95 +1889,60 @@
                             </div>
                         </div>
 
+                        <div id="proyectos" class="content-block">
+                            <h2>Proyectos</h2>
+                            <div class="projects-showcase">
+                                <div class="project-slide active">
+                                    <div class="project-slide-image">
+                                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=900&q=80" alt="Proyecto de huerta escolar" />
+                                    </div>
+                                    <div class="project-slide-info">
+                                        <h3>Huerta Escolar</h3>
+                                        <p>Una experiencia para aprender sobre cuidado del medio ambiente, trabajo colaborativo y crecimiento de plantas con sentido para la comunidad escolar.</p>
+                                    </div>
+                                </div>
+
+                                <div class="project-slide">
+                                    <div class="project-slide-image">
+                                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Proyecto de trabajo en equipo" />
+                                    </div>
+                                    <div class="project-slide-info">
+                                        <h3>Trabajo en Equipo</h3>
+                                        <p>Actividades de investigación y construcción colectiva que fortalecen la responsabilidad, la creatividad y la participación activa de cada estudiante.</p>
+                                    </div>
+                                </div>
+
+                                <div class="project-slide">
+                                    <div class="project-slide-image">
+                                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80" alt="Proyecto de cuidado de la naturaleza" />
+                                    </div>
+                                    <div class="project-slide-info">
+                                        <h3>Cuidado de la Naturaleza</h3>
+                                        <p>Propuestas orientadas a valorar el entorno, reutilizar materiales y comprender la importancia de convivir con la naturaleza de manera consciente.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="project-controls">
+                                <button type="button" class="project-arrow-btn" id="project-prev" aria-label="Proyecto anterior">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button type="button" class="project-arrow-btn" id="project-next" aria-label="Próximo proyecto">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
                         <div id="especialidades" class="content-block">
-                            <h2>Nuestras Especialidades</h2>
-                            <p class="specialties-intro">
-                                El ciclo orientado permite a los estudiantes profundizar en áreas específicas,
-                                desarrollando competencias clave para su futuro universitario y profesional.
-                            </p>
-
-                            <div class="specialties-showcase">
-                                <div class="card-specialty card-bg-informatica">
-                                    <div class="card-specialty-content">
-                                        <h3>Informática</h3>
-                                        <p>Programación, Robótica y Desarrollo de Software para el mundo digital.</p>
-                                        <a href="info/Plan de Estudios - Informática.pdf" target="_blank" class="view-more-btn">Ver Plan</a>
-                                    </div>
-                                </div>
-
-                                <div class="card-specialty card-bg-humanidades">
-                                    <div class="card-specialty-content">
-                                        <h3>Humanidades</h3>
-                                        <p>Ciencias Sociales, Comunicación y Ciudadanía con pensamiento crítico.</p>
-                                        <a href="info/Plan de Estudios - Ciencias Sociales y Humanidades..pdf" target="_blank" class="view-more-btn">Ver Plan</a>
-                                    </div>
-                                </div>
+                            <h2>Jardín</h2>
+                            <div class="garden-pdf-card">
+                                <p>
+                                    En este PDF se encontrarán actividades, propuestas pedagógicas y materiales relacionados
+                                    con la educación en el jardín: cuidado de la naturaleza, huerta escolar, observación,
+                                    experimentación y trabajo en equipo con niños y familias.
+                                </p>
+                                <a href="info/Jardin.pdf" target="_blank" rel="noopener" class="garden-pdf-btn">Ver PDF del Jardín</a>
                             </div>
-                        </div>
-
-                        <div id="areas-curriculares" class="content-block">
-                            <h2>Áreas Curriculares</h2>
-                            <p class="specialties-intro">
-                                Trabajamos con un plan educativo completo que incluye:
-                            </p>
-                            <div class="curricular-grid">
-                                <div class="curricular-card">
-                                    <i class="fas fa-book"></i>
-                                    <h3>Lengua y Literatura</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-calculator"></i>
-                                    <h3>Matemática</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-flask"></i>
-                                    <h3>Ciencias Naturales</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-globe-americas"></i>
-                                    <h3>Ciencias Sociales</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-language"></i>
-                                    <h3>Inglés</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-running"></i>
-                                    <h3>Educación Física</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-palette"></i>
-                                    <h3>Artes Visuales</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-music"></i>
-                                    <h3>Música</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-laptop-code"></i>
-                                    <h3>Tecnologías</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-users"></i>
-                                    <h3>Religión y ESI</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-users"></i>
-                                    <h3>Religión y ESI</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="ingles" class="content-block">
-                            <h2>Inglés por Niveles</h2>
-                            <p class="specialties-intro" style="margin-bottom: 15px;">
-                                Entendemos que cada estudiante tiene un ritmo de aprendizaje único. Por ello, nuestra escuela maneja un 
-                                <strong>sistema adaptativo para el inglés</strong>. 
-                            </p>
-                            <p class="specialties-intro">
-                                En lugar de clases tradicionales por año escolar, los alumnos son agrupados en cursos según su conocimiento 
-                                y manejo real de la lengua, permitiendo un avance más efectivo y personalizado.
-                            </p>
                         </div>
 
                         <div id="uniforme" class="content-block">
@@ -2170,18 +2153,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#especialidades" onclick="toggleSideMenu()">
-                            <i class="fas fa-graduation-cap"></i> Nuestras Especialidades
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#areas-curriculares" onclick="toggleSideMenu()">
-                            <i class="fas fa-book"></i> Áreas Curriculares
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#ingles" onclick="toggleSideMenu()">
-                            <i class="fas fa-language"></i> Inglés por Niveles
+                        <a href="#proyectos" onclick="toggleSideMenu()">
+                            <i class="fas fa-seedling"></i> Proyectos de Jardín
                         </a>
                     </li>
                     <li>
@@ -2654,6 +2627,28 @@
                 startTimer();
             });
 
+            // --- Carrusel de Proyectos ---
+            document.addEventListener('DOMContentLoaded', () => {
+                const slides = Array.from(document.querySelectorAll('.project-slide'));
+                const prevBtn = document.getElementById('project-prev');
+                const nextBtn = document.getElementById('project-next');
+
+                if (!slides.length || !prevBtn || !nextBtn) return;
+
+                let currentIndex = 0;
+
+                const showSlide = (index) => {
+                    currentIndex = (index + slides.length) % slides.length;
+                    slides.forEach((slide, i) => {
+                        slide.classList.toggle('active', i === currentIndex);
+                    });
+                };
+
+                prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+                nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+                setInterval(() => showSlide(currentIndex + 1), 5000);
+            });
+
             // --- Lógica de Selección Táctil para Tarjetas (Móvil/Tablet) ---
             document.addEventListener('DOMContentLoaded', () => {
                 const isMobileView = () => window.innerWidth <= 1024 || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -2700,7 +2695,7 @@
 
                 // Prevenir el arrastre predeterminado (Ghost Images) en TODAS las imágenes y tarjetas
                 document.addEventListener('dragstart', (e) => {
-                    if (e.target.tagName === 'IMG' || e.target.closest('.card-specialty, .curricular-card, .uniform-card, .staff-carousel-item')) {
+                    if (e.target.tagName === 'IMG' || e.target.closest('.curricular-card, .uniform-card, .staff-carousel-item')) {
                         e.preventDefault();
                     }
                 });
