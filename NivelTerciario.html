@@ -486,13 +486,13 @@
 
             /* Rutas de imagen locales */
             .card-bg-informatica {
-                background: url('img/sala2.jpg') no-repeat center center;
+                background: url('img/Superior 3.jpeg') no-repeat center center;
                 background-size: cover;
             }
 
             .card-bg-humanidades {
-                background: url('img/HUERTA1.jpg') no-repeat center center;
-                background-size: cover
+                background: url('img/Superior 1.jpeg') no-repeat center center;
+                background-size: cover;
             }
 
             /* Capa oscura (Overlay) Muy oscura para resaltar el texto */
@@ -1351,7 +1351,7 @@
             .curricular-card-inner {
                 position: relative;
                 width: 100%;
-                min-height: 180px;
+                min-height: 240px;
                 transform-style: preserve-3d;
                 transition: transform 0.6s ease;
             }
@@ -1360,8 +1360,8 @@
             }
             .curricular-card-front,
             .curricular-card-back {
-                min-height: 180px;
-                padding: 20px;
+                min-height: 240px;
+                padding: 24px;
                 box-sizing: border-box;
                 backface-visibility: hidden;
                 -webkit-backface-visibility: hidden;
@@ -1413,7 +1413,7 @@
                 font-family: 'ProximaNova', sans-serif;
                 font-weight: bold;
                 color: #555;
-                font-size: 1.1em;
+                font-size: 1.25em;
                 margin: 0;
                 text-align: center;
             }
@@ -1423,10 +1423,20 @@
                 .curricular-card {
                     flex: 0 0 calc((100% - 60px) / 4);
                 }
+                .curricular-card-inner,
+                .curricular-card-front,
+                .curricular-card-back {
+                    min-height: 260px;
+                }
             }
             @media (max-width: 900px) {
                 .curricular-card {
                     flex: 0 0 calc((100% - 40px) / 3);
+                }
+                .curricular-card-inner,
+                .curricular-card-front,
+                .curricular-card-back {
+                    min-height: 230px;
                 }
             }
             @media (max-width: 600px) {
@@ -2035,7 +2045,7 @@
                                     </p>
                                 </div>
                                 <img
-                                    src="img/20250806_092322.jpg"
+                                    src="img/Superior 4.jpeg"
                                     alt="Instituto de Formación Docente Nuestra Señora de la Merced"
                                     class="history-image"
                                 />
@@ -2103,9 +2113,9 @@
                                 </div>
                                 <div class="curricular-card is-flip-card" tabindex="0" role="button" aria-label="Ver descripción del proyecto">
                                     <div class="curricular-card-inner">
-                                        <div class="curricular-card-front">
-                                            <i class="fas fa-book"></i>
-                                            <h3>Feria Municipal del Libro</h3>
+                                        <div class="curricular-card-front" style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)), url('img/Superior 1.jpeg') center/cover no-repeat; color: #fff;">
+                                            <i class="fas fa-book" style="color: #fff;"></i>
+                                            <h3 style="color: #fff;">Feria Municipal del Libro</h3>
                                         </div>
                                         <div class="curricular-card-back">
                                             <p>Participación en la Feria Municipal del Libro “Inés Dávila de Olocco”, fortaleciendo el encuentro entre la comunidad, la literatura y la educación.</p>
@@ -2125,9 +2135,9 @@
                                 </div>
                                 <div class="curricular-card is-flip-card" tabindex="0" role="button" aria-label="Ver descripción del proyecto">
                                     <div class="curricular-card-inner">
-                                        <div class="curricular-card-front">
-                                            <i class="fas fa-running"></i>
-                                            <h3>Recreo escolar como unidad de análisis</h3>
+                                        <div class="curricular-card-front" style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)), url('img/Superior 2.jpeg') center/cover no-repeat; color: #fff;">
+                                            <i class="fas fa-running" style="color: #fff;"></i>
+                                            <h3 style="color: #fff;">Recreo escolar como unidad de análisis</h3>
                                         </div>
                                         <div class="curricular-card-back">
                                             <p>Diseño y elaboración de una propuesta de juego destinada a implementarse en un recreo de una escuela asociada.</p>
