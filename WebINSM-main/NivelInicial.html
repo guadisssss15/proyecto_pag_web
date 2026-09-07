@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Insm - Nivel Inicial</title>
+        <title>INSM - Nivel Inicial</title>
         <style>
             /* --- Fuentes --- */
             @font-face {
@@ -461,7 +461,15 @@
                 color: #555;
                 line-height: 1.7;
                 font-size: 1.05em;
-                max-width: 700px;
+                width: 100%;
+            }
+
+            .garden-pdf-card p + p {
+                margin-top: 1em;
+                margin-left: 6px;
+                padding-left: 18px;
+                border-left: 3px solid #f39c12;
+                min-height: 7em;
             }
 
             .garden-pdf-btn {
@@ -499,6 +507,10 @@
                     flex-direction: column;
                     align-items: flex-start;
                 }
+
+                .garden-pdf-card p + p {
+                    min-height: 0;
+                }
             }
 
             /* --- Estilo: Requerimientos --- */
@@ -521,6 +533,41 @@
                 left: 0;
                 top: 0;
             }
+
+            /* --- Estilo: Horarios --- */
+            .schedule-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                margin-top: 10px;
+            }
+            .schedule-card {
+                flex: 1 1 260px;
+                background-color: #f8f9fa;
+                border: 1px solid #e0e0e0;
+                border-radius: 12px;
+                padding: 24px 26px;
+            }
+            .schedule-card h3 {
+                font-family: 'Heuristica', serif;
+                font-weight: normal;
+                color: #cf0621;
+                font-size: 1.4em;
+                margin: 0 0 10px 0;
+            }
+            .schedule-card p {
+                margin: 0;
+                font-family: 'ProximaNova', sans-serif;
+                color: #555;
+                font-size: 1.05em;
+                line-height: 1.6;
+            }
+            .schedule-card p a {
+                color: #cf0621;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .schedule-card p a:hover { text-decoration: underline; }
 
             /* --- Estilo: AEC --- */
             .aec-container {
@@ -980,7 +1027,7 @@
 
             /* --- Footer --- */
             .footer {
-                background-color: #cf0621;
+                background-color: #c53f3f;
                 color: #ffffff;
                 padding: 80px 20px 20px 20px;
                 font-family: 'ProximaNova', sans-serif;
@@ -1007,7 +1054,7 @@
                 max-width: 400px;
             }
             .footer-column h3 {
-                color: #f39c12;
+                color: #fcb33f;
                 font-size: 1.4em;
                 margin-bottom: 25px;
                 position: relative;
@@ -1054,7 +1101,7 @@
             }
             @media (hover: hover) {
                 .contact-info a:hover {
-                    color: #f39c12;
+                    color: #fcb33f;
                     text-decoration: none;
                 }
             }
@@ -1064,7 +1111,7 @@
                 margin-top: 25px;
             }
             .social-icons a {
-                color: #f39c12;
+                color: #fcb33f;
                 font-size: 1.5em;
                 transition: all 0.3s ease;
                 display: inline-block; /* Ensure transform works */
@@ -1598,6 +1645,7 @@
                 .staff-active-info h3 {
                     font-size: 2.2em;
                 }
+                .schedule-grid { flex-direction: column; }
             }
 
             /* Responsive */
@@ -1726,6 +1774,32 @@
                 .menu-content { grid-template-columns: 1fr; }
                 .hero-content h1 { font-size: 2.8em; }
             }
+            /* --- Color unificado para títulos de secciones --- */
+            .content-block h2,
+            .aec-container h2,
+            .project-slide-info h3,
+            .schedule-card h3,
+            .section-title h2,
+            .section-title h3,
+            .projects-header h3,
+            .projects-card h4,
+            .college-text h2,
+            .college-modal-content h3,
+            .levels-title h3,
+            .level-info h4,
+            .service-header h3,
+            .contact-home-title,
+            .news-page-section h2,
+            .news-page-section h3 {
+                color: #a51c30;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                color: #a51c30 !important;
+            }
+            .hero-content h1,
+            .hero-content h1 * {
+                color: #ffffff !important;
+            }
         </style>
         <link rel="icon" href="img/favicon.ico" type="image/ico" />
         <link
@@ -1738,9 +1812,9 @@
             <div class="header-main">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="img/favicon.ico" alt="Logo INSM" />
-                        <span class="brand-text-desktop">Instituto Nuestra Señora de la Merced</span>
-                        <span class="brand-text-mobile">INSM</span>
+                        <img src="img/favicon.ico" alt="Logo Santa María de Cervellón" />
+                        <span class="brand-text-desktop">Santa María de Cervellón</span>
+                        <span class="brand-text-mobile">SMC</span>
                     </a>
                 </div>
                 <nav>
@@ -1757,7 +1831,7 @@
         <div class="dropdown-menu" id="dropdownMenu">
             <div class="dropdown-header">
                 <div class="logo">
-                    <img src="img/logo.png" alt="Logo INSM" />
+                    <img src="img/logo.png" alt="Logo Santa María de Cervellón" />
                 </div>
                 <button class="close-menu" onclick="toggleMenu()">✕</button>
             </div>
@@ -1861,32 +1935,55 @@
                     <div class="main-text">
                         
                         <div class="content-block">
-                            <h2>Bienvenida de la Directora</h2>
+                            <h2>Bienvenida</h2>
                             <div class="director-section">
                                 <div class="director-text">
                                     <p class="specialties-intro">
-                                        El Nivel Secundario en nuestro colegio es un tiempo emocionante y enriquecedor,
-                                        lleno de diversión. Nuestros maestros trabajan arduamente para inspirar a los
-                                        niños y despertar su curiosidad, creatividad e imaginación. A medida que avanzan,
-                                        los alumnos comienzan a hacer que las cosas sucedan por sí mismos y se deleitan
-                                        con las oportunidades de ser aventureros.
+                                        <em>"Una educación que acompaña, inspira y transforma."</em>
                                     </p>
                                     <p class="specialties-intro">
-                                        Ayudamos a nuestros alumnos a convertirse en jóvenes innovadores, dinámicos,
-                                        flexibles y resilientes, equipados para los desafíos del siglo XXI. Una visita a
-                                        nuestro sitio web le proporcionará una gran cantidad de información, pero venga a
-                                        visitarnos en persona para conocernos mejor y satisfacer sus necesidades.
+                                        En nuestra institución ofrecemos una educación integral, centrada en cada niño y
+                                        cada niña, que promueve el desarrollo de sus capacidades desde los primeros
+                                        años. Nuestra propuesta se basa en una enseñanza personalizada, colaborativa y
+                                        significativa, donde los estudiantes son protagonistas de experiencias que
+                                        favorecen la curiosidad, la creatividad, el pensamiento crítico y la resolución
+                                        de situaciones problemáticas.
+                                    </p>
+                                    <p class="specialties-intro">
+                                        Acompañamos cada trayectoria, potenciamos capacidades y generamos oportunidades
+                                        para aprender, crear y transformar.
                                     </p>
                                     <p class="director-signature">
-                                        <strong>Marisa Brisio</strong>
+                                        <strong>Julia Capellán</strong>
                                     </p>
                                 </div>
                                 <img
                                     src="img/usuario_default.png"
-                                    alt="Foto del Director de Nivel Secundario"
+                                    alt="Foto de la Directora de Nivel Inicial"
                                     class="director-image"
                                 />
                             </div>
+                        </div>
+
+                        <div id="historia" class="content-block">
+                            <h2>Nuestra Historia</h2>
+                            <p class="specialties-intro">
+                                Creado el Nivel Primario del colegio, y respondiendo a las demandas de la sociedad de
+                                aquella época, en 1951 se crea la primera sección mixta del Jardín de Infantes,
+                                incorporada a la Provincia el 1º de abril de ese mismo año. Posteriormente se crea una
+                                segunda sección, funcionando un turno mañana y otro turno tarde.
+                            </p>
+                            <p class="specialties-intro">
+                                En 1982 se inaugura, sobre calle 9 de Julio y General Paz, un hermoso y amplio
+                                edificio destinado al Nivel Inicial, con dos amplias salas con patio interno cada una,
+                                una cocina, dos cuerpos de sanitarios, un salón multiuso con escenario y un amplio
+                                patio con juegos instalados.
+                            </p>
+                            <p class="specialties-intro">
+                                En 1990 se inauguran dos salas de 4 años y, en la actualidad, se cuenta además con dos
+                                salas de 3 años que comenzaron a funcionar en 2016, año en que se obtuvo el
+                                reconocimiento pedagógico y el Nivel Inicial pasó a contar con dirección independiente.
+                            </p>
                         </div>
 
                         <div id="proyectos" class="content-block">
@@ -1894,31 +1991,31 @@
                             <div class="projects-showcase">
                                 <div class="project-slide active">
                                     <div class="project-slide-image">
-                                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=900&q=80" alt="Proyecto de huerta escolar" />
+                                        <img src="img/Inicial_talleres.png" alt="Talleres interdisciplinarios" />
                                     </div>
                                     <div class="project-slide-info">
-                                        <h3>Huerta Escolar</h3>
-                                        <p>Una experiencia para aprender sobre cuidado del medio ambiente, trabajo colaborativo y crecimiento de plantas con sentido para la comunidad escolar.</p>
+                                        <h3>Talleres Interdisciplinarios</h3>
+                                        <p>Este año incorporamos los Talleres Interdisciplinarios, un espacio pensado para que los niños puedan explorar, experimentar, crear y aprender a través del juego, la investigación y el trabajo colaborativo, favoreciendo el pensamiento creativo y la resolución de situaciones problemáticas.</p>
                                     </div>
                                 </div>
 
                                 <div class="project-slide">
                                     <div class="project-slide-image">
-                                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Proyecto de trabajo en equipo" />
+                                        <img src="img/Inicial2.png" alt="Inglés desde sala de 3" />
                                     </div>
                                     <div class="project-slide-info">
-                                        <h3>Trabajo en Equipo</h3>
-                                        <p>Actividades de investigación y construcción colectiva que fortalecen la responsabilidad, la creatividad y la participación activa de cada estudiante.</p>
+                                        <h3>Inglés desde Sala de 3</h3>
+                                        <p>Ofrecemos inglés como segunda lengua desde sala de 3 años, acompañando a los niños y niñas en un primer acercamiento lúdico y significativo a un nuevo idioma.</p>
                                     </div>
                                 </div>
 
                                 <div class="project-slide">
                                     <div class="project-slide-image">
-                                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80" alt="Proyecto de cuidado de la naturaleza" />
+                                        <img src="img/Inicial3.png" alt="Innovación educativa digital" />
                                     </div>
                                     <div class="project-slide-info">
-                                        <h3>Cuidado de la Naturaleza</h3>
-                                        <p>Propuestas orientadas a valorar el entorno, reutilizar materiales y comprender la importancia de convivir con la naturaleza de manera consciente.</p>
+                                        <h3>Innovación Educativa Digital</h3>
+                                        <p>Contamos con dos salas de Innovación Educativa Digital, donde promovemos el desarrollo de competencias digitales y un acercamiento creativo, crítico y responsable al mundo digital.</p>
                                     </div>
                                 </div>
                             </div>
@@ -1934,14 +2031,17 @@
                         </div>
 
                         <div id="especialidades" class="content-block">
-                            <h2>Jardín</h2>
+                            <h2>Nuestra Propuesta Educativa</h2>
                             <div class="garden-pdf-card">
                                 <p>
-                                    En este PDF se encontrarán actividades, propuestas pedagógicas y materiales relacionados
-                                    con la educación en el jardín: cuidado de la naturaleza, huerta escolar, observación,
-                                    experimentación y trabajo en equipo con niños y familias.
+                                    En sintonía con TransFORMAR@Cba, integramos los distintos campos de conocimiento a través de proyectos y experiencias que permiten aprender haciendo, explorando, creando y compartiendo. Nuestra propuesta abarca Lenguaje y Literatura, Matemática, Ciencias Sociales, Ciencias Naturales y Tecnología, Educación Artística, Educación Física e Identidad y Convivencia.
                                 </p>
-                                <a href="info/Jardin.pdf" target="_blank" rel="noopener" class="garden-pdf-btn">Ver PDF del Jardín</a>
+                                <p>
+                                    La Educación Religiosa Escolar (E.R.E.) complementa esta formación con una pedagogía que nos hace libres y nos acerca a Jesús y a la Virgen María. También contemplamos una educación sexual integral y gradual que abarca todas las dimensiones de la persona.
+                                </p>
+                                <p>
+                                    Contamos con un Servicio de Orientación Escolar (S.O.E.), conformado por psicóloga, psicopedagoga y maestra de educación especial, que acompaña la atención a la diversidad y la inclusión de los estudiantes. Durante el año, los niños y niñas disfrutan además de diferentes jornadas, convivencias y viajes educativos que favorecen la convivencia grupal y el contacto con la naturaleza.
+                                </p>
                             </div>
                         </div>
 
@@ -1999,7 +2099,7 @@
                             <div class="staff-layout-grid">
                                 <div class="staff-left-panel">
                                     <div class="staff-active-info" id="staffInfoBox">
-                                        <h3 id="staffActiveName">Marisa Brisio</h3>
+                                        <h3 id="staffActiveName">MJulia Capellán</h3>
                                         <span id="staffActiveRole">Directora</span>
                                     </div>
                                     
@@ -2012,20 +2112,35 @@
 
                                 <div class="staff-carousel-viewport" id="staffViewport">
                                     <div class="staff-carousel-track" id="staffTrack">
-                                        <div class="staff-carousel-item" data-name="Marisa Brisio" data-role="Profesora de Matemáticas">
-                                            <img src="img/usuario_default.png" alt="Marisa Brisio" class="staff-carousel-img">
+                                          <div class="staff-carousel-item" data-name="Julia Capellán" data-role="Directora">
+                                            <img src="img/usuario_default.png" alt="Julia Capellán" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Adela" data-role="Secretaria">
-                                            <img src="img/usuario_default.png" alt="Adela" class="staff-carousel-img">
+                                         <div class="staff-carousel-item" data-name="Noelía Tomanek" data-role="Secretaria">
+                                            <img src="img/usuario_default.png" alt="Noelía Tomanek" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Prof. Juan Pérez" data-role="Coordinador de Curso">
-                                            <img src="img/usuario_default.png" alt="Prof. Juan Pérez" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Gimena Pitarelli" data-role="Señorita Sala de 3 turno mañana">
+                                            <img src="img/usuario_default.png" alt="Gimena Pitarelli" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Lic. María García" data-role="Gabinete Psicopedagógico">
-                                            <img src="img/usuario_default.png" alt="Lic. María García" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Marianela Perone" data-role="Señorita Sala de 4 turno mañana">
+                                            <img src="img/usuario_default.png" alt="Marianela Perone" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Prof. Carlos López" data-role="Educación Física">
-                                            <img src="img/usuario_default.png" alt="Prof. Carlos López" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Soledad Ballatore" data-role="Señorita Sala de 5 turno mañana">
+                                            <img src="img/usuario_default.png" alt="Soledad Ballatore" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Marisel Baigorria" data-role="Señorita Sala de 4 turno tarde">
+                                            <img src="img/usuario_default.png" alt="Marisel Baigorria" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Adriana Sutter" data-role="Señorita Sala de 5 turno tarde">
+                                            <img src="img/usuario_default.png" alt="Adriana Sutter" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Ivana Varas" data-role="Señorita de educación Física">
+                                            <img src="img/usuario_default.png" alt="Ivana Varas" class="staff-carousel-img">
+                                        </div>
+                                         <div class="staff-carousel-item" data-name="Facundo Gil" data-role="Profesor de Computación">
+                                            <img src="img/usuario_default.png" alt="Facundo Gil" class="staff-carousel-img">
+                                        </div>
+                                          <div class="staff-carousel-item" data-name="Marianela Gerbaudo" data-role="Señorita de inglés">
+                                            <img src="img/usuario_default.png" alt="Marianela Gerbaudo" class="staff-carousel-img">
                                         </div>
                                     </div>
                                 </div>
@@ -2042,6 +2157,26 @@
                                 <li>Ficha de salud completada y firmada por un médico.</li>
                                 <li>Informe de libre deuda (si proviene de gestión privada).</li>
                             </ul>
+                        </div>
+
+                        <div id="horarios" class="content-block">
+                            <h2>Horarios y Atención</h2>
+                            <div class="schedule-grid">
+                                <div class="schedule-card">
+                                    <h3>Turno Mañana</h3>
+                                    <p>De 8:00 a 12:00 hs</p>
+                                </div>
+                                <div class="schedule-card">
+                                    <h3>Turno Tarde</h3>
+                                    <p>De 13:30 a 17:30 hs</p>
+                                </div>
+                                <div class="schedule-card">
+                                    <h3>Atención</h3>
+                                    <p>Lunes a viernes de 8:00 a 17:00 hs<br>
+                                    Tel: 3576-452804 — Cel: 3576-465273<br>
+                                    Correo: <a href="mailto:jardin@colegiocervellon.edu.ar">jardin@colegiocervellon.edu.ar</a></p>
+                                </div>
+                            </div>
                         </div>
 
                         <div id="aec" class="content-block aec-container">
@@ -2077,7 +2212,7 @@
                 <div class="footer-column contact-info">
                     <div class="footer-column-wrapper">
                         <h3>Contactanos</h3>
-                        <p><strong>Nivel Inicial:</strong> <a href="tel:+543576408967">+54 (3576) 408-967</a></p>
+                        <p><strong>Nivel Inicial:</strong> <a href="tel:+543576452804">3576-452804</a> / <a href="tel:+543576465273">3576-465273</a></p>
                         <p><strong>Nivel Primario:</strong> <a href="tel:+543576421440">+54 (3576) 421-440</a></p>
                         <p>
                             <strong>Nivel Secundario:</strong> <a href="tel:+543576421440">+54 (3576) 421-440</a>
@@ -2149,12 +2284,22 @@
                 <ul class="side-menu-links">
                     <li>
                         <a href="#bienvenida" onclick="toggleSideMenu()">
-                            <i class="fas fa-hand-holding-heart"></i> Bienvenida de la Directora
+                            <i class="fas fa-hand-holding-heart"></i> Bienvenida
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#historia" onclick="toggleSideMenu()">
+                            <i class="fas fa-landmark"></i> Nuestra Historia
                         </a>
                     </li>
                     <li>
                         <a href="#proyectos" onclick="toggleSideMenu()">
-                            <i class="fas fa-seedling"></i> Proyectos de Jardín
+                            <i class="fas fa-seedling"></i> Proyectos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#especialidades" onclick="toggleSideMenu()">
+                            <i class="fas fa-book-open"></i> Nuestra Propuesta Educativa
                         </a>
                     </li>
                     <li>
@@ -2170,6 +2315,11 @@
                     <li>
                         <a href="#requerimientos" onclick="toggleSideMenu()">
                             <i class="fas fa-clipboard-list"></i> Requerimientos de Inscripción
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#horarios" onclick="toggleSideMenu()">
+                            <i class="fas fa-clock"></i> Horarios y Atención
                         </a>
                     </li>
                     <li>
@@ -2646,7 +2796,6 @@
 
                 prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
                 nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
-                setInterval(() => showSlide(currentIndex + 1), 5000);
             });
 
             // --- Lógica de Selección Táctil para Tarjetas (Móvil/Tablet) ---
