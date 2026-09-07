@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>INSM - Nivel Secundario</title>
+        <title>Insm - Nivel Secundario</title>
         <style>
-            /* --- Fuentes HOLA --- */
+            /* --- Fuentes --- */
             @font-face {
                 font-family: 'Heuristica';
                 src: url('fonts/Heuristica-Regular.ttf') format('truetype');
@@ -979,7 +979,7 @@
 
             /* --- Footer --- */
             .footer {
-                background-color: #c53f3f;
+                background-color: #cf0621;
                 color: #ffffff;
                 padding: 80px 20px 20px 20px;
                 font-family: 'ProximaNova', sans-serif;
@@ -1245,83 +1245,6 @@
                 position: absolute;
                 left: 0;
                 top: -2px;
-            }
-
-            /* --- Estilo: Áreas Curriculares --- */
-            .curricular-grid {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-                width: 100%;
-            }
-            .curricular-card {
-                background-color: #fff;
-                border: 1px solid #e0e0e0;
-                border-radius: 8px;
-                flex: 0 0 calc((100% - 80px) / 5);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 15px;
-                transition: all 0.3s ease;
-                box-sizing: border-box;
-                cursor: default;
-                padding: 20px;
-            }
-            .curricular-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-                border-color: #cf0621;
-            }
-            .curricular-card i {
-                font-size: 2em;
-                color: #f39c12;
-                transition: color 0.3s ease;
-            }
-            .curricular-card:hover i {
-                color: #cf0621;
-            }
-            
-            /* --- Soporte Táctil: Áreas Curriculares --- */
-            .curricular-card.touch-active {
-                transform: translateY(-5px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-                border-color: #cf0621;
-            }
-            .curricular-card.touch-active i {
-                color: #cf0621;
-            }
-            .curricular-card h3 {
-                font-family: 'ProximaNova', sans-serif;
-                font-weight: bold;
-                color: #555;
-                font-size: 1.1em;
-                margin: 0;
-                text-align: center;
-            }
-
-            /* Responsive: Áreas Curriculares */
-            @media (max-width: 1200px) {
-                .curricular-card {
-                    flex: 0 0 calc((100% - 60px) / 4);
-                }
-            }
-            @media (max-width: 900px) {
-                .curricular-card {
-                    flex: 0 0 calc((100% - 40px) / 3);
-                }
-            }
-            @media (max-width: 600px) {
-                .curricular-card {
-                    flex: 0 0 calc((100% - 20px) / 2);
-                }
-            }
-            @media (max-width: 400px) {
-                .curricular-card {
-                    flex: 0 0 100%;
-                }
             }
 
             /* --- Estilo: Nuestro Personal (Refined Strip Carousel) --- */
@@ -1725,35 +1648,6 @@
                 .menu-content { grid-template-columns: 1fr; }
                 .hero-content h1 { font-size: 2.8em; }
             }
-            /* --- Color unificado para títulos de secciones --- */
-            .content-block h2,
-            .aec-container h2,
-            .project-slide-info h3,
-            .schedule-card h3,
-            .section-title h2,
-            .section-title h3,
-            .projects-header h3,
-            .projects-card h4,
-            .college-text h2,
-            .college-modal-content h3,
-            .levels-title h3,
-            .level-info h4,
-            .service-header h3,
-            .contact-home-title,
-            .news-page-section h2,
-            .news-page-section h3 {
-                color: #a51c30;
-            }
-            h1, h2, h3, h4, h5, h6 {
-                color: #a51c30 !important;
-            }
-            .hero-content h1,
-            .hero-content h1 * {
-                color: #ffffff !important;
-            }
-            .card-specialty h3 {
-                color: #ffffff !important;
-            }
         </style>
         <link rel="icon" href="img/favicon.ico" type="image/ico" />
         <link
@@ -1877,7 +1771,7 @@
                         <span class="hero-line-2">Secundario</span>
                     </h1>
                     <p>
-                        <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;">
+                        <a href="https://forms.gle/mjuCoSg5cP9879Wb7" target="_blank" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;">
                             Inscripciones Abiertas para el Ciclo 2026<span class="hero-arrow"></span>
                         </a>
                     </p>
@@ -1972,91 +1866,33 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div id="areas-curriculares" class="content-block">
-                            <h2>Áreas Curriculares</h2>
-                            <p class="specialties-intro">
-                                Trabajamos con un plan educativo completo que incluye:
-                            </p>
-                            <div class="curricular-grid">
-                                <div class="curricular-card">
-                                    <i class="fas fa-book"></i>
-                                    <h3>Lengua y Literatura</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-calculator"></i>
-                                    <h3>Matemática</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-flask"></i>
-                                    <h3>Ciencias Naturales</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-globe-americas"></i>
-                                    <h3>Ciencias Sociales</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-language"></i>
-                                    <h3>Inglés</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-running"></i>
-                                    <h3>Educación Física</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-palette"></i>
-                                    <h3>Artes Visuales</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-music"></i>
-                                    <h3>Música</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-laptop-code"></i>
-                                    <h3>Tecnologías</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-users"></i>
-                                    <h3>Religión y ESI</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-users"></i>
-                                    <h3>Religión y ESI</h3>
-                                </div>
+                            <div style="display: flex; justify-content: center; margin-top: 30px;">
+                                <a href="https://forms.gle/mDeRWHZM4xknQEzK9" target="_blank" class="aec-btn">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>
+                                        Elegí tu Especialidad
+                                        <small>Completar formulario</small>
+                                    </span>
+                                </a>
                             </div>
                         </div>
 
                         <div id="ingles" class="content-block">
                             <h2>Inglés por Niveles</h2>
-                            <p class="specialties-intro" style="margin-bottom: 15px;">
-                                Entendemos que cada estudiante tiene un ritmo de aprendizaje único. Por ello, nuestra escuela maneja un 
-                                <strong>sistema adaptativo para el inglés</strong>. 
-                            </p>
                             <p class="specialties-intro">
-                                En lugar de clases tradicionales por año escolar, los alumnos son agrupados en cursos según su conocimiento 
-                                y manejo real de la lengua, permitiendo un avance más efectivo y personalizado.
+                                En el Ciclo Orientado, el aprendizaje del inglés no se organiza por año escolar sino
+                                por niveles reales de conocimiento de la lengua: los estudiantes se integran en cinco
+                                grupos según sus competencias, para avanzar cada uno desde su propio punto de partida.
                             </p>
-
-                            <div class="uniform-grid">
-                                <div class="uniform-card">
+                            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                                <a href="Ingles.html" class="aec-btn">
                                     <i class="fas fa-language"></i>
-                                    <h3>Prof. Belén Guzmán</h3>
-                                    <ul>
-                                        <li>Nivel 1</li>
-                                        <li>Nivel 2</li>
-                                        <li>Nivel 3A</li>
-                                    </ul>
-                                </div>
-                                <div class="uniform-card">
-                                    <i class="fas fa-language"></i>
-                                    <h3>Prof. Ivana Marioni</h3>
-                                    <ul>
-                                        <li>Nivel 3B</li>
-                                        <li>Nivel 4</li>
-                                        <li>Nivel 5</li>
-                                    </ul>
-                                </div>
+                                    <span>
+                                        Inglés por Niveles
+                                        <small>Conocé más (prueba nivelatoria y niveles)</small>
+                                    </span>
+                                </a>
                             </div>
                         </div>
 
@@ -2071,11 +1907,11 @@
                                     <i class="fas fa-female"></i>
                                     <h3>Mujeres</h3>
                                     <ul>
-                                        <li>Pollera gris largo a la rodilla.</li>
+                                        <li>Pantalón de vestir azul, corte clásico.</li>
                                         <li>Remera de piqué con escudo bordado.</li>
                                         <li>Pullover escote en V azul bordado.</li>
                                         <li>Abrigo azul (campera).</li>
-                                        <li>Zapatos negros o zapatillas lisas.</li>
+                                        <li>Zapatillas negras, blancas u oscuras.</li>
                                         <li>Cabello recogido (cinta azul).</li>
                                     </ul>
                                 </div>
@@ -2089,7 +1925,7 @@
                                         <li>Remera de piqué con escudo bordado.</li>
                                         <li>Pullover escote en V azul bordado.</li>
                                         <li>Abrigo azul (campera).</li>
-                                        <li>Medias azules y zapatos negros.</li>
+                                        <li>Zapatillas negras, blancas u oscuras.</li>
                                     </ul>
                                 </div>
 
@@ -2098,8 +1934,8 @@
                                     <i class="fas fa-running"></i>
                                     <h3>Gimnasia</h3>
                                     <ul>
-                                        <li>Joggin gris (pantalón o bermuda).</li>
-                                        <li>Remera oficial del colegio.</li>
+                                        <li>Joggin gris, negro o azul (pantalón o bermuda, sin shorts).</li>
+                                        <li>Remera oficial del colegio o remera blanca lisa, sin diseños grandes (se permite logo pequeño de marca).</li>
                                         <li>Buzo gris con escudo.</li>
                                         <li>Zapatillas deportivas.</li>
                                         <li>Bolsa de higiene completa.</li>
@@ -2142,6 +1978,136 @@
                                         <div class="staff-carousel-item" data-name="Victoria Celi" data-role="Preceptora">
                                             <img src="img/usuario_default.png" alt="Victoria Celi" class="staff-carousel-img">
                                         </div>
+                                        <div class="staff-carousel-item" data-name="Alvarez Maria Agustina" data-role="Docente de:<br>→ERE<br><small>Cursos: 4B-5B</small>">
+                                            <img src="img/usuario_default.png" alt="Alvarez Maria Agustina" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Diamela Nerina Alvarez Novara" data-role="Docente de:<br>→EOI: INFORMATICA APLI.<br><small>Cursos: 6B</small>">
+                                            <img src="img/usuario_default.png" alt="Diamela Nerina Alvarez Novara" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Marisa Amaison" data-role="Docente de:<br>→SIST. DIG. DE INF.<br><small>Cursos: 4B</small>">
+                                            <img src="img/usuario_default.png" alt="Marisa Amaison" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Carmela Amuchastegui" data-role="Docente de:<br>→EDUCACIÓN ARTISTICA<br><small>Cursos: 3A-3B-4A</small>">
+                                            <img src="img/usuario_default.png" alt="Carmela Amuchastegui" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Maria Florencia Andino" data-role="Docente de:<br>→GEOGRAFÍA<br>→HISTORIA<br><small>Cursos: 2A-2B-3A-4B-5B</small>">
+                                            <img src="img/usuario_default.png" alt="Maria Florencia Andino" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Paola Yanina Auban" data-role="Docente de:<br>→ECO. POLITICA<br><small>Cursos: 6A</small>">
+                                            <img src="img/usuario_default.png" alt="Paola Yanina Auban" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Nicolas Matias Baravalle" data-role="Docente de:<br>→ED. ART. MÚSICA<br><small>Cursos: 5</small>">
+                                            <img src="img/usuario_default.png" alt="Nicolas Matias Baravalle" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Laura Alejandra Bertea" data-role="Docente de:<br>→LENGUA Y LITERATURA<br><small>Cursos: 5B</small>">
+                                            <img src="img/usuario_default.png" alt="Laura Alejandra Bertea" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Silvana Soledad Bravo" data-role="Docente de:<br>→HISTORIA<br><small>Cursos: 3B-4A-4B-5A-6A</small>">
+                                            <img src="img/usuario_default.png" alt="Silvana Soledad Bravo" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Romina Paola Brizzio" data-role="Docente de:<br>→LENGUA<br>→SOC. CULT. Y COM<br><small>Cursos: 4A-6B</small>">
+                                            <img src="img/usuario_default.png" alt="Romina Paola Brizzio" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Eliana Micaela Cabrera" data-role="Docente de:<br>→MATEMÁTICA<br><small>Cursos: 4B-5B</small>">
+                                            <img src="img/usuario_default.png" alt="Eliana Micaela Cabrera" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Rocío Carabajal Boris" data-role="Docente de:<br>→MATEMÁTICA<br><small>Cursos: 6A-6B</small>">
+                                            <img src="img/usuario_default.png" alt="Rocío Carabajal Boris" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Carlos Enrique Clara" data-role="Docente de:<br>→APLI. INF.<br>→DSI<br>→TEC. Y LENG. DE PROG.<br>→EOI: ROBOTICA<br>→SIST. DIG. DE INF<br>→ED. TEC<br>→COMP.<br><small>Cursos: 3A-3B-4B-5B-6B</small>">
+                                            <img src="img/usuario_default.png" alt="Carlos Enrique Clara" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Maria Macarena De Yong" data-role="Docente de:<br>→QUÍMICA Y BIOLOGÍA<br><small>Cursos: 4A-4B-6B</small>">
+                                            <img src="img/usuario_default.png" alt="Maria Macarena De Yong" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="María José Espósito" data-role="Docente de:<br>→ED. TECNOLOGICA<br>→FVT<br><small>Cursos: 2A-2B-3A</small>">
+                                            <img src="img/usuario_default.png" alt="María José Espósito" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Ricardo Iván Garcías" data-role="Docente de:<br>→FÍSICA<br><small>Cursos: 3B-5A-5B</small>">
+                                            <img src="img/usuario_default.png" alt="Ricardo Iván Garcías" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Virginia Gardella" data-role="Docente de:<br>→LENGUA Y LITERATURA<br><small>Cursos: 1A-3A-4A-4B</small>">
+                                            <img src="img/usuario_default.png" alt="Virginia Gardella" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Camila Soledad Gerez" data-role="Docente de:<br>→ED. ARTISTICA VISUAL<br><small>Cursos: 1B-4B</small>">
+                                            <img src="img/usuario_default.png" alt="Camila Soledad Gerez" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Facundo Gil" data-role="Docente de:<br>→COMPUTACIÓN<br>→ED. TECN.<br>→TIC<br><small>Cursos: 1A-1B-2A-2B-4A</small>">
+                                            <img src="img/usuario_default.png" alt="Facundo Gil" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Ayelén Del Valle Juan" data-role="Docente de:<br>→ED. ART. TEATRO<br><small>Cursos: 6A-6B</small>">
+                                            <img src="img/usuario_default.png" alt="Ayelén Del Valle Juan" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Ivana Josefina Lario" data-role="Docente de:<br>→LENGUA Y LITERATURA<br><small>Cursos: 5A-6A</small>">
+                                            <img src="img/usuario_default.png" alt="Ivana Josefina Lario" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Yanina Mariela Ledesma" data-role="Docente de:<br>→FVT<br><small>Cursos: 3B</small>">
+                                            <img src="img/usuario_default.png" alt="Yanina Mariela Ledesma" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Mónica Valeria Ludueña" data-role="Docente de:<br>→EDUCACIÓN FÍSICA<br><small>Cursos: 2A-2B</small>">
+                                            <img src="img/usuario_default.png" alt="Mónica Valeria Ludueña" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Andrea Verónica Miretti" data-role="Docente de:<br>→GEOGRAFÍA<br><small>Cursos: 1A-1B-3A-3B-4A-5A</small>">
+                                            <img src="img/usuario_default.png" alt="Andrea Verónica Miretti" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Damian Mocci" data-role="Docente de:<br>→ERE<br><small>Cursos: 3B</small>">
+                                            <img src="img/usuario_default.png" alt="Damian Mocci" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Priscila Yanina Moya" data-role="Docente de:<br>→CIUD. Y PART.<br>→LENGUA<br><small>Cursos: 1B-2A-2B-3B</small>">
+                                            <img src="img/usuario_default.png" alt="Priscila Yanina Moya" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Gabriela Aylen Mugas" data-role="Docente de:<br>→ERE<br><small>Cursos: 1A-1B-2A-3A-4A</small>">
+                                            <img src="img/usuario_default.png" alt="Gabriela Aylen Mugas" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Lucía Narvaez" data-role="Docente de:<br>→EDUCACIÓN FÍSICA<br><small>Cursos: 1A-1B</small>">
+                                            <img src="img/usuario_default.png" alt="Lucía Narvaez" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Luciana Celeste Noriega" data-role="Docente de:<br>→FILOSOFÍA<br>→PSICOLOGÍA<br><small>Cursos: 5A-5B-6A-6B</small>">
+                                            <img src="img/usuario_default.png" alt="Luciana Celeste Noriega" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Horacio Federico Parmigiani" data-role="Docente de:<br>→EDUCACIÓN FÍSICA<br><small>Cursos: 3-4-5-6 (A y B)</small>">
+                                            <img src="img/usuario_default.png" alt="Horacio Federico Parmigiani" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Maria Soledad Picard" data-role="Docente de:<br>→QUÍMICA<br>→BIOLOGÍA<br>→FÍSICA<br><small>Cursos: 1B-2B-3B</small>">
+                                            <img src="img/usuario_default.png" alt="Maria Soledad Picard" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Catalina Inés Pignata" data-role="Docente de:<br>→CIUD. Y POLÍTICA<br>→SOCIOLOGÍA<br>→METODOLOGÍA<br>→HISTORIA<br><small>Cursos: 2B-3A-5A-6A</small>">
+                                            <img src="img/usuario_default.png" alt="Catalina Inés Pignata" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="María Alejandra Pissane" data-role="Docente de:<br>→MATEMÁTICA<br><small>Cursos: 1A-1B-2A-3A</small>">
+                                            <img src="img/usuario_default.png" alt="María Alejandra Pissane" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Paula Ailén Radichi" data-role="Docente de:<br>→ERE<br>→FILOSOFÍA<br><small>Cursos: 2B-5B-6B</small>">
+                                            <img src="img/usuario_default.png" alt="Paula Ailén Radichi" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Tamara Del Carmen Rochia" data-role="Docente de:<br>→MATEMÁTICA<br><small>Cursos: 2B-3B-5A</small>">
+                                            <img src="img/usuario_default.png" alt="Tamara Del Carmen Rochia" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Santiago Manuel Romero" data-role="Docente de:<br>→HISTORIA<br>→CIUD. Y PART.<br><small>Cursos: 2A-5B</small>">
+                                            <img src="img/usuario_default.png" alt="Santiago Manuel Romero" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Emmanuel Alejandro Sanchez" data-role="Docente de:<br>→EDUCACIÓN FÍSICA<br><small>Cursos: 3-4-5-6 (A y B)</small>">
+                                            <img src="img/usuario_default.png" alt="Emmanuel Alejandro Sanchez" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Evangelina Beatriz Saravia" data-role="Docente de:<br>→CIUD. Y POLÍTICA<br><small>Cursos: 6B</small>">
+                                            <img src="img/usuario_default.png" alt="Evangelina Beatriz Saravia" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Gonzalo Saravia" data-role="Docente de:<br>→EDUCACIÓN ARTÍSTICA MÚSICA<br><small>Cursos: 5</small>">
+                                            <img src="img/usuario_default.png" alt="Gonzalo Saravia" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Melina Carolina Seveso Fera" data-role="Docente de:<br>→FVT<br><small>Cursos: 5A-6A-6B</small>">
+                                            <img src="img/usuario_default.png" alt="Melina Carolina Seveso Fera" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Ana Luz Torressi" data-role="Docente de:<br>→GEOGRAFÍA<br>→SOC. CULT. Y COM<br>→FVT<br>→ANTROPOLOGÍA<br>→ART. CULT. Y SOC<br>→CIUD. Y PART.<br><small>Cursos: 2B-4A-4B-5A-6A</small>">
+                                            <img src="img/usuario_default.png" alt="Ana Luz Torressi" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Cecilia Lucía Viotti" data-role="Docente de:<br>→BIOLOGÍA<br>→FÍSICA<br><small>Cursos: 1A-2A</small>">
+                                            <img src="img/usuario_default.png" alt="Cecilia Lucía Viotti" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Alicia Ines Vocos" data-role="Docente de:<br>→QUÍMICA<br>→FÍSICA<br><small>Cursos: 2A-3A-6A</small>">
+                                            <img src="img/usuario_default.png" alt="Alicia Ines Vocos" class="staff-carousel-img">
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -2278,8 +2244,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#areas-curriculares" onclick="toggleSideMenu()">
-                            <i class="fas fa-book"></i> Áreas Curriculares
+                        <a href="Proyectos.html">
+                            <i class="fas fa-project-diagram"></i> Proyectos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="CEM.html">
+                            <i class="fas fa-users"></i> Centro de Estudiantes (CEM)
                         </a>
                     </li>
                     <li>
@@ -2585,7 +2556,7 @@
                         infoBox.style.opacity = '0';
                         setTimeout(() => {
                             activeName.textContent = currentItem.dataset.name;
-                            activeRole.textContent = currentItem.dataset.role;
+                            activeRole.innerHTML = currentItem.dataset.role;
                             infoBox.style.opacity = '1';
                         }, 200);
                     }
@@ -2763,7 +2734,7 @@
 
                 if (!isMobileView()) return;
 
-                const cardSelectors = '.curricular-card, .uniform-card';
+                const cardSelectors = '.uniform-card';
                 const allCards = document.querySelectorAll(cardSelectors);
                 let deselectTimeout = null;
 
@@ -2803,11 +2774,11 @@
 
                 // Prevenir el arrastre predeterminado (Ghost Images) en TODAS las imágenes y tarjetas
                 document.addEventListener('dragstart', (e) => {
-                    if (e.target.tagName === 'IMG' || e.target.closest('.card-specialty, .curricular-card, .uniform-card, .staff-carousel-item')) {
+                    if (e.target.tagName === 'IMG' || e.target.closest('.card-specialty, .uniform-card, .staff-carousel-item')) {
                         e.preventDefault();
                     }
                 });
             });
         </script>
-    </body> <!-- Este es un comentario simple -->
+    </body>
 </html>
