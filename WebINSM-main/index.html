@@ -681,6 +681,7 @@
 
 		.hero-section {
 			position: relative;
+			isolation: isolate;
 			width: 100%;
 			height: 100vh;
 			height: 100dvh;
@@ -700,7 +701,7 @@
 			content: '';
 			position: absolute;
 			inset: 0;
-			background: #18324b;
+			background: transparent;
 			z-index: 0;
 		}
 
@@ -717,8 +718,12 @@
 		}
 
 		.hero-content {
-			position: relative;
+			position: absolute;
+			left: 8%;
+			top: 50%;
+			transform: translateY(-50%);
 			z-index: 2;
+			width: min(640px, 84%);
 			max-width: 640px;
 			padding: 2.5rem 2rem 2rem 0;
 		}
@@ -2640,13 +2645,12 @@
 		.hero-video {
 			position: absolute;
 			inset: 0;
-			width: 100%;
+			left: -20%;
+			width: 120%;
 			height: 100%;
-			object-fit: cover;
+			object-fit: fill;
+			object-position: center center;
 			z-index: 0;
-			transform: scale(var(--hero-scale, 1));
-			will-change: transform;
-			transition: transform 0.3s ease-out;
 			pointer-events: none;
 		}
 
@@ -2880,7 +2884,7 @@
 	<main>
 		<section class="hero-section">
 			<video class="hero-video" autoplay muted loop playsinline poster="img/20250806_092322.jpg">
-				<source src="video/hero.mp4" type="video/mp4" />
+				<source src="vid/Video presentacion.mp4" type="video/mp4" />
 				Tu navegador no soporta videos HTML5.
 			</video>
 			<div class="hero-content">
@@ -3512,29 +3516,6 @@
 				}
 			}
 		});
-
-		// --- Efecto Parallax / Zoom al hacer Scroll (Hero Section) ---
-		document.addEventListener(
-			'scroll',
-			() => {
-				const sideMenu = document.getElementById('sideMenu');
-				if (sideMenu && sideMenu.classList.contains('active')) return;
-
-				const heroSection = document.querySelector('.hero-section');
-				if (!heroSection) return;
-
-				const scrollPosition = Math.max(0, window.scrollY);
-				const windowHeight = window.innerHeight;
-
-				// Solo calcular si estamos cerca del Hero (optimización)
-				if (scrollPosition <= windowHeight) {
-					// Zoom lineal suave: escala de forma constante y fluida
-					const scale = 1 + scrollPosition * 0.00015;
-					heroSection.style.setProperty('--hero-scale', scale);
-				}
-			},
-			{ passive: true }
-		);
 
 		// --- Lógica para la Sección de Niveles ---
 		document.addEventListener('DOMContentLoaded', function () {
