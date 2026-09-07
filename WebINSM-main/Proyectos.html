@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Insm - Nivel Secundario</title>
+        <title>Insm - Proyectos</title>
         <style>
             /* --- Fuentes --- */
             @font-face {
@@ -25,18 +25,12 @@
                 font-style: normal;
             }
 
-            :root {
-                --staff-item-w: 288px;
-                --staff-item-h: 486px;
-                --staff-active-w: 320px;
-                --staff-active-h: 540px;
-                --staff-gap: 30px;
-            }
-
             /* --- Estilos Generales y Transiciones --- */
             html, body {
-                overflow-x: hidden;
                 width: 100%;
+                overflow-x: hidden;
+                margin: 0;
+                padding: 0;
                 position: relative;
             }
             html {
@@ -45,7 +39,6 @@
                 overscroll-behavior-y: none; /* Evita que el fondo se separe y rebote de forma extraña */
             }
             body {
-                margin: 0;
                 font-family: 'Heuristica', serif;
                 color: #333;
                 background-color: #f4f6f8;
@@ -60,17 +53,238 @@
                 overflow: hidden !important;
                 touch-action: none;
             }
+
+            /* --- Menú Lateral de Navegación Rápida (Slider) --- */
+            .side-menu {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100vh;
+                z-index: 2000;
+                visibility: hidden;
+                pointer-events: none;
+                overflow: hidden;
+                transition: visibility 0.6s;
+            }
+
+            .side-menu.active {
+                visibility: visible;
+                pointer-events: all;
+                transition: none;
+            }
+
+            .side-menu-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                opacity: 0;
+                transition: opacity 0.6s ease;
+            }
+
+            .side-menu.active .side-menu-overlay {
+                opacity: 1;
+            }
+
+            .side-menu-content {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 400px;
+                height: 100%;
+                height: 100dvh;
+                background: #ffffff;
+                transform: translateX(110%);
+                transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 40px;
+                box-shadow: -15px 0 50px rgba(0, 0, 0, 0.15);
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
+            .side-menu.active .side-menu-content {
+                transform: translateX(0);
+            }
+
+            .side-menu-header {
+                margin-bottom: 30px;
+                border-bottom: 2px solid #f39c12;
+                padding-bottom: 15px;
+                flex-shrink: 0;
+            }
+
+            .side-menu-header h3 {
+                font-family: 'Heuristica', serif;
+                font-size: 1.8em;
+                color: #cf0621;
+                margin: 0;
+                font-weight: normal;
+            }
+
+            .side-menu-links {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                flex-grow: 1; 
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding-right: 10px;
+                scrollbar-width: thin;
+                scrollbar-color: #f39c12 #f4f6f8;
+                scrollbar-gutter: stable;
+            }
+
+            .side-menu-links::-webkit-scrollbar {
+                width: 8px;
+                display: block !important;
+            }
+            .side-menu-links::-webkit-scrollbar-track {
+                background: #f4f6f8 !important;
+                border-radius: 10px;
+            }
+            .side-menu-links::-webkit-scrollbar-thumb {
+                background-color: #f39c12 !important;
+                border-radius: 10px;
+                border: 2px solid #f4f6f8;
+            }
+
+            .side-menu-links li {
+                margin-bottom: 8px;
+                opacity: 0;
+                transform: translateX(40px);
+                transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            @media (min-width: 769px) {
+                .side-menu-shortcuts,
+                .side-menu-footer {
+                    display: none;
+                }
+            }
+
+            .side-menu.active .side-menu-links li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .side-menu.active .side-menu-links li:nth-child(1) { transition-delay: 0.15s; }
+            .side-menu.active .side-menu-links li:nth-child(2) { transition-delay: 0.20s; }
+
+            .side-menu-links li a {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                padding: 12px 15px;
+                text-decoration: none;
+                color: #555;
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 1.1em;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+            }
+
+            .side-menu-links li a i {
+                width: 24px;
+                text-align: center;
+                color: #f39c12;
+                font-size: 1.2em;
+            }
+
+            @media (hover: hover) {
+                .side-menu-links li a:hover {
+                    background-color: #f4f6f8;
+                    color: #cf0621;
+                    padding-left: 20px;
+                }
+                .side-menu-links li a:hover i {
+                    color: #cf0621;
+                    transform: scale(1.2);
+                }
+                .shortcut-item:hover {
+                    background: #ffffff;
+                    border-color: #cf0621;
+                    color: #cf0621;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 10px rgba(207, 6, 33, 0.1);
+                }
+            }
+
+            .side-menu-shortcuts {
+                margin-top: auto;
+                padding-top: 20px;
+                border-top: 1px solid #eee;
+                flex-shrink: 0;
+            }
+
+            .side-menu-shortcuts h4 {
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.85em;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #999;
+                margin: 0 0 15px 0;
+            }
+
+            .shortcut-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .shortcut-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 12px;
+                background: #f8f9fa;
+                border-radius: 10px;
+                text-decoration: none;
+                color: #666;
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.9em;
+                transition: all 0.3s ease;
+                border: 1px solid transparent;
+                min-height: 54px;
+                box-sizing: border-box;
+            }
+
+            .shortcut-item i { color: #f39c12; font-size: 1.1em; flex-shrink: 0; }
+
+            .side-menu-footer {
+                margin-top: 20px;
+                flex-shrink: 0;
+            }
+
+            .back-home-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 14px;
+                background-color: #f39c12;
+                color: white;
+                text-decoration: none;
+                font-family: 'ProximaNova', sans-serif;
+                font-weight: bold;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+            }
+
+            @media (max-width: 1024px) { .side-menu-content { width: 380px; padding: 30px; } }
+            @media (max-width: 768px) { .side-menu-content { width: 340px; padding: 25px; } }
+            @media (max-width: 480px) { .side-menu-content { width: 88%; padding: 20px; } }
+
             @keyframes fadeInPage {
                 from { opacity: 0; }
                 to { opacity: 1; }
-            }
-
-            /* --- CORRECCIÓN DE SCROLL --- */
-            section {
-                scroll-margin-top: 80px; /* Al ras del header para el inicio de la sección blanca */
-            }
-            .content-block {
-                scroll-margin-top: 130px; /* Deja espacio visual arriba para no quedar pegado al título */
             }
 
             /* --- Header --- */
@@ -99,14 +313,6 @@
                 font-size: 1.5em;
                 font-weight: bold;
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            }
-            /* --- Responsive Brand Text & Icon Logic --- */
-            .brand-text-desktop {
-                display: inline;
-                white-space: nowrap;
-            }
-            .brand-text-mobile {
-                display: none;
             }
             .header-main .logo img {
                 height: 50px;
@@ -158,6 +364,15 @@
                 cursor: pointer;
             }
 
+            /* --- Responsive Brand Text & Icon Logic --- */
+            .brand-text-desktop {
+                display: inline;
+                white-space: nowrap;
+            }
+            .brand-text-mobile {
+                display: none;
+            }
+
             /* --- Hero Section --- */
             .hero-section {
                 position: relative;
@@ -181,7 +396,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: url('img/20250806_092322.jpg') no-repeat center center;
+                background: url('img/Noticias.jpg') no-repeat center center;
                 background-size: cover;
                 z-index: 0;
                 transform: scale(var(--hero-scale, 1));
@@ -288,693 +503,307 @@
                 transform: scale(1.2);
             }
 
-            /* --- Sección Principal de Contenido (FULL SCREEN) --- */
-            .main-content-section {
-                padding: 100px 20px; /* Padding reducido laterales */
+            /* --- Sección de la Grilla de Proyectos --- */
+            .news-page-section {
+                padding: 40px 40px 80px 40px; 
                 background-color: #ffffff;
+                scroll-margin-top: 80px;
             }
-            .content-container {
+
+            /* --- Filtros y Buscador (Estilo INSM) --- */
+            .filters-container {
                 max-width: 1200px;
-                margin: 0 auto;
+                margin: 0 auto 40px auto;
                 display: flex;
-                flex-direction: column;
-                gap: 100px; /* Separación vertical entre secciones */
-            }
-            .main-text {
-                font-family: 'ProximaNova', sans-serif;
-                line-height: 1.8;
-                color: #555;
-                display: flex;
-                flex-direction: column;
-                gap: 60px;
-                width: 100%;
-            }
-            .content-block h2 {
-                font-family: 'Heuristica', serif;
-                font-size: 2.6em;
-                color: #cf0621;
-                margin: 0 0 20px 0;
-                font-weight: normal;
-                line-height: 1.1; /* Elimina el aire invisible superior heredado */
-                border-bottom: 2px solid #f39c12;
-                padding-bottom: 10px;
-                display: inline-block;
-                position: relative;
-                z-index: 20;
-            }
-
-            /* Garantizar espaciado uniforme ignorando márgenes internos finales */
-            .content-block > :last-child {
-                margin-bottom: 0 !important;
-            }
-
-            /* --- Estilo: Bienvenida --- */
-            .director-section {
-                display: flex;
-                align-items: center; 
-                gap: 40px;
-                margin-top: 28px;
-            }
-            .director-text { flex: 1; }
-            .director-image {
-                width: 300px;
-                height: 400px;
-                object-fit: cover;
-                border-radius: 8px;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            }
-            .director-signature { font-size: 1.1em; font-weight: bold; margin-top: 15px; display: block;}
-
-            /* --- NUEVO ESTILO: Especialidades (Tarjetas Dark Style - Minimalista Blanco) --- */
-
-            /* Párrafo introductorio */
-            .specialties-intro {
-                font-size: 1.1em;
-                line-height: 1.8;
-                margin-bottom: 40px;
-                color: #555;
-                text-align: left;
-                max-width: 100%;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            /* Título de egreso (dentro de la tarjeta de especialidad) */
-            .card-specialty .degree-title {
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 0.95em;
-                font-weight: bold;
-                color: #f39c12;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                margin: -10px auto 18px auto;
-            }
-
-            .specialties-showcase {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 20px;
-                justify-content: center;
-            }
-
-            @media (max-width: 1024px) {
-                .specialties-showcase {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            /* Tarjeta Base */
-            .card-specialty {
-                position: relative;
-                height: 380px;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: none;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                text-decoration: none;
-                color: white;
-                /* Animación para cuando aparezca la sombra */
-                transition: box-shadow 0.4s ease;
-            }
-
-            /* Sombra activada únicamente al hacer hover sobre el BOTÓN en Escritorio */
-            @media (min-width: 1025px) {
-                .card-specialty:has(.view-more-btn:hover) {
-                    box-shadow: 0 40px 80px -10px rgba(0, 0, 0, 0.9);
-                }
-            }
-
-            /* Rutas de imagen locales */
-            .card-bg-informatica {
-                background: url('img/sala2.jpg') no-repeat center center;
-                background-size: cover;
-            }
-
-            .card-bg-humanidades {
-                background: url('img/HUERTA1.jpg') no-repeat center center;
-                background-size: cover
-            }
-
-            /* Capa oscura (Overlay) Muy oscura para resaltar el texto */
-            .card-specialty::before {
-                content: '';
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                z-index: 1;
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%);
-                opacity: 0.85; /* Mucho más oscuro */
-            }
-
-            /* Contenido interno */
-            .card-specialty-content {
-                position: relative;
-                z-index: 2;
-                padding: 35px 30px 0 30px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                height: 100%;
-                width: 100%;
-                box-sizing: border-box;
-                text-align: center;
-            }
-
-            /* Título */
-            .card-specialty h3 {
-                font-family: 'Heuristica', serif;
-                font-size: 2.7em;
-                margin: 0 auto 10px auto;
-                width: 100%;
-                font-weight: normal;
-                color: white;
-                text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-                line-height: 1.1;
-            }
-
-            /* Descripción */
-            .card-specialty p {
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 1.15em;
-                font-weight: normal;
-                line-height: 1.4;
-                margin: 0 auto 20px auto;
-                color: white;
-                max-width: 90%;
-
-
-
-
-
-                
-                width: 100%;
-                opacity: 1;
-            }
-
-            /* Botón Ver Plan */
-            .view-more-btn {
-                background-color: #f39c12;
-                color: #ffffff;
-                border: 2px solid #f39c12;
-                padding: 8px 22px;
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 1.0em;
-                font-weight: bold;
-                border-radius: 50px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                display: inline-block;
-                margin: 0 auto;
-            }
-            @media (min-width: 1025px) {
-                .view-more-btn:hover {
-                    background-color: #cf0621;
-                    border-color: #cf0621;
-                    transform: translateY(-3px);
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                }
-            }
-
-            /* --- Estilo: Requerimientos --- */
-            .requirements-list {
-                list-style: none;
-                padding: 0;
-            }
-            .requirements-list li {
-                margin-bottom: 15px;
-                padding-left: 30px;
-                position: relative;
-                font-size: 1.1em;
-            }
-            .requirements-list li::before {
-                content: '\f00c';
-                font-family: 'Font Awesome 5 Free';
-                font-weight: 900;
-                color: #cf0621;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-
-            /* --- Estilo: AEC --- */
-            .aec-container {
-                text-align: center;
-                background-color: #f4f4f4;
-                padding: 70px 40px 60px; /* Compensación óptica: más aire arriba */
-                border-radius: 8px;
-            }
-            .aec-container h2 {
-                margin-top: 0 !important; /* Elimina cualquier espacio extra arriba del título */
-            }
-            .aec-buttons-container {
-                margin-bottom: 0 !important; /* Elimina cualquier espacio extra debajo de las tarjetas */
-            }
-            .aec-btn {
-                display: inline-flex;
-                align-items: center;
-                padding: 15px 30px;
-                margin-top: 20px;
-                background-color: #f4f6f8;
-                border: 1px solid #e0e0e0;
-                border-radius: 8px;
-                text-decoration: none;
-                color: #333;
-                font-family: 'ProximaNova', sans-serif;
-                font-weight: bold;
-                transition: all 0.3s ease;
-            }
-            .aec-btn i {
-                font-size: 1.5em;
-                margin-right: 15px;
-                color: #cf0621;
-            }
-            .aec-btn span {
-                text-align: left;
-                display: flex;
-                flex-direction: column;
-                line-height: 1.2;
-            }
-            .aec-btn small {
-                display: block;
-                font-weight: normal;
-                color: #666;
-                font-size: 0.8em;
-            }
-            @media (min-width: 1025px) {
-                .aec-btn:hover {
-                    background-color: #ffffff;
-                    border-color: #cf0621;
-                    transform: translateY(-3px);
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-                    color: #333;
-                }
-            }
-
-            /* --- Menú Lateral de Navegación Rápida (Slider) --- */
-            .side-menu {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 100%;
-                height: 100vh;
-                z-index: 2000;
-                visibility: hidden;
-                pointer-events: none;
-                overflow: hidden;
-                transition: visibility 0.6s; /* Permite que la animación de salida termine antes de ocultar */
-            }
-
-            .side-menu.active {
-                visibility: visible;
-                pointer-events: all;
-                transition: none; /* Aparece instantáneamente al activar */
-            }
-
-            .side-menu-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.4);
-                backdrop-filter: blur(8px);
-                -webkit-backdrop-filter: blur(8px);
-                opacity: 0;
-                transition: opacity 0.6s ease; /* Sincronizado con el panel */
-            }
-
-            .side-menu.active .side-menu-overlay {
-                opacity: 1;
-            }
-
-            .side-menu-content {
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 400px;
-                height: 100%;
-                height: 100dvh;
-                background: #ffffff;
-                transform: translateX(110%);
-                transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Curva más suave y orgánica */
-                padding: 40px;
-                box-shadow: -15px 0 50px rgba(0, 0, 0, 0.15);
-                display: flex;
-                flex-direction: column;
-                box-sizing: border-box;
-                overflow: hidden; /* BLOQUEO DE SCROLL EN EL PANEL PRINCIPAL */
-            }
-
-            .side-menu.active .side-menu-content {
-                transform: translateX(0);
-            }
-
-            .side-menu-header {
-                margin-bottom: 30px;
-                border-bottom: 2px solid #f39c12;
-                padding-bottom: 15px;
-                flex-shrink: 0;
-            }
-
-            .side-menu-header h3 {
-                font-family: 'Heuristica', serif;
-                font-size: 1.8em;
-                color: #cf0621;
-                margin: 0;
-                font-weight: normal;
-            }
-
-            .side-menu-links {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                flex-grow: 1; 
-                overflow-y: auto; /* SE MUESTRA SOLO SI ES NECESARIO */
-                overflow-x: hidden;
-                padding-right: 10px;
-                scrollbar-width: thin; /* Firefox */
-                scrollbar-color: #f39c12 #f4f6f8; /* Firefox */
-                scrollbar-gutter: stable; /* RESERVA EL ESPACIO PARA EVITAR SALTOS */
-            }
-
-            /* --- Scrollbar personalizada visible SIN interacción cuando es necesaria --- */
-            .side-menu-links::-webkit-scrollbar {
-                width: 8px;
-                display: block !important;
-            }
-            .side-menu-links::-webkit-scrollbar-track {
-                background: #f4f6f8 !important; /* Fondo sólido para evitar que el SO la oculte */
-                border-radius: 10px;
-            }
-            .side-menu-links::-webkit-scrollbar-thumb {
-                background-color: #f39c12 !important;
-                border-radius: 10px;
-                border: 2px solid #f4f6f8;
-            }
-
-            .side-menu-links li {
-                margin-bottom: 8px;
-                opacity: 0;
-                transform: translateX(40px);
-                transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-
-            /* --- Ocultar Accesos Globales en Desktop y Tablet (ya están en el header) --- */
-            @media (min-width: 769px) {
-                .side-menu-shortcuts,
-                .side-menu-footer {
-                    display: none;
-                }
-            }
-
-            .side-menu.active .side-menu-links li {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-            /* Delays restaurados para animación escalonada */
-            .side-menu.active .side-menu-links li:nth-child(1) { transition-delay: 0.15s; }
-            .side-menu.active .side-menu-links li:nth-child(2) { transition-delay: 0.20s; }
-            .side-menu.active .side-menu-links li:nth-child(3) { transition-delay: 0.25s; }
-            .side-menu.active .side-menu-links li:nth-child(4) { transition-delay: 0.30s; }
-            .side-menu.active .side-menu-links li:nth-child(5) { transition-delay: 0.35s; }
-            .side-menu.active .side-menu-links li:nth-child(6) { transition-delay: 0.40s; }
-            .side-menu.active .side-menu-links li:nth-child(7) { transition-delay: 0.45s; }
-            .side-menu.active .side-menu-links li:nth-child(8) { transition-delay: 0.50s; }
-            .side-menu-links li a {
-                display: flex;
-                align-items: center;
+                flex-wrap: wrap;
                 gap: 15px;
-                padding: 12px 15px;
-                text-decoration: none;
-                color: #555;
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 1.1em;
-                border-radius: 12px;
-                transition: all 0.3s ease;
-            }
-
-            .side-menu-links li a i {
-                width: 24px;
-                text-align: center;
-                color: #f39c12;
-                font-size: 1.2em;
-            }
-
-            /* --- HOVERS: Solo para Computadoras --- */
-            @media (hover: hover) {
-                .side-menu-links li a:hover {
-                    background-color: #f4f6f8;
-                    color: #cf0621;
-                    padding-left: 20px;
-                }
-                .side-menu-links li a:hover i {
-                    color: #cf0621;
-                    transform: scale(1.2);
-                }
-                .shortcut-item:hover {
-                    background: #ffffff;
-                    border-color: #cf0621;
-                    color: #cf0621;
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 10px rgba(207, 6, 33, 0.1);
-                }
-                .shortcut-item:hover i {
-                    color: #cf0621;
-                }
-                .back-home-btn:hover {
-                    background-color: #cf0621;
-                    transform: translateY(-2px);
-                    box-shadow: 0 5px 15px rgba(207, 6, 33, 0.2);
-                }
-            }
-
-            /* Feedback táctil suave para móviles y tablets */
-            .side-menu-links li a:active,
-            .shortcut-item:active,
-            .back-home-btn:active {
-                background-color: #f0f0f0;
-                opacity: 0.8;
-            }
-
-            /* --- Accesos Rápidos Globales --- */
-            .side-menu-shortcuts {
-                margin-top: auto; /* ANCLAJE AL FONDO */
-                padding-top: 20px;
-                border-top: 1px solid #eee;
-                flex-shrink: 0;
-            }
-
-            .side-menu-shortcuts h4 {
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 0.85em;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                color: #999;
-                margin: 0 0 15px 0;
-            }
-
-            .shortcut-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-                align-items: stretch;
-            }
-
-            .shortcut-item {
-                display: flex;
+                justify-content: flex-start;
                 align-items: center;
-                gap: 10px;
-                padding: 12px;
-                background: #f8f9fa;
-                border-radius: 10px;
-                text-decoration: none;
-                color: #666;
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 0.9em;
-                transition: all 0.3s ease;
-                border: 1px solid transparent;
-                min-height: 54px; /* Unifica el tamaño vertical */
-                box-sizing: border-box;
             }
 
-            .shortcut-item i { color: #f39c12; font-size: 1.1em; flex-shrink: 0; }
-
-            .side-menu-footer {
-                margin-top: 20px;
-                flex-shrink: 0;
-            }
-
-            .back-home-btn {
+            .filter-input-group {
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                padding: 14px;
-                background-color: #f39c12;
-                color: white;
-                text-decoration: none;
-                font-family: 'ProximaNova', sans-serif;
-                font-weight: bold;
-                border-radius: 50px;
-                transition: all 0.3s ease;
+                flex: 1;
+                min-width: 280px;
+                position: relative;
             }
 
-            /* Adaptabilidad de tamaños finales */
-            @media (max-width: 1024px) { 
-                .side-menu-content { width: 380px; padding: 30px; } 
-            }
-            @media (max-width: 768px) { 
-                .side-menu-content { width: 340px; padding: 25px; } 
-            }
-            @media (max-width: 480px) { 
-                .side-menu-content { width: 88%; padding: 20px; } 
-            }
-
-            /* --- Menú desplegable global --- */
-
-            .back-home-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                padding: 14px;
-                background-color: #f39c12;
-                color: white;
-                text-decoration: none;
-                font-family: 'ProximaNova', sans-serif;
-                font-weight: bold;
-                border-radius: 50px;
-                transition: all 0.3s ease;
-            }
-
-            .back-home-btn:hover {
-                background-color: #cf0621;
-                transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(207, 6, 33, 0.2);
-            }
-
-            /* Adaptabilidad */
-            @media (max-width: 1024px) { 
-                .side-menu-content { width: 380px; padding: 30px; } 
-            }
-            @media (max-width: 768px) { 
-                .side-menu-content { width: 340px; padding: 25px; } 
-            }
-            @media (max-width: 480px) { 
-                .side-menu-content { width: 88%; padding: 20px; } 
-            }
-
-            /* --- Menú desplegable global --- */
-            .dropdown-menu {
-                position: fixed;
-                top: 0;
-                left: 0;
+            .filter-input, .filter-select {
                 width: 100%;
-                height: 100vh;
-                background-color: rgba(26, 79, 141, 0.25);
-                backdrop-filter: blur(5px);
-                z-index: 1000;
-                display: none;
-                opacity: 0;
-                transform: translateY(-100%);
-                transition: all 0.3s ease-in-out;
+                padding: 12px 20px;
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 1em;
+                color: #333 !important;
+                background-color: #f4f6f8 !important; /* Mismo gris que las tarjetas */
+                border: none;
+                border-radius: 50px;
+                outline: none;
+                box-shadow: none;
+                transition: none; /* Evitar parpadeos de color */
             }
-            .dropdown-menu.show {
-                display: block;
-                opacity: 1;
-                transform: translateY(0);
+
+            /* Asegurar que el color se mantenga en TODOS los estados posibles */
+            .filter-input:hover, .filter-input:focus, .filter-input:active,
+            .filter-select:hover, .filter-select:focus, .filter-select:active,
+            .filter-input:-webkit-autofill,
+            .filter-input:-webkit-autofill:hover, 
+            .filter-input:-webkit-autofill:focus {
+                background-color: #f4f6f8 !important;
+                color: #333 !important;
+                outline: none;
+                -webkit-text-fill-color: #333 !important;
+                transition: background-color 5000s ease-in-out 0s; /* Bloquea cambios de autofill */
             }
-            .dropdown-header {
+
+            .filter-input {
+                padding-right: 40px; 
+            }
+
+            .filter-select {
+                display: none !important;
+            }
+
+            /* --- Custom Select Dropdowns --- */
+            .custom-select-wrapper {
+                position: relative;
+                flex: 0 1 200px;
+                min-width: 150px;
+                user-select: none;
+            }
+
+            .custom-select-trigger {
+                width: 100%;
+                padding: 12px 20px;
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 1em;
+                color: #333 !important;
+                background-color: #f4f6f8 !important; /* Mismo gris que las tarjetas y buscador */
+                border: none;
+                border-radius: 50px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 15px 20px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                cursor: pointer;
+                box-sizing: border-box;
+                transition: background-color 0.2s ease;
             }
-            .dropdown-header .logo {
-                display: flex;
-                align-items: center;
-                font-size: 1.5em;
-                font-weight: bold;
-                color: white;
+
+            .custom-select-trigger:hover {
+                background-color: #e8ebed !important;
             }
-            .dropdown-header .logo img {
-                height: 50px;
+
+            .custom-select-trigger span {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 margin-right: 10px;
             }
-            .close-menu {
-                color: white;
-                font-size: 1.5em;
-                cursor: pointer;
-                background: none;
-                border: none;
+
+            .custom-select-trigger i {
+                font-size: 0.8em;
+                transition: transform 0.3s ease;
+                color: #333;
             }
-            .menu-content {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1px;
-                height: calc(100vh - 80px);
-                background-color: rgba(150, 150, 150, 0.25);
-                backdrop-filter: blur(5px);
+
+            .custom-select-wrapper.active .custom-select-trigger i {
+                transform: rotate(180deg);
             }
-            .menu-section {
-                background-color: rgba(150, 150, 150, 0.25);
-                backdrop-filter: blur(5px);
-                padding: 30px 20px;
-                display: flex;
-                flex-direction: column;
-            }
-            .menu-section h3 {
-                color: #cf0621;
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 1.4em;
-                margin: 0 0 20px 0;
-                font-weight: bold;
-                padding-bottom: 10px;
-                position: relative;
-                display: inline-block;
-                cursor: pointer;
-            }
-            .menu-section h3::after {
-                content: '';
+
+            .custom-select-options {
                 position: absolute;
+                top: calc(100% + 8px);
                 left: 0;
-                bottom: 0;
-                width: 0;
-                height: 2px;
-                background-color: #f39c12;
-                transition: width 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+                right: 0;
+                background-color: #ffffff;
+                border-radius: 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+                border: 1px solid #e1e8ed;
+                z-index: 99;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                max-height: 250px;
+                overflow-y: auto;
+                padding: 6px 0;
             }
-            .menu-section h3:hover::after {
-                width: 100%;
+
+            .custom-select-wrapper.active .custom-select-options {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
             }
-            .menu-section ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                flex-grow: 1;
-            }
-            .menu-section ul li {
-                margin-bottom: 12px;
-            }
-            .menu-section ul li a {
-                color: rgb(255, 255, 255);
-                text-decoration: none;
+
+            .custom-select-option {
+                padding: 10px 20px;
                 font-family: 'ProximaNova', sans-serif;
-                font-size: 1em;
-                transition: color 0.2s ease;
-                background: none;
-                padding: 0;
+                font-size: 0.95em;
+                color: #333;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                text-align: left;
             }
-            .menu-section ul li a:hover {
+
+            .custom-select-option:hover {
+                background-color: #f4f6f8;
+                color: #333;
+            }
+
+            .custom-select-option.selected {
+                background-color: #e8ebed;
+                color: #333;
+                font-weight: bold;
+            }
+
+            /* Scrollbar personalizada para el menú de opciones */
+            .custom-select-options::-webkit-scrollbar {
+                width: 6px;
+            }
+            .custom-select-options::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .custom-select-options::-webkit-scrollbar-thumb {
+                background: #ccc;
+                border-radius: 10px;
+            }
+            .custom-select-options::-webkit-scrollbar-thumb:hover {
+                background: #999;
+            }
+
+            /* Estilo para la cruz de borrar */
+            .clear-icon {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #999;
+                cursor: pointer;
+                font-size: 1em;
+                display: none;
+            }
+
+            /* --- Grid de Proyectos (Estética index.html) --- */
+            .projects-grid {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 30px;
+            }
+
+            .projects-card {
+                background: #f4f6f8;
+                border-radius: 12px;
+                text-decoration: none;
+                color: inherit;
+                display: block;
+                overflow: hidden;
+                /* Aceleración de Hardware */
+                will-change: transform, box-shadow;
+                transform: translate3d(0, 0, 0);
+                backface-visibility: hidden;
+                transition:
+                    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            @media (hover: hover) {
+                .projects-card:hover {
+                    transform: translate3d(0, -8px, 0);
+                    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+                }
+            }
+
+            .projects-card:active {
+                transform: scale(0.98) translate3d(0, 2px, 0);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition:
+                    transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1); /* Respuesta táctil rápida y suave */
+            }
+
+            @media (hover: hover) {
+                .projects-card:active {
+                    transform: scale(0.98) translate3d(0, -2px, 0);
+                }
+            }
+
+            .projects-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .projects-card-content {
+                padding: 30px;
+            }
+
+            .projects-card .date {
+                font-size: 0.9em;
+                color: #838383;
+                margin-bottom: 10px;
+                font-family: 'ProximaNova', sans-serif;
+            }
+
+            .projects-card h4 {
+                font-size: 1.8em;
+                margin: 0 0 15px 0;
+                font-family: 'Heuristica', serif;
                 color: #f39c12;
-                text-decoration: underline;
+                word-break: normal;
+                overflow-wrap: break-word;
+                hyphens: manual;
+                -webkit-hyphens: manual;
+                text-align: left;
+                line-height: 1.2;
+            }
+
+            .projects-card p {
+                color: #6b6b6b;
+                line-height: 1.6;
+                margin: 0;
+                /* Eliminado font-family ProximaNova para heredar Heuristica como en index.html */
+                word-break: normal;
+                overflow-wrap: break-word;
+                hyphens: manual;
+                -webkit-hyphens: manual;
+                text-align: left;
+            }
+
+            /* Mensaje de carga y sin resultados */
+            .loading-msg, .no-results-msg { 
+                text-align: center; color: #666; font-family: 'ProximaNova', sans-serif; grid-column: 1 / -1; margin-top: 50px;
+            }
+            .no-results-msg {
+                font-size: 1.2em;
+                font-style: italic;
+            }
+
+            /* --- Botón Ver Más --- */
+            .view-more-container {
+                text-align: center;
+                margin-top: 50px;
+                display: none;
+            }
+            .view-more-btn {
+                background-color: transparent;
+                color: #ffffff;
+                background-color: #f39c12;
+                border: 2px solid #f39c12;
+                padding: 12px 35px;
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 1.1em;
+                font-weight: bold;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .view-more-btn:hover {
+                color: #ffffff;
+                background-color: #cf0621;
+                border: 2px solid #cf0621;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
 
             /* --- Footer --- */
@@ -1145,384 +974,51 @@
                 opacity: 0.6;
             }
 
-            /* --- Estilo: Uniforme (Inspirado en Áreas Curriculares) --- */
-            .uniform-grid {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-                width: 100%;
-            }
-            .uniform-card {
-                background-color: #fff;
-                border: 1px solid #e0e0e0;
-                border-radius: 8px;
-                padding: 30px;
-                text-align: center;
-                transition: all 0.3s ease;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                box-shadow: none;
-                /* Lógica Flex para 3 columnas por defecto */
-                flex: 0 0 calc((100% - 40px) / 3);
-                box-sizing: border-box;
-            }
-
-            /* Responsive para Uniforme */
-            @media (max-width: 900px) {
-                .uniform-card {
-                    flex: 0 0 calc((100% - 20px) / 2);
-                }
-            }
-            @media (max-width: 600px) {
-                .uniform-card {
-                    flex: 0 0 100%;
-                }
-            }
-            .uniform-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-                border-color: #cf0621;
-            }
-            .uniform-card i {
-                width: 80px;
-                height: 80px;
-                background-color: #f39c12;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 2.2em;
-                color: #fff;
-                transition: all 0.3s ease;
-                margin-bottom: 5px;
-            }
-            .uniform-card:hover i {
-                background-color: #cf0621;
-                transform: scale(1.1);
-            }
-            
-            /* --- Soporte Táctil: Uniforme --- */
-            .uniform-card.touch-active {
-                transform: translateY(-5px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-                border-color: #cf0621;
-            }
-            .uniform-card.touch-active i {
-                background-color: #cf0621;
-                transform: scale(1.1);
-            }
-            .uniform-card h3 {
-                font-family: 'ProximaNova', sans-serif;
-                font-weight: bold;
-                color: #555;
-                font-size: 1.4em;
-                margin: 5px 0 10px 0;
-            }
-            .uniform-card ul {
-                list-style: none;
-                padding: 0;
-                margin: 0 auto;
-                text-align: left;
-                display: inline-block;
-                width: auto;
-            }
-            .uniform-card ul li {
-                margin-bottom: 10px;
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 1em;
-                line-height: 1.5;
-                padding-left: 20px;
-                position: relative;
-                color: #6b6b6b;
-            }
-            .uniform-card ul li::before {
-                content: '•';
-                color: #cf0621;
-                font-size: 1.2em;
-                position: absolute;
-                left: 0;
-                top: -2px;
-            }
-
-            /* --- Estilo: Nuestro Personal (Refined Strip Carousel) --- */
-            .staff-carousel-track.notransition,
-            .staff-carousel-track.notransition .staff-carousel-item {
-                transition: none !important;
-            }
-            
-            /* DESKTOP LAYOUT (Default / Original) */
-            .staff-layout-grid {
-                display: grid;
-                grid-template-columns: 35% 65%;
-                gap: 0; 
-                margin-top: -28px;
-                margin-bottom: -55px; /* Elimina el espacio vacío inferior para igualar separación entre secciones */
-                height: 650px; 
-                position: relative;
-                width: 100%;
-            }
-
-            .staff-left-panel {
-                padding: 40px 40px 40px 0px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                background: #ffffff;
-                z-index: 10;
-            }
-
-            .staff-active-info {
-                margin-bottom: 40px;
-                opacity: 1;
-                transition: opacity 0.3s ease;
-            }
-
-            .staff-active-info h3 {
-                font-family: 'Heuristica', serif;
-                font-size: 3.2em;
-                color: #333;
-                margin: 0 0 15px 0;
-                line-height: 1.1;
-            }
-
-            .staff-active-info span {
-                font-family: 'ProximaNova', sans-serif;
-                font-size: 1.3em;
-                color: #f39c12;
-                font-weight: bold;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                display: block;
-                position: relative;
-                padding-left: 15px;
-            }
-            .staff-active-info span::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 4px;
-                height: 100%;
-                background-color: #cf0621;
-            }
-
-            .staff-nav-controls {
-                display: flex;
-                gap: 15px;
-            }
-
-            .staff-nav-btn {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background-color: #f0f0f0;
-                border: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                color: #333;
-                font-size: 1.1em;
-            }
-
-            @media (min-width: 1025px) {
-                .staff-nav-btn:hover {
-                    background-color: #cf0621;
-                    color: white;
-                }
-            }
-
-            .staff-nav-btn i.fa-pause,
-            .staff-nav-btn i.fa-play {
-                font-size: 0.85em; /* Reduce el tamaño para que no se vea tan grueso */
-                opacity: 0.9;      /* Suaviza un poco el peso visual */
-            }
-
-            .staff-carousel-viewport {
-                height: 100%;
-                width: 100%;
-                overflow: hidden;
-                position: relative;
-                display: flex;
-            }
-
-            .staff-carousel-track {
-                display: flex;
-                height: 100%; 
-                align-items: center;
-                transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-                will-change: transform;
-                padding-left: 60px; /* Padding Desktop Original */
-            }
-
-            .staff-carousel-item {
-                flex: 0 0 var(--staff-item-w); 
-                width: var(--staff-item-w);
-                height: var(--staff-item-h); 
-                margin-right: var(--staff-gap); /* FIXED GAP */
-                position: relative;
-                transition: all 0.5s ease;
-                opacity: 0.3; 
-                border-radius: 16px; 
-                overflow: hidden;
-            }
-
-            .staff-carousel-item.active {
-                flex: 0 0 var(--staff-active-w);
-                width: var(--staff-active-w);
-                height: var(--staff-active-h);
-                margin-right: var(--staff-gap); /* FIXED GAP */
-                opacity: 1;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.2); 
-                z-index: 5;
-            }
-
-            .staff-carousel-img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 16px;
-            }
-
-            
-
-            /* --- TABLET (Portrait & Landscape) --- */
-            @media (min-width: 601px) and (max-width: 1366px) and (pointer: coarse) {
-                .main-content-section {
-                    padding-left: 40px;
-                    padding-right: 40px;
-                }
-            }
-
-            /* --- MOBILE / TABLET VERTICAL (< 1024px) --- */
-            @media (max-width: 1024px) {
-                :root {
-                    /* TABLET: Tamaño intermedio para mejor armonía */
-                    --staff-item-w: 340px;
-                    --staff-item-h: 574px;
-                    --staff-active-w: 380px;
-                    --staff-active-h: 641px;
-                }
-            }
-
-            @media (max-width: 600px) {
-                :root {
-                    /* MÓVIL: Reducido para encajar bajo el header sin solapamiento */
-                    --staff-item-w: 210px;
-                    --staff-item-h: 355px;
-                    --staff-active-w: 240px;
-                    --staff-active-h: 405px;
-                }
-            }
-
-            @media (max-width: 1024px) {
-                body {
-                    padding: 0; /* Eliminado padding superior para quitar espacio blanco bajo el header */
-                }
-                
+            /* --- Responsive Design --- */
             @media (max-width: 1000px) {
-                .brand-text-desktop { display: none; }
-                .brand-text-mobile { display: inline; font-weight: bold; font-size: 1.2em; }
-                .header-main .logo span { font-size: 1.2em; }
-            }
-
-                .aec-container {
-                    padding: 70px 20px 60px; /* Compensación óptica: más aire arriba */
+                .brand-text-desktop {
+                    display: none;
                 }
-
-                .aec-container h2 {
-                    display: table; /* Ajustar al ancho del texto para que el subrayado sea correcto */
-                    text-align: center;
-                    margin: 0 auto 20px auto;
-                    border-bottom: 2px solid #f39c12; /* Restaurar subrayado estándar */
-                    padding-bottom: 10px; /* Restaurar espaciado estándar */
+                .brand-text-mobile {
+                    display: inline;
+                    font-weight: bold;
+                    font-size: 1.2em;
                 }
-
-                .aec-container p {
-                    text-align: center;
-                }
-
-                .aec-buttons-container {
-                    gap: 5px !important;
-                }
-
-                .content-block h2 {
-                    text-align: center;
-                    display: table;
-                    margin: 0 auto 20px auto; /* Reducido de 30px a 20px para consistencia */
-                    border-bottom: 2px solid #f39c12;
-                    position: relative;
-                }
-
-                .director-section {
-                    margin-top: 0; /* Elimina el margen superior innecesario en móviles al apilarse */
-                }
-                .content-block h2::after {
-                    display: none; /* Quitamos la línea centrada de móvil */
-                }
-
-                .staff-layout-grid {
-                    display: flex;
-                    flex-direction: column; /* Imágenes arriba, Texto abajo */
-                    gap: 30px;
-                    height: auto;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                }
-
-                .staff-carousel-viewport {
-                    order: 1; /* Imágenes primero */
-                    height: 680px; /* Ajustado para tarjeta de 641px + sombras */
-                    overflow: visible; /* Permitir ver las laterales */
-                }
-
-                .staff-carousel-track {
-                    padding-left: 0; /* Centrado por JS */
-                }
-
-                .staff-left-panel {
-                    order: 2; /* Texto después */
-                    padding: 0 20px 0 20px;
-                    align-items: center;
-                    text-align: center;
-                    background: transparent;
-                }
-
-                .staff-active-info h3 { font-size: 2.5em; }
-                
-                .staff-active-info {
-                    margin-bottom: 20px; /* Aumentado levemente de 15px a 25px */
-                }
-
-                .staff-active-info span { 
-                    padding-left: 0;
-                }
-                .staff-active-info span::before { display: none; }
-                
-                .staff-nav-controls {
-                    justify-content: center;
+                .header-main .logo span {
+                    font-size: 1.2em; /* Increase size for INSM */
                 }
             }
-
-            @media (max-width: 600px) {
-                .staff-layout-grid {
+            
+            /* Versión Tablet Vertical (Portrait) */
+            @media (min-width: 769px) and (max-width: 1024px) {
+                .header-main {
+                    padding: 15px 20px;
+                }
+                .header-main .logo a {
+                    font-size: 1.2em;
+                }
+                .header-main nav ul {
                     gap: 15px;
-                    padding-top: 0; /* Sin padding extra para mantener distancia del título */
                 }
-                .staff-carousel-viewport {
-                    height: 440px; /* Altura compacta */
+                .header-main nav ul li:not(:last-child)::after {
+                    margin-left: 15px;
                 }
-                .staff-active-info h3 {
-                    font-size: 2.2em;
+
+                .filters-container {
+                    display: flex;
+                    gap: 15px;
+                    justify-content: space-between;
+                }
+                .filter-input-group {
+                    flex: 0 0 calc(50% - 10px); /* Ocupa la mitad del espacio */
+                }
+                .filter-select,
+                .custom-select-wrapper {
+                    flex: 0 0 calc(25% - 10px); /* Cada uno ocupa un cuarto */
+                    min-width: 0;
                 }
             }
 
-            /* Responsive */
             @media (max-width: 992px) {
                 .hero-content h1 {
                     font-size: 5em;
@@ -1557,7 +1053,32 @@
                 }
             }
 
+            /* Versión Móvil */
             @media (max-width: 768px) {
+                /* Header responsivo de index.html */
+                .header-main {
+                    padding: 15px 20px;
+                }
+                .header-main nav ul li:not(:last-child) {
+                    display: none;
+                }
+                .header-main .menu-icon {
+                    display: block;
+                }
+                .brand-text-desktop {
+                    display: none;
+                }
+                .brand-text-mobile {
+                    display: inline;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                }
+                .header-main .logo span {
+                    font-size: 0.9em;
+                    max-width: 200px;
+                    line-height: 1.2;
+                }
+
                 /* Hero Section - Centered for Impact */
                 .hero-section {
                     padding: 0 20px 0 8%;
@@ -1577,55 +1098,14 @@
                     align-self: flex-start;
                 }
 
-                .content-container { gap: 40px; }
-                .director-section { flex-direction: column; gap: 20px; }
-                .director-image { width: 100%; height: auto; margin-top: 0; }
-                .header-main nav ul li:not(:last-child) { display: none; }
-                .menu-content { grid-template-columns: repeat(2, 1fr); }
-
-                /* Ajustes Especialidades en Móvil */
-                .card-specialty { height: 300px; }
-                .card-specialty h3 { font-size: 2em; }
-                .card-specialty p { font-size: 1em; }
-                .view-more-btn { 
-                    padding: 6px 18px; 
-                    font-size: 0.9em; 
-                    width: auto; 
-                    max-width: 80%;
-                }
-
-                /* Evitar desborde del Header */
-                .header-main {
-                    padding: 15px 20px;
-                }
-                .header-main .menu-icon {
-                    display: block;
-                }
-                .brand-text-desktop {
-                    display: none;
-                }
-                .brand-text-mobile {
-                    display: inline;
-                    font-size: 1.2em;
-                    font-weight: bold;
-                }
-                .header-main .logo span {
-                    font-size: 0.9em;
-                    max-width: 200px;
-                    line-height: 1.2;
-                }
-                .header-main .logo img {
-                    height: 45px;
-                }
-
+                .news-page-section { padding: 60px 20px; }
+                .filters-container { flex-direction: column; align-items: stretch; }
+                .filter-select, .custom-select-wrapper { flex: 1; }
+                .news-grid-full { grid-template-columns: 1fr; }
                 /* Footer Responsive */
                 .footer {
                     padding: 60px 20px;
                 }
-                
-                /* Ajustes del Dock para móvil */
-                .bottom-dock { padding: 10px 15px; gap: 5px; }
-                .dock-item { width: 40px; height: 40px; }
             }
 
             /* Mobile (max-width: 600px) */
@@ -1642,11 +1122,6 @@
                 .contact-info p {
                     margin-bottom: 8px;
                 }
-            }
-
-            @media (max-width: 480px) {
-                .menu-content { grid-template-columns: 1fr; }
-                .hero-content h1 { font-size: 2.8em; }
             }
         </style>
         <link rel="icon" href="img/favicon.ico" type="image/ico" />
@@ -1676,479 +1151,238 @@
             </div>
         </header>
 
-        <div class="dropdown-menu" id="dropdownMenu">
-            <div class="dropdown-header">
-                <div class="logo">
-                    <img src="img/logo.png" alt="Logo INSM" />
-                </div>
-                <button class="close-menu" onclick="toggleMenu()">✕</button>
-            </div>
-            <div class="menu-content">
-                <div class="menu-section">
-                    <h3>Inicial</h3>
-                    <ul>
-                        <li><a href="NivelInicial.html">Admisiones</a></li>
-                        <li><a href="NivelInicial.html">Sala de 3</a></li>
-                        <li><a href="NivelInicial.html">Sala de 4</a></li>
-                        <li><a href="NivelInicial.html">Sala de 5</a></li>
-                        <li><a href="NivelInicial.html">Aranceles</a></li>
-                    </ul>
-                </div>
-                <div class="menu-section">
-                    <h3>Primaria</h3>
-                    <ul>
-                        <li><a href="NivelPrimario.html">Admisiones</a></li>
-                        <li><a href="NivelPrimario.html">Académico</a></li>
-                        <li><a href="NivelPrimario.html">Co-Curricular</a></li>
-                        <li><a href="NivelPrimario.html">Vida Escolar</a></li>
-                        <li><a href="NivelPrimario.html">Aranceles</a></li>
-                    </ul>
-                </div>
-                <div class="menu-section">
-                    <h3>Secundaria</h3>
-                    <ul>
-                        <li><a href="NivelSecundario.html">Admisiones</a></li>
-                        <li><a href="NivelSecundario.html">Académico</a></li>
-                        <li><a href="NivelSecundario.html">Enriquecimiento</a></li>
-                        <li><a href="NivelSecundario.html">Vida Escolar</a></li>
-                        <li><a href="NivelSecundario.html">Aranceles</a></li>
-                    </ul>
-                </div>
-                <div class="menu-section">
-                    <h3>Terciario</h3>
-                    <ul>
-                        <li><a href="NivelTerciario.html">Admisiones</a></li>
-                        <li><a href="NivelTerciario.html">Académico</a></li>
-                        <li><a href="NivelTerciario.html">Enriquecimiento</a></li>
-                        <li><a href="NivelTerciario.html">Vida Escolar</a></li>
-                        <li><a href="NivelTerciario.html">Aranceles</a></li>
-                    </ul>
-                </div>
-                <div class="menu-section">
-                    <h3>Deportes</h3>
-                    <ul>
-                        <li><a href="#">Fútbol</a></li>
-                        <li><a href="#">Basketball</a></li>
-                        <li><a href="#">Volleyball</a></li>
-                        <li><a href="#">Atletismo</a></li>
-                    </ul>
-                </div>
-                <div class="menu-section">
-                    <h3>Sobre Nosotros</h3>
-                    <ul>
-                        <li><a href="NuestroColegio.html">Historia del Colegio</a></li>
-                        <li><a href="NuestroColegio.html">Misión y Valores</a></li>
-                        <li><a href="NuestroColegio.html">Políticas y Manuales</a></li>
-                        <li><a href="NuestroColegio.html">Informes de Inspección</a></li>
-                    </ul>
-                </div>
-                <div class="menu-section">
-                    <h3>Noticias y Eventos</h3>
-                    <ul>
-                        <li><a href="Noticias.html">Centro de Noticias</a></li>
-                        <li><a href="Noticias.html">Publicaciones</a></li>
-                        <li><a href="Noticias.html">Eventos</a></li>
-                        <li><a href="Noticias.html">Galería de Videos</a></li>
-                    </ul>
-                </div>
-                <div class="menu-section">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><a href="Contacto.html">Información General</a></li>
-                        <li><a href="Contacto.html">Ubicación</a></li>
-                        <li><a href="Contacto.html">Teléfonos</a></li>
-                        <li><a href="Contacto.html">Email</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
         <main>
             <section class="hero-section">
                 <div class="hero-content">
                     <h1>
-                        <span class="hero-line-1">Nivel</span>
-                        <span class="hero-line-2">Secundario</span>
+                        <span class="hero-line-1">Proyectos</span>
                     </h1>
                     <p>
-                        <a href="https://forms.gle/mjuCoSg5cP9879Wb7" target="_blank" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;">
-                            Inscripciones Abiertas para el Ciclo 2026<span class="hero-arrow"></span>
+                        <a
+                            href="#proyectos-seccion"
+                            style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;"
+                        >
+                            Descubrí
+                            <span class="hero-arrow"></span>
                         </a>
                     </p>
                 </div>
             </section>
 
-            <section class="main-content-section" id="bienvenida">
-                <div class="content-container">
-                    <div class="main-text">
-                        
-                        <div class="content-block">
-                            <h2>Bienvenida del Director</h2>
-                            <div class="director-section">
-                                <div class="director-text">
-                                    <p class="specialties-intro">
-                                        El Nivel Secundario en nuestro colegio es un tiempo emocionante y enriquecedor,
-                                        lleno de diversión. Nuestros maestros trabajan arduamente para inspirar a los
-                                        niños y despertar su curiosidad, creatividad e imaginación. A medida que avanzan,
-                                        los alumnos comienzan a hacer que las cosas sucedan por sí mismos y se deleitan
-                                        con las oportunidades de ser aventureros.
-                                    </p>
-                                    <p class="specialties-intro">
-                                        Ayudamos a nuestros alumnos a convertirse en jóvenes innovadores, dinámicos,
-                                        flexibles y resilientes, equipados para los desafíos del siglo XXI. Una visita a
-                                        nuestro sitio web le proporcionará una gran cantidad de información, pero venga a
-                                        visitarnos en persona para conocernos mejor y satisfacer sus necesidades.
-                                    </p>
-                                    <p class="director-signature">
-                                        <strong>Gerardo Lemos</strong>
-                                    </p>
-                                </div>
-                                <img
-                                    src="img/usuario_default.png"
-                                    alt="Foto del Director de Nivel Secundario"
-                                    class="director-image"
-                                />
+            <section class="news-page-section" id="proyectos-institucionales">
+                <div class="content-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px 20px;">
+                    <h2 style="text-align:center;">Proyectos Institucionales</h2>
+                    <p class="specialties-intro" style="text-align:center; max-width: 800px; margin: 0 auto 30px;">
+                        A lo largo del año, nuestros estudiantes participan de distintos proyectos y experiencias que
+                        complementan su formación académica. Esta sección se irá ampliando con más información e
+                        imágenes de cada proyecto.
+                    </p>
+                </div>
+                <div class="projects-grid">
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Modelo ONU – Uniendo Metas 2026" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-globe-americas"></i></div>
+                                <h4>Modelo ONU – Uniendo Metas 2026</h4>
+                                <p>Estudiantes de 4°, 5° y 6° año participaron de la 26ª edición del Modelo de Naciones Unidas de la ciudad de San Francisco, a cargo de las profesoras Andrea Miretti y Ana Luz Torresi. Representaron a República de Corea, Reino de Dinamarca y ACNUR. Felipe Gordo fue distinguido como Mejor Embajador de Sala de Tratados, y se reconoció el acompañamiento del profesor Sergio Maranzana.</p>
                             </div>
                         </div>
-
-                        <div id="informacion-general" class="content-block">
-                            <h2>Información General</h2>
-                            <p class="specialties-intro">
-                                El Nivel Secundario cuenta actualmente con aproximadamente <strong>330 estudiantes</strong>.
-                                La propuesta educativa ofrece distintas orientaciones para acompañar a los estudiantes
-                                en su formación y preparación para el futuro académico y profesional.
-                            </p>
-
-                            <div class="uniform-grid">
-                                <div class="uniform-card">
-                                    <i class="fas fa-users"></i>
-                                    <h3>330 estudiantes</h3>
-                                    <p>Comunidad educativa del Nivel Secundario.</p>
-                                </div>
-
-                                <div class="uniform-card">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <h3>Orientación en Ciencias Sociales</h3>
-                                    <p>Orientación correspondiente al área de Humanidades.</p>
-                                </div>
-
-                                <div class="uniform-card">
-                                    <i class="fas fa-laptop-code"></i>
-                                    <h3>Informática</h3>
-                                    <p>Especialidad orientada a la formación informática.</p>
-                                </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Copa Robótica Educabot 2026" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-robot"></i></div>
+                                <h4>Copa Robótica Educabot 2026</h4>
+                                <p>Competencia federal de robótica, programación e inteligencia artificial para jóvenes de 15 a 18 años. De 580 equipos a nivel provincial, dos de nuestra institución (6° B y 5° B, especialidad Informática) llegaron a la semifinal, obteniendo los puestos 12° y 22° respectivamente. Acompañados por los profesores Carlos Clara y Macarena De Yong.</p>
                             </div>
                         </div>
-
-                        <div id="especialidades" class="content-block">
-                            <h2>Nuestras Especialidades</h2>
-                            <p class="specialties-intro">
-                                El ciclo orientado permite a los estudiantes profundizar en áreas específicas,
-                                desarrollando competencias clave para su futuro universitario y profesional.
-                            </p>
-
-                            <div class="specialties-showcase">
-                                <div class="card-specialty card-bg-informatica">
-                                    <div class="card-specialty-content">
-                                        <h3>Informática</h3>
-                                        <p>Programación, Robótica y Desarrollo de Software para el mundo digital.</p>
-                                        <p class="degree-title">Título: Informática</p>
-                                        <a href="info/Plan de Estudios - Informática.pdf" target="_blank" class="view-more-btn">Ver Plan</a>
-                                    </div>
-                                </div>
-
-                                <div class="card-specialty card-bg-humanidades">
-                                    <div class="card-specialty-content">
-                                        <h3>Humanidades</h3>
-                                        <p>Ciencias Sociales, Comunicación y Ciudadanía con pensamiento crítico.</p>
-                                        <p class="degree-title">Título: Orientación en Ciencias Sociales</p>
-                                        <a href="info/Plan de Estudios - Ciencias Sociales y Humanidades..pdf" target="_blank" class="view-more-btn">Ver Plan</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style="display: flex; justify-content: center; margin-top: 30px;">
-                                <a href="https://forms.gle/mDeRWHZM4xknQEzK9" target="_blank" class="aec-btn">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <span>
-                                        Elegí tu Especialidad
-                                        <small>Completar formulario</small>
-                                    </span>
-                                </a>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Experiencia Endeavor Córdoba" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-briefcase"></i></div>
+                                <h4>Experiencia Endeavor Córdoba</h4>
+                                <p>6to año B asistió a esta experiencia de emprendedurismo desde el espacio curricular EOI: Informática Aplicada, con la Prof. Diamela Álvarez Novara.</p>
                             </div>
                         </div>
-
-                        <div id="ingles" class="content-block">
-                            <h2>Inglés por Niveles</h2>
-                            <p class="specialties-intro">
-                                En el Ciclo Orientado, el aprendizaje del inglés no se organiza por año escolar sino
-                                por niveles reales de conocimiento de la lengua: los estudiantes se integran en cinco
-                                grupos según sus competencias, para avanzar cada uno desde su propio punto de partida.
-                            </p>
-                            <div style="display: flex; justify-content: center; margin-top: 20px;">
-                                <a href="Ingles.html" class="aec-btn">
-                                    <i class="fas fa-language"></i>
-                                    <span>
-                                        Inglés por Niveles
-                                        <small>Conocé más (prueba nivelatoria y niveles)</small>
-                                    </span>
-                                </a>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Cooperativa y Mutual Escolar – 3° año" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-hand-holding-usd"></i></div>
+                                <h4>Cooperativa y Mutual Escolar – 3° año</h4>
+                                <p>Proyecto llevado a cabo en conjunto por ambas divisiones de 3er año (A y B), donde los estudiantes gestionan una cooperativa y mutual escolar.</p>
                             </div>
                         </div>
-
-                        <div id="uniforme" class="content-block">
-                            <h2>Uniforme Escolar</h2>
-                            <p class="specialties-intro">
-                                El uso del uniforme representa la identidad de nuestra comunidad educativa y fomenta el sentido de pertenencia.
-                            </p>
-                            <div class="uniform-grid">
-                                <!-- Tarjeta Mujeres -->
-                                <div class="uniform-card">
-                                    <i class="fas fa-female"></i>
-                                    <h3>Mujeres</h3>
-                                    <ul>
-                                        <li>Pantalón de vestir azul, corte clásico.</li>
-                                        <li>Remera de piqué con escudo bordado.</li>
-                                        <li>Pullover escote en V azul bordado.</li>
-                                        <li>Abrigo azul (campera).</li>
-                                        <li>Zapatillas negras, blancas u oscuras.</li>
-                                        <li>Cabello recogido (cinta azul).</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Tarjeta Varones -->
-                                <div class="uniform-card">
-                                    <i class="fas fa-male"></i>
-                                    <h3>Varones</h3>
-                                    <ul>
-                                        <li>Pantalón gris de vestir.</li>
-                                        <li>Remera de piqué con escudo bordado.</li>
-                                        <li>Pullover escote en V azul bordado.</li>
-                                        <li>Abrigo azul (campera).</li>
-                                        <li>Zapatillas negras, blancas u oscuras.</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Tarjeta Gimnasia -->
-                                <div class="uniform-card">
-                                    <i class="fas fa-running"></i>
-                                    <h3>Gimnasia</h3>
-                                    <ul>
-                                        <li>Joggin gris, negro o azul (pantalón o bermuda, sin shorts).</li>
-                                        <li>Remera oficial del colegio o remera blanca lisa, sin diseños grandes (se permite logo pequeño de marca).</li>
-                                        <li>Buzo gris con escudo.</li>
-                                        <li>Zapatillas deportivas.</li>
-                                        <li>Bolsa de higiene completa.</li>
-                                    </ul>
-                                </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Proyecto Socio Comunitario – 4° año" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-people-carry"></i></div>
+                                <h4>Proyecto Socio Comunitario – 4° año</h4>
+                                <p>Trabajo de compromiso y participación comunitaria llevado a cabo por los estudiantes de 4° año.</p>
                             </div>
                         </div>
-
-                        <div id="personal" class="content-block">
-                            <h2>Nuestro Personal</h2>
-                            
-                            <div class="staff-layout-grid">
-                                <div class="staff-left-panel">
-                                    <div class="staff-active-info" id="staffInfoBox">
-                                        <h3 id="staffActiveName">Gerardo Lemos</h3>
-                                        <span id="staffActiveRole">Director</span>
-                                    </div>
-                                    
-                                    <div class="staff-nav-controls">
-                                        <button class="staff-nav-btn" id="btnPrevStaff"><i class="fas fa-arrow-left"></i></button>
-                                        <button class="staff-nav-btn" id="btnPauseStaff"><i class="fas fa-pause"></i></button>
-                                        <button class="staff-nav-btn" id="btnNextStaff"><i class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                </div>
-
-                                <div class="staff-carousel-viewport" id="staffViewport">
-                                    <div class="staff-carousel-track" id="staffTrack">
-                                        <div class="staff-carousel-item" data-name="Gerardo Lemos" data-role="Director">
-                                            <img src="img/usuario_default.png" alt="Gerardo Lemos" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Anahí Botta" data-role="Secretaria">
-                                            <img src="img/usuario_default.png" alt="Anahí Botta" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Karina Lucero" data-role="Preceptora">
-                                            <img src="img/usuario_default.png" alt="Karina Lucero" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Zulma Moreira" data-role="Preceptora">
-                                            <img src="img/usuario_default.png" alt="Zulma Moreira" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Victoria Celi" data-role="Preceptora">
-                                            <img src="img/usuario_default.png" alt="Victoria Celi" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Alvarez Maria Agustina" data-role="Docente de:<br>→ERE<br><small>Cursos: 4B-5B</small>">
-                                            <img src="img/usuario_default.png" alt="Alvarez Maria Agustina" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Diamela Nerina Alvarez Novara" data-role="Docente de:<br>→EOI: INFORMATICA APLI.<br><small>Cursos: 6B</small>">
-                                            <img src="img/usuario_default.png" alt="Diamela Nerina Alvarez Novara" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Marisa Amaison" data-role="Docente de:<br>→SIST. DIG. DE INF.<br><small>Cursos: 4B</small>">
-                                            <img src="img/usuario_default.png" alt="Marisa Amaison" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Carmela Amuchastegui" data-role="Docente de:<br>→EDUCACIÓN ARTISTICA<br><small>Cursos: 3A-3B-4A</small>">
-                                            <img src="img/usuario_default.png" alt="Carmela Amuchastegui" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Maria Florencia Andino" data-role="Docente de:<br>→GEOGRAFÍA<br>→HISTORIA<br><small>Cursos: 2A-2B-3A-4B-5B</small>">
-                                            <img src="img/usuario_default.png" alt="Maria Florencia Andino" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Paola Yanina Auban" data-role="Docente de:<br>→ECO. POLITICA<br><small>Cursos: 6A</small>">
-                                            <img src="img/usuario_default.png" alt="Paola Yanina Auban" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Nicolas Matias Baravalle" data-role="Docente de:<br>→ED. ART. MÚSICA<br><small>Cursos: 5</small>">
-                                            <img src="img/usuario_default.png" alt="Nicolas Matias Baravalle" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Laura Alejandra Bertea" data-role="Docente de:<br>→LENGUA Y LITERATURA<br><small>Cursos: 5B</small>">
-                                            <img src="img/usuario_default.png" alt="Laura Alejandra Bertea" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Silvana Soledad Bravo" data-role="Docente de:<br>→HISTORIA<br><small>Cursos: 3B-4A-4B-5A-6A</small>">
-                                            <img src="img/usuario_default.png" alt="Silvana Soledad Bravo" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Romina Paola Brizzio" data-role="Docente de:<br>→LENGUA<br>→SOC. CULT. Y COM<br><small>Cursos: 4A-6B</small>">
-                                            <img src="img/usuario_default.png" alt="Romina Paola Brizzio" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Eliana Micaela Cabrera" data-role="Docente de:<br>→MATEMÁTICA<br><small>Cursos: 4B-5B</small>">
-                                            <img src="img/usuario_default.png" alt="Eliana Micaela Cabrera" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Rocío Carabajal Boris" data-role="Docente de:<br>→MATEMÁTICA<br><small>Cursos: 6A-6B</small>">
-                                            <img src="img/usuario_default.png" alt="Rocío Carabajal Boris" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Carlos Enrique Clara" data-role="Docente de:<br>→APLI. INF.<br>→DSI<br>→TEC. Y LENG. DE PROG.<br>→EOI: ROBOTICA<br>→SIST. DIG. DE INF<br>→ED. TEC<br>→COMP.<br><small>Cursos: 3A-3B-4B-5B-6B</small>">
-                                            <img src="img/usuario_default.png" alt="Carlos Enrique Clara" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Maria Macarena De Yong" data-role="Docente de:<br>→QUÍMICA Y BIOLOGÍA<br><small>Cursos: 4A-4B-6B</small>">
-                                            <img src="img/usuario_default.png" alt="Maria Macarena De Yong" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="María José Espósito" data-role="Docente de:<br>→ED. TECNOLOGICA<br>→FVT<br><small>Cursos: 2A-2B-3A</small>">
-                                            <img src="img/usuario_default.png" alt="María José Espósito" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Ricardo Iván Garcías" data-role="Docente de:<br>→FÍSICA<br><small>Cursos: 3B-5A-5B</small>">
-                                            <img src="img/usuario_default.png" alt="Ricardo Iván Garcías" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Virginia Gardella" data-role="Docente de:<br>→LENGUA Y LITERATURA<br><small>Cursos: 1A-3A-4A-4B</small>">
-                                            <img src="img/usuario_default.png" alt="Virginia Gardella" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Camila Soledad Gerez" data-role="Docente de:<br>→ED. ARTISTICA VISUAL<br><small>Cursos: 1B-4B</small>">
-                                            <img src="img/usuario_default.png" alt="Camila Soledad Gerez" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Facundo Gil" data-role="Docente de:<br>→COMPUTACIÓN<br>→ED. TECN.<br>→TIC<br><small>Cursos: 1A-1B-2A-2B-4A</small>">
-                                            <img src="img/usuario_default.png" alt="Facundo Gil" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Ayelén Del Valle Juan" data-role="Docente de:<br>→ED. ART. TEATRO<br><small>Cursos: 6A-6B</small>">
-                                            <img src="img/usuario_default.png" alt="Ayelén Del Valle Juan" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Ivana Josefina Lario" data-role="Docente de:<br>→LENGUA Y LITERATURA<br><small>Cursos: 5A-6A</small>">
-                                            <img src="img/usuario_default.png" alt="Ivana Josefina Lario" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Yanina Mariela Ledesma" data-role="Docente de:<br>→FVT<br><small>Cursos: 3B</small>">
-                                            <img src="img/usuario_default.png" alt="Yanina Mariela Ledesma" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Mónica Valeria Ludueña" data-role="Docente de:<br>→EDUCACIÓN FÍSICA<br><small>Cursos: 2A-2B</small>">
-                                            <img src="img/usuario_default.png" alt="Mónica Valeria Ludueña" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Andrea Verónica Miretti" data-role="Docente de:<br>→GEOGRAFÍA<br><small>Cursos: 1A-1B-3A-3B-4A-5A</small>">
-                                            <img src="img/usuario_default.png" alt="Andrea Verónica Miretti" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Damian Mocci" data-role="Docente de:<br>→ERE<br><small>Cursos: 3B</small>">
-                                            <img src="img/usuario_default.png" alt="Damian Mocci" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Priscila Yanina Moya" data-role="Docente de:<br>→CIUD. Y PART.<br>→LENGUA<br><small>Cursos: 1B-2A-2B-3B</small>">
-                                            <img src="img/usuario_default.png" alt="Priscila Yanina Moya" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Gabriela Aylen Mugas" data-role="Docente de:<br>→ERE<br><small>Cursos: 1A-1B-2A-3A-4A</small>">
-                                            <img src="img/usuario_default.png" alt="Gabriela Aylen Mugas" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Lucía Narvaez" data-role="Docente de:<br>→EDUCACIÓN FÍSICA<br><small>Cursos: 1A-1B</small>">
-                                            <img src="img/usuario_default.png" alt="Lucía Narvaez" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Luciana Celeste Noriega" data-role="Docente de:<br>→FILOSOFÍA<br>→PSICOLOGÍA<br><small>Cursos: 5A-5B-6A-6B</small>">
-                                            <img src="img/usuario_default.png" alt="Luciana Celeste Noriega" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Horacio Federico Parmigiani" data-role="Docente de:<br>→EDUCACIÓN FÍSICA<br><small>Cursos: 3-4-5-6 (A y B)</small>">
-                                            <img src="img/usuario_default.png" alt="Horacio Federico Parmigiani" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Maria Soledad Picard" data-role="Docente de:<br>→QUÍMICA<br>→BIOLOGÍA<br>→FÍSICA<br><small>Cursos: 1B-2B-3B</small>">
-                                            <img src="img/usuario_default.png" alt="Maria Soledad Picard" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Catalina Inés Pignata" data-role="Docente de:<br>→CIUD. Y POLÍTICA<br>→SOCIOLOGÍA<br>→METODOLOGÍA<br>→HISTORIA<br><small>Cursos: 2B-3A-5A-6A</small>">
-                                            <img src="img/usuario_default.png" alt="Catalina Inés Pignata" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="María Alejandra Pissane" data-role="Docente de:<br>→MATEMÁTICA<br><small>Cursos: 1A-1B-2A-3A</small>">
-                                            <img src="img/usuario_default.png" alt="María Alejandra Pissane" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Paula Ailén Radichi" data-role="Docente de:<br>→ERE<br>→FILOSOFÍA<br><small>Cursos: 2B-5B-6B</small>">
-                                            <img src="img/usuario_default.png" alt="Paula Ailén Radichi" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Tamara Del Carmen Rochia" data-role="Docente de:<br>→MATEMÁTICA<br><small>Cursos: 2B-3B-5A</small>">
-                                            <img src="img/usuario_default.png" alt="Tamara Del Carmen Rochia" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Santiago Manuel Romero" data-role="Docente de:<br>→HISTORIA<br>→CIUD. Y PART.<br><small>Cursos: 2A-5B</small>">
-                                            <img src="img/usuario_default.png" alt="Santiago Manuel Romero" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Emmanuel Alejandro Sanchez" data-role="Docente de:<br>→EDUCACIÓN FÍSICA<br><small>Cursos: 3-4-5-6 (A y B)</small>">
-                                            <img src="img/usuario_default.png" alt="Emmanuel Alejandro Sanchez" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Evangelina Beatriz Saravia" data-role="Docente de:<br>→CIUD. Y POLÍTICA<br><small>Cursos: 6B</small>">
-                                            <img src="img/usuario_default.png" alt="Evangelina Beatriz Saravia" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Gonzalo Saravia" data-role="Docente de:<br>→EDUCACIÓN ARTÍSTICA MÚSICA<br><small>Cursos: 5</small>">
-                                            <img src="img/usuario_default.png" alt="Gonzalo Saravia" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Melina Carolina Seveso Fera" data-role="Docente de:<br>→FVT<br><small>Cursos: 5A-6A-6B</small>">
-                                            <img src="img/usuario_default.png" alt="Melina Carolina Seveso Fera" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Ana Luz Torressi" data-role="Docente de:<br>→GEOGRAFÍA<br>→SOC. CULT. Y COM<br>→FVT<br>→ANTROPOLOGÍA<br>→ART. CULT. Y SOC<br>→CIUD. Y PART.<br><small>Cursos: 2B-4A-4B-5A-6A</small>">
-                                            <img src="img/usuario_default.png" alt="Ana Luz Torressi" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Cecilia Lucía Viotti" data-role="Docente de:<br>→BIOLOGÍA<br>→FÍSICA<br><small>Cursos: 1A-2A</small>">
-                                            <img src="img/usuario_default.png" alt="Cecilia Lucía Viotti" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Alicia Ines Vocos" data-role="Docente de:<br>→QUÍMICA<br>→FÍSICA<br><small>Cursos: 2A-3A-6A</small>">
-                                            <img src="img/usuario_default.png" alt="Alicia Ines Vocos" class="staff-carousel-img">
-                                        </div>
-
-                                    </div>
-                                </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Proyectos de 6to Informática" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-microchip"></i></div>
+                                <h4>Proyectos de 6to Informática</h4>
+                                <p>Desarrollos tecnológicos de los estudiantes de 6to año orientación Informática: automatización del timbre escolar, automatización de luces, una app para el kiosco/cantina del colegio, un sistema de riego artificial automatizado, reparación de PCs (PC Repair) y un bloqueador de redes mediante proxy.</p>
                             </div>
                         </div>
-
-                        <div id="requerimientos" class="content-block">
-                            <h2>Requerimientos de Inscripción</h2>
-                            <p class="specialties-intro" style="margin-bottom: 15px;">Para formar parte de nuestra comunidad educativa, es necesario presentar la siguiente documentación:</p>
-                            <ul class="requirements-list">
-                                <li>Fotocopia del DNI del alumno y de los padres/tutores.</li>
-                                <li>Partida de Nacimiento actualizada.</li>
-                                <li>Certificado de estudios del nivel anterior (o constancia de alumno regular).</li>
-                                <li>Ficha de salud completada y firmada por un médico.</li>
-                                <li>Informe de libre deuda (si proviene de gestión privada).</li>
-                            </ul>
-                        </div>
-
-                        <div id="aec" class="content-block aec-container">
-                            <h2>Documentación Institucional</h2>
-                            <p class="specialties-intro" style="text-align: center; margin-bottom: 20px;">
-                                Promovemos un ambiente de respeto y armonía. Te invitamos a leer nuestros acuerdos de convivencia y la reglamentación escolar vigentes para el ciclo lectivo y la reglamentación escolar.
-                            </p>
-                            <div class="aec-buttons-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                                <a href="info/A. E. C. 2025.pdf" target="_blank" class="aec-btn">
-                                    <i class="fas fa-file-pdf"></i>
-                                    <span>
-                                        AEC 2025
-                                        <small>Descargar PDF</small>
-                                    </span>
-                                </a>
-                                <a href="info/Acuerdos I. Sobre Evaluación 2025.pdf" target="_blank" class="aec-btn">
-                                    <i class="fas fa-file-pdf"></i>
-                                    <span>
-                                        Reglamentación
-                                        <small>Descargar PDF</small>
-                                    </span>
-                                </a>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Tutorías de Robótica y Tecnología" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-hands-helping"></i></div>
+                                <h4>Tutorías de Robótica y Tecnología</h4>
+                                <p>Proyecto conjunto entre 5to y 3er año coordinado por el Prof. Carlos Clara: los estudiantes de 5to año, desde el área de Robótica, dan tutorías a los de 3er año desde Tecnología.</p>
                             </div>
                         </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Radioteatro – 6to A" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-microphone-alt"></i></div>
+                                <h4>Radioteatro – 6to A</h4>
+                                <p>Producción de radioteatro realizada por los estudiantes de 6to año A, con posibilidad de extenderse a otros cursos.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Festival Mercedario" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-star"></i></div>
+                                <h4>Festival Mercedario</h4>
+                                <p>Antes conocido como "El Desfile", organizado por la ex directora y profesora Marisa Brisio (hoy retirada). Ahora es el Festival Mercedario, a cargo de la Prof. de Artística Camila Gerez, con fecha estimada el 5 de diciembre y temática Avatar.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Revista EME" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-newspaper"></i></div>
+                                <h4>Revista EME</h4>
+                                <p>Producida por 6to año A. Actualmente en pausa por motivos personales de la docente a cargo; se prevé recordar las últimas ediciones más adelante.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Nuestra Huerta – 2° año" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-leaf"></i></div>
+                                <h4>Nuestra Huerta – 2° año</h4>
+                                <p>Proyecto de huerta escolar llevado a cabo por los estudiantes de 2° año desde el espacio curricular de Biología.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Del Mate a la Maceta – 1° año" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-tractor"></i></div>
+                                <h4>Del Mate a la Maceta – 1° año</h4>
+                                <p>Proyecto de reutilización y huerta iniciado por los estudiantes de 1er año.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Investigación Social y Monografías – 5° año" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-search"></i></div>
+                                <h4>Investigación Social y Monografías – 5° año</h4>
+                                <p>Trabajos de investigación social realizados por 5to año, presentados en las Jornadas de Puertas Abiertas.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Pasantías – 6° año" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-user-tie"></i></div>
+                                <h4>Pasantías – 6° año</h4>
+                                <p>Espacios de pasantía para los estudiantes de 6to año como acercamiento al mundo laboral.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Alumnos en la Diversidad – SOE" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-hands"></i></div>
+                                <h4>Alumnos en la Diversidad – SOE</h4>
+                                <p>Proyecto institucional de acompañamiento a la diversidad, coordinado por el Servicio de Orientación Escolar.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Fortalecer la Cultura Digital" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-laptop"></i></div>
+                                <h4>Fortalecer la Cultura Digital</h4>
+                                <p>Proyecto institucional orientado al uso responsable y crítico de la tecnología.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="ESI: Educamos para el Amor Aprendiendo en Familia" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-heart"></i></div>
+                                <h4>ESI: Educamos para el Amor Aprendiendo en Familia</h4>
+                                <p>Proyecto institucional de Educación Sexual Integral con participación de las familias.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Proyecto BIOHUELLA" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-seedling"></i></div>
+                                <h4>Proyecto BIOHUELLA</h4>
+                                <p>Proyecto de la comunidad educativa vinculado al cuidado del ambiente, iniciado en 2024.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Cortometrajes" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-film"></i></div>
+                                <h4>Cortometrajes</h4>
+                                <p>Producción audiovisual realizada por los estudiantes.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Expo Carreras – 5° año" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-user-graduate"></i></div>
+                                <h4>Expo Carreras – 5° año</h4>
+                                <p>Espacio de orientación vocacional donde los estudiantes de 5to año conocen distintas propuestas de estudio y carreras.</p>
+                            </div>
+                        </div>
+                        <div class="projects-card">
+                            <img src="img/logo.png" alt="Proyecto Impac Tech" />
+                            <div class="projects-card-content">
+                                <div class="date"><i class="fas fa-lightbulb"></i></div>
+                                <h4>Proyecto Impac Tech</h4>
+                                <p>Proyecto innovador con foco en impacto y emprendimiento.</p>
+                            </div>
+                        </div>
+                </div>
+            </section>
 
+            <section class="news-page-section" id="proyectos-seccion">
+                
+                <div class="filters-container" id="filtros-proyectos">
+                    <div class="filter-input-group">
+                        <input type="text" id="search-input" class="filter-input" placeholder="Buscar proyectos por título..." />
+                        <i id="clear-search" class="fas fa-times clear-icon"></i>
                     </div>
+                    <select id="month-select" class="filter-select">
+                        <option value="all">Todos los meses</option>
+                        <option value="01">Enero</option>
+                        <option value="02">Febrero</option>
+                        <option value="03">Marzo</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Mayo</option>
+                        <option value="06">Junio</option>
+                        <option value="07">Julio</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                    <select id="year-select" class="filter-select">
+                        <option value="all">Todos los años</option>
+                        </select>
+                </div>
+
+                <div id="projects-grid" class="projects-grid">
+                    <div class="loading-msg">Cargando proyectos...</div>
+                </div>
+                
+                <div class="view-more-container">
+                    <button class="view-more-btn">Ver más</button>
                 </div>
             </section>
         </main>
@@ -2229,53 +1463,8 @@
                 </div>
                 <ul class="side-menu-links">
                     <li>
-                        <a href="#bienvenida" onclick="toggleSideMenu()">
-                            <i class="fas fa-hand-holding-heart"></i> Bienvenida del Director
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#informacion-general" onclick="toggleSideMenu()">
-                            <i class="fas fa-school"></i> Información General
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#especialidades" onclick="toggleSideMenu()">
-                            <i class="fas fa-graduation-cap"></i> Nuestras Especialidades
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Proyectos.html">
-                            <i class="fas fa-project-diagram"></i> Proyectos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="CEM.html">
-                            <i class="fas fa-users"></i> Centro de Estudiantes (CEM)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#ingles" onclick="toggleSideMenu()">
-                            <i class="fas fa-language"></i> Inglés por Niveles
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#uniforme" onclick="toggleSideMenu()">
-                            <i class="fas fa-tshirt"></i> Uniforme Escolar
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#personal" onclick="toggleSideMenu()">
-                            <i class="fas fa-users-cog"></i> Nuestro Personal
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#requerimientos" onclick="toggleSideMenu()">
-                            <i class="fas fa-clipboard-list"></i> Requerimientos de Inscripción
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#aec" onclick="toggleSideMenu()">
-                            <i class="fas fa-file-pdf"></i> Documentación Institucional
+                        <a href="#proyectos-seccion" onclick="toggleSideMenu()">
+                            <i class="fas fa-th-large"></i> Lista de Proyectos
                         </a>
                     </li>
                 </ul>
@@ -2299,7 +1488,7 @@
                 </div>
 
                 <div class="side-menu-footer">
-                    <a href="Contacto.html" class="back-home-btn">Inscripciones 2026</a>
+                    <a href="Contacto.html" class="back-home-btn">Inscripciones 2027</a>
                 </div>
             </div>
         </div>
@@ -2325,7 +1514,6 @@
                         if (node.nodeType === Node.TEXT_NODE) {
                             const text = node.textContent.trim();
                             if (!text) return;
-                            
                             const fragment = document.createDocumentFragment();
                             [...node.textContent].forEach((char) => {
                                 const span = document.createElement('span');
@@ -2353,84 +1541,33 @@
                     delay += stagger;
                 });
 
-                // Animar el párrafo al final
                 paragraph.style.animation = 'none';
                 void paragraph.offsetWidth; // Force reflow
                 paragraph.style.animation = `riseIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) ${delay + 200}ms both`;
             }
 
-            document.addEventListener('DOMContentLoaded', runHeroAnimation);
-
             // --- Efecto Parallax / Zoom al hacer Scroll (Hero Section) ---
-            document.addEventListener('scroll', () => {
-                const sideMenu = document.getElementById('sideMenu');
-                if (sideMenu && sideMenu.classList.contains('active')) return;
-
-                const heroSection = document.querySelector('.hero-section');
-                if (!heroSection) return;
-
-                const scrollPosition = Math.max(0, window.scrollY);
-                const windowHeight = window.innerHeight;
-
-                // Solo calcular si estamos cerca del Hero (optimización)
-                if (scrollPosition <= windowHeight) {
-                    const scale = 1 + scrollPosition * 0.00015;
-                    heroSection.style.setProperty('--hero-scale', scale);
-                }
-            }, { passive: true });
-
-            // --- Lógica del Nuevo Menú Lateral (Índice) ---
-            function toggleSideMenu() {
-                const sideMenu = document.getElementById('sideMenu');
-                const linksContainer = document.querySelector('.side-menu-links');
-                if (sideMenu) {
-                    const isActive = sideMenu.classList.toggle('active');
-                    
-                    // Bloqueo de scroll en HTML y BODY para máxima compatibilidad
-                    document.documentElement.classList.toggle('no-scroll');
-                    document.body.classList.toggle('no-scroll');
-
-                    if (isActive && linksContainer) {
-                        // Asegurar que el scrollbar se reconozca inmediatamente
-                        linksContainer.scrollTop = 1;
-                        linksContainer.scrollTop = 0;
-                    }
-                }
-            }
-
-            // Asignar el evento al icono de menú del header
-            document.addEventListener('DOMContentLoaded', () => {
-                const menuIcon = document.querySelector('.header-main .menu-icon');
-                if (menuIcon) {
-                    menuIcon.removeAttribute('onclick');
-                    menuIcon.addEventListener('click', toggleSideMenu);
-                }
-            });
-
-            // Cerrar con tecla Escape
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
+            document.addEventListener(
+                'scroll',
+                () => {
                     const sideMenu = document.getElementById('sideMenu');
-                    if (sideMenu && sideMenu.classList.contains('active')) {
-                        sideMenu.classList.remove('active');
-                        document.documentElement.classList.remove('no-scroll');
-                        document.body.classList.remove('no-scroll');
+                    if (sideMenu && sideMenu.classList.contains('active')) return;
+
+                    const heroSection = document.querySelector('.hero-section');
+                    if (!heroSection) return;
+
+                    const scrollPosition = Math.max(0, window.scrollY);
+                    const windowHeight = window.innerHeight;
+
+                    // Solo calcular si estamos cerca del Hero (optimización)
+                    if (scrollPosition <= windowHeight) {
+                        // Zoom lineal suave: escala de forma constante y fluida
+                        const scale = 1 + scrollPosition * 0.00015;
+                        heroSection.style.setProperty('--hero-scale', scale);
                     }
-                }
-            });
-
-            // --- Lógica del Menú Desplegable (Global) ---
-            function toggleMenu() {
-                const menu = document.getElementById('dropdownMenu');
-                menu.classList.toggle('show');
-            }
-
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    const menu = document.getElementById('dropdownMenu');
-                    menu.classList.remove('show');
-                }
-            });
+                },
+                { passive: true }
+            );
 
             // --- Lógica para la Transición entre Páginas ---
             if ('history' in window && 'scrollRestoration' in history) {
@@ -2451,12 +1588,447 @@
                 }
             });
 
-            document.addEventListener('DOMContentLoaded', function () {
+            // --- Lógica del Slider Lateral (Índice) ---
+            function toggleSideMenu() {
+                const sideMenu = document.getElementById('sideMenu');
+                const linksContainer = document.querySelector('.side-menu-links');
+                if (sideMenu) {
+                    const isActive = sideMenu.classList.toggle('active');
+                    
+                    // Bloqueo de scroll en HTML y BODY para máxima compatibilidad
+                    document.documentElement.classList.toggle('no-scroll');
+                    document.body.classList.toggle('no-scroll');
+
+                    if (isActive && linksContainer) {
+                        // Asegurar que el scrollbar se reconozca inmediatamente
+                        linksContainer.scrollTop = 1;
+                        linksContainer.scrollTop = 0;
+                    }
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                runHeroAnimation();
+
+                // Vincular el icono de menú del header al slider
+                const menuIcon = document.querySelector('.header-main .menu-icon');
+                if (menuIcon) {
+                    menuIcon.removeAttribute('onclick');
+                    menuIcon.addEventListener('click', toggleSideMenu);
+                }
+
+                // Cerrar con tecla Escape
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') {
+                        const sideMenu = document.getElementById('sideMenu');
+                        if (sideMenu && sideMenu.classList.contains('active')) {
+                            sideMenu.classList.remove('active');
+                            document.documentElement.classList.remove('no-scroll');
+                            document.body.classList.remove('no-scroll');
+                        }
+                    }
+                });
+                
+                const projectsContainer = document.getElementById('projects-grid');
+                const loadMoreBtn = document.querySelector('.view-more-btn');
+                const loadMoreContainer = document.querySelector('.view-more-container');
+                
+                // Inputs de filtro y Cruz
+                const searchInput = document.getElementById('search-input');
+                const clearSearchBtn = document.getElementById('clear-search'); // Botón Cruz
+                const monthSelect = document.getElementById('month-select');
+                const yearSelect = document.getElementById('year-select');
+
+                // Verificación de IDs Críticos del DOM
+                const criticalIDs = [
+                    'projects-grid', 'search-input', 'clear-search', 
+                    'month-select', 'year-select'
+                ];
+                criticalIDs.forEach(id => {
+                    if (!document.getElementById(id)) {
+                        console.error(`Error: El contenedor esencial con ID '${id}' no fue encontrado en el DOM.`);
+                    }
+                });
+
+                let allProjects = []; 
+                let filteredProjects = []; 
+                let currentVisibleCount = 0;
+                const INITIAL_LIMIT = 9;
+                const LOAD_MORE_INCREMENT = 6;
+
+                // --- Funciones de Utilidad y Buscador Fuzzy ---
+                const levenshteinDistance = (s1, s2) => {
+                    const m = s1.length;
+                    const n = s2.length;
+                    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+                    for (let i = 0; i <= m; i++) dp[i][0] = i;
+                    for (let j = 0; j <= n; j++) dp[0][j] = j;
+                    for (let i = 1; i <= m; i++) {
+                        for (let j = 1; j <= n; j++) {
+                            if (s1[i - 1] === s2[j - 1]) {
+                                dp[i][j] = dp[i - 1][j - 1];
+                            } else {
+                                dp[i][j] = Math.min(
+                                    dp[i - 1][j] + 1,
+                                    dp[i][j - 1] + 1,
+                                    dp[i - 1][j - 1] + 1
+                                );
+                            }
+                        }
+                    }
+                    return dp[m][n];
+                };
+
+                const normalizeText = (text) => {
+                    if (!text) return '';
+                    const clean = text.replace(/&shy;/g, '').replace(/\u00AD/g, '');
+                    return clean.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+                };
+
+                const matchesFuzzy = (project, query) => {
+                    if (!query) return true;
+                    
+                    const queryNorm = normalizeText(query);
+                    const queryTokens = queryNorm.split(/\s+/).filter(t => t.length > 0);
+                    if (queryTokens.length === 0) return true;
+                    
+                    const titleNorm = normalizeText(project.title || '');
+                    const summaryNorm = normalizeText(project.summary || '');
+                    
+                    const titleWords = titleNorm.split(/\s+/).filter(w => w.length > 0);
+                    const summaryWords = summaryNorm.split(/\s+/).filter(w => w.length > 0);
+                    const allWords = [...titleWords, ...summaryWords];
+                    
+                    return queryTokens.every(token => {
+                        if (titleNorm.includes(token) || summaryNorm.includes(token)) return true;
+                        
+                        return allWords.some(word => {
+                            if (word.startsWith(token) || token.startsWith(word)) return true;
+                            
+                            const len = token.length;
+                            if (len > 3) {
+                                const maxDist = len > 6 ? 2 : 1;
+                                return levenshteinDistance(token, word) <= maxDist;
+                            }
+                            return false;
+                        });
+                    });
+                };
+
+                const debounce = (func, delay) => {
+                    let timeoutId;
+                    return function (...args) {
+                        clearTimeout(timeoutId);
+                        timeoutId = setTimeout(() => func.apply(this, args), delay);
+                    };
+                };
+
+                // Función para medir y procesar palabras largas con precisión dinámica (Sincronizado con index.html)
+                const processLongWords = (text, fontStyle, containerWidth) => {
+                    if (!text) return '';
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    context.font = fontStyle;
+                    
+                    // El margen de seguridad (padding real de la tarjeta + espacio para el guion)
+                    const safeWidth = containerWidth - 85; 
+
+                    return text
+                        .split(' ')
+                        .map((word) => {
+                            const metrics = context.measureText(word);
+                            // REGLA: Si la palabra no cabe en una línea vacía del contenedor actual, aplicamos guiones
+                            if (metrics.width > safeWidth) {
+                                let parts = [];
+                                // Dividir la palabra en fragmentos
+                                for (let i = 0; i < word.length; i += 5) {
+                                    parts.push(word.substring(i, i + 5));
+                                }
+                                return parts.join('&shy;');
+                            }
+                            return word;
+                        })
+                        .join(' ');
+                };
+
+                const renderProjects = (projects) => {
+                    if (projects.length === 0) return;
+
+                    // Calculamos el ancho actual de una tarjeta basado en el grid real
+                    const gridWidth = projectsContainer.offsetWidth;
+                    const isMobile = window.innerWidth <= 768;
+                    const cardWidth = isMobile ? gridWidth : (gridWidth / Math.max(1, Math.floor(gridWidth / 350)));
+
+                    projects.forEach((proj) => {
+                        // Validación de campos críticos del JSON
+                        const required = ['id', 'title', 'image', 'date', 'summary', 'displayDate'];
+                        required.forEach(field => {
+                            if (proj[field] === undefined || proj[field] === null) {
+                                console.error(`Error: El proyecto con ID '${proj.id || 'desconocido'}' no tiene el campo '${field}' definido.`);
+                            }
+                        });
+
+                        const card = document.createElement('a');
+                        card.href = `templates/Proyecto.html?id=${proj.id}`;
+                        card.className = 'projects-card'; 
+
+                        const maxChars = 200;
+                        let summary = proj.summary || '';
+                        if (summary.length > maxChars) {
+                            summary = summary.substring(0, maxChars).trim() + '...';
+                        }
+
+                        // Medición usando la tipografía Heuristica real del sitio
+                        const safeTitle = processLongWords(proj.title || 'Sin Título', 'bold 28px Heuristica', cardWidth);
+                        const safeSummary = processLongWords(summary, '16px Heuristica', cardWidth);
+
+                        card.innerHTML = `
+                            <img src="${proj.image || ''}" alt="${proj.title || ''}" loading="lazy" />
+                            <div class="projects-card-content">
+                                <p class="date">${proj.displayDate || ''}</p>
+                                <h4>${safeTitle}</h4>
+                                <p>${safeSummary}</p>
+                            </div>
+                        `;
+                        projectsContainer.appendChild(card);
+                    });
+                };
+
+                const showNextBatch = () => {
+                    const nextBatch = filteredProjects.slice(currentVisibleCount, currentVisibleCount + LOAD_MORE_INCREMENT);
+                    renderProjects(nextBatch);
+                    currentVisibleCount += nextBatch.length;
+
+                    if (currentVisibleCount >= filteredProjects.length) {
+                        loadMoreContainer.style.display = 'none';
+                    } else {
+                        loadMoreContainer.style.display = 'block';
+                    }
+                };
+
+                // Lógica de Filtrado
+                const applyFilters = () => {
+                    const searchTerm = searchInput.value.trim();
+                    const selectedMonth = monthSelect.value;
+                    const selectedYear = yearSelect.value;
+
+                    // Mostrar/Ocultar Cruz según si hay texto
+                    if (clearSearchBtn) {
+                        if (searchTerm.length > 0) {
+                            clearSearchBtn.style.display = 'block';
+                        } else {
+                            clearSearchBtn.style.display = 'none';
+                        }
+                    }
+
+                    filteredProjects = allProjects.filter(proj => {
+                        const matchesSearch = matchesFuzzy(proj, searchTerm);
+                        
+                        const date = proj.date || '0000-00-00';
+                        const dateParts = date.split('-'); // [YYYY, MM, DD]
+                        const projYear = dateParts[0];
+                        const projMonth = dateParts[1];
+
+                        const matchesMonth = selectedMonth === 'all' || projMonth === selectedMonth;
+                        const matchesYear = selectedYear === 'all' || projYear === selectedYear;
+
+                        return matchesSearch && matchesMonth && matchesYear;
+                    });
+
+                    // Reiniciar vista
+                    projectsContainer.innerHTML = '';
+                    currentVisibleCount = 0;
+
+                    if (filteredProjects.length === 0) {
+                        projectsContainer.innerHTML = '<div class="no-results-msg">No se encontraron proyectos con estos criterios.</div>';
+                        if (loadMoreContainer) loadMoreContainer.style.display = 'none';
+                    } else {
+                        const initialBatch = filteredProjects.slice(0, INITIAL_LIMIT);
+                        renderProjects(initialBatch);
+                        currentVisibleCount = initialBatch.length;
+
+                        if (loadMoreContainer) {
+                            if (filteredProjects.length > INITIAL_LIMIT) {
+                                loadMoreContainer.style.display = 'block';
+                            } else {
+                                loadMoreContainer.style.display = 'none';
+                            }
+                        }
+                    }
+                };
+
+                // Lógica para la cruz de borrado
+                if (clearSearchBtn) {
+                    clearSearchBtn.addEventListener('click', () => {
+                        searchInput.value = ''; // Borrar texto
+                        clearSearchBtn.style.display = 'none'; // Ocultar cruz
+                        applyFilters(); // Re-aplicar filtros (mostrar todo)
+                        searchInput.focus(); // Devolver foco al input
+                    });
+                }
+
+                // --- Inicialización de Listas Desplegables Personalizadas ---
+                const initCustomSelect = (selectId) => {
+                    const select = document.getElementById(selectId);
+                    if (!select) return;
+
+                    // Ocultar select original
+                    select.style.display = 'none';
+
+                    // Evitar duplicados
+                    let wrapper = document.getElementById(`custom-wrapper-${selectId}`);
+                    if (wrapper) {
+                        wrapper.remove();
+                    }
+
+                    wrapper = document.createElement('div');
+                    wrapper.id = `custom-wrapper-${selectId}`;
+                    wrapper.className = 'custom-select-wrapper';
+
+                    const trigger = document.createElement('div');
+                    trigger.className = 'custom-select-trigger';
+                    
+                    const triggerText = document.createElement('span');
+                    triggerText.textContent = select.options[select.selectedIndex]?.text || '';
+                    trigger.appendChild(triggerText);
+
+                    const icon = document.createElement('i');
+                    icon.className = 'fas fa-chevron-down';
+                    trigger.appendChild(icon);
+
+                    const optionsContainer = document.createElement('div');
+                    optionsContainer.className = 'custom-select-options';
+
+                    const updateOptions = () => {
+                        optionsContainer.innerHTML = '';
+                        Array.from(select.options).forEach((opt) => {
+                            const optionDiv = document.createElement('div');
+                            optionDiv.className = 'custom-select-option';
+                            if (opt.selected) {
+                                optionDiv.classList.add('selected');
+                            }
+                            optionDiv.textContent = opt.text;
+                            optionDiv.dataset.value = opt.value;
+
+                            optionDiv.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                
+                                optionsContainer.querySelectorAll('.custom-select-option').forEach(el => el.classList.remove('selected'));
+                                optionDiv.classList.add('selected');
+
+                                triggerText.textContent = opt.text;
+                                select.value = opt.value;
+                                
+                                select.dispatchEvent(new Event('change'));
+                                wrapper.classList.remove('active');
+                            });
+
+                            optionsContainer.appendChild(optionDiv);
+                        });
+                    };
+
+                    updateOptions();
+
+                    trigger.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        document.querySelectorAll('.custom-select-wrapper').forEach(w => {
+                            if (w !== wrapper) w.classList.remove('active');
+                        });
+                        wrapper.classList.toggle('active');
+                    });
+
+                    wrapper.appendChild(trigger);
+                    wrapper.appendChild(optionsContainer);
+                    
+                    select.parentNode.insertBefore(wrapper, select.nextSibling);
+
+                    select.rebuildCustomSelect = updateOptions;
+                    select.updateTriggerText = () => {
+                        triggerText.textContent = select.options[select.selectedIndex]?.text || '';
+                    };
+                };
+
+                // Registrar cierre al hacer clic afuera
+                document.addEventListener('click', () => {
+                    document.querySelectorAll('.custom-select-wrapper').forEach(w => w.classList.remove('active'));
+                });
+
+                // Inicializar dropdowns iniciales
+                initCustomSelect('month-select');
+                initCustomSelect('year-select');
+
+                const populateYearSelect = (projects) => {
+                    const years = new Set();
+                    projects.forEach(proj => {
+                        const date = proj.date || '';
+                        const year = date.split('-')[0];
+                        if (year) years.add(year);
+                    });
+                    
+                    const sortedYears = Array.from(years).sort((a, b) => b - a);
+
+                    sortedYears.forEach(year => {
+                        const option = document.createElement('option');
+                        option.value = year;
+                        option.textContent = year;
+                        if (yearSelect) yearSelect.appendChild(option);
+                    });
+                };
+
+                fetch('templates/data/index-proyectos.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            console.error('Error: No se pudo cargar el archivo templates/data/index-proyectos.json');
+                            throw new Error("No se encontró el índice de proyectos");
+                        }
+                        return response.json();
+                    })
+                    .then(projects => {
+                        allProjects = projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        filteredProjects = [...allProjects];
+                        populateYearSelect(allProjects);
+                        
+                        // Sincronizar el dropdown personalizado de años una vez cargados los datos
+                        if (yearSelect && yearSelect.rebuildCustomSelect) {
+                            yearSelect.rebuildCustomSelect();
+                        }
+                        
+                        projectsContainer.innerHTML = '';
+                        applyFilters(); 
+
+                        if (searchInput) searchInput.addEventListener('input', debounce(applyFilters, 250));
+                        if (monthSelect) monthSelect.addEventListener('change', applyFilters);
+                        if (yearSelect) yearSelect.addEventListener('change', applyFilters);
+                        if (loadMoreBtn) loadMoreBtn.addEventListener('click', showNextBatch);
+                    })
+                    .catch(error => {
+                        console.error('Error detallado en la carga de proyectos:', error);
+                    });
+
+                // 2. Click en párrafo Hero
+                const heroPara = document.querySelector('.hero-content p');
+                if (heroPara) {
+                    heroPara.addEventListener('click', () => {
+                        const targetSection = document.querySelector('.news-page-section');
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                }
+
+                // 3. TRANSICIÓN ENTRE PÁGINAS (Enlaces)
                 const links = document.querySelectorAll('a');
                 links.forEach((link) => {
                     link.addEventListener('click', function (e) {
                         const href = this.getAttribute('href');
-                        if (href && !href.startsWith('#') && !link.onclick && !href.includes('mailto:') && !href.includes('tel:') && this.getAttribute('target') !== '_blank') {
+                        if (
+                            href &&
+                            !href.startsWith('#') &&
+                            !link.onclick &&
+                            !href.includes('mailto:') &&
+                            !href.includes('tel:') &&
+                            this.getAttribute('target') !== '_blank'
+                        ) {
                             // Ignorar si el usuario presionó una tecla de modificación para abrir en nueva pestaña
                             if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;
 
@@ -2471,314 +2043,19 @@
                         }
                     });
                 });
-            });
 
-            // ==============================================
-            //  LÓGICA CARRUSEL "STYLE INSM" (Infinito)
-            // ==============================================
-            document.addEventListener('DOMContentLoaded', () => {
-                const track = document.getElementById('staffTrack');
-                const btnPrev = document.getElementById('btnPrevStaff');
-                const btnNext = document.getElementById('btnNextStaff');
-                const btnPause = document.getElementById('btnPauseStaff');
-
-                const infoBox = document.getElementById('staffInfoBox');
-                const activeName = document.getElementById('staffActiveName');
-                const activeRole = document.getElementById('staffActiveRole');
-
-                if (!track) return;
-
-                const originalItems = Array.from(document.querySelectorAll('.staff-carousel-item'));
-                if (originalItems.length === 0) return;
-
-                // Propiedades Dinámicas (Leídas de CSS)
-                let itemWidth, itemGap, activeItemWidth, step;
-
-                const updateDimensions = () => {
-                    const style = getComputedStyle(document.documentElement);
-                    itemWidth = parseFloat(style.getPropertyValue('--staff-item-w'));
-                    itemGap = parseFloat(style.getPropertyValue('--staff-gap'));
-                    activeItemWidth = parseFloat(style.getPropertyValue('--staff-active-w'));
-                    step = itemWidth + itemGap;
-                };
-
-                updateDimensions();
-
-                // Clones para infinito
-                originalItems.forEach(item => {
-                    const clone = item.cloneNode(true);
-                    clone.classList.add('clone');
-                    clone.removeAttribute('id'); 
-                    track.appendChild(clone);
-                });
-                originalItems.slice().reverse().forEach(item => {
-                    const clone = item.cloneNode(true);
-                    clone.classList.add('clone');
-                    clone.removeAttribute('id');
-                    track.insertBefore(clone, track.firstChild);
-                });
-
-                let allItems = Array.from(document.querySelectorAll('.staff-carousel-item'));
-                const totalOriginals = originalItems.length;
-                
-                let currentIndex = totalOriginals; 
-                let isNavigating = false;
-                let autoPlayInterval;
-                let isPlaying = true;
-
-                // Función para obtener Offset según dispositivo
-                const getOffset = () => {
-                    if (window.innerWidth <= 1024) {
-                        // Modo Móvil/Tablet: Centrado Absoluto
-                        const viewport = document.querySelector('.staff-carousel-viewport');
-                        const vw = viewport.clientWidth;
-                        // Centrar el Item Activo (320px)
-                        return (vw / 2) - (activeItemWidth / 2);
-                    } else {
-                        // Modo Desktop: Padding CSS controla el inicio (0 offset extra JS)
-                        return 0;
-                    }
-                };
-
-                const updateCarousel = () => {
-                    const currentItem = allItems[currentIndex];
-                    const offset = getOffset();
-                    
-                    // Cálculo de posición
-                    // Desktop: 0 - index * step (Padding CSS 60px lo empuja)
-                    // Mobile: CenterOffset - index * step (Padding CSS 0)
-                    track.style.transform = `translateX(${offset - (currentIndex * step)}px)`;
-
-                    allItems.forEach(i => i.classList.remove('active'));
-                    if(currentItem) currentItem.classList.add('active');
-
-                    if (currentItem) {
-                        infoBox.style.opacity = '0';
-                        setTimeout(() => {
-                            activeName.textContent = currentItem.dataset.name;
-                            activeRole.innerHTML = currentItem.dataset.role;
-                            infoBox.style.opacity = '1';
-                        }, 200);
-                    }
-                };
-
-                // Inicializar
-                updateCarousel();
-
-                // Listener Resize para ajustar centrado en móvil
-                window.addEventListener('resize', () => {
-                    track.classList.add('notransition');
-                    updateDimensions();
-                    updateCarousel();
-                    track.offsetHeight;
-                    track.classList.remove('notransition');
-                });
-
-                const nextSlide = () => {
-                    if (isNavigating) return;
-                    isNavigating = true;
-                    setTimeout(() => isNavigating = false, 600);
-
-                    currentIndex++;
-                    updateCarousel();
-                };
-
-                const prevSlide = () => {
-                    if (isNavigating) return;
-                    isNavigating = true;
-                    setTimeout(() => isNavigating = false, 600);
-
-                    currentIndex--;
-                    updateCarousel();
-                };
-
-                track.addEventListener('transitionend', (e) => {
-                    if (e.target !== track || e.propertyName !== 'transform') return;
-                    
-                    let snap = false;
-                    let nextIndex = currentIndex;
-                    if (currentIndex >= totalOriginals * 2) {
-                        nextIndex = currentIndex - totalOriginals;
-                        snap = true;
-                    } else if (currentIndex < totalOriginals) {
-                        nextIndex = currentIndex + totalOriginals;
-                        snap = true;
-                    }
-                    if (snap) {
-                        track.classList.add('notransition');
-                        currentIndex = nextIndex;
-                        updateCarousel();
-                        void track.offsetWidth;
-                        track.classList.remove('notransition');
-                    }
-                });
-
-                btnNext.addEventListener('click', () => {
-                    nextSlide();
-                    if(isPlaying) resetTimer();
-                });
-
-                btnPrev.addEventListener('click', () => {
-                    prevSlide();
-                    if(isPlaying) resetTimer();
-                });
-
-                btnPause.addEventListener('click', () => {
-                    const icon = btnPause.querySelector('i');
-                    if(isPlaying) {
-                        clearInterval(autoPlayInterval);
-                        isPlaying = false;
-                        icon.classList.remove('fa-pause');
-                        icon.classList.add('fa-play');
-                    } else {
-                        startTimer();
-                        isPlaying = true;
-                        icon.classList.remove('fa-play');
-                        icon.classList.add('fa-pause');
-                    }
-                });
-
-                const startTimer = () => {
-                    clearInterval(autoPlayInterval);
-                    autoPlayInterval = setInterval(nextSlide, 4000);
-                };
-
-                const resetTimer = () => {
-                    clearInterval(autoPlayInterval);
-                    startTimer();
-                };
-
-                const viewport = document.getElementById('staffViewport');
-                let startPos = 0;
-                let isDragging = false;
-                let wasDragged = false; // Bandera para evitar clics accidentales
-
-                allItems.forEach((item) => {
-                    item.style.cursor = 'pointer';
-                    item.addEventListener('click', () => {
-                        // Si el mouse se soltó después de un arrastre, no hacer nada
-                        if (wasDragged) {
-                            wasDragged = false;
-                            return;
-                        }
-
-                        if (isNavigating) return;
-                        
-                        const clickedIndex = allItems.indexOf(item);
-                        if (clickedIndex !== currentIndex) {
-                            isNavigating = true;
-                            setTimeout(() => isNavigating = false, 600);
-
-                            currentIndex = clickedIndex;
-                            updateCarousel();
-                            if(isPlaying) resetTimer();
-                        }
-                    });
-                });
-
-                if (viewport) {
-                    viewport.addEventListener('mousedown', (e) => {
-                        // Solo permitir arrastre si comienza sobre una imagen
-                        if (e.target.tagName !== 'IMG') return;
-
-                        startPos = e.clientX;
-                        isDragging = true;
-                        wasDragged = false;
-                        viewport.style.cursor = 'grabbing';
-                    });
-                    
-                    window.addEventListener('mouseup', (e) => {
-                        if(!isDragging) return;
-                        isDragging = false;
-                        if (viewport) viewport.style.cursor = 'default';
-                        
-                        const diff = e.clientX - startPos;
-                        
-                        // Si hubo movimiento real, marcamos como arrastrado
-                        if (Math.abs(diff) > 10) {
-                            wasDragged = true;
-                        }
-
-                        if (diff < -40) { 
-                            nextSlide();
-                            if(isPlaying) resetTimer();
-                        } else if (diff > 40) { 
-                            prevSlide();
-                            if(isPlaying) resetTimer();
-                        }
-                    });
-
-                    viewport.addEventListener('touchstart', (e) => {
-                        startPos = e.touches[0].clientX;
-                    }, {passive: true});
-
-                    viewport.addEventListener('touchend', (e) => {
-                        const diff = e.changedTouches[0].clientX - startPos;
-                        if (diff < -40) {
-                            nextSlide();
-                            if(isPlaying) resetTimer();
-                        } else if (diff > 40) {
-                            prevSlide();
-                            if(isPlaying) resetTimer();
-                        }
-                    });
-                }
-
-                allItems[currentIndex].classList.add('active');
-                startTimer();
-            });
-
-            // --- Lógica de Selección Táctil para Tarjetas (Móvil/Tablet) ---
-            document.addEventListener('DOMContentLoaded', () => {
-                const isMobileView = () => window.innerWidth <= 1024 || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-                if (!isMobileView()) return;
-
-                const cardSelectors = '.uniform-card';
-                const allCards = document.querySelectorAll(cardSelectors);
-                let deselectTimeout = null;
-
-                const clearDeselectTimer = () => {
-                    if (deselectTimeout) {
-                        clearTimeout(deselectTimeout);
-                        deselectTimeout = null;
-                    }
-                };
-
-                document.addEventListener('click', (e) => {
-                    const card = e.target.closest(cardSelectors);
-                    
-                    if (!card) {
-                        allCards.forEach(c => c.classList.remove('touch-active'));
-                        clearDeselectTimer();
-                        return;
-                    }
-
-                    allCards.forEach(c => {
-                        if (c !== card) c.classList.remove('touch-active');
-                    });
-                    
-                    const wasActive = card.classList.contains('touch-active');
-                    clearDeselectTimer();
-
-                    if (!wasActive) {
-                        card.classList.add('touch-active');
-                        // Auto deseleccionar después de 3 segundos (3000ms)
-                        deselectTimeout = setTimeout(() => {
-                            card.classList.remove('touch-active');
-                        }, 3000);
-                    } else {
-                        card.classList.remove('touch-active');
-                    }
-                });
-
-                // Prevenir el arrastre predeterminado (Ghost Images) en TODAS las imágenes y tarjetas
+                // Prevenir el arrastre predeterminado
                 document.addEventListener('dragstart', (e) => {
-                    if (e.target.tagName === 'IMG' || e.target.closest('.card-specialty, .uniform-card, .staff-carousel-item')) {
+                    if (e.target.tagName === 'IMG' || e.target.closest('.projects-card')) {
                         e.preventDefault();
                     }
                 });
             });
+
+            function toggleMenu() {
+                const menu = document.getElementById('dropdownMenu');
+                if (menu) menu.classList.toggle('show');
+            }
         </script>
     </body>
 </html>
