@@ -345,6 +345,69 @@
             }
             .director-signature { font-size: 1.1em; font-weight: bold; margin-top: 15px; display: block;}
 
+            /* --- Estilo: Bienvenida a dos voces (Directora + Vicedirectora) --- */
+            .director-duo-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+                margin-top: 28px;
+            }
+            .director-duo-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                background-color: #fff;
+                border: 1px solid #e0e0e0;
+                border-radius: 12px;
+                padding: 30px 25px;
+                box-sizing: border-box;
+                transition: all 0.3s ease;
+            }
+            .director-duo-item:hover {
+                border-color: #cf0621;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+                transform: translateY(-5px);
+            }
+            .director-duo-image {
+                width: 160px;
+                height: 160px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 4px solid #f39c12;
+                margin-bottom: 18px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            }
+            .director-duo-item p {
+                font-family: 'ProximaNova', sans-serif;
+                line-height: 1.7;
+                color: #555;
+                font-style: italic;
+                margin: 0 0 15px 0;
+            }
+            .director-duo-name {
+                font-family: 'Heuristica', serif;
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #cf0621;
+                display: block;
+            }
+            .director-duo-role {
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.85em;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #999;
+                display: block;
+                margin-top: 3px;
+            }
+            @media (max-width: 768px) {
+                .director-duo-grid {
+                    grid-template-columns: 1fr;
+                    gap: 25px;
+                }
+            }
+
             /* --- NUEVO ESTILO: Especialidades (Tarjetas Dark Style - Minimalista Blanco) --- */
 
             /* Párrafo introductorio */
@@ -1307,6 +1370,236 @@
                 }
             }
 
+            /* --- Estilo: Propuesta Pedagógica --- */
+            .content-subheading {
+                font-family: 'Heuristica', serif;
+                font-size: 1.5em;
+                color: #1a4f8d;
+                font-weight: normal;
+                margin: 10px 0 18px 0;
+            }
+
+            .history-banner {
+                display: flex;
+                align-items: center;
+                gap: 35px;
+                background-color: #f4f6f8;
+                border-radius: 10px;
+                padding: 35px 40px;
+                margin: 10px 0 40px 0;
+                box-sizing: border-box;
+            }
+            .history-number {
+                font-family: 'Heuristica', serif;
+                font-size: 3.5em;
+                font-weight: bold;
+                color: #f39c12;
+                flex: 0 0 auto;
+                line-height: 1;
+            }
+            .history-text p {
+                font-family: 'ProximaNova', sans-serif;
+                color: #555;
+                line-height: 1.8;
+                margin: 0;
+            }
+            @media (max-width: 700px) {
+                .history-banner { flex-direction: column; text-align: center; gap: 15px; padding: 30px 25px; }
+            }
+
+            .offer-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                width: 100%;
+            }
+            .offer-card {
+                background-color: #fff;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                padding: 30px 25px;
+                text-align: center;
+                transition: all 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                flex: 0 0 calc((100% - 40px) / 3);
+                box-sizing: border-box;
+            }
+            .offer-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                border-color: #cf0621;
+            }
+            .offer-card i {
+                width: 70px;
+                height: 70px;
+                background-color: #f39c12;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.9em;
+                color: #fff;
+                transition: all 0.3s ease;
+            }
+            .offer-card:hover i {
+                background-color: #cf0621;
+                transform: scale(1.1);
+            }
+            .offer-card h3 {
+                font-family: 'ProximaNova', sans-serif;
+                font-weight: bold;
+                color: #555;
+                font-size: 1.15em;
+                margin: 0;
+            }
+            .offer-card p {
+                font-family: 'ProximaNova', sans-serif;
+                color: #6b6b6b;
+                font-size: 0.95em;
+                line-height: 1.6;
+                margin: 0;
+            }
+            @media (max-width: 900px) {
+                .offer-card { flex: 0 0 calc((100% - 20px) / 2); }
+            }
+            @media (max-width: 600px) {
+                .offer-card { flex: 0 0 100%; }
+            }
+
+            /* --- Estilo: Nuestras Divisiones (Grados y Turnos) --- */
+            .division-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px;
+                width: 100%;
+            }
+            .division-card {
+                background-color: #fff;
+                border: 1px solid #e0e0e0;
+                border-radius: 10px;
+                flex: 0 0 calc((100% - 54px) / 4);
+                box-sizing: border-box;
+                padding: 22px 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                text-align: center;
+                gap: 6px;
+                transition: all 0.3s ease;
+                min-height: 150px;
+            }
+            .division-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+                border-color: #cf0621;
+            }
+            .division-card.touch-active {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+                border-color: #cf0621;
+            }
+            .division-grade {
+                font-family: 'Heuristica', serif;
+                font-size: 1.5em;
+                color: #333;
+                margin: 0;
+                line-height: 1.2;
+            }
+            .division-turno {
+                display: inline-block;
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.7em;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding: 3px 12px;
+                border-radius: 20px;
+                color: #fff;
+                margin: 2px 0 8px 0;
+                white-space: nowrap;
+            }
+            .division-turno.manana { background-color: #f39c12; }
+            .division-turno.tarde { background-color: #1a4f8d; }
+            .division-docente {
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.92em;
+                color: #6b6b6b;
+                margin: 0;
+                line-height: 1.4;
+                word-wrap: break-word;
+            }
+            @media (max-width: 1024px) {
+                .division-card { flex: 0 0 calc((100% - 36px) / 3); }
+            }
+            @media (max-width: 700px) {
+                .division-card { flex: 0 0 calc((100% - 18px) / 2); }
+            }
+            @media (max-width: 420px) {
+                .division-card { flex: 0 0 100%; }
+            }
+
+            /* --- Estilo: Horarios --- */
+            .schedule-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                width: 100%;
+                margin-top: 30px;
+            }
+            .schedule-card {
+                background-color: #fff;
+                border: 1px solid #e0e0e0;
+                border-radius: 10px;
+                flex: 0 0 calc((100% - 20px) / 2);
+                box-sizing: border-box;
+                padding: 25px 20px;
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                transition: all 0.3s ease;
+            }
+            .schedule-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+                border-color: #cf0621;
+            }
+            .schedule-card i {
+                width: 60px;
+                height: 60px;
+                min-width: 60px;
+                background-color: #f39c12;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.6em;
+                color: #fff;
+            }
+            .schedule-card.tarde i { background-color: #1a4f8d; }
+            .schedule-card h3 {
+                font-family: 'Heuristica', serif;
+                font-size: 1.3em;
+                color: #333;
+                margin: 0 0 4px 0;
+                font-weight: normal;
+            }
+            .schedule-card p {
+                font-family: 'ProximaNova', sans-serif;
+                color: #6b6b6b;
+                margin: 0;
+                font-size: 1.05em;
+            }
+            @media (max-width: 700px) {
+                .schedule-card { flex: 0 0 100%; }
+            }
+
             /* --- Estilo: Nuestro Personal (Refined Strip Carousel) --- */
             .staff-carousel-track.notransition,
             .staff-carousel-track.notransition .staff-carousel-item {
@@ -1872,55 +2165,192 @@
                     <div class="main-text">
                         
                         <div class="content-block">
-                            <h2>Bienvenida de la Directora</h2>
-                            <div class="director-section">
-                                <div class="director-text">
-                                    <p class="specialties-intro">
-                                        El Nivel Secundario en nuestro colegio es un tiempo emocionante y enriquecedor,
-                                        lleno de diversión. Nuestros maestros trabajan arduamente para inspirar a los
-                                        niños y despertar su curiosidad, creatividad e imaginación. A medida que avanzan,
-                                        los alumnos comienzan a hacer que las cosas sucedan por sí mismos y se deleitan
-                                        con las oportunidades de ser aventureros.
-                                    </p>
-                                    <p class="specialties-intro">
-                                        Ayudamos a nuestros alumnos a convertirse en jóvenes innovadores, dinámicos,
-                                        flexibles y resilientes, equipados para los desafíos del siglo XXI. Una visita a
-                                        nuestro sitio web le proporcionará una gran cantidad de información, pero venga a
-                                        visitarnos en persona para conocernos mejor y satisfacer sus necesidades.
-                                    </p>
-                                    <p class="director-signature">
-                                        <strong>Marisa Brisio</strong>
+                            <h2>Una escuela donde aprender también es crecer 💙</h2>
+                            <p class="specialties-intro">
+                                En nuestra escuela acompañamos a cada niño en una etapa fundamental de su vida,
+                                brindándole una educación que combina excelencia académica, acompañamiento cercano,
+                                valores y formación integral. Porque cada niño es único, buscamos que pueda aprender,
+                                descubrir sus capacidades, desarrollar autonomía y crecer en confianza, acompañado
+                                por docentes y familias.
+                            </p>
+
+                            <div class="director-duo-grid">
+                                <div class="director-duo-item">
+                                    <img
+                                        src="img/usuario_default.png"
+                                        alt="Roxana Calleri, Directora del Nivel Primario"
+                                        class="director-duo-image"
+                                    />
+                                    <p>"Queremos que cada niño encuentre en nuestra escuela un lugar donde aprender, descubrir, compartir y sentirse acompañado."</p>
+                                    <span class="director-duo-name">Roxana Calleri</span>
+                                    <span class="director-duo-role">Directora</span>
+                                </div>
+                                <div class="director-duo-item">
+                                    <img
+                                        src="img/usuario_default.png"
+                                        alt="Claudia Bertinotti, Vicedirectora del Nivel Primario"
+                                        class="director-duo-image"
+                                    />
+                                    <p>"Los esperamos para conocer nuestra propuesta y descubrir juntos todo lo que podemos construir en comunidad."</p>
+                                    <span class="director-duo-name">Claudia Bertinotti</span>
+                                    <span class="director-duo-role">Vicedirectora</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="propuesta" class="content-block">
+                            <h2>Nuestra Propuesta Pedagógica</h2>
+                            <p class="specialties-intro">
+                                Buscamos desarrollar capacidades, habilidades, actitudes y valores para la formación
+                                integral de todos los estudiantes, junto con competencias fundamentales para su
+                                desenvolvimiento y participación en la sociedad y en la vida. Trabajamos en equipo
+                                junto a todos los miembros de la comunidad educativa, asumiendo nuestro compromiso
+                                con la liberación y alimentando día a día nuestro carisma mercedario.
+                            </p>
+
+                            <h3 class="content-subheading">¿Qué queremos que nuestros alumnos se lleven de la escuela?</h3>
+                            <ul class="requirements-list" style="margin-bottom: 40px;">
+                                <li>Que aprendan a pensar.</li>
+                                <li>Que tengan confianza en sí mismos.</li>
+                                <li>Que descubran lo que son capaces de hacer.</li>
+                                <li>Que aprendan a convivir.</li>
+                                <li>Que sean solidarios.</li>
+                                <li>Y que puedan crecer con valores que los acompañen toda la vida.</li>
+                            </ul>
+
+                            <div class="history-banner">
+                                <div class="history-number">+100</div>
+                                <div class="history-text">
+                                    <h3 class="content-subheading" style="margin-top: 0;">Más de 100 años educando</h3>
+                                    <p>
+                                        Nuestra escuela tiene una historia que nos identifica y un compromiso que se
+                                        renueva cada día. Desde hace más de 100 años formamos niños y jóvenes desde
+                                        una educación que integra lo académico, lo emocional, lo espiritual y lo
+                                        social. Hoy seguimos construyendo esa historia, mirando hacia el futuro y
+                                        acompañando a cada nueva generación.
                                     </p>
                                 </div>
-                                <img
-                                    src="img/usuario_default.png"
-                                    alt="Foto del Director de Nivel Secundario"
-                                    class="director-image"
-                                />
+                            </div>
+
+                            <h3 class="content-subheading">¿Qué ofrecemos?</h3>
+                            <div class="offer-grid">
+                                <div class="offer-card">
+                                    <i class="fas fa-hands-helping"></i>
+                                    <h3>Acompañamiento personalizado</h3>
+                                    <p>Respetamos los tiempos y las formas de aprender de cada niño.</p>
+                                </div>
+                                <div class="offer-card">
+                                    <i class="fas fa-book-open"></i>
+                                    <h3>Propuesta académica integral</h3>
+                                    <p>Matemática, Lengua, Ciencias, Inglés, Computación, Educación Física, Artes Visuales, ESI, ERE y Música.</p>
+                                </div>
+                                <div class="offer-card">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <h3>Aprender haciendo</h3>
+                                    <p>Proyectos, experiencias, jornadas y propuestas que despiertan la curiosidad, la creatividad y el pensamiento crítico.</p>
+                                </div>
+                                <div class="offer-card">
+                                    <i class="fas fa-people-carry"></i>
+                                    <h3>Familia y escuela, un mismo equipo</h3>
+                                    <p>Construimos un vínculo cercano con las familias, porque creemos que acompañar juntos hace la diferencia.</p>
+                                </div>
+                                <div class="offer-card">
+                                    <i class="fas fa-heart"></i>
+                                    <h3>Educación en valores</h3>
+                                    <p>Promovemos el respeto, la solidaridad, la responsabilidad, el compromiso y el servicio, inspirados en el carisma mercedario.</p>
+                                </div>
+                                <div class="offer-card">
+                                    <i class="fas fa-home"></i>
+                                    <h3>Un ambiente que acompaña</h3>
+                                    <p>Un espacio cálido, seguro y estimulante donde los niños puedan expresarse, compartir, equivocarse, aprender y crecer.</p>
+                                </div>
                             </div>
                         </div>
 
                         <div id="especialidades" class="content-block">
-                            <h2>Nuestras Especialidades</h2>
+                            <h2>Nuestras Divisiones</h2>
                             <p class="specialties-intro">
-                                El ciclo orientado permite a los estudiantes profundizar en áreas específicas,
-                                desarrollando competencias clave para su futuro universitario y profesional.
+                                El Nivel Primario cuenta con 6 aulas en las que funcionan dos divisiones de cada
+                                grado: "A" en el turno mañana y "B" en el turno tarde, sumando un total de 12
+                                divisiones acompañadas cada una por su docente titular.
                             </p>
 
-                            <div class="specialties-showcase">
-                                <div class="card-specialty card-bg-informatica">
-                                    <div class="card-specialty-content">
-                                        <h3>Informática</h3>
-                                        <p>Programación, Robótica y Desarrollo de Software para el mundo digital.</p>
-                                        <a href="info/Plan de Estudios - Informática.pdf" target="_blank" class="view-more-btn">Ver Plan</a>
+                            <div class="division-grid">
+                                <div class="division-card">
+                                    <h3 class="division-grade">1° Grado A</h3>
+                                    <span class="division-turno manana">Mañana</span>
+                                    <p class="division-docente">Seño Milagros Rodriguez</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">2° Grado A</h3>
+                                    <span class="division-turno manana">Mañana</span>
+                                    <p class="division-docente">Seño Eliana Emilio</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">3° Grado A</h3>
+                                    <span class="division-turno manana">Mañana</span>
+                                    <p class="division-docente">Seño Teresa Sosa</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">4° Grado A</h3>
+                                    <span class="division-turno manana">Mañana</span>
+                                    <p class="division-docente">Seño Lorena Sudano</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">5° Grado A</h3>
+                                    <span class="division-turno manana">Mañana</span>
+                                    <p class="division-docente">Seño Luciana Sueldo</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">6° Grado A</h3>
+                                    <span class="division-turno manana">Mañana</span>
+                                    <p class="division-docente">Seño Anahí Juan</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">1° Grado B</h3>
+                                    <span class="division-turno tarde">Tarde</span>
+                                    <p class="division-docente">Seño Belén Becchio</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">2° Grado B</h3>
+                                    <span class="division-turno tarde">Tarde</span>
+                                    <p class="division-docente">Seño Eliana Leiva</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">3° Grado B</h3>
+                                    <span class="division-turno tarde">Tarde</span>
+                                    <p class="division-docente">Seño Belén Ambrosino</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">4° Grado B</h3>
+                                    <span class="division-turno tarde">Tarde</span>
+                                    <p class="division-docente">Seño Ivana Favro</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">5° Grado B</h3>
+                                    <span class="division-turno tarde">Tarde</span>
+                                    <p class="division-docente">Seño Danisa Zurita (suplente)</p>
+                                </div>
+                                <div class="division-card">
+                                    <h3 class="division-grade">6° Grado B</h3>
+                                    <span class="division-turno tarde">Tarde</span>
+                                    <p class="division-docente">Seño Malena Davyd</p>
+                                </div>
+                            </div>
+
+                            <div class="schedule-grid">
+                                <div class="schedule-card manana">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h3>Turno Mañana</h3>
+                                        <p>7:45 hs a 12:00 hs</p>
                                     </div>
                                 </div>
-
-                                <div class="card-specialty card-bg-humanidades">
-                                    <div class="card-specialty-content">
-                                        <h3>Humanidades</h3>
-                                        <p>Ciencias Sociales, Comunicación y Ciudadanía con pensamiento crítico.</p>
-                                        <a href="info/Plan de Estudios - Ciencias Sociales y Humanidades..pdf" target="_blank" class="view-more-btn">Ver Plan</a>
+                                <div class="schedule-card tarde">
+                                    <i class="fas fa-moon"></i>
+                                    <div>
+                                        <h3>Turno Tarde</h3>
+                                        <p>13:30 hs a 17:45 hs</p>
                                     </div>
                                 </div>
                             </div>
@@ -1933,24 +2363,24 @@
                             </p>
                             <div class="curricular-grid">
                                 <div class="curricular-card">
-                                    <i class="fas fa-book"></i>
-                                    <h3>Lengua y Literatura</h3>
-                                </div>
-                                <div class="curricular-card">
                                     <i class="fas fa-calculator"></i>
                                     <h3>Matemática</h3>
                                 </div>
                                 <div class="curricular-card">
-                                    <i class="fas fa-flask"></i>
-                                    <h3>Ciencias Naturales</h3>
+                                    <i class="fas fa-book"></i>
+                                    <h3>Lengua</h3>
                                 </div>
                                 <div class="curricular-card">
-                                    <i class="fas fa-globe-americas"></i>
-                                    <h3>Ciencias Sociales</h3>
+                                    <i class="fas fa-flask"></i>
+                                    <h3>Ciencias</h3>
                                 </div>
                                 <div class="curricular-card">
                                     <i class="fas fa-language"></i>
                                     <h3>Inglés</h3>
+                                </div>
+                                <div class="curricular-card">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <h3>Computación</h3>
                                 </div>
                                 <div class="curricular-card">
                                     <i class="fas fa-running"></i>
@@ -1961,34 +2391,18 @@
                                     <h3>Artes Visuales</h3>
                                 </div>
                                 <div class="curricular-card">
+                                    <i class="fas fa-hands-helping"></i>
+                                    <h3>ESI</h3>
+                                </div>
+                                <div class="curricular-card">
+                                    <i class="fas fa-praying-hands"></i>
+                                    <h3>ERE</h3>
+                                </div>
+                                <div class="curricular-card">
                                     <i class="fas fa-music"></i>
                                     <h3>Música</h3>
                                 </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-laptop-code"></i>
-                                    <h3>Tecnologías</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-users"></i>
-                                    <h3>Religión y ESI</h3>
-                                </div>
-                                <div class="curricular-card">
-                                    <i class="fas fa-users"></i>
-                                    <h3>Religión y ESI</h3>
-                                </div>
                             </div>
-                        </div>
-
-                        <div id="ingles" class="content-block">
-                            <h2>Inglés por Niveles</h2>
-                            <p class="specialties-intro" style="margin-bottom: 15px;">
-                                Entendemos que cada estudiante tiene un ritmo de aprendizaje único. Por ello, nuestra escuela maneja un 
-                                <strong>sistema adaptativo para el inglés</strong>. 
-                            </p>
-                            <p class="specialties-intro">
-                                En lugar de clases tradicionales por año escolar, los alumnos son agrupados en cursos según su conocimiento 
-                                y manejo real de la lengua, permitiendo un avance más efectivo y personalizado.
-                            </p>
                         </div>
 
                         <div id="uniforme" class="content-block">
@@ -2000,14 +2414,14 @@
                                 <!-- Tarjeta Mujeres -->
                                 <div class="uniform-card">
                                     <i class="fas fa-female"></i>
-                                    <h3>Mujeres</h3>
+                                    <h3>Niñas</h3>
                                     <ul>
                                         <li>Pollera gris largo a la rodilla.</li>
-                                        <li>Remera de piqué con escudo bordado.</li>
-                                        <li>Pullover escote en V azul bordado.</li>
+                                        <li>Remera de piqué del colegio (escudo bordado), manga corta y/o larga.</li>
+                                        <li>Pullover escote en V azul con el escudo bordado.</li>
                                         <li>Abrigo azul (campera).</li>
-                                        <li>Zapatos negros o zapatillas lisas.</li>
-                                        <li>Cabello recogido (cinta azul).</li>
+                                        <li>Medias azules, zapatos negros o zapatillas negras o blancas.</li>
+                                        <li>Cabello recogido (colita o cinta azul).</li>
                                     </ul>
                                 </div>
 
@@ -2016,24 +2430,24 @@
                                     <i class="fas fa-male"></i>
                                     <h3>Varones</h3>
                                     <ul>
-                                        <li>Pantalón gris de vestir.</li>
-                                        <li>Remera de piqué con escudo bordado.</li>
-                                        <li>Pullover escote en V azul bordado.</li>
+                                        <li>Pantalón gris.</li>
+                                        <li>Remera de piqué del colegio (escudo bordado), manga corta y/o larga.</li>
+                                        <li>Pullover escote en V azul con el escudo bordado.</li>
                                         <li>Abrigo azul (campera).</li>
-                                        <li>Medias azules y zapatos negros.</li>
+                                        <li>Medias azules, zapatos negros o zapatillas negras o blancas.</li>
                                     </ul>
                                 </div>
 
                                 <!-- Tarjeta Gimnasia -->
                                 <div class="uniform-card">
                                     <i class="fas fa-running"></i>
-                                    <h3>Gimnasia</h3>
+                                    <h3>Gimnasia (niñas y niños)</h3>
                                     <ul>
                                         <li>Joggin gris (pantalón o bermuda).</li>
-                                        <li>Remera oficial del colegio.</li>
-                                        <li>Buzo gris con escudo.</li>
-                                        <li>Zapatillas deportivas.</li>
-                                        <li>Bolsa de higiene completa.</li>
+                                        <li>Remera del colegio.</li>
+                                        <li>Buzo gris.</li>
+                                        <li>Zapatillas negras o blancas.</li>
+                                        <li>Bolsa de higiene.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -2045,7 +2459,7 @@
                             <div class="staff-layout-grid">
                                 <div class="staff-left-panel">
                                     <div class="staff-active-info" id="staffInfoBox">
-                                        <h3 id="staffActiveName">Marisa Brisio</h3>
+                                        <h3 id="staffActiveName">Roxana Calleri</h3>
                                         <span id="staffActiveRole">Directora</span>
                                     </div>
                                     
@@ -2058,20 +2472,83 @@
 
                                 <div class="staff-carousel-viewport" id="staffViewport">
                                     <div class="staff-carousel-track" id="staffTrack">
-                                        <div class="staff-carousel-item" data-name="Marisa Brisio" data-role="Profesora de Matemáticas">
-                                            <img src="img/usuario_default.png" alt="Marisa Brisio" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Roxana Calleri" data-role="Directora">
+                                            <img src="img/usuario_default.png" alt="Roxana Calleri" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Adela" data-role="Secretaria">
-                                            <img src="img/usuario_default.png" alt="Adela" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Claudia Bertinotti" data-role="Vicedirectora">
+                                            <img src="img/usuario_default.png" alt="Claudia Bertinotti" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Prof. Juan Pérez" data-role="Coordinador de Curso">
-                                            <img src="img/usuario_default.png" alt="Prof. Juan Pérez" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Noelía Tomanek" data-role="Secretaria">
+                                            <img src="img/usuario_default.png" alt="Noelía Tomanek" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Lic. María García" data-role="Gabinete Psicopedagógico">
-                                            <img src="img/usuario_default.png" alt="Lic. María García" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Miriam Giordano" data-role="Tareas administrativas y docente titular de 5° grado">
+                                            <img src="img/usuario_default.png" alt="Miriam Giordano" class="staff-carousel-img">
                                         </div>
-                                        <div class="staff-carousel-item" data-name="Prof. Carlos López" data-role="Educación Física">
-                                            <img src="img/usuario_default.png" alt="Prof. Carlos López" class="staff-carousel-img">
+                                        <div class="staff-carousel-item" data-name="Milagros Rodriguez" data-role="1° Grado A - Turno Mañana">
+                                            <img src="img/usuario_default.png" alt="Milagros Rodriguez" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Eliana Emilio" data-role="2° Grado A - Turno Mañana">
+                                            <img src="img/usuario_default.png" alt="Eliana Emilio" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Teresa Sosa" data-role="3° Grado A - Turno Mañana">
+                                            <img src="img/usuario_default.png" alt="Teresa Sosa" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Lorena Sudano" data-role="4° Grado A - Turno Mañana">
+                                            <img src="img/usuario_default.png" alt="Lorena Sudano" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Luciana Sueldo" data-role="5° Grado A - Turno Mañana">
+                                            <img src="img/usuario_default.png" alt="Luciana Sueldo" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Anahí Juan" data-role="6° Grado A - Turno Mañana">
+                                            <img src="img/usuario_default.png" alt="Anahí Juan" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Belén Becchio" data-role="1° Grado B - Turno Tarde">
+                                            <img src="img/usuario_default.png" alt="Belén Becchio" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Eliana Leiva" data-role="2° Grado B - Turno Tarde">
+                                            <img src="img/usuario_default.png" alt="Eliana Leiva" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Belén Ambrosino" data-role="3° Grado B - Turno Tarde">
+                                            <img src="img/usuario_default.png" alt="Belén Ambrosino" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Ivana Favro" data-role="4° Grado B - Turno Tarde">
+                                            <img src="img/usuario_default.png" alt="Ivana Favro" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Danisa Zurita" data-role="5° Grado B - Turno Tarde (suplente)">
+                                            <img src="img/usuario_default.png" alt="Danisa Zurita" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Malena Davyd" data-role="6° Grado B - Turno Tarde">
+                                            <img src="img/usuario_default.png" alt="Malena Davyd" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Ivana Varas" data-role="Educación Física">
+                                            <img src="img/usuario_default.png" alt="Ivana Varas" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Federico Parmigiani" data-role="Educación Física">
+                                            <img src="img/usuario_default.png" alt="Federico Parmigiani" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Marianela Gerbaudo" data-role="Inglés">
+                                            <img src="img/usuario_default.png" alt="Marianela Gerbaudo" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Lourdes González" data-role="Inglés">
+                                            <img src="img/usuario_default.png" alt="Lourdes González" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Facundo Gil" data-role="Computación">
+                                            <img src="img/usuario_default.png" alt="Facundo Gil" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Florencia Squizzato" data-role="Computación">
+                                            <img src="img/usuario_default.png" alt="Florencia Squizzato" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Carmela Amuchástegui" data-role="Artes Visuales">
+                                            <img src="img/usuario_default.png" alt="Carmela Amuchástegui" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Erika Magliano" data-role="Artes Visuales">
+                                            <img src="img/usuario_default.png" alt="Erika Magliano" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Sonia Strumia" data-role="Música">
+                                            <img src="img/usuario_default.png" alt="Sonia Strumia" class="staff-carousel-img">
+                                        </div>
+                                        <div class="staff-carousel-item" data-name="Gonzalo Saravia" data-role="Música">
+                                            <img src="img/usuario_default.png" alt="Gonzalo Saravia" class="staff-carousel-img">
                                         </div>
                                     </div>
                                 </div>
@@ -2096,17 +2573,24 @@
                                 Promovemos un ambiente de respeto y armonía. Te invitamos a leer nuestros acuerdos de convivencia y la reglamentación escolar vigentes para el ciclo lectivo y la reglamentación escolar.
                             </p>
                             <div class="aec-buttons-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                                <a href="info/A. E. C. 2025.pdf" target="_blank" class="aec-btn">
+                                <a href="info/REGLAMENTO INTERNO -COLEGIO SANTA MARÍA DE CERVELLÓN- .pdf" target="_blank" class="aec-btn">
                                     <i class="fas fa-file-pdf"></i>
                                     <span>
-                                        AEC 2025
+                                        Reglamento Interno Primario
                                         <small>Descargar PDF</small>
                                     </span>
                                 </a>
-                                <a href="info/Acuerdos I. Sobre Evaluación 2025.pdf" target="_blank" class="aec-btn">
+                                <a href="info/IDERARIO EDUCATIVO-HERMANAS TERCERAS MERCEDARIAS DEL NIÑO JESÚS .pdf" target="_blank" class="aec-btn">
                                     <i class="fas fa-file-pdf"></i>
                                     <span>
-                                        Reglamentación
+                                        Ideario Educativo
+                                        <small>Descargar PDF</small>
+                                    </span>
+                                </a>
+                                <a href="info/ACUERDO ESCOLAR DE CONVIVENCIA (AEC).pdf" target="_blank" class="aec-btn">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>
+                                        Acuerdo Escolar de Convivencia
                                         <small>Descargar PDF</small>
                                     </span>
                                 </a>
@@ -2199,18 +2683,18 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#propuesta" onclick="toggleSideMenu()">
+                            <i class="fas fa-seedling"></i> Propuesta Pedagógica
+                        </a>
+                    </li>
+                    <li>
                         <a href="#especialidades" onclick="toggleSideMenu()">
-                            <i class="fas fa-graduation-cap"></i> Nuestras Especialidades
+                            <i class="fas fa-th-large"></i> Nuestras Divisiones
                         </a>
                     </li>
                     <li>
                         <a href="#areas-curriculares" onclick="toggleSideMenu()">
                             <i class="fas fa-book"></i> Áreas Curriculares
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#ingles" onclick="toggleSideMenu()">
-                            <i class="fas fa-language"></i> Inglés por Niveles
                         </a>
                     </li>
                     <li>
