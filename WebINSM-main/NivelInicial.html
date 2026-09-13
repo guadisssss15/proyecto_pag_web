@@ -1054,7 +1054,7 @@
                 max-width: 400px;
             }
             .footer-column h3 {
-                color: #fcb33f;
+                color: #f1a01e;
                 font-size: 1.4em;
                 margin-bottom: 25px;
                 position: relative;
@@ -1085,7 +1085,7 @@
             }
             @media (hover: hover) {
                 .footer-column ul li a:hover {
-                    color: #f39c12;
+                    color: #f1a01e;
                     text-decoration: none;
                 }
             }
@@ -1101,7 +1101,7 @@
             }
             @media (hover: hover) {
                 .contact-info a:hover {
-                    color: #fcb33f;
+                    color: #f1a01e;
                     text-decoration: none;
                 }
             }
@@ -1111,7 +1111,7 @@
                 margin-top: 25px;
             }
             .social-icons a {
-                color: #fcb33f;
+                color: #f1a01e;
                 font-size: 1.5em;
                 transition: all 0.3s ease;
                 display: inline-block; /* Ensure transform works */
@@ -1148,7 +1148,7 @@
             .get-directions a {
                 display: inline-block;
                 padding: 12px 25px;
-                border: 1px solid #f39c12;
+                border: 1px solid #f1a01e;
                 color: #fff;
                 text-decoration: none;
                 border-radius: 5px;
@@ -1159,8 +1159,8 @@
 
             @media (hover: hover) {
                 .get-directions a:hover {
-                    background-color: #f39c12;
-                    border-color: #f39c12;
+                    background-color: #f1a01e;
+                    border-color: #f1a01e;
                 }
             }
             .footer-bottom {
@@ -1237,7 +1237,7 @@
             .uniform-card i {
                 width: 80px;
                 height: 80px;
-                background-color: #f39c12;
+                background-color: #f1a01e;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -1325,7 +1325,7 @@
             }
             .curricular-card i {
                 font-size: 2em;
-                color: #f39c12;
+                color: #f1a01e;
                 transition: color 0.3s ease;
             }
             .curricular-card:hover i {
@@ -1372,149 +1372,90 @@
                 }
             }
 
-            /* --- Estilo: Nuestro Personal (Refined Strip Carousel) --- */
-            .staff-carousel-track.notransition,
-            .staff-carousel-track.notransition .staff-carousel-item {
-                transition: none !important;
-            }
-            
-            /* DESKTOP LAYOUT (Default / Original) */
-            .staff-layout-grid {
-                display: grid;
-                grid-template-columns: 35% 65%;
-                gap: 0; 
-                margin-top: -28px;
-                margin-bottom: -55px; /* Elimina el espacio vacío inferior para igualar separación entre secciones */
-                height: 650px; 
-                position: relative;
+            /* --- Estilo: Nuestro Personal (Grilla estática tipo tarjetas) --- */
+            .staff-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px;
                 width: 100%;
             }
 
-            .staff-left-panel {
-                padding: 40px 40px 40px 0px;
+            .staff-card {
+                background-color: #fff;
+                border: 1px solid #e0e0e0;
+                border-radius: 10px;
+                flex: 0 0 calc((100% - 54px) / 4);
+                box-sizing: border-box;
+                padding: 22px 16px;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                background: #ffffff;
-                z-index: 10;
+                align-items: center;
+                justify-content: flex-start;
+                text-align: center;
+                gap: 10px;
+                transition: all 0.3s ease;
+                min-height: 170px;
             }
 
-            .staff-active-info {
-                margin-bottom: 40px;
-                opacity: 1;
-                transition: opacity 0.3s ease;
+            .staff-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+                border-color: #cf0621;
             }
 
-            .staff-active-info h3 {
+            .staff-card h3 {
                 font-family: 'Heuristica', serif;
-                font-size: 3.2em;
-                color: #333;
-                margin: 0 0 15px 0;
-                line-height: 1.1;
+                font-size: 1.6em;
+                color: #cf0621;
+                margin: 0;
+                line-height: 1.2;
             }
 
-            .staff-active-info span {
+            .staff-badge {
+                display: inline-block;
                 font-family: 'ProximaNova', sans-serif;
-                font-size: 1.3em;
-                color: #f39c12;
+                font-size: 0.72em;
                 font-weight: bold;
                 text-transform: uppercase;
-                letter-spacing: 1px;
-                display: block;
-                position: relative;
-                padding-left: 15px;
-            }
-            .staff-active-info span::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 4px;
-                height: 100%;
-                background-color: #cf0621;
+                letter-spacing: 0.5px;
+                padding: 5px 16px;
+                border-radius: 999px;
+                color: #fff;
+                white-space: nowrap;
+                background-color: #f39c12;
             }
 
-            .staff-nav-controls {
-                display: flex;
-                gap: 15px;
+            .staff-badge.manana {
+                background-color: #f39c12;
             }
 
-            .staff-nav-btn {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background-color: #f0f0f0;
-                border: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                color: #333;
-                font-size: 1.1em;
+            .staff-badge.tarde {
+                background-color: #1a4f8d;
             }
 
-            @media (min-width: 1025px) {
-                .staff-nav-btn:hover {
-                    background-color: #cf0621;
-                    color: white;
-                }
+            .staff-badge.especialidad {
+                background-color: #2c7c7d;
             }
 
-            .staff-nav-btn i.fa-pause,
-            .staff-nav-btn i.fa-play {
-                font-size: 0.85em; /* Reduce el tamaño para que no se vea tan grueso */
-                opacity: 0.9;      /* Suaviza un poco el peso visual */
+            .staff-card p {
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.92em;
+                color: #6b6b6b;
+                margin: 0;
+                line-height: 1.4;
+                word-wrap: break-word;
             }
 
-            .staff-carousel-viewport {
-                height: 100%;
-                width: 100%;
-                overflow: hidden;
-                position: relative;
-                display: flex;
+            @media (max-width: 1024px) {
+                .staff-card { flex: 0 0 calc((100% - 36px) / 3); }
             }
-
-            .staff-carousel-track {
-                display: flex;
-                height: 100%; 
-                align-items: center;
-                transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-                will-change: transform;
-                padding-left: 60px; /* Padding Desktop Original */
+            @media (max-width: 700px) {
+                .staff-card { flex: 0 0 calc((100% - 18px) / 2); }
             }
-
-            .staff-carousel-item {
-                flex: 0 0 var(--staff-item-w); 
-                width: var(--staff-item-w);
-                height: var(--staff-item-h); 
-                margin-right: var(--staff-gap); /* FIXED GAP */
-                position: relative;
-                transition: all 0.5s ease;
-                opacity: 0.3; 
-                border-radius: 16px; 
-                overflow: hidden;
+            @media (max-width: 420px) {
+                .staff-card { flex: 0 0 100%; }
             }
-
-            .staff-carousel-item.active {
-                flex: 0 0 var(--staff-active-w);
-                width: var(--staff-active-w);
-                height: var(--staff-active-h);
-                margin-right: var(--staff-gap); /* FIXED GAP */
-                opacity: 1;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.2); 
-                z-index: 5;
-            }
-
-            .staff-carousel-img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 16px;
-            }
-
-            
 
             /* --- TABLET (Portrait & Landscape) --- */
             @media (min-width: 601px) and (max-width: 1366px) and (pointer: coarse) {
@@ -1958,7 +1899,7 @@
                                     </p>
                                 </div>
                                 <img
-                                    src="img/usuario_default.png"
+                                    src="img/Julia_Capellán_Inicial.png"
                                     alt="Foto de la Directora de Nivel Inicial"
                                     class="director-image"
                                 />
@@ -2095,54 +2036,57 @@
 
                         <div id="personal" class="content-block">
                             <h2>Nuestro Personal</h2>
-                            
-                            <div class="staff-layout-grid">
-                                <div class="staff-left-panel">
-                                    <div class="staff-active-info" id="staffInfoBox">
-                                        <h3 id="staffActiveName">MJulia Capellán</h3>
-                                        <span id="staffActiveRole">Directora</span>
-                                    </div>
-                                    
-                                    <div class="staff-nav-controls">
-                                        <button class="staff-nav-btn" id="btnPrevStaff"><i class="fas fa-arrow-left"></i></button>
-                                        <button class="staff-nav-btn" id="btnPauseStaff"><i class="fas fa-pause"></i></button>
-                                        <button class="staff-nav-btn" id="btnNextStaff"><i class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                </div>
 
-                                <div class="staff-carousel-viewport" id="staffViewport">
-                                    <div class="staff-carousel-track" id="staffTrack">
-                                          <div class="staff-carousel-item" data-name="Julia Capellán" data-role="Directora">
-                                            <img src="img/usuario_default.png" alt="Julia Capellán" class="staff-carousel-img">
-                                        </div>
-                                         <div class="staff-carousel-item" data-name="Noelía Tomanek" data-role="Secretaria">
-                                            <img src="img/usuario_default.png" alt="Noelía Tomanek" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Gimena Pitarelli" data-role="Señorita Sala de 3 turno mañana">
-                                            <img src="img/usuario_default.png" alt="Gimena Pitarelli" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Marianela Perone" data-role="Señorita Sala de 4 turno mañana">
-                                            <img src="img/usuario_default.png" alt="Marianela Perone" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Soledad Ballatore" data-role="Señorita Sala de 5 turno mañana">
-                                            <img src="img/usuario_default.png" alt="Soledad Ballatore" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Marisel Baigorria" data-role="Señorita Sala de 4 turno tarde">
-                                            <img src="img/usuario_default.png" alt="Marisel Baigorria" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Adriana Sutter" data-role="Señorita Sala de 5 turno tarde">
-                                            <img src="img/usuario_default.png" alt="Adriana Sutter" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Ivana Varas" data-role="Señorita de educación Física">
-                                            <img src="img/usuario_default.png" alt="Ivana Varas" class="staff-carousel-img">
-                                        </div>
-                                         <div class="staff-carousel-item" data-name="Facundo Gil" data-role="Profesor de Computación">
-                                            <img src="img/usuario_default.png" alt="Facundo Gil" class="staff-carousel-img">
-                                        </div>
-                                          <div class="staff-carousel-item" data-name="Marianela Gerbaudo" data-role="Señorita de inglés">
-                                            <img src="img/usuario_default.png" alt="Marianela Gerbaudo" class="staff-carousel-img">
-                                        </div>
-                                    </div>
+                            <div class="staff-grid">
+                                <div class="staff-card">
+                                    <h3>Julia Capellán</h3>
+                                    <span class="staff-badge especialidad">Directora</span>
+                                    <p>Dirección del Nivel Inicial</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Noelia Tomanek</h3>
+                                    <span class="staff-badge especialidad">Secretaria</span>
+                                    <p>Atención administrativa</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Gimena Pitarelli</h3>
+                                    <span class="staff-badge manana">Mañana</span>
+                                    <p>Señorita Sala 3</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Marianela Perone</h3>
+                                    <span class="staff-badge manana">Mañana</span>
+                                    <p>Señorita Sala 4</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Soledad Ballatore</h3>
+                                    <span class="staff-badge manana">Mañana</span>
+                                    <p>Señorita Sala 5</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Marisel Baigorria</h3>
+                                    <span class="staff-badge tarde">Tarde</span>
+                                    <p>Señorita Sala 4</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Adriana Sutter</h3>
+                                    <span class="staff-badge tarde">Tarde</span>
+                                    <p>Señorita Sala 5</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Ivana Varas</h3>
+                                    <span class="staff-badge especialidad">Educación Física</span>
+                                    <p>Actividad física y movimiento</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Facundo Gil</h3>
+                                    <span class="staff-badge especialidad">Computación</span>
+                                    <p>Tecnología y programación</p>
+                                </div>
+                                <div class="staff-card">
+                                    <h3>Marianela Gerbaudo</h3>
+                                    <span class="staff-badge especialidad">Inglés</span>
+                                    <p>Lengua extranjera</p>
                                 </div>
                             </div>
                         </div>
@@ -2204,7 +2148,7 @@
             <div class="footer-container">
                 <div class="footer-column contact-info">
                     <div class="footer-column-wrapper">
-                        <h3>Contactanos</h3>
+                        <h3>Contáctanos</h3>
                         <p><strong>Nivel Inicial:</strong> <a href="tel:+543576452804">3576-452804</a> / <a href="tel:+543576465273">3576-465273</a></p>
                         <p><strong>Nivel Primario:</strong> <a href="tel:+543576421440">+54 (3576) 421-440</a></p>
                         <p>
@@ -2240,7 +2184,7 @@
                 </div>
                 <div class="footer-column">
                     <div class="footer-column-wrapper">
-                        <h3>Encuentranos</h3>
+                        <h3>Encuéntranos</h3>
                         <p>
                             9 de Julio 465, Arroyito, Córdoba. Tradición y excelencia mercedaria.
                         </p>
@@ -2262,7 +2206,6 @@
                     <a href="#">Cookies</a>
                 </div>
                 <div class="footer-bottom-links" style="margin-top: 8px;">
-                    <span>Desarrollada por <span style="color: #f39c12;">Nazareno</span> y <span style="color: #f39c12;">Eugenio</span></span>
                 </div>
                 <div class="footer-bottom-logos"></div>
             </div>
