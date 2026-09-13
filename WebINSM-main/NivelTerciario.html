@@ -30,6 +30,104 @@
                 --staff-active-w: 320px;
                 --staff-active-h: 540px;
                 --staff-gap: 30px;
+                --insm-blue: #1a4f8d;
+                --insm-blue-dark: #103a67;
+                --insm-gold: #d4a93f;
+                --insm-light: #f5f7fb;
+            }
+
+            .staff-card-content strong {
+                display: none;
+            }
+
+            .inscripcion-form {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+                background: #fff;
+                border: 1px solid rgba(26, 79, 141, 0.12);
+                border-radius: 18px;
+                padding: 24px;
+                box-shadow: 0 16px 32px rgba(16, 58, 103, 0.08);
+            }
+
+            .inscripcion-field {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .inscripcion-field.full {
+                grid-column: 1 / -1;
+            }
+
+            .inscripcion-field label {
+                font-weight: 700;
+                color: var(--insm-blue-dark);
+                font-size: 0.95rem;
+            }
+
+            .inscripcion-field input,
+            .inscripcion-field select,
+            .inscripcion-field textarea {
+                width: 100%;
+                border: 1px solid rgba(26, 79, 141, 0.25);
+                border-radius: 10px;
+                padding: 12px 14px;
+                font-size: 0.98rem;
+                font-family: 'Heuristica', serif;
+                background: #fff;
+                box-sizing: border-box;
+            }
+
+            .inscripcion-field textarea {
+                min-height: 110px;
+                resize: vertical;
+            }
+
+            .inscripcion-actions {
+                grid-column: 1 / -1;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 12px;
+                margin-top: 8px;
+            }
+
+            .btn-inscripcion {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 22px;
+                border: none;
+                border-radius: 999px;
+                background: linear-gradient(135deg, var(--insm-blue), var(--insm-blue-dark));
+                color: #fff;
+                cursor: pointer;
+                font-weight: 700;
+                font-family: 'ProximaNova', sans-serif;
+                text-decoration: none;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                box-shadow: 0 10px 18px rgba(26, 79, 141, 0.2);
+            }
+
+            .btn-inscripcion:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 12px 20px rgba(26, 79, 141, 0.24);
+            }
+
+            .inscripcion-status {
+                grid-column: 1 / -1;
+                min-height: 24px;
+                font-weight: 700;
+                color: var(--insm-blue-dark);
+            }
+
+            @media (max-width: 720px) {
+                .inscripcion-form {
+                    grid-template-columns: 1fr;
+                    padding: 18px 14px;
+                }
             }
 
             /* --- Estilos Generales y Transiciones --- */
@@ -1575,6 +1673,9 @@
                 opacity: 0.3; 
                 border-radius: 16px; 
                 overflow: hidden;
+                border: 1px solid rgba(207, 6, 33, 0.15);
+                background: linear-gradient(135deg, #fff 0%, #f9f7f2 100%);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.07);
             }
 
             .staff-carousel-item.active {
@@ -1587,11 +1688,35 @@
                 z-index: 5;
             }
 
-            .staff-carousel-img {
-                width: 100%;
+            .staff-card-content {
                 height: 100%;
-                object-fit: cover;
-                border-radius: 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 22px 18px;
+                box-sizing: border-box;
+            }
+
+            .staff-card-content strong {
+                display: block;
+                color: #1f1f1f;
+                font-size: clamp(1.1rem, 1.3vw, 1.8rem);
+                line-height: 1.2;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                margin-bottom: 12px;
+            }
+
+            .staff-card-content span {
+                display: block;
+                color: #cf0621;
+                font-size: clamp(0.8rem, 0.9vw, 1.15rem);
+                line-height: 1.5;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
             }
 
             
@@ -1904,6 +2029,7 @@
                         <li><a href="NuestroColegio.html">Nuestro Colegio</a></li>
                         <li><a href="Proyectos.html">Proyectos</a></li>
                         <li><a href="Contacto.html">Contacto</a></li>
+                        <li><a href="Administracion.html">Administración</a></li>
                         <li class="menu-icon" onclick="toggleSideMenu()"><i class="fas fa-bars"></i></li>
                     </ul>
                 </nav>
@@ -2010,7 +2136,7 @@
                         </a>
                     </p>
                     <p>
-                        <a href="https://docs.google.com/forms/d/1xt7aPX2Oa3Y1zMAE_WTurqIfjGB4llwlqvk6LcSqWEw/edit" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;">
+                        <a href="Inscripcion.html" target="_blank" rel="noopener" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;">
                             Inscríbete acá<span class="hero-arrow"></span>
                         </a>
                     </p>
@@ -2262,58 +2388,112 @@
                                 <div class="staff-carousel-viewport" id="staffViewport">
                                     <div class="staff-carousel-track" id="staffTrack">
                                         <div class="staff-carousel-item" data-name="MARINA ANDREA ALDERETE" data-role="Directora<br>Docente de: <br> →Didáctica General <br> →Práctica Docente III">
-                                            <img src="img/Andrea Alderete.jpeg" alt="MARINA ANDREA ALDERETE" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>MARINA ANDREA ALDERETE</strong>
+                                                <span>Directora</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="MARCELA NARCIZA BIANCHI" data-role="Docente de Práctica Docente IV">
-                                            <img src="img/usuario_default.png" alt="MARCELA NARCIZA BIANCHI" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>MARCELA NARCIZA BIANCHI</strong>
+                                                <span>Docente de Práctica Docente IV</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="MARIA MACARENA DE YONG" data-role="Docente de Educación Sexual Integral">
-                                            <img src="img/usuario_default.png" alt="MARIA MACARENA DE YONG" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>MARIA MACARENA DE YONG</strong>
+                                                <span>Docente de Educación Sexual Integral</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="ANTONELA MERCEDES DELLAROSSA" data-role="Docente de: <br>→Ciencias Naturales y su Didáctica I<br>→Ciencias Naturales y su Didáctica II<br>→Taller de Ciencias<br>→Tutorias y Ateneos de Cs. Naturales">
-                                            <img src="img/usuario_default.png" alt="ANTONELA MERCEDES DELLAROSSA" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>ANTONELA MERCEDES DELLAROSSA</strong>
+                                                <span>Docente de: <br>→Ciencias Naturales y su Didáctica I<br>→Ciencias Naturales y su Didáctica II<br>→Taller de Ciencias<br>→Tutorias y Ateneos de Cs. Naturales</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="NANCY MARIEL DIAZ" data-role="Docente de: <br>→Lenguaje Artístico Expresivo<br>→Educación Artístico Expresiva">
-                                            <img src="img/usuario_default.png" alt="NANCY MARIEL DIAZ" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>NANCY MARIEL DIAZ</strong>
+                                                <span>Docente de: <br>→Lenguaje Artístico Expresivo<br>→Educación Artístico Expresiva</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="TANIA LORENA GARBELLOTTO" data-role="Docente de: <br>→Psicología y Educación<br>→Filosofía y Educación<br>→Alfabetización Inicial<br>→Tutorias y Ateneos de Cs. Naturales">
-                                            <img src="img/usuario_default.png" alt="TANIA LORENA GARBELLOTTO" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>TANIA LORENA GARBELLOTTO</strong>
+                                                <span>Docente de: <br>→Psicología y Educación<br>→Filosofía y Educación<br>→Alfabetización Inicial<br>→Tutorias y Ateneos de Cs. Naturales</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="MARISABEL DEL VALLE GASTALDELLO" data-role="Docente de: <br>→Problemáticas y Desafíos del Nivel Primario<br>→Seminario de Ruralidad<br>→Trabajo de Campo">
-                                            <img src="img/usuario_default.png" alt="MARISABEL DEL VALLE GASTALDELLO" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>MARISABEL DEL VALLE GASTALDELLO</strong>
+                                                <span>Docente de: <br>→Problemáticas y Desafíos del Nivel Primario<br>→Seminario de Ruralidad<br>→Trabajo de Campo</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="LOURDES GONZALEZ RENEÉ" data-role="Docente de: <br>→Inglés I<br>→Inglés II<br>→Inglés III">
-                                            <img src="img/usuario_default.png" alt="LOURDES GONZALEZ RENEÉ" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>LOURDES GONZALEZ RENEÉ</strong>
+                                                <span>Docente de: <br>→Inglés I<br>→Inglés II<br>→Inglés III</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="MARIANA INES ITALIANO" data-role="Docente de: <br>→Práctica Docente I<br>→Pedagogía<br>→Práctica Docente II<br>→Literatura en el Nivel Primario">
-                                            <img src="img/usuario_default.png" alt="MARIANA INES ITALIANO" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>MARIANA INES ITALIANO</strong>
+                                                <span>Docente de: <br>→Práctica Docente I<br>→Pedagogía<br>→Práctica Docente II<br>→Literatura en el Nivel Primario</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="AYELÉN DEL VALLE JUAN" data-role="Docente de Lenguaje Corporal">
-                                            <img src="img/usuario_default.png" alt="AYELÉN DEL VALLE JUAN" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>AYELÉN DEL VALLE JUAN</strong>
+                                                <span>Docente de Lenguaje Corporal</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="AGOSTINA ARIANA LUPORI" data-role="Docente de Sujeto de la Educación y Convivencia Escolar">
-                                            <img src="img/usuario_default.png" alt="AGOSTINA ARIANA LUPORI" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>AGOSTINA ARIANA LUPORI</strong>
+                                                <span>Docente de Sujeto de la Educación y Convivencia Escolar</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="VERÓNICA ANDREA MARITANO" data-role="Docente de: <br>→Historia y Política de la Educación Argentina<br>→Ética y Construcción de Ciudadanía">
-                                            <img src="img/usuario_default.png" alt="VERÓNICA ANDREA MARITANO" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>VERÓNICA ANDREA MARITANO</strong>
+                                                <span>Docente de: <br>→Historia y Política de la Educación Argentina<br>→Ética y Construcción de Ciudadanía</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="GABRIELA MUGAS" data-role="Docente de: <br>→Formación General Teológica<br>→Educación Religiosa Escolar I<br>→Educación Religiosa Escolar II">
-                                            <img src="img/usuario_default.png" alt="GABRIELA MUGAS" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>GABRIELA MUGAS</strong>
+                                                <span>Docente de: <br>→Formación General Teológica<br>→Educación Religiosa Escolar I<br>→Educación Religiosa Escolar II</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="HORACIO FEDERICO PARMIGIANI" data-role="Docente de Educación Física en el Nivel Primario">
-                                            <img src="img/usuario_default.png" alt="HORACIO FEDERICO PARMIGIANI" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>HORACIO FEDERICO PARMIGIANI</strong>
+                                                <span>Docente de Educación Física en el Nivel Primario</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="CECILIA HAYDEÉ PETIT" data-role="Docente de: <br>→Argentina en el Mundo Contemporáneo<br>→Problemáticas Socioantropológicas en Educación<br>→Ciencias Sociales y su Didáctica II<br>→Taller de Ciencias<br>→Tutorias y Ateneos de Cs. Sociales">
-                                            <img src="img/usuario_default.png" alt="CECILIA HAYDEÉ PETIT" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>CECILIA HAYDEÉ PETIT</strong>
+                                                <span>Docente de: <br>→Argentina en el Mundo Contemporáneo<br>→Problemáticas Socioantropológicas en Educación<br>→Ciencias Sociales y su Didáctica II<br>→Taller de Ciencias<br>→Tutorias y Ateneos de Cs. Sociales</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="VERÓNICA DEL VALLE RUATTA" data-role="Docente de: <br>→Oralidad, Lectura y Escritura<br>→Lengua y su Didáctica">
-                                            <img src="img/usuario_default.png" alt="VERÓNICA DEL VALLE RUATTA" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>VERÓNICA DEL VALLE RUATTA</strong>
+                                                <span>Docente de: <br>→Oralidad, Lectura y Escritura<br>→Lengua y su Didáctica</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="FLORENCIA BETINA SQUIZZATO" data-role="Docente de: <br>→Lenguaje Digital y Audio Visual<br>→TIC'S en el Nivel Primario">
-                                            <img src="img/usuario_default.png" alt="FLORENCIA BETINA SQUIZZATO" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>FLORENCIA BETINA SQUIZZATO</strong>
+                                                <span>Docente de: <br>→Lenguaje Digital y Audio Visual<br>→TIC'S en el Nivel Primario</span>
+                                            </div>
                                         </div>
                                         <div class="staff-carousel-item" data-name="CARINA DEL VALLE TORRE" data-role="Secretaria<br>Docente de: <br>→Desarrollo del Pensamiento Matemática<br>→Matemática y su Didáctica I<br>→Matemática y su Didáctica I<br>→Tutorias y Ateneos de Matemática">
-                                            <img src="img/usuario_default.png" alt="CARINA DEL VALLE TORRE" class="staff-carousel-img">
+                                            <div class="staff-card-content">
+                                                <strong>CARINA DEL VALLE TORRE</strong>
+                                                <span>Secretaria<br>Docente de: <br>→Desarrollo del Pensamiento Matemática<br>→Matemática y su Didáctica I<br>→Matemática y su Didáctica I<br>→Tutorias y Ateneos de Matemática</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -2412,7 +2592,7 @@
                                 Para informarte sobre el Profesorado de Educación Primaria y realizar la inscripción, podés contactarte directamente con la institución:
                             </p>
                             <ul class="requirements-list">
-                                <li><strong>Email:</strong> mercednivelsuperior@gmail.com.ar</li>
+                                <li><strong>Email:</strong> mercednivelsuperior@gmail.com</li>
                                 <li><strong>Teléfono:</strong> 3576-463872</li>
                                 <li><strong>Instagram:</strong> profesorado_insm</li>
                                 <li><strong>Facebook:</strong> Insm Nivel Superior</li>
@@ -2994,8 +3174,8 @@
 
                 if (viewport) {
                     viewport.addEventListener('mousedown', (e) => {
-                        // Solo permitir arrastre si comienza sobre una imagen
-                        if (e.target.tagName !== 'IMG') return;
+                        // Solo permitir arrastre si comienza sobre una tarjeta del personal
+                        if (!e.target.closest('.staff-carousel-item')) return;
 
                         startPos = e.clientX;
                         isDragging = true;

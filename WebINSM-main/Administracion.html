@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Inscripciones - Acceso Restringido</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f4f6f8; color: #222; }
+    .header { background: #1a5276; color: #fff; padding: 20px; text-align: center; }
+    .container { max-width: 1000px; margin: 20px auto; padding: 0 20px; }
+    .login-box { background: #fff; padding: 40px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.08); max-width: 400px; margin: 40px auto; }
+    .btn { background: #1a5276; color: #fff; border: none; padding: 12px 24px; font-size: 16px; border-radius: 6px; cursor: pointer; }
+    .btn:hover { background: #154360; }
+    .btn.green { background: #1e8449; }
+    .btn.green:hover { background: #1d8348; }
+    .btn.red { background: #c0392b; }
+    .btn.red:hover { background: #a93226; }
+    .user-info { color: #fff; margin-top: 10px; font-size: 14px; }
+    .user-info button { background: #c0392b; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; margin-left: 10px; cursor: pointer; }
+    .denied { background: #f8d7da; color: #721c24; padding: 20px; border-radius: 8px; margin: 20px 0; }
+    .filters { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .filters select, .filters input { padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+    .record { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+    .record h3 { color: #1a5276; margin-bottom: 8px; }
+    .record table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .record td { padding: 4px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+    .record td:first-child { font-weight: bold; width: 220px; }
+    .back-link { display: block; margin: 20px 0; color: #1a5276; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Panel de Inscripciones</h1>
+    <div class="user-info" id="userInfo" style="display:none;">
+      <span id="userEmail"></span>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+
+    <!-- Login -->
+    <div id="loginBox" class="login-box">
+      <h2>Acceso restringido</h2>
+      <p style="margin: 15px 0; color: #666;">Iniciá sesión con tu correo institucional para ver los registros de inscripción.</p>
+      <button class="btn" onclick="loginGoogle()">Ingresar con Google</button>
+    </div>
+
+    <!-- Denegado -->
+    <div id="deniedBox" class="denied" style="display:none;">
+      <h3>Acceso denegado</h3>
+      <p>Tu correo no está autorizado para ver estos registros. Si creés que es un error, contactate con el administrador del sistema.</p>
+    </div>
+
+    <!-- Panel -->
+    <div id="panel" style="display:none;">
+      <h2 style="margin-bottom: 15px;">Registros de inscripción</h2>
+
+      <div class="filters">
+        <select id="filtroNivel">
+          <option value="">Todos los niveles</option>
+          <option value="inicial">Inicial</option>
+          <option value="primario">Primario</option>
+          <option value="secundario">Secundario</option>
+          <option value="superior">Superior</option>
+        </select>
+        <input type="text" id="busqueda" placeholder="Buscar por nombre o DNI...">
+        <button class="btn green" onclick="descargarCSV()">⬇️ Descargar CSV (Excel)</button>
+      </div>
+
+      <div id="registros"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, collection, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    // ✅ TUS CREDENCIALES REALES
+    const firebaseConfig = {
+      apiKey: "AIzaSyCCTqB7wWOZv-p1sNvfNtEZASw3K4VWmZo",
+      authDomain: "inscripciones-merced-4fc14.firebaseapp.com",
+      projectId: "inscripciones-merced-4fc14",
+      storageBucket: "inscripciones-merced-4fc14.firebasestorage.app",
+      messagingSenderId: "588336598798",
+      appId: "1:588336598798:web:4e745d090b9335e907115f"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // ✅ CORREOS AUTORIZADOS POR NIVEL
+    const correosAutorizados = {
+      'inicial': ['jardin@colegiocervellon.edu.ar'],
+      'primario': ['primario@colegiocervellon.edu.ar'],
+      'secundario': ['nivelsecundario@institutolamerced.edu.ar'],
+      'superior': ['mercednivelsuperior@institutolamerced.edu.ar']
+    };
+
+    let correoLogueado = null;
+    let todosLosRegistros = [];
+
+    const loginBox = document.getElementById('loginBox');
+    const deniedBox = document.getElementById('deniedBox');
+    const panel = document.getElementById('panel');
+    const userInfo = document.getElementById('userInfo');
+    const userEmail = document.getElementById('userEmail');
+
+    window.loginGoogle = () => {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider).catch(err => {
+        console.error(err);
+        alert('Error al iniciar sesión: ' + err.message);
+      });
+    };
+
+    window.cerrarSesion = () => signOut(auth);
+
+    function correoPermitido(correo) {
+      return Object.values(correosAutorizados).some(lista => lista.includes(correo));
+    }
+
+    function nivelesPermitidos(correo) {
+      const niveles = [];
+      for (const [nivel, lista] of Object.entries(correosAutorizados)) {
+        if (lista.includes(correo)) niveles.push(nivel);
+      }
+      return niveles;
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        correoLogueado = user.email;
+        userInfo.style.display = 'block';
+        userEmail.textContent = 'Conectado: ' + correoLogueado;
+
+        if (correoPermitido(correoLogueado)) {
+          loginBox.style.display = 'none';
+          deniedBox.style.display = 'none';
+          panel.style.display = 'block';
+          cargarRegistros();
+        } else {
+          loginBox.style.display = 'none';
+          deniedBox.style.display = 'block';
+          panel.style.display = 'none';
+        }
+      } else {
+        correoLogueado = null;
+        loginBox.style.display = 'block';
+        deniedBox.style.display = 'none';
+        panel.style.display = 'none';
+        userInfo.style.display = 'none';
+      }
+    });
+
+    function cargarRegistros() {
+      const q = query(collection(db, 'inscripciones'), orderBy('fecha', 'desc'));
+      onSnapshot(q, (snap) => {
+        todosLosRegistros = [];
+        snap.forEach(doc => {
+          const data = doc.data();
+          if (nivelesPermitidos(correoLogueado).includes(data.nivel)) {
+            todosLosRegistros.push({ id: doc.id, ...data });
+          }
+        });
+        renderRegistros();
+      });
+    }
+
+    function renderRegistros() {
+      const filtro = document.getElementById('filtroNivel').value;
+      const busqueda = document.getElementById('busqueda').value.toLowerCase();
+      const cont = document.getElementById('registros');
+      cont.innerHTML = '';
+
+      let lista = todosLosRegistros;
+      if (filtro) lista = lista.filter(r => r.nivel === filtro);
+      if (busqueda) {
+        lista = lista.filter(r =>
+          (r.nombre && r.nombre.toLowerCase().includes(busqueda)) ||
+          (r.dni && r.dni.includes(busqueda))
+        );
+      }
+
+      if (lista.length === 0) {
+        cont.innerHTML = '<p style="color:#888;">No hay registros todavía.</p>';
+        return;
+      }
+
+      const nombresNivel = { inicial: 'Inicial', primario: 'Primario', secundario: 'Secundario', superior: 'Superior' };
+
+      lista.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'record';
+        let html = `<h3>${nombresNivel[r.nivel] || r.nivel} — ${r.nombre || 'Sin nombre'}</h3><table>`;
+        html += fila('DNI', r.dni);
+        html += fila('Fecha de nacimiento', r.fechaNacimiento);
+        html += fila('Domicilio', r.domicilio);
+        html += fila('Ciudad', r.ciudad);
+        html += fila('Sala / Grado / Año', r.sala || r.grado || r.anio);
+        html += fila('Otra institución', r.otraInstitucion);
+        html += fila('Turno', r.turno);
+        if (r.adultos && r.adultos.length) {
+          r.adultos.forEach((a, i) => {
+            html += `<tr><td>Adulto ${i+1}: ${a.nombre || ''}</td><td>DNI: ${a.dni || ''} · Parentesco: ${a.parentesco || ''} · Tel: ${a.telefono || ''} · Email: ${a.email || ''} · Ocupación: ${a.ocupacion || ''}</td></tr>`;
+          });
+        }
+        html += fila('Teléfono 1', r.telefono1);
+        html += fila('Teléfono 2', r.telefono2);
+        html += fila('Email', r.email);
+        html += fila('Institución secundario', r.institucion);
+        html += fila('Año finalización', r.anioFinalizacion);
+        html += fila('Adeuda materias', r.adeudaMaterias);
+        html += fila('Fecha de envío', r.fecha ? new Date(r.fecha.seconds * 1000).toLocaleString() : '');
+        html += '</table>';
+        div.innerHTML = html;
+        cont.appendChild(div);
+      });
+    }
+
+    function fila(label, valor) {
+      if (!valor) return '';
+      return `<tr><td>${label}</td><td>${valor}</td></tr>`;
+    }
+
+    window.descargarCSV = () => {
+      if (todosLosRegistros.length === 0) {
+        alert('No hay registros para descargar.');
+        return;
+      }
+      const filas = [['Nivel','Nombre','DNI','Fecha nacimiento','Domicilio','Ciudad','Sala/Grado/Año','Otra institución','Turno','Adulto 1','Adulto 2','Teléfono 1','Teléfono 2','Email','Institución','Año finalización','Adeuda materias','Fecha envío']];
+      todosLosRegistros.forEach(r => {
+        const a1 = r.adultos && r.adultos[0] ? `${r.adultos[0].nombre} (${r.adultos[0].parentesco})` : '';
+        const a2 = r.adultos && r.adultos[1] ? `${r.adultos[1].nombre} (${r.adultos[1].parentesco})` : '';
+        filas.push([
+          r.nivel, r.nombre, r.dni, r.fechaNacimiento, r.domicilio, r.ciudad,
+          r.sala || r.grado || r.anio, r.otraInstitucion, r.turno, a1, a2,
+          r.telefono1, r.telefono2, r.email, r.institucion, r.anioFinalizacion,
+          r.adeudaMaterias,
+          r.fecha ? new Date(r.fecha.seconds * 1000).toLocaleString() : ''
+        ]);
+      });
+      const csv = filas.map(f => f.map(v => `"${(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'inscripciones.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    // Filtros
+    document.getElementById('filtroNivel').addEventListener('change', renderRegistros);
+    document.getElementById('busqueda').addEventListener('input', renderRegistros);
+  </script>
+</body>
+</html>

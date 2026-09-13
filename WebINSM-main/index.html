@@ -3346,6 +3346,7 @@
 						<i class="fas fa-envelope"></i> Contactanos
 					</a>
 				</li>
+				<li><span id="loginArea"><a href="#" onclick="loginGoogle()">Ingresar</a></span></li>
 			</ul>
 
 			<div class="side-menu-shortcuts">
@@ -4192,5 +4193,63 @@
 			});
 		});
 	</script>
+	<script type="module">
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+	import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+	// ⚠️ REEMPLAZÁ CON TUS CREDENCIALES DE FIREBASE
+	const firebaseConfig = {
+	apiKey: "AIzaSyCCTqB7wWOZv-p1sNvfNtEZASw3K4VWmZo",
+	authDomain: "inscripciones-merced-4fc14.firebaseapp.com",
+	projectId: "inscripciones-merced-4fc14",
+	storageBucket: "inscripciones-merced-4fc14.firebasestorage.app",
+	messagingSenderId: "588336598798",
+	appId: "1:588336598798:web:4e745d090b9335e907115f"
+	};
+
+
+	const app = initializeApp(firebaseConfig);
+	const auth = getAuth(app);
+
+	// ⚠️ LISTA DE CORREOS AUTORIZADOS
+	const correosAutorizados = [
+		'jardin@colegiocervellon.edu.ar',
+		'primario@colegiocervellon.edu.ar',
+		'nivelsecundario@institutolamerced.edu.ar',
+		'mercednivelsuperior@institutolamerced.edu.ar'
+	];
+
+	const btnLogin = document.getElementById('btnLogin');
+	const loginArea = document.getElementById('loginArea');
+
+	window.loginGoogle = () => {
+		const provider = new GoogleAuthProvider();
+		signInWithPopup(auth, provider).catch(err => console.error(err));
+	};
+
+	window.cerrarSesion = () => signOut(auth);
+
+	onAuthStateChanged(auth, (user) => {
+		if (user && correosAutorizados.includes(user.email)) {
+		// Correo autorizado → mostrar enlace a los registros
+		loginArea.innerHTML = `
+			<a href="admin.html" style="color:#1a5276; font-weight:bold;">📋 Ver inscripciones</a>
+			<span style="margin:0 8px; color:#888;">|</span>
+			<a href="#" onclick="cerrarSesion()">Salir</a>
+		`;
+		} else if (user) {
+		// Logueado pero NO autorizado → mostrar solo salir
+		loginArea.innerHTML = `
+			<span style="color:#888;">Acceso restringido</span>
+			<span style="margin:0 8px; color:#888;">|</span>
+			<a href="#" onclick="cerrarSesion()">Salir</a>
+		`;
+		} else {
+		// No logueado → botón ingresar
+		loginArea.innerHTML = `<a href="#" onclick="loginGoogle()">Ingresar</a>`;
+		}
+	});
+	</script>
+
 </body>
-```
+</html>
