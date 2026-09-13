@@ -6,21 +6,25 @@
   <title>Inscripción - Nivel Primario</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; background: #f4f6f8; color: #222; padding: 20px; }
+    body { font-family: Arial, sans-serif; background: #fff9c4; color: #222; padding: 20px; }
     .container { max-width: 650px; margin: 0 auto; }
-    h1 { text-align: center; color: #1a5276; margin-bottom: 5px; }
+    h1 { text-align: center; color: #b62a2a; margin-bottom: 5px; }
     .subtitle { text-align: center; color: #666; margin-bottom: 25px; }
-    .form-card { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .form-card { background: #fffef0; padding: 25px; border-radius: 10px; border: 3px solid #b62a2a; box-shadow: 0 2px 8px rgba(0,0,0,.08); animation: bordeAnimado 2s ease-in-out infinite; }
     label { display: block; margin: 12px 0 4px; font-weight: bold; font-size: 14px; }
-    input, select { width: 100%; padding: 9px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; }
-    .adult-block { border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin: 15px 0; background: #fafafa; }
-    .adult-block h3 { font-size: 15px; margin-bottom: 8px; color: #1a5276; }
-    .btn { background: #1a5276; color: #fff; border: none; padding: 12px 20px; font-size: 16px; border-radius: 6px; cursor: pointer; margin-top: 15px; width: 100%; }
-    .btn:hover { background: #154360; }
+    input, select { width: 100%; padding: 9px; border: 1px solid #e6d96a; border-radius: 5px; font-size: 14px; background: #fffde7; }
+    .adult-block { border: 1px solid #e6d96a; border-radius: 8px; padding: 15px; margin: 15px 0; background: #fffde7; }
+    .adult-block h3 { font-size: 15px; margin-bottom: 8px; color: #b62a2a; }
+    .btn { background: #b62a2a; color: #fff; border: none; padding: 12px 20px; font-size: 16px; border-radius: 6px; cursor: pointer; margin-top: 15px; width: 100%; }
+    .btn:hover { background: #b62a2a; }
     .msg { padding: 12px; border-radius: 6px; margin: 15px 0; display: none; }
     .msg.ok { background: #d4edda; color: #155724; display: block; }
     .msg.err { background: #f8d7da; color: #721c24; display: block; }
     .back { display: block; text-align: center; margin-top: 20px; color: #1a5276; }
+    @keyframes bordeAnimado {
+      0%, 100% { border-color: #b62a2a; box-shadow: 0 2px 8px rgba(114, 28, 36, .12); }
+      50% { border-color: #e6d96a; box-shadow: 0 2px 14px rgba(230, 217, 106, .45); }
+    }
   </style>
 </head>
 <body>
