@@ -2511,7 +2511,7 @@
 			}
 			.hero-content p {
 				align-items: flex-start;
-				margin: 0;
+				margin-top: 24px;
 			}
 			.hero-arrow {
 				margin-top: 5px;
@@ -2795,10 +2795,19 @@
 			color: #a51c30;
 		}
 		h1, h2, h3, h4, h5, h6 {
-			color: #a51c30 !important;
+    	color: #a51c30 !important;
 		}
 		.hero-content h1,
 		.hero-content h1 * {
+			color: #ffffff !important;
+		}
+		.hero-content h1 {
+			margin-bottom: 24px;
+			color: #ffffff !important;
+		}
+		.hero-content h1 .hero-line-1,
+		.hero-content h1 .hero-line-2,
+		.hero-content h1 .letter {
 			color: #ffffff !important;
 		}
 	</style>
@@ -2883,16 +2892,16 @@
 
 	<main>
 		<section class="hero-section">
-			<video class="hero-video" autoplay muted loop playsinline poster="img/20250806_092322.jpg">
+			<video class="hero-video" autoplay muted loop playsinline>
 				<source src="vid/Video presentacion.mp4" type="video/mp4" />
 				Tu navegador no soporta videos HTML5.
 			</video>
 			<div class="hero-content">
-				<h1>
-					<span class="hero-line-1">Aprender</span>
-					<span class="hero-line-2">para crecer</span>
+				<h1 style="color: #ffffff !important; margin-bottom: 48px !important;">
+					<span class="hero-line-1" style="color: #ffffff !important;">Aprender</span>
+					<span class="hero-line-2" style="color: #ffffff !important;">para crecer</span>
 				</h1>
-				<p>
+				<p style="margin-top: 48px !important;">
 					<a
 						href="#nuestro-colegio"
 						style="text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px;"
