@@ -1247,6 +1247,26 @@
                 transition: all 0.3s ease;
                 margin-bottom: 5px;
             }
+            .uniform-card .uniform-people-icon {
+                width: 80px;
+                height: 80px;
+                background-color: #f1a01e;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                color: #fff;
+                margin-bottom: 5px;
+            }
+            .uniform-card .uniform-people-icon i {
+                width: auto;
+                height: auto;
+                background: transparent;
+                border-radius: 0;
+                font-size: 1.8em;
+                margin: 0;
+            }
             .uniform-card:hover i {
                 background-color: #cf0621;
                 transform: scale(1.1);
@@ -1994,7 +2014,10 @@
                             <div class="uniform-grid">
                                 <!-- Tarjeta Mujeres -->
                                 <div class="uniform-card">
-                                    <i class="fas fa-female"></i>
+                                    <span class="uniform-people-icon" aria-label="Niña y niño">
+                                        <i class="fas fa-female" aria-hidden="true"></i>
+                                        <i class="fas fa-male" aria-hidden="true"></i>
+                                    </span>
                                     <h3>Niñas y niños</h3>
                                     <ul>
                                         <li>Pintorcito según modelo: cuadrille amarillo y blanco con pechera roja.</li>
