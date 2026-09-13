@@ -131,7 +131,7 @@
     document.getElementById('formSecundario').addEventListener('submit', async (e) => {
       e.preventDefault();
       try {
-        await addDoc(collection(db, 'inscripciones'), {
+        await addDoc(collection(db, 'secundario'), {
           nivel: 'secundario',
           nombre: document.getElementById('nombre').value,
           dni: document.getElementById('dni').value,

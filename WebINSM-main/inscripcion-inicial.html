@@ -117,7 +117,7 @@
     document.getElementById('formInicial').addEventListener('submit', async (e) => {
       e.preventDefault();
       try {
-        await addDoc(collection(db, 'inscripciones'), {
+        await addDoc(collection(db, 'inicial'), {
           nivel: 'inicial',
           nombre: document.getElementById('nombre').value,
           dni: document.getElementById('dni').value,
