@@ -1600,6 +1600,61 @@
                 .schedule-card { flex: 0 0 100%; }
             }
 
+            .staff-docente-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 22px;
+                margin-top: 25px;
+            }
+            .staff-docente-item {
+                background: linear-gradient(180deg, #fff 0%, #fdf4f5 100%);
+                border: 1px solid #f0d7d9;
+                border-radius: 22px;
+                padding: 20px 12px 18px;
+                box-shadow: 0 8px 18px rgba(207, 6, 33, 0.06);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
+            }
+            .staff-docente-item:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 24px rgba(26, 79, 141, 0.08);
+            }
+            .staff-docente-item .staff-circle {
+                width: 170px;
+                height: 170px;
+                border-radius: 50%;
+                background: #8b0d1d;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 16px;
+                box-sizing: border-box;
+                box-shadow: 0 10px 22px rgba(139, 13, 29, 0.18);
+            }
+            .staff-docente-item .staff-circle strong {
+                display: block;
+                font-family: 'Heuristica', serif;
+                font-size: 1.05em;
+                line-height: 1.1;
+                font-weight: 700;
+                color: #fff;
+                letter-spacing: 0.02em;
+            }
+            .staff-docente-item span {
+                font-family: 'ProximaNova', sans-serif;
+                color: #6b6b6b;
+                font-size: 0.88em;
+                line-height: 1.3;
+                margin-top: -2px;
+                font-weight: 700;
+            }
+
             /* --- Estilo: Nuestro Personal (Refined Strip Carousel) --- */
             .staff-carousel-track.notransition,
             .staff-carousel-track.notransition .staff-carousel-item {
@@ -2454,104 +2509,22 @@
                         </div>
 
                         <div id="personal" class="content-block">
-                            <h2>Nuestro Personal</h2>
-                            
-                            <div class="staff-layout-grid">
-                                <div class="staff-left-panel">
-                                    <div class="staff-active-info" id="staffInfoBox">
-                                        <h3 id="staffActiveName">Roxana Calleri</h3>
-                                        <span id="staffActiveRole">Directora</span>
-                                    </div>
-                                    
-                                    <div class="staff-nav-controls">
-                                        <button class="staff-nav-btn" id="btnPrevStaff"><i class="fas fa-arrow-left"></i></button>
-                                        <button class="staff-nav-btn" id="btnPauseStaff"><i class="fas fa-pause"></i></button>
-                                        <button class="staff-nav-btn" id="btnNextStaff"><i class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                </div>
-
-                                <div class="staff-carousel-viewport" id="staffViewport">
-                                    <div class="staff-carousel-track" id="staffTrack">
-                                        <div class="staff-carousel-item" data-name="Roxana Calleri" data-role="Directora">
-                                            <img src="img/usuario_default.png" alt="Roxana Calleri" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Claudia Bertinotti" data-role="Vicedirectora">
-                                            <img src="img/usuario_default.png" alt="Claudia Bertinotti" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Noelía Tomanek" data-role="Secretaria">
-                                            <img src="img/usuario_default.png" alt="Noelía Tomanek" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Miriam Giordano" data-role="Tareas administrativas y docente titular de 5° grado">
-                                            <img src="img/usuario_default.png" alt="Miriam Giordano" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Milagros Rodriguez" data-role="1° Grado A - Turno Mañana">
-                                            <img src="img/usuario_default.png" alt="Milagros Rodriguez" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Eliana Emilio" data-role="2° Grado A - Turno Mañana">
-                                            <img src="img/usuario_default.png" alt="Eliana Emilio" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Teresa Sosa" data-role="3° Grado A - Turno Mañana">
-                                            <img src="img/usuario_default.png" alt="Teresa Sosa" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Lorena Sudano" data-role="4° Grado A - Turno Mañana">
-                                            <img src="img/usuario_default.png" alt="Lorena Sudano" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Luciana Sueldo" data-role="5° Grado A - Turno Mañana">
-                                            <img src="img/usuario_default.png" alt="Luciana Sueldo" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Anahí Juan" data-role="6° Grado A - Turno Mañana">
-                                            <img src="img/usuario_default.png" alt="Anahí Juan" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Belén Becchio" data-role="1° Grado B - Turno Tarde">
-                                            <img src="img/usuario_default.png" alt="Belén Becchio" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Eliana Leiva" data-role="2° Grado B - Turno Tarde">
-                                            <img src="img/usuario_default.png" alt="Eliana Leiva" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Belén Ambrosino" data-role="3° Grado B - Turno Tarde">
-                                            <img src="img/usuario_default.png" alt="Belén Ambrosino" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Ivana Favro" data-role="4° Grado B - Turno Tarde">
-                                            <img src="img/usuario_default.png" alt="Ivana Favro" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Danisa Zurita" data-role="5° Grado B - Turno Tarde (suplente)">
-                                            <img src="img/usuario_default.png" alt="Danisa Zurita" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Malena Davyd" data-role="6° Grado B - Turno Tarde">
-                                            <img src="img/usuario_default.png" alt="Malena Davyd" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Ivana Varas" data-role="Educación Física">
-                                            <img src="img/usuario_default.png" alt="Ivana Varas" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Federico Parmigiani" data-role="Educación Física">
-                                            <img src="img/usuario_default.png" alt="Federico Parmigiani" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Marianela Gerbaudo" data-role="Inglés">
-                                            <img src="img/usuario_default.png" alt="Marianela Gerbaudo" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Lourdes González" data-role="Inglés">
-                                            <img src="img/usuario_default.png" alt="Lourdes González" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Facundo Gil" data-role="Computación">
-                                            <img src="img/usuario_default.png" alt="Facundo Gil" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Florencia Squizzato" data-role="Computación">
-                                            <img src="img/usuario_default.png" alt="Florencia Squizzato" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Carmela Amuchástegui" data-role="Artes Visuales">
-                                            <img src="img/usuario_default.png" alt="Carmela Amuchástegui" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Erika Magliano" data-role="Artes Visuales">
-                                            <img src="img/usuario_default.png" alt="Erika Magliano" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Sonia Strumia" data-role="Música">
-                                            <img src="img/usuario_default.png" alt="Sonia Strumia" class="staff-carousel-img">
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="Gonzalo Saravia" data-role="Música">
-                                            <img src="img/usuario_default.png" alt="Gonzalo Saravia" class="staff-carousel-img">
-                                        </div>
-                                    </div>
-                                </div>
+                            <h2>Personal docente</h2>
+                            <div class="staff-docente-list">
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Roxana Calleri</strong></div><span>Directora</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Claudia Bertinotti</strong></div><span>Vicedirectora</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Noelía Tomanek</strong></div><span>Secretaria</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Miriam Giordano</strong></div><span>Tareas administrativas y titular de 5°to grado</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Ivana Varas</strong></div><span>Educación Física</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Federico Parmigiani</strong></div><span>Educación Física</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Marianela Gerbaudo</strong></div><span>Inglés</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Lourdes González</strong></div><span>Inglés</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Facundo Gil</strong></div><span>Computación</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Florencia Squizzato</strong></div><span>Computación</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Carmela Amuchástegui</strong></div><span>Artes Visuales</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Erika Magliano</strong></div><span>Artes Visuales</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Sonia Strumia</strong></div><span>Música</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>Gonzalo Saravia</strong></div><span>Música</span></div>
                             </div>
                         </div>
 
@@ -2912,260 +2885,6 @@
                 });
             });
 
-            // ==============================================
-            //  LÓGICA CARRUSEL "STYLE INSM" (Infinito)
-            // ==============================================
-            document.addEventListener('DOMContentLoaded', () => {
-                const track = document.getElementById('staffTrack');
-                const btnPrev = document.getElementById('btnPrevStaff');
-                const btnNext = document.getElementById('btnNextStaff');
-                const btnPause = document.getElementById('btnPauseStaff');
-
-                const infoBox = document.getElementById('staffInfoBox');
-                const activeName = document.getElementById('staffActiveName');
-                const activeRole = document.getElementById('staffActiveRole');
-
-                if (!track) return;
-
-                const originalItems = Array.from(document.querySelectorAll('.staff-carousel-item'));
-                if (originalItems.length === 0) return;
-
-                // Propiedades Dinámicas (Leídas de CSS)
-                let itemWidth, itemGap, activeItemWidth, step;
-
-                const updateDimensions = () => {
-                    const style = getComputedStyle(document.documentElement);
-                    itemWidth = parseFloat(style.getPropertyValue('--staff-item-w'));
-                    itemGap = parseFloat(style.getPropertyValue('--staff-gap'));
-                    activeItemWidth = parseFloat(style.getPropertyValue('--staff-active-w'));
-                    step = itemWidth + itemGap;
-                };
-
-                updateDimensions();
-
-                // Clones para infinito
-                originalItems.forEach(item => {
-                    const clone = item.cloneNode(true);
-                    clone.classList.add('clone');
-                    clone.removeAttribute('id'); 
-                    track.appendChild(clone);
-                });
-                originalItems.slice().reverse().forEach(item => {
-                    const clone = item.cloneNode(true);
-                    clone.classList.add('clone');
-                    clone.removeAttribute('id');
-                    track.insertBefore(clone, track.firstChild);
-                });
-
-                let allItems = Array.from(document.querySelectorAll('.staff-carousel-item'));
-                const totalOriginals = originalItems.length;
-                
-                let currentIndex = totalOriginals; 
-                let isNavigating = false;
-                let autoPlayInterval;
-                let isPlaying = true;
-
-                // Función para obtener Offset según dispositivo
-                const getOffset = () => {
-                    if (window.innerWidth <= 1024) {
-                        // Modo Móvil/Tablet: Centrado Absoluto
-                        const viewport = document.querySelector('.staff-carousel-viewport');
-                        const vw = viewport.clientWidth;
-                        // Centrar el Item Activo (320px)
-                        return (vw / 2) - (activeItemWidth / 2);
-                    } else {
-                        // Modo Desktop: Padding CSS controla el inicio (0 offset extra JS)
-                        return 0;
-                    }
-                };
-
-                const updateCarousel = () => {
-                    const currentItem = allItems[currentIndex];
-                    const offset = getOffset();
-                    
-                    // Cálculo de posición
-                    // Desktop: 0 - index * step (Padding CSS 60px lo empuja)
-                    // Mobile: CenterOffset - index * step (Padding CSS 0)
-                    track.style.transform = `translateX(${offset - (currentIndex * step)}px)`;
-
-                    allItems.forEach(i => i.classList.remove('active'));
-                    if(currentItem) currentItem.classList.add('active');
-
-                    if (currentItem) {
-                        infoBox.style.opacity = '0';
-                        setTimeout(() => {
-                            activeName.textContent = currentItem.dataset.name;
-                            activeRole.textContent = currentItem.dataset.role;
-                            infoBox.style.opacity = '1';
-                        }, 200);
-                    }
-                };
-
-                // Inicializar
-                updateCarousel();
-
-                // Listener Resize para ajustar centrado en móvil
-                window.addEventListener('resize', () => {
-                    track.classList.add('notransition');
-                    updateDimensions();
-                    updateCarousel();
-                    track.offsetHeight;
-                    track.classList.remove('notransition');
-                });
-
-                const nextSlide = () => {
-                    if (isNavigating) return;
-                    isNavigating = true;
-                    setTimeout(() => isNavigating = false, 600);
-
-                    currentIndex++;
-                    updateCarousel();
-                };
-
-                const prevSlide = () => {
-                    if (isNavigating) return;
-                    isNavigating = true;
-                    setTimeout(() => isNavigating = false, 600);
-
-                    currentIndex--;
-                    updateCarousel();
-                };
-
-                track.addEventListener('transitionend', (e) => {
-                    if (e.target !== track || e.propertyName !== 'transform') return;
-                    
-                    let snap = false;
-                    let nextIndex = currentIndex;
-                    if (currentIndex >= totalOriginals * 2) {
-                        nextIndex = currentIndex - totalOriginals;
-                        snap = true;
-                    } else if (currentIndex < totalOriginals) {
-                        nextIndex = currentIndex + totalOriginals;
-                        snap = true;
-                    }
-                    if (snap) {
-                        track.classList.add('notransition');
-                        currentIndex = nextIndex;
-                        updateCarousel();
-                        void track.offsetWidth;
-                        track.classList.remove('notransition');
-                    }
-                });
-
-                btnNext.addEventListener('click', () => {
-                    nextSlide();
-                    if(isPlaying) resetTimer();
-                });
-
-                btnPrev.addEventListener('click', () => {
-                    prevSlide();
-                    if(isPlaying) resetTimer();
-                });
-
-                btnPause.addEventListener('click', () => {
-                    const icon = btnPause.querySelector('i');
-                    if(isPlaying) {
-                        clearInterval(autoPlayInterval);
-                        isPlaying = false;
-                        icon.classList.remove('fa-pause');
-                        icon.classList.add('fa-play');
-                    } else {
-                        startTimer();
-                        isPlaying = true;
-                        icon.classList.remove('fa-play');
-                        icon.classList.add('fa-pause');
-                    }
-                });
-
-                const startTimer = () => {
-                    clearInterval(autoPlayInterval);
-                    autoPlayInterval = setInterval(nextSlide, 4000);
-                };
-
-                const resetTimer = () => {
-                    clearInterval(autoPlayInterval);
-                    startTimer();
-                };
-
-                const viewport = document.getElementById('staffViewport');
-                let startPos = 0;
-                let isDragging = false;
-                let wasDragged = false; // Bandera para evitar clics accidentales
-
-                allItems.forEach((item) => {
-                    item.style.cursor = 'pointer';
-                    item.addEventListener('click', () => {
-                        // Si el mouse se soltó después de un arrastre, no hacer nada
-                        if (wasDragged) {
-                            wasDragged = false;
-                            return;
-                        }
-
-                        if (isNavigating) return;
-                        
-                        const clickedIndex = allItems.indexOf(item);
-                        if (clickedIndex !== currentIndex) {
-                            isNavigating = true;
-                            setTimeout(() => isNavigating = false, 600);
-
-                            currentIndex = clickedIndex;
-                            updateCarousel();
-                            if(isPlaying) resetTimer();
-                        }
-                    });
-                });
-
-                if (viewport) {
-                    viewport.addEventListener('mousedown', (e) => {
-                        // Solo permitir arrastre si comienza sobre una imagen
-                        if (e.target.tagName !== 'IMG') return;
-
-                        startPos = e.clientX;
-                        isDragging = true;
-                        wasDragged = false;
-                        viewport.style.cursor = 'grabbing';
-                    });
-                    
-                    window.addEventListener('mouseup', (e) => {
-                        if(!isDragging) return;
-                        isDragging = false;
-                        if (viewport) viewport.style.cursor = 'default';
-                        
-                        const diff = e.clientX - startPos;
-                        
-                        // Si hubo movimiento real, marcamos como arrastrado
-                        if (Math.abs(diff) > 10) {
-                            wasDragged = true;
-                        }
-
-                        if (diff < -40) { 
-                            nextSlide();
-                            if(isPlaying) resetTimer();
-                        } else if (diff > 40) { 
-                            prevSlide();
-                            if(isPlaying) resetTimer();
-                        }
-                    });
-
-                    viewport.addEventListener('touchstart', (e) => {
-                        startPos = e.touches[0].clientX;
-                    }, {passive: true});
-
-                    viewport.addEventListener('touchend', (e) => {
-                        const diff = e.changedTouches[0].clientX - startPos;
-                        if (diff < -40) {
-                            nextSlide();
-                            if(isPlaying) resetTimer();
-                        } else if (diff > 40) {
-                            prevSlide();
-                            if(isPlaying) resetTimer();
-                        }
-                    });
-                }
-
-                allItems[currentIndex].classList.add('active');
-                startTimer();
-            });
 
             // --- Lógica de Selección Táctil para Tarjetas (Móvil/Tablet) ---
             document.addEventListener('DOMContentLoaded', () => {
