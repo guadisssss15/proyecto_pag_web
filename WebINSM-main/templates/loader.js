@@ -19,6 +19,35 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error en la carga del proyecto:', error);
+
+            const fallbackParams = new URLSearchParams(window.location.search);
+            const fallbackTitle = fallbackParams.get('title');
+            if (!fallbackTitle) return;
+
+            const fallbackSummary = fallbackParams.get('summary') || '';
+            const fallbackDetail = fallbackParams.get('detail') || fallbackSummary;
+            const fallbackImage = fallbackParams.get('image') || '../img/logo.png';
+            const fallbackData = {
+                hero: {
+                    titleLine1: fallbackTitle,
+                    titleLine2: '',
+                    backgroundImage: fallbackImage
+                },
+                general: {
+                    date: 'Proyecto institucional',
+                    summary: fallbackSummary,
+                    detail: fallbackDetail,
+                    image: fallbackImage
+                },
+                academic: {
+                    value1: 'Instituto Nuestra Señora de la Merced',
+                    value2: 'Proyecto institucional',
+                    value3: 'Comunidad educativa'
+                }
+            };
+
+            loadProjectData(fallbackData);
+            initVisualEffects();
         });
 });
 

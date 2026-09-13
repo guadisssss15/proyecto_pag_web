@@ -1272,6 +1272,7 @@
 			will-change: transform, box-shadow;
 			transform: translate3d(0, 0, 0);
 			backface-visibility: hidden;
+			cursor: pointer;
 			transition:
 				transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
 				box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -3046,7 +3047,7 @@
 					</div>
 					<div class="level-content" data-level-content="secundario">
 						<div class="level-grid">
-							<div class="level-image"><img src="img/VIAJES.jpg" alt="Nivel Secundario" /></div>
+							<div class="level-image"><img src="img/Foto_secundario.png" alt="Nivel Secundario" /></div>
 							<div class="level-info">
 								<h4>Secundario</h4>
 								<div class="age">Edades 13-18</div>
@@ -3966,44 +3967,44 @@
 		if (homeProjectsGrid) {
 			const projects = [
 				{
-					id: 1,
-					title: 'Evento: Dónde nace la magia',
-					image: 'img/entrada.png',
+					id: 'evento_2025',
+					title: 'Evento: Donde nace la magia',
+					image: 'img/Cooperativa 1.jpg',
 					date: '2025-11-27',
 					displayDate: '27 de Noviembre',
 					summary: 'El tradicional desfile de fin de año se transformó en una noche mágica con moda, música y actuaciones de toda la escuela.'
 				},
 				{
-					id: 2,
-					title: 'Revista EME · Edición Nº 17',
-					image: 'img/20250806_092322.jpg',
+					id: 'revista_eme_2025',
+					title: 'Revista EME · Edición N° 17',
+					image: 'img/Screenshot 2025-12-22 161503.png',
 					date: '2025-11-19',
 					displayDate: '19 de Noviembre',
 					summary: 'La promoción 2025 de Humanidades produjo la edición Nº 17 de la Revista EME, reafirmando meses de trabajo, reflexión y producción colectiva.'
 				},
 				{
-					id: 3,
-					title: 'Evento: Espejos de cultura',
+					id: 'evento_2024',
+					title: 'Evento: Espejos de Cultura',
 					image: 'img/Cooperativa 1.jpg',
-					date: '2025-12-05',
+					date: '2024-12-05',
 					displayDate: '5 de Diciembre',
 					summary: 'El tradicional desfile de fin de año se transformó en una noche mágica con moda, música y actuaciones de toda la escuela.'
 				},
 				{
-					id: 4,
-					title: 'Cooperativa escolar',
-					image: 'img/Cooperativa- bolsas.jpg',
-					date: '2025-10-14',
-					displayDate: '14 de Octubre',
-					summary: 'Los estudiantes desarrollaron propuestas creativas y solidarias para fortalecer la vida cooperativa y el trabajo en equipo.'
+					id: 'revista_eme_2024',
+					title: 'Revista EME · Edición N° 16',
+					image: 'img/Cooperativa 1.jpg',
+					date: '2024-11-20',
+					displayDate: '20 de Noviembre',
+					summary: 'La promoción 2024 de Humanidades produjo la edición Nº 16 de la Revista EME, reafirmando meses de trabajo, reflexión y producción colectiva.'
 				},
 				{
-					id: 5,
-					title: 'Semana de la identidad',
-					image: 'img/Historia.jpg',
-					date: '2025-08-20',
-					displayDate: '20 de Agosto',
-					summary: 'Una experiencia de encuentro con la historia, la comunidad y los valores institucionales que fortalece el sentido de pertenencia.'
+					id: 'cortos_2024',
+					title: 'Premios Torres · Edición 2024',
+					image: 'img/Screenshot 2025-12-23 120617.png',
+					date: '2024-11-07',
+					displayDate: '7 de Noviembre',
+					summary: 'La Promoción 2024 de Informática realizó cortometrajes basados en cuentos argentinos en el marco del proyecto Premios Torres.'
 				}
 			];
 
@@ -4014,9 +4015,9 @@
 			homeProjectsGrid.innerHTML = '';
 
 			recent.forEach((proj) => {
-				const card = document.createElement('a');
-				card.href = `templates/Proyecto.html?id=${proj.id}`;
+					const card = document.createElement('a');
 				card.className = 'projects-card';
+				card.href = `templates/Proyecto.html?id=${proj.id}`;
 
 				let summary = proj.summary || '';
 				if (summary.length > 200) {
@@ -4027,13 +4028,14 @@
 				const safeSummary = processLongWords(summary, '16px Heuristica', Math.max(cardWidthBase, 220));
 
 				card.innerHTML = `
-					<img src="${proj.image || ''}" alt="${proj.title || ''}" loading="lazy">
+						<img src="${proj.image || ''}" alt="${proj.title || ''}" loading="lazy">
 					<div class="projects-card-content">
 						<p class="date">${proj.displayDate || ''}</p>
 						<h4>${safeTitle}</h4>
 						<p>${safeSummary}</p>
 					</div>
 				`;
+
 				homeProjectsGrid.appendChild(card);
 			});
 
