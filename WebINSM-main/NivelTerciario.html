@@ -1627,6 +1627,79 @@ color: #db8d16;
                 }
             }
 
+            .staff-docente-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+                gap: 20px;
+                margin-top: 25px;
+            }
+
+            .staff-docente-item {
+                position: relative;
+                background: linear-gradient(180deg, #fff 0%, #fffaf7 100%);
+                border: 1px solid #e9c9cd;
+                border-radius: 18px 18px 14px 18px;
+                padding: 18px 12px 16px;
+                box-shadow: 0 8px 16px rgba(165, 28, 48, 0.06);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 12px;
+                transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+                overflow: hidden;
+            }
+
+            .staff-docente-item::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: linear-gradient(90deg, #a51c30 0%, #f39c12 100%);
+            }
+
+            .staff-docente-item:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 22px rgba(165, 28, 48, 0.08);
+                border-color: #cf0621;
+            }
+
+            .staff-docente-item .staff-circle {
+                width: 170px;
+                height: 170px;
+                border-radius: 16px;
+                background: linear-gradient(135deg, #8b0d1d 0%, #b91b2d 100%);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 14px;
+                box-sizing: border-box;
+                border: 1px solid rgba(255,255,255,0.15);
+                box-shadow: 0 10px 22px rgba(139, 13, 29, 0.15);
+            }
+
+            .staff-docente-item .staff-circle strong {
+                display: block;
+                font-family: 'Heuristica', serif;
+                font-size: 1.05em;
+                line-height: 1.1;
+                font-weight: 700;
+                color: #fff;
+                letter-spacing: 0.02em;
+            }
+
+            .staff-docente-item span {
+                font-family: 'ProximaNova', sans-serif;
+                color: #5c5c5c;
+                font-size: 0.9em;
+                line-height: 1.35;
+                font-weight: 700;
+            }
+
             /* --- Estilo: Nuestro Personal (Refined Strip Carousel) --- */
             .staff-carousel-track.notransition,
             .staff-carousel-track.notransition .staff-carousel-item {
@@ -2485,134 +2558,26 @@ color: #db8d16;
                         </div>
 
                         <div id="personal" class="content-block">
-                            <h2>Nuestro Personal</h2>
-
-                            <div class="staff-layout-grid">
-                                <div class="staff-left-panel">
-                                    <div class="staff-active-info" id="staffInfoBox">
-                                        <h3 id="staffActiveName">MARINA ANDREA ALDERETE</h3>
-                                        <span id="staffActiveRole">Directora</span>
-                                    </div>
-
-                                    <div class="staff-nav-controls">
-                                        <button class="staff-nav-btn" id="btnPrevStaff" aria-label="Anterior"><i class="fas fa-arrow-left"></i></button>
-                                        <button class="staff-nav-btn" id="btnPauseStaff" aria-label="Pausar"><i class="fas fa-pause"></i></button>
-                                        <button class="staff-nav-btn" id="btnNextStaff" aria-label="Siguiente"><i class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                </div>
-
-                                <div class="staff-carousel-viewport" id="staffViewport">
-                                    <div class="staff-carousel-track" id="staffTrack">
-                                        <div class="staff-carousel-item" data-name="MARINA ANDREA ALDERETE" data-role="Directora<br>Docente de: <br> →Didáctica General <br> →Práctica Docente III">
-                                            <div class="staff-card-content">
-                                                <strong>MARINA ANDREA ALDERETE</strong>
-                                                <span>Directora</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="MARCELA NARCIZA BIANCHI" data-role="Docente de Práctica Docente IV">
-                                            <div class="staff-card-content">
-                                                <strong>MARCELA NARCIZA BIANCHI</strong>
-                                                <span>Docente de Práctica Docente IV</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="MARIA MACARENA DE YONG" data-role="Docente de Educación Sexual Integral">
-                                            <div class="staff-card-content">
-                                                <strong>MARIA MACARENA DE YONG</strong>
-                                                <span>Docente de Educación Sexual Integral</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="ANTONELA MERCEDES DELLAROSSA" data-role="Docente de: <br>→Ciencias Naturales y su Didáctica I<br>→Ciencias Naturales y su Didáctica II<br>→Taller de Ciencias<br>→Tutorias y Ateneos de Cs. Naturales">
-                                            <div class="staff-card-content">
-                                                <strong>ANTONELA MERCEDES DELLAROSSA</strong>
-                                                <span>Docente de: <br>→Ciencias Naturales y su Didáctica I<br>→Ciencias Naturales y su Didáctica II<br>→Taller de Ciencias<br>→Tutorias y Ateneos de Cs. Naturales</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="NANCY MARIEL DIAZ" data-role="Docente de: <br>→Lenguaje Artístico Expresivo<br>→Educación Artístico Expresiva">
-                                            <div class="staff-card-content">
-                                                <strong>NANCY MARIEL DIAZ</strong>
-                                                <span>Docente de: <br>→Lenguaje Artístico Expresivo<br>→Educación Artístico Expresiva</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="TANIA LORENA GARBELLOTTO" data-role="Docente de: <br>→Psicología y Educación<br>→Filosofía y Educación<br>→Alfabetización Inicial<br>→Tutorias y Ateneos de Cs. Naturales">
-                                            <div class="staff-card-content">
-                                                <strong>TANIA LORENA GARBELLOTTO</strong>
-                                                <span>Docente de: <br>→Psicología y Educación<br>→Filosofía y Educación<br>→Alfabetización Inicial<br>→Tutorias y Ateneos de Cs. Naturales</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="MARISABEL DEL VALLE GASTALDELLO" data-role="Docente de: <br>→Problemáticas y Desafíos del Nivel Primario<br>→Seminario de Ruralidad<br>→Trabajo de Campo">
-                                            <div class="staff-card-content">
-                                                <strong>MARISABEL DEL VALLE GASTALDELLO</strong>
-                                                <span>Docente de: <br>→Problemáticas y Desafíos del Nivel Primario<br>→Seminario de Ruralidad<br>→Trabajo de Campo</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="LOURDES GONZALEZ RENEÉ" data-role="Docente de: <br>→Inglés I<br>→Inglés II<br>→Inglés III">
-                                            <div class="staff-card-content">
-                                                <strong>LOURDES GONZALEZ RENEÉ</strong>
-                                                <span>Docente de: <br>→Inglés I<br>→Inglés II<br>→Inglés III</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="MARIANA INES ITALIANO" data-role="Docente de: <br>→Práctica Docente I<br>→Pedagogía<br>→Práctica Docente II<br>→Literatura en el Nivel Primario">
-                                            <div class="staff-card-content">
-                                                <strong>MARIANA INES ITALIANO</strong>
-                                                <span>Docente de: <br>→Práctica Docente I<br>→Pedagogía<br>→Práctica Docente II<br>→Literatura en el Nivel Primario</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="AYELÉN DEL VALLE JUAN" data-role="Docente de Lenguaje Corporal">
-                                            <div class="staff-card-content">
-                                                <strong>AYELÉN DEL VALLE JUAN</strong>
-                                                <span>Docente de Lenguaje Corporal</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="AGOSTINA ARIANA LUPORI" data-role="Docente de Sujeto de la Educación y Convivencia Escolar">
-                                            <div class="staff-card-content">
-                                                <strong>AGOSTINA ARIANA LUPORI</strong>
-                                                <span>Docente de Sujeto de la Educación y Convivencia Escolar</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="VERÓNICA ANDREA MARITANO" data-role="Docente de: <br>→Historia y Política de la Educación Argentina<br>→Ética y Construcción de Ciudadanía">
-                                            <div class="staff-card-content">
-                                                <strong>VERÓNICA ANDREA MARITANO</strong>
-                                                <span>Docente de: <br>→Historia y Política de la Educación Argentina<br>→Ética y Construcción de Ciudadanía</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="GABRIELA MUGAS" data-role="Docente de: <br>→Formación General Teológica<br>→Educación Religiosa Escolar I<br>→Educación Religiosa Escolar II">
-                                            <div class="staff-card-content">
-                                                <strong>GABRIELA MUGAS</strong>
-                                                <span>Docente de: <br>→Formación General Teológica<br>→Educación Religiosa Escolar I<br>→Educación Religiosa Escolar II</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="HORACIO FEDERICO PARMIGIANI" data-role="Docente de Educación Física en el Nivel Primario">
-                                            <div class="staff-card-content">
-                                                <strong>HORACIO FEDERICO PARMIGIANI</strong>
-                                                <span>Docente de Educación Física en el Nivel Primario</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="CECILIA HAYDEÉ PETIT" data-role="Docente de: <br>→Argentina en el Mundo Contemporáneo<br>→Problemáticas Socioantropológicas en Educación<br>→Ciencias Sociales y su Didáctica II<br>→Taller de Ciencias<br>→Tutorias y Ateneos de Cs. Sociales">
-                                            <div class="staff-card-content">
-                                                <strong>CECILIA HAYDEÉ PETIT</strong>
-                                                <span>Docente de: <br>→Argentina en el Mundo Contemporáneo<br>→Problemáticas Socioantropológicas en Educación<br>→Ciencias Sociales y su Didáctica II<br>→Taller de Ciencias<br>→Tutorias y Ateneos de Cs. Sociales</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="VERÓNICA DEL VALLE RUATTA" data-role="Docente de: <br>→Oralidad, Lectura y Escritura<br>→Lengua y su Didáctica">
-                                            <div class="staff-card-content">
-                                                <strong>VERÓNICA DEL VALLE RUATTA</strong>
-                                                <span>Docente de: <br>→Oralidad, Lectura y Escritura<br>→Lengua y su Didáctica</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="FLORENCIA BETINA SQUIZZATO" data-role="Docente de: <br>→Lenguaje Digital y Audio Visual<br>→TIC'S en el Nivel Primario">
-                                            <div class="staff-card-content">
-                                                <strong>FLORENCIA BETINA SQUIZZATO</strong>
-                                                <span>Docente de: <br>→Lenguaje Digital y Audio Visual<br>→TIC'S en el Nivel Primario</span>
-                                            </div>
-                                        </div>
-                                        <div class="staff-carousel-item" data-name="CARINA DEL VALLE TORRE" data-role="Secretaria<br>Docente de: <br>→Desarrollo del Pensamiento Matemática<br>→Matemática y su Didáctica I<br>→Matemática y su Didáctica I<br>→Tutorias y Ateneos de Matemática">
-                                            <div class="staff-card-content">
-                                                <strong>CARINA DEL VALLE TORRE</strong>
-                                                <span>Secretaria<br>Docente de: <br>→Desarrollo del Pensamiento Matemática<br>→Matemática y su Didáctica I<br>→Matemática y su Didáctica I<br>→Tutorias y Ateneos de Matemática</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h2>Personal docente</h2>
+                            <div class="staff-docente-list">
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>MARINA ANDREA ALDERETE</strong></div><span>Directora / Docente de Didáctica General y Práctica Docente III</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>MARCELA NARCIZA BIANCHI</strong></div><span>Docente de Práctica Docente IV</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>MARIA MACARENA DE YONG</strong></div><span>Docente de Educación Sexual Integral</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>ANTONELA MERCEDES DELLAROSSA</strong></div><span>Docente de Ciencias Naturales y su Didáctica</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>NANCY MARIEL DIAZ</strong></div><span>Docente de Lenguaje Artístico Expresivo</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>TANIA LORENA GARBELLOTTO</strong></div><span>Docente de Psicología, Filosofía y Alfabetización Inicial</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>MARISABEL DEL VALLE GASTALDELLO</strong></div><span>Docente de Problemáticas y Desafíos del Nivel Primario</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>LOURDES GONZALEZ RENEÉ</strong></div><span>Docente de Inglés I, II y III</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>MARIANA INES ITALIANO</strong></div><span>Docente de Práctica Docente I, II, Pedagogía y Literatura</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>AYELÉN DEL VALLE JUAN</strong></div><span>Docente de Lenguaje Corporal</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>AGOSTINA ARIANA LUPORI</strong></div><span>Docente de Sujeto de la Educación y Convivencia Escolar</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>VERÓNICA ANDREA MARITANO</strong></div><span>Docente de Historia, Política y Ética</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>GABRIELA MUGAS</strong></div><span>Docente de Formación General Teológica y Educación Religiosa</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>HORACIO FEDERICO PARMIGIANI</strong></div><span>Docente de Educación Física en el Nivel Primario</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>CECILIA HAYDEÉ PETIT</strong></div><span>Docente de Ciencias Sociales, Historia y Talleres</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>VERÓNICA DEL VALLE RUATTA</strong></div><span>Docente de Oralidad, Lectura, Escritura y Lengua</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>FLORENCIA BETINA SQUIZZATO</strong></div><span>Docente de Lenguaje Digital y TIC's</span></div>
+                                <div class="staff-docente-item"><div class="staff-circle"><strong>CARINA DEL VALLE TORRE</strong></div><span>Secretaria / Docente de Matemática y su Didáctica</span></div>
                             </div>
                         </div>
 
