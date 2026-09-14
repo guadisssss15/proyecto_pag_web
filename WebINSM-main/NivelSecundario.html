@@ -1441,6 +1441,104 @@ color: #db8d16;
                 border-radius: 16px;
             }
 
+            /* --- Nuestro Personal: tarjetas sin fotografías --- */
+            .staff-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px;
+                width: 100%;
+            }
+
+            .staff-card {
+                background-color: #fff;
+                border: 1px solid #e0e0e0;
+                border-radius: 10px;
+                flex: 0 0 calc((100% - 54px) / 4);
+                box-sizing: border-box;
+                padding: 22px 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                text-align: center;
+                gap: 10px;
+                transition: all 0.3s ease;
+                min-height: 170px;
+            }
+
+            .staff-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+                border-color: #cf0621;
+            }
+
+            .staff-card.is-hidden {
+                display: none;
+            }
+
+            .staff-more-container {
+                width: 100%;
+                text-align: center;
+                margin-top: 28px;
+            }
+
+            .staff-card h3 {
+                font-family: 'Heuristica', serif;
+                font-size: 1.35em;
+                color: #cf0621;
+                margin: 0;
+                line-height: 1.2;
+            }
+
+            .staff-badge {
+                display: inline-block;
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.72em;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding: 5px 16px;
+                border-radius: 999px;
+                color: #fff;
+                background-color: #2c7c7d;
+            }
+
+            .staff-badge.director {
+                background-color: #cf0621;
+            }
+
+            .staff-badge.secretaria {
+                background-color: #f39c12;
+            }
+
+            .staff-badge.preceptora {
+                background-color: #1a4f8d;
+            }
+
+            .staff-badge.docente {
+                background-color: #2c7c7d;
+            }
+
+            .staff-card p {
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.92em;
+                color: #6b6b6b;
+                margin: 0;
+                line-height: 1.4;
+                word-wrap: break-word;
+            }
+
+            @media (max-width: 1024px) {
+                .staff-card { flex: 0 0 calc((100% - 36px) / 3); }
+            }
+            @media (max-width: 700px) {
+                .staff-card { flex: 0 0 calc((100% - 18px) / 2); }
+            }
+            @media (max-width: 420px) {
+                .staff-card { flex: 0 0 100%; }
+            }
+
             
 
             /* --- TABLET (Portrait & Landscape) --- */
@@ -2564,6 +2662,78 @@ margin: 0 0 10px 0;
             //  LÓGICA CARRUSEL "STYLE INSM" (Infinito)
             // ==============================================
             document.addEventListener('DOMContentLoaded', () => {
+                const staffLayout = document.querySelector('#personal .staff-layout-grid');
+                const staffItems = staffLayout ? staffLayout.querySelectorAll('.staff-carousel-item') : [];
+
+                if (staffLayout && staffItems.length) {
+                    const staffGrid = document.createElement('div');
+                    staffGrid.className = 'staff-grid';
+
+                    staffItems.forEach((item) => {
+                        const card = document.createElement('article');
+                        card.className = 'staff-card';
+
+                        const name = document.createElement('h3');
+                        name.textContent = item.dataset.name || 'Personal docente';
+
+                        const role = item.dataset.role || 'Personal';
+                        const normalizedRole = role.toLowerCase();
+                        const roleClass = normalizedRole.includes('director')
+                            ? 'director'
+                            : normalizedRole.includes('secretaria')
+                                ? 'secretaria'
+                                : normalizedRole.includes('preceptora')
+                                    ? 'preceptora'
+                                    : 'docente';
+                        const badge = document.createElement('span');
+                        badge.className = `staff-badge ${roleClass}`;
+                        badge.textContent = normalizedRole.includes('director')
+                            ? 'Director'
+                            : normalizedRole.includes('secretaria')
+                                ? 'Secretaria'
+                                : normalizedRole.includes('preceptora')
+                                    ? 'Preceptora'
+                                    : 'Docente';
+
+                        const details = document.createElement('p');
+                        details.innerHTML = role
+                            .replace(/^Docente de:<br>/, '')
+                            .replace(/<br><small>Cursos:[\s\S]*?<\/small>/i, '');
+
+                        card.append(name, badge, details);
+                        staffGrid.appendChild(card);
+                    });
+
+                    staffLayout.replaceWith(staffGrid);
+
+                    const staffCards = Array.from(staffGrid.querySelectorAll('.staff-card'));
+                    const initialStaffLimit = 12;
+                    const staffMoreContainer = document.createElement('div');
+                    staffMoreContainer.className = 'staff-more-container';
+                    const staffMoreButton = document.createElement('button');
+                    staffMoreButton.type = 'button';
+                    staffMoreButton.className = 'view-more-btn';
+                    staffMoreButton.textContent = 'Ver más';
+
+                    staffCards.slice(initialStaffLimit).forEach((card) => {
+                        card.classList.add('is-hidden');
+                    });
+
+                    if (staffCards.length > initialStaffLimit) {
+                        staffMoreContainer.appendChild(staffMoreButton);
+                        staffGrid.insertAdjacentElement('afterend', staffMoreContainer);
+
+                        staffMoreButton.addEventListener('click', () => {
+                            const isExpanded = staffGrid.classList.toggle('is-expanded');
+                            staffCards.slice(initialStaffLimit).forEach((card) => {
+                                card.classList.toggle('is-hidden', !isExpanded);
+                            });
+                            staffMoreButton.textContent = isExpanded ? 'Ver menos' : 'Ver más';
+                            staffMoreButton.setAttribute('aria-expanded', String(isExpanded));
+                        });
+                    }
+                }
+
                 const track = document.getElementById('staffTrack');
                 const btnPrev = document.getElementById('btnPrevStaff');
                 const btnNext = document.getElementById('btnNextStaff');
