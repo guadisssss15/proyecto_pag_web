@@ -5,55 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscripción a Especialidades</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
-    .box { border: 1px solid #ccc; padding: 20px; border-radius: 8px; text-align: center; }
-    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-    input, select, textarea { width: 100%; padding: 8px; margin: 8px 0; box-sizing: border-box; }
-    label { font-weight: bold; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #fff9c4; color: #222; padding: 20px; }
+    .container { max-width: 650px; margin: 0 auto; }
+    h1 { text-align: center; color: #b62a2a; margin-bottom: 5px; }
+    .subtitle { text-align: center; color: #666; margin-bottom: 25px; }
+    .box, .form-card { background: #fffef0; padding: 25px; border-radius: 10px; border: 3px solid #b62a2a; box-shadow: 0 2px 8px rgba(0,0,0,.08); animation: bordeAnimado 2s ease-in-out infinite; }
+    label { display: block; margin: 12px 0 4px; font-weight: bold; font-size: 14px; }
+    input, select, textarea { width: 100%; padding: 9px; border: 1px solid #e6d96a; border-radius: 5px; font-size: 14px; background: #fffde7; margin: 8px 0; }
+    .btn, button { background: #b62a2a; color: #fff; border: none; padding: 12px 20px; font-size: 16px; border-radius: 6px; cursor: pointer; margin-top: 15px; width: 100%; }
+    .btn:hover, button:hover { background: #8f2020; }
+    .msg { padding: 12px; border-radius: 6px; margin: 15px 0; display: none; }
+    .msg.ok { background: #d4edda; color: #155724; display: block; }
+    .msg.err { background: #f8d7da; color: #721c24; display: block; }
+    .back { display: block; text-align: center; margin-top: 20px; color: #1a5276; }
+    @keyframes bordeAnimado {
+      0%, 100% { border-color: #b62a2a; box-shadow: 0 2px 8px rgba(114, 28, 36, .12); }
+      50% { border-color: #e6d96a; box-shadow: 0 2px 14px rgba(230, 217, 106, .45); }
+    }
   </style>
 </head>
 <body>
-  <h1>Inscripción a Especialidades</h1>
+  <div class="container">
+    <h1>Inscripción a Especialidades</h1>
+    <p class="subtitle">Instituto Nuestra Señora de la Merced</p>
 
-  <!-- Bloque 1: pedir login -->
-  <div id="loginBox" class="box" style="display:block;">
-    <p>Para inscribirte, primero ingresá con tu cuenta institucional.</p>
-    <button onclick="loginGoogle()">Ingresar con Google</button>
-  </div>
+    <!-- Bloque 1: pedir login -->
+    <div id="loginBox" class="box" style="display:block;">
+      <p>Para inscribirte, primero ingresá con tu cuenta institucional.</p>
+      <button onclick="loginGoogle()">Ingresar con Google</button>
+    </div>
 
-  <!-- Bloque 2: acceso denegado -->
-  <div id="deniedBox" class="box" style="display:none;">
-    <p style="color:red;"><strong>Acceso denegado.</strong></p>
-    <p>Tu correo no es institucional. Usá una cuenta que termine en <strong>@institutolamerced.edu.ar</strong>.</p>
-  </div>
+    <!-- Bloque 2: acceso denegado -->
+    <div id="deniedBox" class="box" style="display:none;">
+      <p style="color:#b62a2a;"><strong>Acceso denegado.</strong></p>
+      <p>Tu correo no es institucional. Usá una cuenta que termine en <strong>@institutolamerced.edu.ar</strong>.</p>
+    </div>
 
-  <!-- Bloque 3: el formulario -->
-  <div id="formBox" style="display:none;">
-    <form id="formEspecialidad">
-      <label>Nombre y apellido</label>
-      <input type="text" id="nombre" required>
-      
-      <label>¿De qué tercer año proviene?</label>
-      <select id="tercerAno" required>
-        <option value="">Seleccioná...</option>
-        <option value="A">3° A</option>
-        <option value="B">3° B</option>
-      </select>
+    <!-- Bloque 3: el formulario -->
+    <div id="formBox" class="form-card" style="display:none;">
+      <form id="formEspecialidad">
+        <label>Nombre y apellido</label>
+        <input type="text" id="nombre" required>
 
+        <label>¿De qué tercer año proviene?</label>
+        <select id="tercerAno" required>
+          <option value="">Seleccioná...</option>
+          <option value="A">3° A</option>
+          <option value="B">3° B</option>
+        </select>
 
-      <label>Especialidad</label>
-      <select id="especialidad" required>
-        <option value="">Seleccioná...</option>
-        <option value="Informática">Informática</option>
-        <option value="Administración">Administración</option>
-        <option value="Otra">Otra</option>
-      </select>
+        <label>Especialidad</label>
+        <select id="especialidad" required>
+          <option value="">Seleccioná...</option>
+          <option value="Informática">Informática</option>
+          <option value="Administración">Administración</option>
+          <option value="Otra">Otra</option>
+        </select>
 
-      <label>Comentarios</label>
-      <textarea id="comentarios" rows="3"></textarea>
+        <label>Comentarios</label>
+        <textarea id="comentarios" rows="3"></textarea>
 
-      <button type="submit">Enviar inscripción</button>
-    </form>
+        <button type="submit">Enviar inscripción</button>
+      </form>
+    </div>
   </div>
 
   <script type="module">
@@ -73,21 +88,6 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-
-    // 3) ACÁ VA TU onAuthStateChanged
-    auth.onAuthStateChanged((user) => {
-        const link = document.getElementById('especialidadesLink');
-        const DOMAIN = '@institutolamerced.edu.ar';
-
-        if (link) {
-            if (user && user.email && user.email.toLowerCase().endsWith(DOMAIN)) {
-                link.style.display = 'inline-block';
-            } else {
-                link.style.display = 'none';
-            }
-        }
-    });
-
 
     const loginBox = document.getElementById('loginBox');
     const deniedBox = document.getElementById('deniedBox');
