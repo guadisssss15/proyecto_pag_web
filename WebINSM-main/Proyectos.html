@@ -1299,11 +1299,11 @@ margin: 0 0 10px 0;
                             </div>
                         </div>
                         <div class="projects-card" data-project-detail="socio-comunitario">
-                            <img src="img/logo.png" alt="Proyecto Socio Comunitario – 4° año" />
+                            <img src="img/InicioProyectosociocomunitario.png" alt="Proyecto Sociocomunitario – 4.º B 2026" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-people-carry"></i></div>
-                                <h4>4.º año: participación con la comunidad</h4>
-                                <p>Trabajo de compromiso y participación comunitaria llevado a cabo por los estudiantes de 4° año.</p>
+                                <h4>Proyecto Sociocomunitario | 4.º B 2026</h4>
+                                <p>Los estudiantes diseñan una red de Internet en Cáritas para un proyecto de comunicación destinado a niños.</p>
                             </div>
                         </div>
                         <div class="projects-card" data-project-detail="proyectos-6b-informatica">
@@ -1339,14 +1339,6 @@ margin: 0 0 10px 0;
                             </div>
                         </div>
                         <div class="projects-card">
-                            <img src="img/logo.png" alt="Revista EME" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-newspaper"></i></div>
-                                <h4>Revista EME</h4>
-                                <p>Producida por 6to año A. Actualmente en pausa por motivos personales de la docente a cargo; se prevé recordar las últimas ediciones más adelante.</p>
-                            </div>
-                        </div>
-                        <div class="projects-card">
                             <img src="img/logo.png" alt="Nuestra Huerta – 2° año" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-leaf"></i></div>
@@ -1379,30 +1371,6 @@ margin: 0 0 10px 0;
                             </div>
                         </div>
                         <div class="projects-card">
-                            <img src="img/logo.png" alt="Alumnos en la Diversidad – SOE" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-hands"></i></div>
-                                <h4>Alumnos en la Diversidad – SOE</h4>
-                                <p>Proyecto institucional de acompañamiento a la diversidad, coordinado por el Servicio de Orientación Escolar.</p>
-                            </div>
-                        </div>
-                        <div class="projects-card">
-                            <img src="img/logo.png" alt="Fortalecer la Cultura Digital" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-laptop"></i></div>
-                                <h4>Fortalecer la Cultura Digital</h4>
-                                <p>Proyecto institucional orientado al uso responsable y crítico de la tecnología.</p>
-                            </div>
-                        </div>
-                        <div class="projects-card">
-                            <img src="img/logo.png" alt="ESI: Educamos para el Amor Aprendiendo en Familia" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-heart"></i></div>
-                                <h4>ESI: Educamos para el Amor Aprendiendo en Familia</h4>
-                                <p>Proyecto institucional de Educación Sexual Integral con participación de las familias.</p>
-                            </div>
-                        </div>
-                        <div class="projects-card">
                             <img src="img/logo.png" alt="Proyecto BIOHUELLA" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-seedling"></i></div>
@@ -1418,8 +1386,8 @@ margin: 0 0 10px 0;
                                 <p>Producción audiovisual realizada por los estudiantes.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
-                            <img src="img/logo.png" alt="Expo Carreras – 5° año" />
+                        <div class="projects-card" data-project-detail="expo-carreras-5to">
+                            <img src="img/Img_Expo2026.jpeg" alt="Expo Carreras – 5° año" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-user-graduate"></i></div>
                                 <h4>Expo Carreras – 5° año</h4>
@@ -1726,6 +1694,11 @@ margin: 0 0 10px 0;
                     card.style.cursor = 'pointer';
 
                     const openInstitutionalProject = () => {
+                        if (card.dataset.projectDetail === 'socio-comunitario') {
+                            window.location.href = 'templates/Proyecto.html?id=sociocomunitario_4b';
+                            return;
+                        }
+
                         const title = card.querySelector('h4')?.textContent.trim() || 'Proyecto institucional';
                         const summary = card.querySelector('.projects-card-content > p:last-child')?.textContent.trim() || '';
                         const image = card.querySelector('img')?.getAttribute('src') || 'img/logo.png';
@@ -1736,7 +1709,9 @@ margin: 0 0 10px 0;
                             'cooperativa-mutual': `<h3>Reacondicionamiento del espacio</h3><ul><li>Junto con la Comisión de Mantenimiento, reacomodaron y limpiaron la sala de los elementos de Educación Física.</li><li>Inflaron y organizaron las pelotas y ordenaron los materiales para que queden más accesibles y en mejores condiciones.</li><li>El objetivo es mantener el espacio ordenado, facilitar el uso y cuidar los materiales compartidos.</li></ul><h3>Participación de los cursos</h3><ul><li>Desde el cooperativismo, el mutualismo y la comisión de mantenimiento, hablaron con los distintos cursos para conocer sus necesidades.</li><li>Pidieron propuestas de mejora para los espacios y condiciones de la institución.</li><li>Buscan que todos participen y aporten ideas, pensando juntos mejoras para el colegio.</li></ul><h3>Mes de María</h3><ul><li>Los estudiantes de Tercer Año, desde la Mutual y la Cooperativa Escolar, confeccionaron banderines y denarios para compartir con la comunidad.</li></ul><h3>El mensaje de cierre</h3><ul><li>Entre manos que crean, corazones que se encuentran y pequeños gestos de servicio, también se construye comunidad.</li><li>Que María inspire a los jóvenes a seguir diciendo sí al compromiso, la solidaridad, el cuidado del otro y la esperanza.</li></ul>`,
                             'socio-comunitario': `<p>Todos los años, los estudiantes de 4.º año llevan adelante un proyecto sociocomunitario como parte de su recorrido escolar. La propuesta busca que los chicos tengan una participación real con la comunidad: que observen su entorno, identifiquen problemas concretos y trabajen en la búsqueda de soluciones.</p><p>No se trata solo de una actividad puntual, sino de un compromiso sostenido a lo largo del tiempo. En años anteriores, los proyectos han llegado a distintos espacios: la Casita, el Consejo de Niños, hogares de ancianos y otras iniciativas orientadas a mejoras para la sociedad.</p><p>De esta forma, el objetivo es que los estudiantes aprendan a mirar más allá del aula, se involucren con las necesidades de su entorno y pongan sus conocimientos al servicio de los demás. Es una manera de formar no solo buenos estudiantes, sino también ciudadanos comprometidos con su comunidad.</p>`,
                             'proyectos-6b-informatica': `<p>Desde la materia Desarrollo de Sistemas Informáticos, a cargo del profesor Carlos Clara, se pensaron seis proyectos ideados por los estudiantes de 6.º B de Informática. Todos comparten la misma lógica: detectar un problema real dentro de la institución y resolverlo aplicando conocimientos técnicos de informática, robótica y programación.</p><h3>1. Proyecto &quot;Bocado&quot; - App para el kiosco</h3><ul><li><strong>Problema:</strong> en la cantina se amontonaba mucha gente en los recreos y los alumnos tardaban en decidir qué comprar.</li><li><strong>Solución:</strong> una aplicación móvil para pedir comida al kiosco de forma más rápida y flexible, sin esperar en la fila.</li><li><strong>Beneficiados:</strong> estudiantes y profesores, y el negocio, que mejora la gestión de pedidos.</li><li><strong>Recursos:</strong> Android Studio, Visual Studio Code, Pinterest y design.com.</li></ul><h3>2. Proyecto Timbre Automático</h3><ul><li><strong>Problema:</strong> el timbre dependía de que las preceptoras lo accionaran a mano, lo que causaba demoras y, en un intento anterior, sonaba dos veces.</li><li><strong>Solución:</strong> un sistema con página web, Python, Arduino IDE y un ESP8266 que configura horarios y activa el timbre por Wi-Fi sin duplicar el sonido.</li><li><strong>Beneficiados:</strong> preceptoría, docentes y alumnos, sin reemplazar puestos de trabajo.</li><li><strong>Recursos:</strong> ESP8266, relé, placa, fuente de 9V, Python y Arduino IDE.</li></ul><h3>3. Proyecto de Talleres - Robótica, Programación y Electrónica</h3><ul><li><strong>Problema:</strong> muchos alumnos llegan a Informática sin dominar conceptos básicos y la carga horaria no alcanza para proyectos prácticos.</li><li><strong>Solución:</strong> talleres extracurriculares opcionales dictados por estudiantes de 6.º año para alumnos desde 6.º grado hasta 4.º año. Incluyen Programación, Electrónica y Telecomunicación, con módulos progresivos.</li><li><strong>Beneficiados:</strong> alumnos, estudiantes de 6.º que enseñan y la institución.</li><li><strong>Recursos:</strong> kits de soldadura, componentes, Arduino UNO, celulares Android, Tinkercad, Scratch, Gobstones, MIT App Inventor y Teachable Machine.</li></ul><h3>4. Proyecto de Luces Automáticas</h3><ul><li><strong>Problema:</strong> las preceptoras revisaban manualmente las aulas durante los recreos para comprobar ocupación y luces encendidas.</li><li><strong>Solución:</strong> un sistema para saber qué aulas están ocupadas, reservadas o desocupadas, controlar las luces desde el celular y encenderlas con detección de movimiento.</li><li><strong>Beneficiados:</strong> principalmente las preceptoras y la institución.</li><li><strong>Recursos:</strong> ESP32, sensor de alarma, relés, lámpara LED y protoboard.</li></ul><h3>5. Proyecto Registro Mercedario</h3><ul><li><strong>Problema:</strong> la información de los estudiantes estaba en carpetas físicas, causando demoras, dificultades para contactar tutores y desorden documental.</li><li><strong>Solución:</strong> una página web que digitaliza y centraliza datos personales, tutores, cursos, observaciones y amonestaciones en la computadora de preceptoría.</li><li><strong>Beneficiados:</strong> la preceptoría, que encuentra la información de forma rápida y ordenada.</li><li><strong>Recursos:</strong> TypeScript, React, Next.js, pnpm, Supabase, Prisma, GitHub y Vercel.</li></ul><h3>6. Proyecto de Asistencia por Registro Biométrico</h3><ul><li><strong>Problema:</strong> la asistencia manual causaba demoras, errores, pérdida de tiempo administrativo y dificultades para controlar las llegadas tarde.</li><li><strong>Solución:</strong> un puesto frente a preceptoría con cámara de reconocimiento facial o lector de huella. El sistema registra nombre, curso, fecha y hora, y clasifica la asistencia.</li><li><strong>Beneficiados:</strong> alumnos, profesores, preceptores y directivos.</li><li><strong>Recursos:</strong> notebook, cámara web Full HD, lector de huellas, programas de asistencia y una base de datos.</li></ul><h3>En síntesis</h3><p>Los seis proyectos comparten un mismo espíritu: usar la tecnología para resolver problemas concretos del colegio y mejorar la vida de la comunidad educativa, con enfoques en alimentación, tiempos escolares, formación práctica, eficiencia energética, gestión de datos y control de asistencia.</p>`
-                        }[card.dataset.projectDetail] || summary;
+                        }[card.dataset.projectDetail] || (card.dataset.projectDetail === 'expo-carreras-5to'
+                            ? '<p>Para el Instituto Nuestra Señora de la Merced, el futuro de nuestros estudiantes es una prioridad. Cada año acompañamos a los alumnos de 5.º año a vivir una experiencia clave en su transición a la educación superior: el viaje a las Expo Carreras en Córdoba Capital.</p><h3>¿Qué es una Expo Carrera?</h3><p>Es un megaevento educativo y de orientación vocacional donde las principales instituciones concentran su oferta académica. Los estudiantes participan de talleres, charlas profesionales y conversaciones con estudiantes avanzados para conocer carreras, becas y requisitos de ingreso.</p><h3>El recorrido por La Docta</h3><ul><li><strong>UTN:</strong> perfil técnico y científico, conociendo laboratorios y propuestas de ingeniería.</li><li><strong>UCC:</strong> propuestas académicas con un enfoque personalizado y de formación integral.</li><li><strong>Ciudad Universitaria (UNC):</strong> recorrido por el campus, sus pabellones y sus instalaciones para vivir la experiencia universitaria.</li></ul>'
+                            : summary);
                         const params = new URLSearchParams({
                             title,
                             summary,

@@ -1,0 +1,19 @@
+{
+    "hero": {
+        "titleLine1": "Expo Carreras",
+        "titleLine2": "5to año",
+        "backgroundImage": "../img/Img_Expo2026.jpeg"
+    },
+    "general": {
+        "date": "13 de Septiembre de 2026",
+        "summary": "Para el Instituto Nuestra Señora de la Merced, el futuro de nuestros estudiantes es una prioridad. Cada año acompañamos a los alumnos de 5.º año a vivir una experiencia clave en su transición a la educación superior: el viaje a las Expo Carreras en Córdoba Capital.",
+        "detail": "<p>Una Expo Carrera, también llamada Muestra de Carreras, es un megaevento educativo y de orientación vocacional donde las principales instituciones de la provincia concentran toda su oferta académica. No se trata de una simple entrega de folletos: es un espacio interactivo y dinámico para que los jóvenes tengan un contacto real con el mundo universitario.</p><p>Durante la jornada, los estudiantes participan de talleres de orientación, asisten a charlas profesionales y conversan mano a mano con estudiantes avanzados. Así pueden conocer el día a día de cada profesión, los sistemas de becas y los requisitos de ingreso.</p><h3>El recorrido por La Docta</h3><p>Los alumnos realizan un circuito por las universidades más importantes de Córdoba y exploran diferentes opciones de gestión pública y privada:</p><ul><li><strong>Universidad Tecnológica Nacional (UTN):</strong> conocen de cerca el perfil técnico y científico, junto con los laboratorios de las distintas ingenierías.</li><li><strong>Universidad Católica de Córdoba (UCC):</strong> descubren propuestas académicas con un enfoque personalizado y de formación integral.</li><li><strong>Ciudad Universitaria (UNC):</strong> recorren el campus de la Universidad Nacional de Córdoba, sus pabellones y sus instalaciones, viviendo en primera persona la energía y la magnitud de la vida universitaria.</li></ul><p>Esta experiencia les permite ampliar horizontes, hacerse nuevas preguntas y comenzar a proyectar con mayor claridad el camino que desean construir después de la escuela.</p>",
+        "image": "../img/Img_Expo2026.jpeg"
+    },
+    "academic": {
+        "value1": "5.º año",
+        "value2": "Orientación vocacional",
+        "value3": "Córdoba Capital",
+        "icon3": "fas fa-university"
+    }
+}

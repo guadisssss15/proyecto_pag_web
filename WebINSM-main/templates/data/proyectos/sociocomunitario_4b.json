@@ -1,0 +1,24 @@
+{
+    "hero": {
+        "titleLine1": "Proyecto Sociocomunitario",
+        "titleLine2": "4.º B · 2026",
+        "backgroundImage": "../img/InicioProyectosociocomunitario.png"
+    },
+    "general": {
+        "date": "2026",
+        "summary": "Los alumnos de 4.º año B iniciaron un nuevo proyecto sociocomunitario para diseñar y realizar una red de Internet en Cáritas, que será utilizada en un proyecto de comunicación destinado a niños.",
+        "detail": "<p>En este proyecto, los estudiantes pondrán en práctica muchas de las habilidades trabajadas en Informática. El desafío es diseñar y realizar una red de Internet en Cáritas para acompañar un proyecto de comunicación destinado a niños.</p><h3>Primera etapa: diagnóstico del lugar</h3><ul><li><strong>Relevamiento:</strong> observaron el espacio y tomaron medidas.</li><li><strong>Análisis:</strong> identificaron las necesidades del lugar.</li><li><strong>Diseño:</strong> comenzaron a pensar cómo podría organizarse la red.</li><li><strong>Aplicación:</strong> empezaron a transformar los conocimientos adquiridos en una solución concreta para la comunidad.</li></ul><p>Es un proyecto donde la informática sale del aula y se convierte en una herramienta para aprender, crear y aportar a otros. Recién estamos comenzando.</p><h3>Antecedente: mural sociocomunitario de 2024</h3><p>La segunda imagen recuerda otro proyecto sociocomunitario realizado en 2024: la creación de un mural en un hogar de ancianos. Se incluye como antecedente de la participación comunitaria de los estudiantes y no como parte del proyecto actual de 4.º B.</p>",
+        "image": "../img/InicioProyectosociocomunitario.png"
+    },
+    "academic": {
+        "value1": "4.º B",
+        "value2": "Informática",
+        "value3": "Cáritas",
+        "icon3": "fas fa-network-wired"
+    },
+    "gallery": [
+        "../img/InicioProyectosociocomunitario.png",
+        "../img/Proyeto sociocomunitario2026.png",
+        "../img/Proyectosociocomunitario2024.jpeg"
+    ]
+}

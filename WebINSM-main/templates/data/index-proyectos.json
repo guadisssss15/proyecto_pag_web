@@ -46,5 +46,13 @@
         "displayDate": "20 de Noviembre",
         "summary": "La Promoción 2024 de Humanidades produjo la edición N° 16 de la Revista EME, reflejando meses de trabajo, reflexión y producción colectiva.",
         "image": "img/Cooperativa 1.jpg"
+    },
+    {
+        "id": "expo_carreras_5to",
+        "title": "Expo Carreras: una experiencia para proyectar el futuro",
+        "date": "2026-09-13",
+        "displayDate": "13 de Septiembre de 2026",
+        "summary": "Los estudiantes de 5.º año visitaron las Expo Carreras en Córdoba Capital y recorrieron universidades para conocer opciones de estudio, orientación vocacional y vida universitaria.",
+        "image": "img/Img_Expo2026.jpeg"
     }
 ]
