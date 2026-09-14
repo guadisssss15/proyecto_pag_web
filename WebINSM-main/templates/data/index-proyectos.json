@@ -1,27 +1,30 @@
 [
     {
-        "id": "evento_2025",
-        "title": "Evento: Donde nace la magia",
-        "date": "2025-11-27",
-        "displayDate": "27 de Noviembre",
-        "summary": "El tradicional desfile de fin de año se transformó en una noche mágica con moda, música y actuaciones de toda la escuela.",
-        "image": "img/Cooperativa 1.jpg"
+        "id": "modelo_onu_2026",
+        "title": "Modelo ONU 2026: una experiencia que valió la pena",
+        "date": "2026-08-23",
+        "displayDate": "21 al 23 de Agosto de 2026",
+        "summary": "La 26.ª edición del Modelo de Naciones Unidas en San Francisco reunió a estudiantes de 4.º, 5.º y 6.º año para debatir, representar países y construir acuerdos.",
+        "image": "img/ONU_2026.png",
+        "featured": true
+    },
+    {
+        "id": "copa_robotica_2026",
+        "title": "Copa Robótica Educabot 2026: competir también es aprender",
+        "date": "2026-08-13",
+        "displayDate": "13 de Agosto de 2026",
+        "summary": "Dos equipos de Informática llegaron a la semifinal provincial de una competencia de robótica, programación e inteligencia artificial.",
+        "image": "img/Copa_robótica2026.png",
+        "featured": true
     },
     {
         "id": "evento_2024",
-        "title": "Evento: Espejos de Cultura",
-        "date": "2024-12-5",
-        "displayDate": "5 de Diciembre",
-        "summary": "El tradicional desfile de fin de año se transformó en una noche mágica con moda, música y actuaciones de toda la escuela.",
-        "image": "img/Cooperativa 1.jpg"
-    },
-    {
-        "id": "evento_2023",
-        "title": "Evento: Fashion Blooms",
-        "date": "2023-12-6",
-        "displayDate": "6 de Diciembre",
-        "summary": "El tradicional desfile de fin de año se transformó en una noche mágica con moda, música y actuaciones de toda la escuela.",
-        "image": "img/historia.jpg"
+        "title": "Desfile del Nivel Secundario: Donde nace la magia | Ahora: Festival Mercedario próximamente",
+        "date": "2025-11-27",
+        "displayDate": "27 de Noviembre de 2025",
+        "summary": "El tradicional desfile del Nivel Secundario, inspirado en la magia de la Navidad, fue una noche de luz, creatividad y emoción. Próximamente: Festival Mercedario.",
+        "image": "img/PortadaUltimoDesfile.jpeg",
+        "featured": true
     },
     {
         "id": "revista_eme_2025",
@@ -29,7 +32,8 @@
         "date": "2025-11-19",
         "displayDate": "19 de Noviembre",
         "summary": "La Promoción 2025 de Humanidades produjo la edición N° 17 de la Revista EME, reflejando meses de trabajo, reflexión y producción colectiva.",
-        "image": "img/Screenshot 2025-12-22 161503.png"
+        "image": "img/Screenshot 2025-12-22 161503.png",
+        "featured": true
     },
     {
         "id": "cortos_2024",
@@ -37,15 +41,8 @@
         "date": "2024-11-07",
         "displayDate": "7 de Noviembre",
         "summary": "La Promoción 2024 de Informática realizó cortometrajes basados en cuentos argentinos en el marco del proyecto Premios Torres.",
-        "image": "img/Screenshot 2025-12-23 120617.png"
-    },
-    {
-        "id": "revista_eme_2024",
-        "title": "Revista EME · Edición N° 16",
-        "date": "2024-11-20",
-        "displayDate": "20 de Noviembre",
-        "summary": "La Promoción 2024 de Humanidades produjo la edición N° 16 de la Revista EME, reflejando meses de trabajo, reflexión y producción colectiva.",
-        "image": "img/Cooperativa 1.jpg"
+        "image": "img/Screenshot 2025-12-23 120617.png",
+        "featured": true
     },
     {
         "id": "expo_carreras_5to",
@@ -53,6 +50,95 @@
         "date": "2026-09-13",
         "displayDate": "13 de Septiembre de 2026",
         "summary": "Los estudiantes de 5.º año visitaron las Expo Carreras en Córdoba Capital y recorrieron universidades para conocer opciones de estudio, orientación vocacional y vida universitaria.",
-        "image": "img/Img_Expo2026.jpeg"
+        "image": "img/Img_Expo2026.jpeg",
+        "featured": true
+    },
+    {
+        "id": "endeavor_cordoba_2026",
+        "title": "Endeavor Córdoba: emprender no se hace solo",
+        "date": "2026-08-01",
+        "displayDate": "Agosto de 2026",
+        "summary": "Experiencia de emprendedurismo para estudiantes de 6.º año B desde el espacio EOI: Informática Aplicada.",
+        "image": "img/Endeavor2026.png"
+    },
+    {
+        "id": "cooperativa_mutual_2026",
+        "title": "Cooperativa y Mutual Escolar",
+        "date": "2026-07-15",
+        "displayDate": "Julio de 2026",
+        "summary": "Proyecto conjunto de 3.º año para gestionar una cooperativa y mutual escolar y mejorar los espacios compartidos.",
+        "image": "img/Coop_y_ceam2026.png"
+    },
+    {
+        "id": "sociocomunitario_4b_2026",
+        "title": "Proyecto Sociocomunitario: 4.º B 2026",
+        "date": "2026-06-15",
+        "displayDate": "Junio de 2026",
+        "summary": "Los estudiantes diseñan una red de Internet en Cáritas para un proyecto de comunicación destinado a niños.",
+        "image": "img/InicioProyectosociocomunitario.png"
+    },
+    {
+        "id": "proyectos_6b_informatica_2026",
+        "title": "Proyectos INSM 6.º B Informática",
+        "date": "2026-06-01",
+        "displayDate": "Junio de 2026",
+        "summary": "Seis proyectos para resolver problemas reales de la institución mediante informática, robótica y programación.",
+        "image": "img/proyectos6tob_2026.png"
+    },
+    {
+        "id": "tutorias_robotica_tecnologia",
+        "title": "Tutorías de Robótica y Tecnología",
+        "date": "2026-05-15",
+        "displayDate": "Mayo de 2026",
+        "summary": "Estudiantes de 5.º año brindan tutorías de Robótica a estudiantes de 3.º año desde Tecnología.",
+        "image": "img/logo.png"
+    },
+    {
+        "id": "radioteatro_6a",
+        "title": "Radioteatro: 6.º A",
+        "date": "2026-04-15",
+        "displayDate": "Abril de 2026",
+        "summary": "Producción de radioteatro realizada por los estudiantes de 6.º año A.",
+        "image": "img/logo.png"
+    },
+    {
+        "id": "nuestra_huerta_2",
+        "title": "Nuestra Huerta: 2.º año",
+        "date": "2026-03-15",
+        "displayDate": "Marzo de 2026",
+        "summary": "Proyecto de huerta escolar llevado adelante por estudiantes de 2.º año desde Biología.",
+        "image": "img/logo.png"
+    },
+    {
+        "id": "del_mate_a_la_maceta_1",
+        "title": "Del Mate a la Maceta: 1.º año",
+        "date": "2026-03-01",
+        "displayDate": "Marzo de 2026",
+        "summary": "Proyecto de reutilización y huerta iniciado por estudiantes de 1.º año.",
+        "image": "img/logo.png"
+    },
+    {
+        "id": "investigacion_social_5",
+        "title": "Investigación Social y Monografías: 5.º año",
+        "date": "2026-02-15",
+        "displayDate": "Febrero de 2026",
+        "summary": "Trabajos de investigación social realizados por 5.º año y presentados en las Jornadas de Puertas Abiertas.",
+        "image": "img/logo.png"
+    },
+    {
+        "id": "pasantias_6",
+        "title": "Pasantías: 6.º año",
+        "date": "2026-02-01",
+        "displayDate": "Febrero de 2026",
+        "summary": "Espacios de acercamiento al mundo laboral para estudiantes de 6.º año.",
+        "image": "img/logo.png"
+    },
+    {
+        "id": "cortometrajes",
+        "title": "Cortometrajes",
+        "date": "2024-09-01",
+        "displayDate": "Septiembre de 2024",
+        "summary": "Producción audiovisual realizada por los estudiantes.",
+        "image": "img/logo.png"
     }
 ]
