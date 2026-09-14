@@ -1529,6 +1529,102 @@ color: #db8d16;
                 word-wrap: break-word;
             }
 
+            /* --- Proyecto institucional de Inglés --- */
+            .english-program {
+                margin-top: 28px;
+                padding: 30px;
+                border-radius: 18px;
+                background: linear-gradient(135deg, #eef5fb 0%, #fff9ed 100%);
+                border: 1px solid rgba(26, 79, 141, 0.12);
+            }
+
+            .english-program-intro {
+                max-width: 860px;
+                margin: 0 auto 26px;
+                text-align: center;
+                color: #4f5963;
+                line-height: 1.7;
+            }
+
+            .english-program-grid {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .english-level-card {
+                min-height: 145px;
+                padding: 18px 14px;
+                border-radius: 12px;
+                background: #ffffff;
+                border-top: 4px solid #1a4f8d;
+                box-shadow: 0 5px 14px rgba(26, 79, 141, 0.08);
+                text-align: center;
+            }
+
+            .english-level-card strong {
+                display: block;
+                margin-bottom: 10px;
+                color: #1a4f8d;
+                font-family: 'Heuristica', serif;
+                font-size: 1.25em;
+            }
+
+            .english-level-card span {
+                color: #606a73;
+                font-family: 'ProximaNova', sans-serif;
+                font-size: 0.9em;
+                line-height: 1.45;
+            }
+
+            .english-program-footer {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+                margin-top: 20px;
+            }
+
+            .english-program-panel {
+                padding: 20px;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.82);
+            }
+
+            .english-program-panel h3 {
+                margin: 0 0 10px;
+                color: #cf0621;
+                font-family: 'Heuristica', serif;
+            }
+
+            .english-program-panel p,
+            .english-program-panel li {
+                color: #59636d;
+                font-family: 'ProximaNova', sans-serif;
+                line-height: 1.55;
+            }
+
+            .english-program-panel ul {
+                margin: 0;
+                padding-left: 20px;
+            }
+
+            @media (max-width: 900px) {
+                .english-program-grid {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                }
+            }
+
+            @media (max-width: 600px) {
+                .english-program {
+                    padding: 20px 14px;
+                }
+
+                .english-program-grid,
+                .english-program-footer {
+                    grid-template-columns: 1fr;
+                }
+            }
+
             @media (max-width: 1024px) {
                 .staff-card { flex: 0 0 calc((100% - 36px) / 3); }
             }
@@ -2070,19 +2166,56 @@ margin: 0 0 10px 0;
 
                         <div id="ingles" class="content-block">
                             <h2>Inglés por Niveles</h2>
-                            <p class="specialties-intro">
-                                En el Ciclo Orientado, el aprendizaje del inglés no se organiza por año escolar sino
-                                por niveles reales de conocimiento de la lengua: los estudiantes se integran en cinco
-                                grupos según sus competencias, para avanzar cada uno desde su propio punto de partida.
-                            </p>
-                            <div style="display: flex; justify-content: center; margin-top: 20px;">
-                                <a href="Ingles.html" class="aec-btn">
-                                    <i class="fas fa-language"></i>
-                                    <span>
-                                        Inglés por Niveles
-                                        <small>Conocé más (prueba nivelatoria y niveles)</small>
-                                    </span>
-                                </a>
+                            <div class="english-program">
+                                <p class="english-program-intro">
+                                    Somos la única escuela de Arroyito con este proyecto institucional de Inglés por Niveles.
+                                    En el Ciclo Orientado, los estudiantes no se agrupan solamente por año escolar:
+                                    realizan una evaluación nivelatoria y se integran al grupo que mejor acompaña sus
+                                    conocimientos y necesidades reales.
+                                </p>
+
+                                <div class="english-program-grid">
+                                    <div class="english-level-card">
+                                        <strong>Nivel 1</strong>
+                                        <span>Primer acercamiento al idioma y construcción de bases.</span>
+                                    </div>
+                                    <div class="english-level-card">
+                                        <strong>Nivel 2</strong>
+                                        <span>Vocabulario cotidiano, comprensión y comunicación inicial.</span>
+                                    </div>
+                                    <div class="english-level-card">
+                                        <strong>Nivel 3</strong>
+                                        <span>Mayor autonomía para comprender y expresarse en inglés.</span>
+                                    </div>
+                                    <div class="english-level-card">
+                                        <strong>Nivel 4</strong>
+                                        <span>Profundización de estructuras, textos y situaciones comunicativas.</span>
+                                    </div>
+                                    <div class="english-level-card">
+                                        <strong>Nivel 5</strong>
+                                        <span>Desarrollo avanzado y preparación para nuevos desafíos académicos.</span>
+                                    </div>
+                                </div>
+
+                                <div class="english-program-footer">
+                                    <div class="english-program-panel">
+                                        <h3>¿Cómo se organiza?</h3>
+                                        <p>
+                                            Al comenzar, cada estudiante realiza una prueba nivelatoria. Así se reconoce
+                                            su punto de partida y se propone un recorrido gradual, sin comparaciones y
+                                            con objetivos alcanzables para cada grupo.
+                                        </p>
+                                    </div>
+                                    <div class="english-program-panel">
+                                        <h3>Una experiencia que se vive</h3>
+                                        <ul>
+                                            <li>Conversaciones y situaciones de la vida cotidiana.</li>
+                                            <li>Comprensión oral, lectura y producción escrita.</li>
+                                            <li>Juegos, proyectos y actividades culturales.</li>
+                                            <li>Acompañamiento para avanzar con confianza.</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
