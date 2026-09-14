@@ -65,6 +65,7 @@
           <option value="primario">Primario</option>
           <option value="secundario">Secundario</option>
           <option value="superior">Superior</option>
+          <option value="especialidades">Especialidades</option>
         </select>
         <input type="text" id="busqueda" placeholder="Buscar por nombre o DNI...">
         <button class="btn green" onclick="descargarExcel()">⬇️ Descargar Excel</button>
@@ -78,8 +79,8 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, collection, onSnapshot, query, orderBy, where, getDocs, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-    // ✅ TUS CREDENCIALES REALES
+    import { getFirestore, collection, onSnapshot, query, orderBy, getDocs, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
     const firebaseConfig = {
       apiKey: "AIzaSyCCTqB7wWOZv-p1sNvfNtEZASw3K4VWmZo",
       authDomain: "inscripciones-merced-4fc14.firebaseapp.com",
@@ -93,12 +94,12 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // ✅ CORREOS AUTORIZADOS POR NIVEL
     const correosAutorizados = {
       'inicial': ['jardin@colegiocervellon.edu.ar'],
       'primario': ['primario@colegiocervellon.edu.ar'],
       'secundario': ['nivelsecundario@institutolamerced.edu.ar'],
-      'superior': ['mercednivelsuperior@institutolamerced.edu.ar']
+      'superior': ['mercednivelsuperior@institutolamerced.edu.ar'],
+      'especialidades': ['jardin@colegiocervellon.edu.ar', 'primario@colegiocervellon.edu.ar', 'nivelsecundario@institutolamerced.edu.ar', 'mercednivelsuperior@institutolamerced.edu.ar']
     };
 
     let correoLogueado = null;
@@ -158,30 +159,27 @@
     });
 
     function cargarRegistros() {
-        const niveles = nivelesPermitidos(correoLogueado);
-        if (niveles.length === 0) {
-            todosLosRegistros = [];
-            renderRegistros();
-            return;
-        }
-
+      const niveles = nivelesPermitidos(correoLogueado);
+      if (niveles.length === 0) {
         todosLosRegistros = [];
-        let pendientes = niveles.length;
+        renderRegistros();
+        return;
+      }
 
-        niveles.forEach(nivel => {
-            const q = query(collection(db, nivel), orderBy('fecha', 'desc'));
-            onSnapshot(q, (snap) => {
-            // Limpiar los registros de este nivel antes de re-agregar
-            todosLosRegistros = todosLosRegistros.filter(r => r.nivel !== nivel);
-            snap.forEach(doc => {
-                const data = doc.data();
-                todosLosRegistros.push({ id: doc.id, nivel, ...data });
-            });
-            renderRegistros();
-            });
+      todosLosRegistros = [];
+
+      niveles.forEach(nivel => {
+        const q = query(collection(db, nivel), orderBy('fecha', 'desc'));
+        onSnapshot(q, (snap) => {
+          todosLosRegistros = todosLosRegistros.filter(r => r.nivel !== nivel);
+          snap.forEach(doc => {
+            const data = doc.data();
+            todosLosRegistros.push({ id: doc.id, nivel, ...data });
+          });
+          renderRegistros();
         });
+      });
     }
-
 
     function renderRegistros() {
       const filtro = document.getElementById('filtroNivel').value;
@@ -203,31 +201,41 @@
         return;
       }
 
-      const nombresNivel = { inicial: 'Inicial', primario: 'Primario', secundario: 'Secundario', superior: 'Superior' };
+      const nombresNivel = { inicial: 'Inicial', primario: 'Primario', secundario: 'Secundario', superior: 'Superior', especialidades: 'Especialidades' };
 
       lista.forEach(r => {
         const div = document.createElement('div');
         div.className = 'record';
         let html = `<h3>${nombresNivel[r.nivel] || r.nivel} — ${r.nombre || 'Sin nombre'}</h3><table>`;
-        html += fila('DNI', r.dni);
-        html += fila('Fecha de nacimiento', r.fechaNacimiento);
-        html += fila('Domicilio', r.domicilio);
-        html += fila('Ciudad', r.ciudad);
-        html += fila('Sala / Grado / Año', r.sala || r.grado || r.anio);
-        html += fila('Otra institución', r.otraInstitucion);
-        html += fila('Turno', r.turno);
-        if (r.adultos && r.adultos.length) {
-          r.adultos.forEach((a, i) => {
-            html += `<tr><td>Adulto ${i+1}: ${a.nombre || ''}</td><td>DNI: ${a.dni || ''} · Parentesco: ${a.parentesco || ''} · Tel: ${a.telefono || ''} · Email: ${a.email || ''} · Ocupación: ${a.ocupacion || ''}</td></tr>`;
-          });
+
+        if (r.nivel === 'especialidades') {
+          html += fila('Tercer año', r.tercerAno);
+          html += fila('Especialidad', r.especialidad);
+          html += fila('Comentarios', r.comentarios);
+          html += fila('Correo', r.correo);
+          html += fila('Fecha de envío', r.fecha ? new Date(r.fecha.seconds * 1000).toLocaleString() : '');
+        } else {
+          html += fila('DNI', r.dni);
+          html += fila('Fecha de nacimiento', r.fechaNacimiento);
+          html += fila('Domicilio', r.domicilio);
+          html += fila('Ciudad', r.ciudad);
+          html += fila('Sala / Grado / Año', r.sala || r.grado || r.anio);
+          html += fila('Otra institución', r.otraInstitucion);
+          html += fila('Turno', r.turno);
+          if (r.adultos && r.adultos.length) {
+            r.adultos.forEach((a, i) => {
+              html += `<tr><td>Adulto ${i+1}: ${a.nombre || ''}</td><td>DNI: ${a.dni || ''} · Parentesco: ${a.parentesco || ''} · Tel: ${a.telefono || ''} · Email: ${a.email || ''} · Ocupación: ${a.ocupacion || ''}</td></tr>`;
+            });
+          }
+          html += fila('Teléfono 1', r.telefono1);
+          html += fila('Teléfono 2', r.telefono2);
+          html += fila('Email', r.email);
+          html += fila('Institución secundario', r.institucion);
+          html += fila('Año finalización', r.anioFinalizacion);
+          html += fila('Adeuda materias', r.adeudaMaterias);
+          html += fila('Fecha de envío', r.fecha ? new Date(r.fecha.seconds * 1000).toLocaleString() : '');
         }
-        html += fila('Teléfono 1', r.telefono1);
-        html += fila('Teléfono 2', r.telefono2);
-        html += fila('Email', r.email);
-        html += fila('Institución secundario', r.institucion);
-        html += fila('Año finalización', r.anioFinalizacion);
-        html += fila('Adeuda materias', r.adeudaMaterias);
-        html += fila('Fecha de envío', r.fecha ? new Date(r.fecha.seconds * 1000).toLocaleString() : '');
+
         html += '</table>';
         div.innerHTML = html;
         cont.appendChild(div);
@@ -250,17 +258,25 @@
         return;
       }
 
-      const filas = [['Nivel','Nombre','DNI','Fecha nacimiento','Domicilio','Ciudad','Sala/Grado/Año','Otra institución','Turno','Adulto 1','Adulto 2','Teléfono 1','Teléfono 2','Email','Institución','Año finalización','Adeuda materias','Fecha envío']];
+      const filas = [['Nivel','Nombre','DNI','Fecha nacimiento','Domicilio','Ciudad','Sala/Grado/Año','Otra institución','Turno','Adulto 1','Adulto 2','Teléfono 1','Teléfono 2','Email','Institución','Año finalización','Adeuda materias','Tercer año','Especialidad','Comentarios','Correo','Fecha envío']];
       todosLosRegistros.forEach(r => {
-        const a1 = r.adultos && r.adultos[0] ? `${r.adultos[0].nombre} (${r.adultos[0].parentesco})` : '';
-        const a2 = r.adultos && r.adultos[1] ? `${r.adultos[1].nombre} (${r.adultos[1].parentesco})` : '';
-        filas.push([
-          r.nivel, r.nombre, r.dni, r.fechaNacimiento, r.domicilio, r.ciudad,
-          r.sala || r.grado || r.anio, r.otraInstitucion, r.turno, a1, a2,
-          r.telefono1, r.telefono2, r.email, r.institucion, r.anioFinalizacion,
-          r.adeudaMaterias,
-          r.fecha ? new Date(r.fecha.seconds * 1000).toLocaleString() : ''
-        ]);
+        if (r.nivel === 'especialidades') {
+          filas.push([
+            r.nivel, r.nombre, '', '', '', '', '', '', '', '', '',
+            '', '', '', '', '', '', r.tercerAno, r.especialidad, r.comentarios, r.correo,
+            r.fecha ? new Date(r.fecha.seconds * 1000).toLocaleString() : ''
+          ]);
+        } else {
+          const a1 = r.adultos && r.adultos[0] ? `${r.adultos[0].nombre} (${r.adultos[0].parentesco})` : '';
+          const a2 = r.adultos && r.adultos[1] ? `${r.adultos[1].nombre} (${r.adultos[1].parentesco})` : '';
+          filas.push([
+            r.nivel, r.nombre, r.dni, r.fechaNacimiento, r.domicilio, r.ciudad,
+            r.sala || r.grado || r.anio, r.otraInstitucion, r.turno, a1, a2,
+            r.telefono1, r.telefono2, r.email, r.institucion, r.anioFinalizacion,
+            r.adeudaMaterias, '', '', '', '',
+            r.fecha ? new Date(r.fecha.seconds * 1000).toLocaleString() : ''
+          ]);
+        }
       });
 
       const ws = XLSX.utils.aoa_to_sheet(filas);
@@ -268,55 +284,51 @@
       XLSX.utils.book_append_sheet(wb, ws, 'Inscripciones');
       XLSX.writeFile(wb, 'inscripciones.xlsx');
     };
+
     window.borrarNivel = async () => {
-    if (!correoLogueado) return;
+      if (!correoLogueado) return;
 
-    // Confirmación doble para evitar borrados accidentales
-    const confirmar1 = confirm('⚠️ Vas a borrar TODAS las inscripciones de tu nivel. Esta acción no se puede deshacer. ¿Continuar?');
-    if (!confirmar1) return;
+      const confirmar1 = confirm('⚠️ Vas a borrar TODAS las inscripciones de tu nivel. Esta acción no se puede deshacer. ¿Continuar?');
+      if (!confirmar1) return;
 
-    const confirmar2 = confirm('¿Estás 100% seguro? Se eliminarán todos los registros de tu nivel.');
-    if (!confirmar2) return;
+      const confirmar2 = confirm('¿Estás 100% seguro? Se eliminarán todos los registros de tu nivel.');
+      if (!confirmar2) return;
 
-    // Determinar qué niveles puede borrar este correo
-    const misNiveles = nivelesPermitidos(correoLogueado);
-    if (misNiveles.length === 0) {
+      const misNiveles = nivelesPermitidos(correoLogueado);
+      if (misNiveles.length === 0) {
         alert('No tenés permisos para borrar registros.');
         return;
-    }
+      }
 
-   try {
-        // Borrar de cada colección por separado
+      try {
         let totalBorrados = 0;
         for (const nivel of misNiveles) {
-            const q = query(collection(db, nivel));
-            const snap = await getDocs(q);
-            if (!snap.empty) {
+          const q = query(collection(db, nivel));
+          const snap = await getDocs(q);
+          if (!snap.empty) {
             const batch = writeBatch(db);
             snap.forEach(doc => batch.delete(doc.ref));
             await batch.commit();
             totalBorrados += snap.size;
-            }
+          }
         }
 
         if (totalBorrados === 0) {
-            alert('No hay inscripciones para borrar en tu nivel.');
-            return;
+          alert('No hay inscripciones para borrar en tu nivel.');
+          return;
         }
 
         alert(`✅ Se borraron ${totalBorrados} inscripciones de tu nivel.`);
-        } catch (err) {
+      } catch (err) {
         console.error(err);
         alert('❌ Error al borrar. Verificá que tengas permisos sobre este nivel.');
-    }
+      }
     };
 
-
-
-    // Filtros
     document.getElementById('filtroNivel').addEventListener('change', renderRegistros);
     document.getElementById('busqueda').addEventListener('input', renderRegistros);
   </script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </body>
 </html>
+

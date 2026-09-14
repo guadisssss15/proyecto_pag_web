@@ -1855,6 +1855,11 @@ margin: 0 0 10px 0;
                         <li><a href="NuestroColegio.html">Nuestro Colegio</a></li>
                         <li><a href="Proyectos.html">Proyectos</a></li>
                         <li><a href="Contacto.html">Contacto</a></li>
+                        <!-- Botón de acceso al panel de administración (oculto por defecto) -->
+                        <li><a href="inscripcion-especialidad.html" id="especialidadesLink" style="display:none;" class="view-more-btn">
+                            Inscripción Especialidad
+                        </a>
+                        </li>
                         <li class="menu-icon" onclick="toggleSideMenu()"><i class="fas fa-bars"></i></li>
                     </ul>
                 </nav>
@@ -3037,5 +3042,48 @@ margin: 0 0 10px 0;
                 });
             });
         </script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+            import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+            // TU CONFIG DE FIREBASE
+            const firebaseConfig = {
+                apiKey: "AIzaSyCCTqB7wWOZv-p1sNvfNtEZASw3K4VWmZo",
+                authDomain: "inscripciones-merced-4fc14.firebaseapp.com",
+                projectId: "inscripciones-merced-4fc14",
+                storageBucket: "inscripciones-merced-4fc14.firebasestorage.app",
+                messagingSenderId: "588336598798",
+                appId: "1:588336598798:web:4e745d090b9335e907115f"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+
+            window.addEventListener('load', () => {
+                const link = document.getElementById('especialidadesLink');
+                const DOMAIN = '@institutolamerced.edu.ar';
+
+                if (link) {
+                    if (auth.currentUser && auth.currentUser.email && auth.currentUser.email.toLowerCase().endsWith(DOMAIN)) {
+                        link.style.display = 'inline-block';
+                    } else {
+                        link.style.display = 'none';
+                    }
+                }
+
+                // También escuchamos cambios de sesión
+                onAuthStateChanged(auth, (user) => {
+                    const link2 = document.getElementById('especialidadesLink');
+                    if (link2) {
+                        if (user && user.email && user.email.toLowerCase().endsWith(DOMAIN)) {
+                            link2.style.display = 'inline-block';
+                        } else {
+                            link2.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        </script>
+
     </body>
 </html>

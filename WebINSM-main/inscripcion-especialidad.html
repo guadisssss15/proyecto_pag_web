@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripción a Especialidades</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+    .box { border: 1px solid #ccc; padding: 20px; border-radius: 8px; text-align: center; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    input, select, textarea { width: 100%; padding: 8px; margin: 8px 0; box-sizing: border-box; }
+    label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Inscripción a Especialidades</h1>
+
+  <!-- Bloque 1: pedir login -->
+  <div id="loginBox" class="box" style="display:block;">
+    <p>Para inscribirte, primero ingresá con tu cuenta institucional.</p>
+    <button onclick="loginGoogle()">Ingresar con Google</button>
+  </div>
+
+  <!-- Bloque 2: acceso denegado -->
+  <div id="deniedBox" class="box" style="display:none;">
+    <p style="color:red;"><strong>Acceso denegado.</strong></p>
+    <p>Tu correo no es institucional. Usá una cuenta que termine en <strong>@institutolamerced.edu.ar</strong>.</p>
+  </div>
+
+  <!-- Bloque 3: el formulario -->
+  <div id="formBox" style="display:none;">
+    <form id="formEspecialidad">
+      <label>Nombre y apellido</label>
+      <input type="text" id="nombre" required>
+      
+      <label>¿De qué tercer año proviene?</label>
+      <select id="tercerAno" required>
+        <option value="">Seleccioná...</option>
+        <option value="A">3° A</option>
+        <option value="B">3° B</option>
+      </select>
+
+
+      <label>Especialidad</label>
+      <select id="especialidad" required>
+        <option value="">Seleccioná...</option>
+        <option value="Informática">Informática</option>
+        <option value="Administración">Administración</option>
+        <option value="Otra">Otra</option>
+      </select>
+
+      <label>Comentarios</label>
+      <textarea id="comentarios" rows="3"></textarea>
+
+      <button type="submit">Enviar inscripción</button>
+    </form>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCCTqB7wWOZv-p1sNvfNtEZASw3K4VWmZo",
+      authDomain: "inscripciones-merced-4fc14.firebaseapp.com",
+      projectId: "inscripciones-merced-4fc14",
+      storageBucket: "inscripciones-merced-4fc14.firebasestorage.app",
+      messagingSenderId: "588336598798",
+      appId: "1:588336598798:web:4e745d090b9335e907115f"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // 3) ACÁ VA TU onAuthStateChanged
+    auth.onAuthStateChanged((user) => {
+        const link = document.getElementById('especialidadesLink');
+        const DOMAIN = '@institutolamerced.edu.ar';
+
+        if (link) {
+            if (user && user.email && user.email.toLowerCase().endsWith(DOMAIN)) {
+                link.style.display = 'inline-block';
+            } else {
+                link.style.display = 'none';
+            }
+        }
+    });
+
+
+    const loginBox = document.getElementById('loginBox');
+    const deniedBox = document.getElementById('deniedBox');
+    const formBox = document.getElementById('formBox');
+
+    function esCorreoInstitucional(correo) {
+      return correo.endsWith('@institutolamerced.edu.ar');
+    }
+
+    window.loginGoogle = () => {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider).catch(err => {
+        console.error(err);
+        alert('Error al iniciar sesión: ' + err.message);
+      });
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        if (esCorreoInstitucional(user.email)) {
+          loginBox.style.display = 'none';
+          deniedBox.style.display = 'none';
+          formBox.style.display = 'block';
+        } else {
+          loginBox.style.display = 'none';
+          deniedBox.style.display = 'block';
+          formBox.style.display = 'none';
+        }
+      } else {
+        loginBox.style.display = 'block';
+        deniedBox.style.display = 'none';
+        formBox.style.display = 'none';
+      }
+    });
+
+    document.getElementById('formEspecialidad').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        await addDoc(collection(db, 'especialidades'), {
+          nombre: document.getElementById('nombre').value,
+          tercerAno: document.getElementById('tercerAno').value,
+          especialidad: document.getElementById('especialidad').value,
+          comentarios: document.getElementById('comentarios').value,
+          correo: auth.currentUser ? auth.currentUser.email : '',
+          fecha: serverTimestamp()
+        });
+        alert('¡Inscripción registrada!');
+        e.target.reset();
+      } catch (err) {
+        console.error(err);
+        alert('Error al guardar: ' + err.message);
+      }
+    });
+  </script>
+</body>
+</html>
