@@ -94,36 +94,12 @@
         "image": "img/logo.png"
     },
     {
-        "id": "radioteatro_6a",
-        "title": "Radioteatro: 6.º A",
-        "date": "2026-04-15",
-        "displayDate": "Abril de 2026",
-        "summary": "Producción de radioteatro realizada por los estudiantes de 6.º año A.",
-        "image": "img/logo.png"
-    },
-    {
-        "id": "nuestra_huerta_2",
-        "title": "Nuestra Huerta: 2.º año",
-        "date": "2026-03-15",
-        "displayDate": "Marzo de 2026",
-        "summary": "Proyecto de huerta escolar llevado adelante por estudiantes de 2.º año desde Biología.",
-        "image": "img/logo.png"
-    },
-    {
-        "id": "del_mate_a_la_maceta_1",
-        "title": "Del Mate a la Maceta: 1.º año",
-        "date": "2026-03-01",
-        "displayDate": "Marzo de 2026",
-        "summary": "Proyecto de reutilización y huerta iniciado por estudiantes de 1.º año.",
-        "image": "img/logo.png"
-    },
-    {
         "id": "investigacion_social_5",
-        "title": "Investigación Social y Monografías: 5.º año",
-        "date": "2026-02-15",
-        "displayDate": "Febrero de 2026",
-        "summary": "Trabajos de investigación social realizados por 5.º año y presentados en las Jornadas de Puertas Abiertas.",
-        "image": "img/logo.png"
+        "title": "Monografías de 5.º año: investigar para comprender",
+        "date": "2025-11-17",
+        "displayDate": "17 de Noviembre de 2025",
+        "summary": "Trabajo de investigación profunda sobre situaciones actuales y experiencias que atraviesan a los adolescentes, realizado desde Metodología de la Investigación.",
+        "image": "img/Monografia_1.jpeg"
     },
     {
         "id": "pasantias_6",
@@ -131,14 +107,6 @@
         "date": "2026-02-01",
         "displayDate": "Febrero de 2026",
         "summary": "Espacios de acercamiento al mundo laboral para estudiantes de 6.º año.",
-        "image": "img/logo.png"
-    },
-    {
-        "id": "cortometrajes",
-        "title": "Cortometrajes",
-        "date": "2024-09-01",
-        "displayDate": "Septiembre de 2024",
-        "summary": "Producción audiovisual realizada por los estudiantes.",
         "image": "img/logo.png"
     }
 ]

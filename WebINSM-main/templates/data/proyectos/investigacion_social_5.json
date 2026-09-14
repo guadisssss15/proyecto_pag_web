@@ -1,0 +1,24 @@
+{
+    "hero": {
+        "titleLine1": "Monografías de 5.º año",
+        "titleLine2": "Investigar para comprender",
+        "backgroundImage": "../img/Monografia_1.jpeg"
+    },
+    "general": {
+        "date": "17 de Noviembre de 2025",
+        "summary": "Una monografía es un trabajo de investigación profunda y detallada sobre un tema.",
+        "detail": "<h3>¿Qué es una monografía?</h3><p>Es un trabajo de investigación profunda y detallada sobre un tema. Puede abordar una situación actual del país o un hecho del pasado del que todavía no se haya hablado lo suficiente.</p><h3>Pasos para hacerla</h3><ol><li>Elegir un tema o problema.</li><li>Plantear una hipótesis, es decir, una posible respuesta o explicación al problema.</li><li>Investigar en fuentes confiables.</li><li>Entrevistar a profesionales del área, como psicólogos, representantes de colegios o del municipio, y a personas que vivieron la situación.</li><li>Hacer encuestas y analizar sus resultados.</li><li>Llegar a una conclusión para comprobar o no la hipótesis.</li></ol><h3>Ejemplo concreto: suicidio adolescente</h3><p>Uno de los trabajos abordó el suicidio adolescente. Para investigarlo, se entrevistó a psicólogos, se consultó cómo abordan los colegios esta situación y se habló con el municipio.</p><p>Es un tema delicado que puede estar atravesado por varios factores, entre ellos el colegio y la familia.</p>",
+        "image": "../img/Monografia_3.jpeg"
+    },
+    "academic": {
+        "value1": "5.º año A",
+        "value2": "Metodología de la Investigación",
+        "value3": "Ciencias Sociales y Psicología",
+        "icon3": "fas fa-search"
+    },
+    "gallery": [
+        "../img/Monografia_1.jpeg",
+        "../img/Monografia_2.jpeg",
+        "../img/Monografia_3.jpeg"
+    ]
+}

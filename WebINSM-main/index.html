@@ -633,6 +633,7 @@
 		}
 		.header-main .menu-icon {
 			font-size: 1.3em;
+			color: #ffffff !important;
 			cursor: pointer;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 			display: inline-block;
@@ -640,6 +641,13 @@
 			will-change: transform;
 	transform: translate3d(0, 0, 0);
 	transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		.header-main .menu-icon i {
+			color: #ffffff !important;
+		}
+		.header-main .menu-icon:hover,
+		.header-main .menu-icon:hover i {
+			color: #ffffff !important;
 		}
 		.header-main .menu-icon:active,
 		.header-main .menu-icon.active-press {
@@ -2220,8 +2228,8 @@ color: #db8d16;
 		}
 		.view-more-btn {
 			background-color: transparent;
-			color: #ffffff;
-			background: linear-gradient(135deg, var(--naranja) 0%, var(--rojo) 100%);
+			color: #ffffff !important;
+			background: linear-gradient(135deg, #cf0621 0%, #a51c30 100%);
 			border: 2px solid transparent;
 			padding: 12px 35px;
 			font-family: 'ProximaNova', sans-serif;
@@ -2244,7 +2252,7 @@ color: #db8d16;
 		}
 		@media (hover: hover) {
 			.view-more-btn:hover {
-				color: #ffffff;
+				color: #ffffff !important;
 				background-color: #cf0621;
 				border: 2px solid #cf0621;
 	transform: translate3d(0, -3px, 0);
@@ -2258,6 +2266,7 @@ color: #db8d16;
 		}
 		.view-more-btn:active,
 		.view-more-btn.active-press {
+			color: #ffffff !important;
 	transform: scale(0.95) translate3d(0, 2px, 0);
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition:
@@ -3973,12 +3982,12 @@ color: #db8d16;
 		if (homeProjectsGrid) {
 			const projects = [
 				{
-					id: 'revista_eme_2025',
-					title: 'Revista EME · Edición N° 17',
-					image: 'img/Screenshot 2025-12-22 161503.png',
-					date: '2025-11-19',
-					displayDate: '19 de Noviembre',
-					summary: 'La promoción 2025 de Humanidades produjo la edición Nº 17 de la Revista EME, reafirmando meses de trabajo, reflexión y producción colectiva.'
+					id: 'modelo_onu_2026',
+					title: 'Modelo ONU 2026: una experiencia que valió la pena',
+					image: 'img/ONU_2026.png',
+					date: '2026-08-23',
+					displayDate: '21 al 23 de Agosto de 2026',
+					summary: 'La 26.ª edición del Modelo de Naciones Unidas en San Francisco reunió a estudiantes para debatir, representar países y construir acuerdos.'
 				},
 				{
 					id: 'evento_2024',
@@ -3989,12 +3998,12 @@ color: #db8d16;
 					summary: 'El tradicional desfile del Nivel Secundario, inspirado en la magia de la Navidad, fue una noche de luz, creatividad y emoción. Próximamente: Festival Mercedario.'
 				},
 				{
-					id: 'cortos_2024',
-					title: 'Premios Torres · Edición 2024',
-					image: 'img/Screenshot 2025-12-23 120617.png',
-					date: '2024-11-07',
-					displayDate: '7 de Noviembre',
-					summary: 'La Promoción 2024 de Informática realizó cortometrajes basados en cuentos argentinos en el marco del proyecto Premios Torres.'
+					id: 'copa_robotica_2026',
+					title: 'Copa Robótica Educabot 2026: competir también es aprender',
+					image: 'img/Copa_robótica2026.png',
+					date: '2026-08-13',
+					displayDate: '13 de Agosto de 2026',
+					summary: 'Dos equipos de Informática llegaron a la semifinal provincial de una competencia de robótica, programación e inteligencia artificial.'
 				}
 			];
 

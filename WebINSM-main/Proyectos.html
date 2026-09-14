@@ -1331,35 +1331,11 @@ margin: 0 0 10px 0;
                             </div>
                         </div>
                         <div class="projects-card is-secondary">
-                            <img src="img/logo.png" alt="Radioteatro – 6to A" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-microphone-alt"></i></div>
-                                <h4>Radioteatro – 6to A</h4>
-                                <p>Producción de radioteatro realizada por los estudiantes de 6to año A, con posibilidad de extenderse a otros cursos.</p>
-                            </div>
-                        </div>
-                        <div class="projects-card is-secondary">
-                            <img src="img/logo.png" alt="Nuestra Huerta – 2° año" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-leaf"></i></div>
-                                <h4>Nuestra Huerta – 2° año</h4>
-                                <p>Proyecto de huerta escolar llevado a cabo por los estudiantes de 2° año desde el espacio curricular de Biología.</p>
-                            </div>
-                        </div>
-                        <div class="projects-card is-secondary">
-                            <img src="img/logo.png" alt="Del Mate a la Maceta – 1° año" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-tractor"></i></div>
-                                <h4>Del Mate a la Maceta – 1° año</h4>
-                                <p>Proyecto de reutilización y huerta iniciado por los estudiantes de 1er año.</p>
-                            </div>
-                        </div>
-                        <div class="projects-card is-secondary">
-                            <img src="img/logo.png" alt="Investigación Social y Monografías – 5° año" />
+                            <img src="img/Monografia_1.jpeg" alt="Monografías de 5.º año" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-search"></i></div>
-                                <h4>Investigación Social y Monografías – 5° año</h4>
-                                <p>Trabajos de investigación social realizados por 5to año, presentados en las Jornadas de Puertas Abiertas.</p>
+                                <h4>Monografías de 5.º año: investigar para comprender</h4>
+                                <p>Investigaciones profundas sobre situaciones actuales y experiencias adolescentes, realizadas desde Metodología de la Investigación.</p>
                             </div>
                         </div>
                         <div class="projects-card is-secondary">
@@ -1368,14 +1344,6 @@ margin: 0 0 10px 0;
                                 <div class="date"><i class="fas fa-user-tie"></i></div>
                                 <h4>Pasantías – 6° año</h4>
                                 <p>Espacios de pasantía para los estudiantes de 6to año como acercamiento al mundo laboral.</p>
-                            </div>
-                        </div>
-                        <div class="projects-card is-secondary">
-                            <img src="img/logo.png" alt="Cortometrajes" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-film"></i></div>
-                                <h4>Cortometrajes</h4>
-                                <p>Producción audiovisual realizada por los estudiantes de sexto año B.</p>
                             </div>
                         </div>
                         <div class="projects-card" data-project-detail="expo-carreras-5to">
@@ -1703,6 +1671,9 @@ margin: 0 0 10px 0;
                         const title = card.querySelector('h4')?.textContent.trim() || 'Proyecto institucional';
                         const summary = card.querySelector('.projects-card-content > p:last-child')?.textContent.trim() || '';
                         const image = card.querySelector('img')?.getAttribute('src') || 'img/logo.png';
+                        const detailImage = card.dataset.projectDetail === 'cooperativa-mutual'
+                            ? 'img/Cooperativaymutual.jpg'
+                            : image;
                         const details = {
                             'modelo-onu': `<h3>El proyecto en general</h3><ul><li>Comenzó en mayo, con meses de trabajo previo: organización, reuniones, simulacros, debates, investigación, errores y aprendizaje.</li><li>No se construyó de un día para otro; fue un proceso largo y compartido.</li></ul><h3>El equipo detrás</h3><ul><li>Estudiantes comprometidos que dieron lo mejor de sí.</li><li>Docentes que acompañaron con tiempo, corazón y vocación.</li><li>Familias que confiaron y dijeron que sí.</li><li>Muchas personas trabajando para que fuera posible.</li></ul><h3>Lo que implicó la preparación</h3><ul><li>Horas de estudio, videollamadas, encuentros, prácticas y mucha organización.</li><li>Dudas e incertidumbre, porque no conocían las reglas del juego, pero nunca faltaron las ganas y la predisposición.</li></ul><h3>Lo que significó la experiencia</h3><ul><li>Verlos crecer, animarse, debatir, expresarse y descubrir de qué son capaces.</li><li>Asumir roles, tomar el micrófono, defender posturas, negociar y construir con otros.</li><li>Salir de la zona de confort y convertirse en protagonistas.</li></ul><h3>El cierre emocional</h3><ul><li>Orgullo por el equipo y agradecimiento eterno a los profesores Ana Luz Torressi, Andrea Miretti, Sergio Maranzana y Santiago Romero por alentarlos a vivir esta &quot;locura&quot;.</li><li>Se quedan con las caras, las risas, los nervios, los abrazos y la sensación de que &quot;valió la pena&quot;.</li><li>Con solo animarse, ya ganaron todo.</li></ul>`,
                             'copa-robotica': `<h3>La propuesta</h3><ul><li>Experiencia educativa para jóvenes de 15 a 18 años sobre robótica, programación e inteligencia artificial.</li><li>Desafíos que exigen pensar, crear, resolver problemas, tomar decisiones y trabajar en equipo.</li></ul><h3>Participación en Córdoba</h3><ul><li>Córdoba fue la provincia con mayor participación del país: 224 instituciones, 580 equipos y más de 2.900 estudiantes.</li><li>Solo 50 equipos, de 37 instituciones, clasificaron a la semifinal provincial presencial.</li></ul><h3>El equipo propio</h3><ul><li>Dos equipos del Bachiller en Informática llegaron a la semifinal.</li><li>Resultados: <strong>12° puesto</strong> para 6° B y <strong>22°</strong> para 5° B.</li></ul><h3>El valor de la experiencia</h3><ul><li>Competir también es aprender: probar, equivocarse, repensar estrategias, colaborar, comunicar ideas y poner los conocimientos en acción.</li><li>Orgullo no solo por los resultados, sino por haber llegado a esa instancia.</li></ul><h3>El reconocimiento</h3><ul><li>Felicitaciones a los estudiantes y al equipo docente, por un trabajo sostenido a lo largo de los años.</li></ul><h3>La mirada a futuro</h3><ul><li>Confirmación de que el camino es fortalecer esta propuesta educativa, con tecnología que tenga sentido pedagógico.</li><li>Una jornada que queda entre esas experiencias que dejan huella.</li></ul>`,
@@ -1717,7 +1688,7 @@ margin: 0 0 10px 0;
                             title,
                             summary,
                             detail: details,
-                            image: image.replace(/^img\//, '../img/')
+                            image: detailImage.replace(/^img\//, '../img/')
                         });
                         window.location.href = `templates/Proyecto.html?${params.toString()}`;
                     };
