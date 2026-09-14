@@ -1,0 +1,18 @@
+{
+    "hero": {
+        "titleLine1": "Copa Robótica",
+        "titleLine2": "Educabot 2026",
+        "backgroundImage": "../img/Copa_robótica2026.png"
+    },
+    "general": {
+        "date": "13 de Agosto de 2026",
+        "summary": "La Copa Robótica Educabot reunió a jóvenes de 15 a 18 años en desafíos de robótica, programación e inteligencia artificial.",
+        "detail": "Dos equipos del Bachiller en Informática, de 6.º B y 5.º B, llegaron a la semifinal provincial. Obtuvieron los puestos 12.º y 22.º entre cientos de equipos, acompañados por sus docentes.",
+        "image": "../img/Copa_robótica2026.png"
+    },
+    "academic": {
+        "value1": "6.º B y 5.º B",
+        "value2": "Carlos Clara y Macarena De Yong",
+        "value3": "Robótica, programación e inteligencia artificial"
+    }
+}

@@ -644,11 +644,19 @@
                 text-align: left;
             }
 
+            #proyectos-institucionales {
+                display: none !important;
+            }
+
             .custom-select-option:hover {
                 background-color: #f4f6f8;
                 color: #333;
             }
 
+            .institutional-more-container {
+                display: block;
+                margin: 35px auto 0;
+            }
             .custom-select-option.selected {
                 background-color: #e8ebed;
                 color: #333;
@@ -1256,9 +1264,9 @@ margin: 0 0 10px 0;
                 </div>
             </section>
 
-            <section class="news-page-section" id="proyectos-institucionales">
+            <section class="news-page-section" id="proyectos-institucionales" style="display: none !important;">
                 <div class="content-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px 20px;">
-                    <h2 style="text-align:center;">Proyectos Institucionales</h2>
+                    <h2 style="text-align:center;">Proyectos principales</h2>
                     <p class="specialties-intro" style="text-align:center; max-width: 800px; margin: 0 auto 30px;">
                         A lo largo del año, nuestros estudiantes participan de distintos proyectos y experiencias que
                         complementan su formación académica. Esta sección se irá ampliando con más información e
@@ -1269,7 +1277,7 @@ margin: 0 0 10px 0;
                         <div class="projects-card" data-project-detail="modelo-onu">
                             <img src="img/ONU_2026.png" alt="Modelo ONU – Uniendo Metas 2026" />
                             <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-globe-americas"></i></div>
+                                <div class="date"><i class="fas fa-globe-americas"></i> 21 al 23 de agosto de 2026</div>
                                 <h4>Primer Modelo de Naciones Unidas: una experiencia que valió la pena</h4>
                                 <p>Estudiantes de 4°, 5° y 6° año participaron de la 26ª edición del Modelo de Naciones Unidas de la ciudad de San Francisco, a cargo de las profesoras Andrea Miretti y Ana Luz Torresi. Representaron a República de Corea, Reino de Dinamarca y ACNUR. Felipe Gordo fue distinguido como Mejor Embajador de Sala de Tratados, y se reconoció el acompañamiento del profesor Sergio Maranzana.</p>
                             </div>
@@ -1277,7 +1285,7 @@ margin: 0 0 10px 0;
                         <div class="projects-card" data-project-detail="copa-robotica">
                             <img src="img/Copa_robótica2026.png" alt="Copa Robótica Educabot 2026" />
                             <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-robot"></i></div>
+                                <div class="date"><i class="fas fa-robot"></i> 13 de agosto de 2026</div>
                                 <h4>Copa Robótica Educabot 2026: competir también es aprender</h4>
                                 <p>Competencia federal de robótica, programación e inteligencia artificial para jóvenes de 15 a 18 años. De 580 equipos a nivel provincial, dos de nuestra institución (6° B y 5° B, especialidad Informática) llegaron a la semifinal, obteniendo los puestos 12° y 22° respectivamente. Acompañados por los profesores Carlos Clara y Macarena De Yong.</p>
                             </div>
@@ -1314,7 +1322,7 @@ margin: 0 0 10px 0;
                                 <p>Seis proyectos ideados por estudiantes para resolver problemas reales de la institución mediante informática, robótica y programación.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Tutorías de Robótica y Tecnología" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-hands-helping"></i></div>
@@ -1322,7 +1330,7 @@ margin: 0 0 10px 0;
                                 <p>Proyecto conjunto entre 5to y 3er año coordinado por el Prof. Carlos Clara: los estudiantes de 5to año, desde el área de Robótica, dan tutorías a los de 3er año desde Tecnología.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Radioteatro – 6to A" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-microphone-alt"></i></div>
@@ -1330,7 +1338,7 @@ margin: 0 0 10px 0;
                                 <p>Producción de radioteatro realizada por los estudiantes de 6to año A, con posibilidad de extenderse a otros cursos.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Festival Mercedario" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-star"></i></div>
@@ -1338,7 +1346,7 @@ margin: 0 0 10px 0;
                                 <p>Antes conocido como "El Desfile", organizado por la ex directora y profesora Marisa Brisio (hoy retirada). Ahora es el Festival Mercedario, a cargo de la Prof. de Artística Camila Gerez, con fecha estimada el 5 de diciembre y temática Avatar.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Nuestra Huerta – 2° año" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-leaf"></i></div>
@@ -1346,7 +1354,7 @@ margin: 0 0 10px 0;
                                 <p>Proyecto de huerta escolar llevado a cabo por los estudiantes de 2° año desde el espacio curricular de Biología.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Del Mate a la Maceta – 1° año" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-tractor"></i></div>
@@ -1354,7 +1362,7 @@ margin: 0 0 10px 0;
                                 <p>Proyecto de reutilización y huerta iniciado por los estudiantes de 1er año.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Investigación Social y Monografías – 5° año" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-search"></i></div>
@@ -1362,7 +1370,7 @@ margin: 0 0 10px 0;
                                 <p>Trabajos de investigación social realizados por 5to año, presentados en las Jornadas de Puertas Abiertas.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Pasantías – 6° año" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-user-tie"></i></div>
@@ -1370,7 +1378,7 @@ margin: 0 0 10px 0;
                                 <p>Espacios de pasantía para los estudiantes de 6to año como acercamiento al mundo laboral.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Proyecto BIOHUELLA" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-seedling"></i></div>
@@ -1378,7 +1386,7 @@ margin: 0 0 10px 0;
                                 <p>Proyecto de la comunidad educativa vinculado al cuidado del ambiente, iniciado en 2024.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
+                        <div class="projects-card is-secondary">
                             <img src="img/logo.png" alt="Cortometrajes" />
                             <div class="projects-card-content">
                                 <div class="date"><i class="fas fa-film"></i></div>
@@ -1394,14 +1402,11 @@ margin: 0 0 10px 0;
                                 <p>Espacio de orientación vocacional donde los estudiantes de 5to año conocen distintas propuestas de estudio y carreras.</p>
                             </div>
                         </div>
-                        <div class="projects-card">
-                            <img src="img/logo.png" alt="Proyecto Impac Tech" />
-                            <div class="projects-card-content">
-                                <div class="date"><i class="fas fa-lightbulb"></i></div>
-                                <h4>Proyecto Impac Tech</h4>
-                                <p>Proyecto innovador con foco en impacto y emprendimiento.</p>
-                            </div>
-                        </div>
+                </div>
+                <div class="view-more-container institutional-more-container">
+                    <button type="button" class="view-more-btn institutional-more-btn" aria-expanded="false">
+                        Ver todos los proyectos
+                    </button>
                 </div>
             </section>
 
@@ -1685,8 +1690,20 @@ margin: 0 0 10px 0;
                 });
                 
                 const projectsContainer = document.getElementById('projects-grid');
-                const loadMoreBtn = document.querySelector('.view-more-btn');
-                const loadMoreContainer = document.querySelector('.view-more-container');
+                const loadMoreBtn = document.querySelector('.view-more-container:not(.institutional-more-container) .view-more-btn');
+                const loadMoreContainer = document.querySelector('.view-more-container:not(.institutional-more-container)');
+                const institutionalSection = document.getElementById('proyectos-institucionales');
+                const institutionalMoreBtn = document.querySelector('.institutional-more-btn');
+
+                if (institutionalSection && institutionalMoreBtn) {
+                    institutionalMoreBtn.addEventListener('click', () => {
+                        const isExpanded = institutionalSection.classList.toggle('is-expanded');
+                        institutionalMoreBtn.setAttribute('aria-expanded', String(isExpanded));
+                        institutionalMoreBtn.textContent = isExpanded
+                            ? 'Mostrar menos proyectos'
+                            : 'Ver todos los proyectos';
+                    });
+                }
 
                 document.querySelectorAll('#proyectos-institucionales .projects-card').forEach((card) => {
                     card.setAttribute('role', 'link');
@@ -1866,7 +1883,13 @@ margin: 0 0 10px 0;
                         });
 
                         const card = document.createElement('a');
-                        card.href = `templates/Proyecto.html?id=${proj.id}`;
+                        const fallbackParams = new URLSearchParams({
+                            id: proj.id,
+                            title: proj.title || 'Proyecto institucional',
+                            summary: proj.summary || '',
+                            image: `../${proj.image || 'img/logo.png'}`
+                        });
+                        card.href = `templates/Proyecto.html?${fallbackParams.toString()}`;
                         card.className = 'projects-card'; 
 
                         const maxChars = 200;
@@ -2081,7 +2104,12 @@ margin: 0 0 10px 0;
                         return response.json();
                     })
                     .then(projects => {
-                        allProjects = projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        allProjects = projects.sort((a, b) => {
+                            if (Boolean(b.featured) !== Boolean(a.featured)) {
+                                return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+                            }
+                            return new Date(b.date) - new Date(a.date);
+                        });
                         filteredProjects = [...allProjects];
                         populateYearSelect(allProjects);
                         
