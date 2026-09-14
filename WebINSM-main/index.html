@@ -38,18 +38,21 @@
 		}
 
 		:root {
+			--rojo: #cf0621;
 			--rojo-oscuro: #7f0d13;
+			--rojo-profundo: #a51c30;
 			--naranja: #ea6a1b;
 			--naranja-oscuro: #c85d0b;
 			--naranja-claro: #f7a94d;
 			--amarillo: #f4c542;
 			--amarillo-claro: #fff1b8;
 			--dorado: #f1b93c;
-			--fondo: #ffffff;
+			--fondo: #fffdf9;
 			--blanco: #ffffff;
 			--negro: #111111;
 			--gris: #333333;
 			--gris-suave: #666666;
+			--texto: #1e1e1e;
 			--sombra: rgba(33, 19, 7, 0.14);
 		}
 
@@ -62,7 +65,7 @@
 		textarea,
 		select,
 		a {
-			color: var(--negro);
+			color: var(--texto);
 		}
 
 		h1,
@@ -72,7 +75,8 @@
 		h5,
 		h6 {
 			font-weight: 700;
-			color: var(--negro);
+			color: var(--rojo-profundo);
+			letter-spacing: -0.02em;
 		}
 
 		/* Optimizaciones táctiles para móviles y tablets */
@@ -1364,7 +1368,7 @@
 			font-size: 1.05em;
 			line-height: 1.7;
 			font-family: 'ProximaNova', sans-serif;
-			color: #444343;
+			color: var(--negro);
 		}
 
 		.service-card .arrow-link {
@@ -3121,12 +3125,12 @@ color: #db8d16;
 				<div class="service-card">
 					<div class="service-header">
 						<h3>Capacitación</h3>
-						<a href="SOE.html" target="_blank" class="arrow-link">
+						<a href="Capacitaciones.html" class="arrow-link">
 							Ver más <i class="fas fa-arrow-right"></i>
 						</a>
 					</div>
 					<p>
-						
+						Espacios de formación y actualización para docentes, familias y comunidad educativa, con propuestas orientadas al crecimiento profesional y la innovación pedagógica.
 					</p>
 				</div>
 
