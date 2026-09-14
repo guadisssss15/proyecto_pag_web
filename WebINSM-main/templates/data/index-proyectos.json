@@ -19,11 +19,11 @@
     },
     {
         "id": "evento_2024",
-        "title": "Evento: Espejos de Cultura",
-        "date": "2024-12-5",
-        "displayDate": "5 de Diciembre",
-        "summary": "El tradicional desfile de fin de año se transformó en una noche mágica con moda, música y actuaciones de toda la escuela.",
-        "image": "img/Cooperativa 1.jpg",
+        "title": "Desfile del Nivel Secundario: Donde nace la magia | Ahora: Festival Mercedario próximamente",
+        "date": "2025-11-27",
+        "displayDate": "27 de Noviembre de 2025",
+        "summary": "El tradicional desfile del Nivel Secundario, inspirado en la magia de la Navidad, fue una noche de luz, creatividad y emoción. Próximamente: Festival Mercedario.",
+        "image": "img/PortadaUltimoDesfile.jpeg",
         "featured": true
     },
     {
@@ -102,14 +102,6 @@
         "image": "img/logo.png"
     },
     {
-        "id": "festival_mercedario_2026",
-        "title": "Festival Mercedario",
-        "date": "2026-04-01",
-        "displayDate": "Abril de 2026",
-        "summary": "Proyecto artístico institucional que reúne a la comunidad educativa en una celebración mercedaria.",
-        "image": "img/logo.png"
-    },
-    {
         "id": "nuestra_huerta_2",
         "title": "Nuestra Huerta: 2.º año",
         "date": "2026-03-15",
@@ -139,14 +131,6 @@
         "date": "2026-02-01",
         "displayDate": "Febrero de 2026",
         "summary": "Espacios de acercamiento al mundo laboral para estudiantes de 6.º año.",
-        "image": "img/logo.png"
-    },
-    {
-        "id": "biohuella",
-        "title": "Proyecto BIOHUELLA",
-        "date": "2024-10-01",
-        "displayDate": "Octubre de 2024",
-        "summary": "Proyecto de la comunidad educativa vinculado al cuidado del ambiente.",
         "image": "img/logo.png"
     },
     {
