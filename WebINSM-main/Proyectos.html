@@ -3,24 +3,32 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Insm - Proyectos</title>
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#cf0621" />
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+        <title>Proyectos Institucionales | Instituto Nuestra Señora de la Merced - Arroyito, Córdoba</title>
+        <meta name="description" content="Proyectos institucionales del INSM: Copa Robótica, Cooperativa Escolar, proyectos sociocomunitarios y actividades de impacto educativo en Arroyito, Córdoba." />
+        <link rel="canonical" href="https://hermanasmercedariasarroyito.vercel.app/Proyectos.html" />
         <style>
             /* --- Fuentes --- */
             @font-face {
                 font-family: 'Heuristica';
                 src: url('fonts/Heuristica-Regular.ttf') format('truetype');
+            font-display: swap;
                 font-weight: normal;
                 font-style: normal;
             }
             @font-face {
                 font-family: 'Heuristica';
                 src: url('fonts/Heuristica-Bold.ttf') format('truetype');
+            font-display: swap;
                 font-weight: bold;
                 font-style: normal;
             }
             @font-face {
                 font-family: 'ProximaNova';
                 src: url('fonts/ProximaNova-Regular.ttf') format('truetype');
+            font-display: swap;
                 font-weight: normal;
                 font-style: normal;
             }
@@ -1461,7 +1469,6 @@ margin: 0 0 10px 0;
                     <a href="#">Cookies</a>
                 </div>
                 <div class="footer-bottom-links" style="margin-top: 8px;">
-                    <span>Desarrollada por <span style="color: #f39c12;">Nazareno</span> y <span style="color: #f39c12;">Eugenio</span></span>
                 </div>
                 <div class="footer-bottom-logos"></div>
             </div>
@@ -1672,7 +1679,7 @@ margin: 0 0 10px 0;
                         const summary = card.querySelector('.projects-card-content > p:last-child')?.textContent.trim() || '';
                         const image = card.querySelector('img')?.getAttribute('src') || 'img/logo.png';
                         const detailImage = card.dataset.projectDetail === 'cooperativa-mutual'
-                            ? 'img/Cooperativaymutual.jpg'
+                            ? 'img/Coop_y_ceam2026.jpg'
                             : image;
                         const details = {
                             'modelo-onu': `<h3>El proyecto en general</h3><ul><li>Comenzó en mayo, con meses de trabajo previo: organización, reuniones, simulacros, debates, investigación, errores y aprendizaje.</li><li>No se construyó de un día para otro; fue un proceso largo y compartido.</li></ul><h3>El equipo detrás</h3><ul><li>Estudiantes comprometidos que dieron lo mejor de sí.</li><li>Docentes que acompañaron con tiempo, corazón y vocación.</li><li>Familias que confiaron y dijeron que sí.</li><li>Muchas personas trabajando para que fuera posible.</li></ul><h3>Lo que implicó la preparación</h3><ul><li>Horas de estudio, videollamadas, encuentros, prácticas y mucha organización.</li><li>Dudas e incertidumbre, porque no conocían las reglas del juego, pero nunca faltaron las ganas y la predisposición.</li></ul><h3>Lo que significó la experiencia</h3><ul><li>Verlos crecer, animarse, debatir, expresarse y descubrir de qué son capaces.</li><li>Asumir roles, tomar el micrófono, defender posturas, negociar y construir con otros.</li><li>Salir de la zona de confort y convertirse en protagonistas.</li></ul><h3>El cierre emocional</h3><ul><li>Orgullo por el equipo y agradecimiento eterno a los profesores Ana Luz Torressi, Andrea Miretti, Sergio Maranzana y Santiago Romero por alentarlos a vivir esta &quot;locura&quot;.</li><li>Se quedan con las caras, las risas, los nervios, los abrazos y la sensación de que &quot;valió la pena&quot;.</li><li>Con solo animarse, ya ganaron todo.</li></ul>`,
