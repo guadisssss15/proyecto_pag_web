@@ -6,29 +6,33 @@
 	<meta name="robots" content="index, follow" />
 	<meta name="theme-color" content="#cf0621" />
 	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
-	<title>Instituto Nuestra Señora de la Merced | Educación Integral en Arroyito, Córdoba</title>
+	<title>INSM Arroyito | Instituto Nuestra Señora de la Merced</title>
 	<meta
 		name="description"
-		content="INSM: Educación integral desde Inicial hasta Terciario en Arroyito, Córdoba. Comunidad mercedaria comprometida con valores, excelencia académica y formación integral."
+		content="Instituto Nuestra Señora de la Merced en Arroyito: educación integral de Inicial a Terciario. Conocé la propuesta mercedaria y contactanos."
 	/>
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Instituto Nuestra Señora de la Merced | INSM" />
+	<meta property="og:title" content="INSM Arroyito | Instituto Nuestra Señora de la Merced" />
 	<meta
 		property="og:description"
-		content="Comunidad educativa en Arroyito, Córdoba. Formación integral en valores y excelencia académica para todos los niveles educativos."
+		content="Instituto Nuestra Señora de la Merced en Arroyito: educación integral de Inicial a Terciario. Conocé la propuesta mercedaria y contactanos."
 	/>
-	<!-- Canonical URL - ACTUALIZAR CON DOMINIO REAL DE PRODUCCIÓN -->
-	<link rel="canonical" href="https://tudominio-real.com/" />
+	<meta property="og:url" content="https://hermanasmercedariasarroyito.vercel.app/" />
+	<meta property="og:locale" content="es_AR" />
+	<meta property="og:image" content="https://hermanasmercedariasarroyito.vercel.app/img/logo.webp" />
+	<link rel="canonical" href="https://hermanasmercedariasarroyito.vercel.app/" />
+	<link rel="preload" as="image" href="img/hero-video-poster.webp" />
 	
-	<!-- Datos estructurados para organización educativa -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
 		"@type": "EducationalOrganization",
 		"name": "Instituto Nuestra Señora de la Merced",
 		"alternateName": "INSM",
-		"description": "Instituto Nuestra Señora de la Merced en Arroyito, Córdoba. Ofrecemos educación integral de calidad desde Nivel Inicial hasta Terciario.",
-		"url": "https://tudominio-real.com",
+		"description": "Instituto Nuestra Señora de la Merced en Arroyito, Córdoba. Educación integral de calidad desde Nivel Inicial hasta Terciario.",
+		"url": "https://hermanasmercedariasarroyito.vercel.app/",
+		"logo": "https://hermanasmercedariasarroyito.vercel.app/img/logo.webp",
+		"image": "https://hermanasmercedariasarroyito.vercel.app/img/logo.webp",
 		"address": {
 			"@type": "PostalAddress",
 			"streetAddress": "9 de Julio 465",
@@ -37,39 +41,27 @@
 			"addressCountry": "AR"
 		},
 		"telephone": "+54 3576 408-967",
-		"foundYear": "1985"
+		"foundingDate": "1985",
+		"sameAs": [
+			"https://www.facebook.com/insm.nivelsuperior.1/?locale=es_LA",
+			"https://www.youtube.com/@INSM.DIGITAL",
+			"https://www.tiktok.com/@insm.digital",
+			"https://www.instagram.com/mercedariasarroyito/"
+		]
 	}
 	</script>
 	
-	<!-- Datos estructurados WebSite -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
 		"@type": "WebSite",
 		"name": "Instituto Nuestra Señora de la Merced",
-		"url": "https://tudominio-real.com/",
+		"url": "https://hermanasmercedariasarroyito.vercel.app/",
 		"description": "Educación integral desde Inicial hasta Terciario en Arroyito, Córdoba. Comunidad mercedaria comprometida con valores y excelencia académica.",
-		"potentialAction": {
-			"@type": "SearchAction",
-			"target": "https://tudominio-real.com/?q={search_term_string}",
-			"query-input": "required name=search_term_string"
+		"publisher": {
+			"@type": "EducationalOrganization",
+			"name": "Instituto Nuestra Señora de la Merced"
 		}
-	}
-	</script>
-	
-	<!-- Datos estructurados BreadcrumbList -->
-	<script type="application/ld+json">
-	{
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		"itemListElement": [
-			{
-				"@type": "ListItem",
-				"position": 1,
-				"name": "Inicio",
-				"item": "https://tudominio-real.com/"
-			}
-		]
 	}
 	</script>
 	<style>
@@ -77,6 +69,7 @@
 		@font-face {
 			font-family: 'Heuristica';
 			src: url('fonts/Heuristica-Regular.ttf') format('truetype');
+			font-display: swap;
 			font-weight: normal;
 			font-style: normal;
 		}
@@ -84,6 +77,7 @@
 		@font-face {
 			font-family: 'Heuristica';
 			src: url('fonts/Heuristica-Bold.ttf') format('truetype');
+			font-display: swap;
 			font-weight: bold;
 			font-style: normal;
 		}
@@ -91,6 +85,7 @@
 		@font-face {
 			font-family: 'ProximaNova';
 			src: url('fonts/ProximaNova-Regular.ttf') format('truetype');
+			font-display: swap;
 			font-weight: normal;
 			font-style: normal;
 		}
@@ -2912,7 +2907,12 @@ color: #db8d16;
 	<link
 		rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+		media="print"
+		onload="this.media='all'"
 	/>
+	<noscript>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+	</noscript>
 </head>
 <body ontouchstart="">
 	<header>
@@ -2938,7 +2938,7 @@ color: #db8d16;
 	<div class="dropdown-menu" id="dropdownMenu">
 		<div class="mobile-menu-header">
 			<div class="mobile-menu-logo">
-				<img src="img/logo.png" alt="Logo INSM" width="40" height="40" />
+					<img src="img/logo.webp" alt="Logo del Instituto Nuestra Señora de la Merced" width="40" height="40" />
 				<span>INSM</span>
 			</div>
 			<button class="close-menu-btn" onclick="toggleMenu()">
@@ -3037,8 +3037,8 @@ color: #db8d16;
 				<div class="college-gallery">
 					<div class="gallery-col col-1">
 						<img
-							src="img/Superior.jpeg"
-							alt="Comunidad educativa"
+							src="img/Superior.webp"
+							alt="Estudiantes del Nivel Superior del Instituto Nuestra Señora de la Merced"
 							data-title="Comunidad educativa"
 							data-description="Nuestra comunidad educativa comparte un espacio de encuentro, aprendizaje y compromiso con los valores mercedarios."
 							width="400"
@@ -3047,8 +3047,8 @@ color: #db8d16;
 							decoding="async"
 						/>
 						<img
-							src="img/20250806_092322.jpg"
-							alt="Convivencia"
+							src="img/20250806_092322.webp"
+							alt="Actividad de convivencia de la comunidad educativa en Arroyito"
 							data-title="Convivencia"
 							data-description="Las actividades comunitarias fortalecen la vida escolar, promueven la participación y permiten que cada estudiante se sienta parte de una comunidad comprometida con el respeto, la colaboración y la alegría de aprender juntos."
 							width="400"
@@ -3057,8 +3057,8 @@ color: #db8d16;
 							decoding="async"
 						/>
 						<img
-							src="img/Coop_y_ceam2026.png"
-							alt="Cooperativa"
+							src="img/Coop_y_ceam2026.webp"
+							alt="Cooperativa Escolar Mercedaria y actividades comunitarias 2026"
 							data-title="Cooperativa Escolar Mercedaria"
 							data-description="La cooperativa es una experiencia concreta de trabajo colectivo, donde los estudiantes aprenden a organizarse, generar ideas y valorar el esfuerzo compartido como base de la ciudadanía responsable y solidaria."
 							width="400"
@@ -3069,8 +3069,8 @@ color: #db8d16;
 					</div>
 					<div class="gallery-col col-2">
 						<img
-							src="img/Historia.jpg"
-							alt="Historia institucional"
+							src="img/Historia.webp"
+							alt="Historia institucional del Instituto Nuestra Señora de la Merced"
 							data-title="Historia institucional"
 							data-description="El pasado de nuestro colegio y su legado mercedario nos acompañan en la construcción de una educación con raíces, identidad y sentido de misión. Cada historia fortalece la continuidad de nuestra propuesta educativa."
 							width="400"
@@ -3079,8 +3079,8 @@ color: #db8d16;
 							decoding="async"
 						/>
 						<img
-							src="img/Cooperativa- bolsas.jpg"
-							alt="Cooperativa bolsas"
+							src="img/Cooperativa- bolsas.webp"
+							alt="Producción de bolsas de la Cooperativa Escolar Mercedaria"
 							data-title="proyecto escolares"
 							data-description="Los proyectos institucionales promueven la creatividad, la responsabilidad social y la participación activa de la comunidad, conectando la escuela con la vida real y con la necesidad de transformar el entorno desde valores concretos."
 							width="400"
@@ -3089,8 +3089,8 @@ color: #db8d16;
 							decoding="async"
 						/>
 						<img
-							src="img/sala2.jpg"
-							alt="Espacios de aprendizaje"
+							src="img/sala2.webp"
+							alt="Sala de clases y espacios de aprendizaje del instituto"
 							data-title="Espacios de aprendizaje"
 							data-description="Nuestros espacios están pensados para acompañar el desarrollo integral de cada estudiante, favoreciendo el trabajo en equipo, la creatividad, la curiosidad y la construcción de aprendizajes significativos."
 							width="400"
@@ -3131,7 +3131,7 @@ color: #db8d16;
 					<div class="level-content active" data-level-content="inicial" id="inicial-content" role="tabpanel" aria-labelledby="inicial-tab">
 						<div class="level-grid">
 							<div class="level-image">
-								<img src="img/Inicial_index.png" alt="Nivel Inicial" width="600" height="400" loading="lazy" decoding="async" />
+								<img src="img/Inicial_index.webp" alt="Alumnos del Nivel Inicial del Instituto Nuestra Señora de la Merced" width="600" height="400" loading="lazy" decoding="async" />
 							</div>
 							<div class="level-info">
 								<h3>Inicial</h3>
@@ -3151,7 +3151,7 @@ color: #db8d16;
 					<div class="level-content" data-level-content="primario" id="primario-content" role="tabpanel" aria-labelledby="primario-tab">
 						<div class="level-grid">
 							<div class="level-image">
-								<img src="img/IMG-20250414-WA0023.jpg" alt="Nivel Primario" width="600" height="400" loading="lazy" decoding="async" />
+								<img src="img/IMG-20250414-WA0023.webp" alt="Alumnos del Nivel Primario en actividades escolares" width="600" height="400" loading="lazy" decoding="async" />
 							</div>
 							<div class="level-info">
 								<h3>Primario</h3>
@@ -3168,7 +3168,7 @@ color: #db8d16;
 					</div>
 					<div class="level-content" data-level-content="secundario" id="secundario-content" role="tabpanel" aria-labelledby="secundario-tab">
 						<div class="level-grid">
-							<div class="level-image"><img src="img/Foto_secundario.png" alt="Nivel Secundario" width="600" height="400" loading="lazy" decoding="async" /></div>
+							<div class="level-image"><img src="img/Foto_secundario.webp" alt="Estudiantes del Nivel Secundario del instituto" width="600" height="400" loading="lazy" decoding="async" /></div>
 							<div class="level-info">
 								<h3>Secundario</h3>
 								<div class="age">Edades 13-18</div>
@@ -3185,7 +3185,7 @@ color: #db8d16;
 					<div class="level-content" data-level-content="terciario" id="superior-content" role="tabpanel" aria-labelledby="superior-tab">
 						<div class="level-grid">
 							<div class="level-image">
-								<img src="img/Superior.jpeg" alt="Nivel Superior" width="600" height="400" loading="lazy" decoding="async" />
+								<img src="img/Superior.webp" alt="Estudiantes del Nivel Superior o Terciario del instituto" width="600" height="400" loading="lazy" decoding="async" />
 							</div>
 							<div class="level-info">
 								<h3>Superior</h3>
@@ -3310,9 +3310,9 @@ color: #db8d16;
                 </div>
             </div>
             <div class="testimonial-images">
-                <img src="img/usuario_default.png" alt="Testimonio 1" class="testimonial-img" data-testimonial-img="1" width="80" height="80" loading="lazy" decoding="async" />
-                <img src="img/usuario_default.png" alt="Testimonio 2" class="testimonial-img" data-testimonial-img="2" width="80" height="80" loading="lazy" decoding="async" />
-                <img src="img/usuario_default.png" alt="Testimonio 3" class="testimonial-img" data-testimonial-img="3" width="80" height="80" loading="lazy" decoding="async" />
+                <img src="img/usuario_default.webp" alt="Foto de perfil de un testimonio de la comunidad educativa" class="testimonial-img" data-testimonial-img="1" width="80" height="80" loading="lazy" decoding="async" />
+                <img src="img/usuario_default.webp" alt="Foto de perfil de un testimonio de la comunidad educativa" class="testimonial-img" data-testimonial-img="2" width="80" height="80" loading="lazy" decoding="async" />
+                <img src="img/usuario_default.webp" alt="Foto de perfil de un testimonio de la comunidad educativa" class="testimonial-img" data-testimonial-img="3" width="80" height="80" loading="lazy" decoding="async" />
             </div>
         </div>
     </div>
@@ -3327,7 +3327,7 @@ color: #db8d16;
 
 				<div id="unity-teaser" class="unity-box">
 					<div class="unity-overlay-content">
-						<h4>Explorá Nuestro Colegio en 3D</h4>
+						<h3>Explorá Nuestro Colegio en 3D</h3>
 						<p>
 							Iniciá un recorrido interactivo por nuestras instalaciones desde la comodidad de tu
 							casa. Descubrí cada rincón como si estuvieras aquí.
@@ -3391,16 +3391,16 @@ color: #db8d16;
 					</p>
 					<p><strong>Nivel Superior:</strong> <a href="tel:+543576421440">+54 (3576) 421-440</a></p>
 					<div class="social-icons">
-						<a href="https://www.facebook.com/insm.nivelsuperior.1/?locale=es_LA" target="_blank"
+						<a href="https://www.facebook.com/insm.nivelsuperior.1/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook del Instituto"
 							><i class="fab fa-facebook-f"></i
 						></a>
-						<a href="https://www.youtube.com/@INSM.DIGITAL" target="_blank"
+						<a href="https://www.youtube.com/@INSM.DIGITAL" target="_blank" rel="noopener noreferrer" aria-label="YouTube del Instituto"
 							><i class="fab fa-youtube"></i
 						></a>
-						<a href="https://www.tiktok.com/@insm.digital" target="_blank"
+						<a href="https://www.tiktok.com/@insm.digital" target="_blank" rel="noopener noreferrer" aria-label="TikTok del Instituto"
 							><i class="fab fa-tiktok"></i
 						></a>
-						<a href="https://www.instagram.com/mercedariasarroyito/" target="_blank"
+						<a href="https://www.instagram.com/mercedariasarroyito/" target="_blank" rel="noopener noreferrer" aria-label="Instagram del Instituto"
 							><i class="fab fa-instagram"></i
 						></a>
 					</div>

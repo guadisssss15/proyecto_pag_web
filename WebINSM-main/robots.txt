@@ -1,10 +1,31 @@
-# robots.txt para Instituto Nuestra Señora de la Merced
-# ACTUALIZAR DOMINIO REAL DE PRODUCCIÓN
+# Instituto Nuestra Señora de la Merced
+# Sitio público: rastreo permitido para buscadores y sistemas de IA.
 
 User-agent: *
 Allow: /
 
-# Bloquear acceso a archivos internos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Archivos internos (no son páginas públicas)
 Disallow: /fonts/
 Disallow: /codigo-otros/
 Disallow: /info/
@@ -12,5 +33,4 @@ Disallow: /templates/
 Disallow: /.git/
 Disallow: /node_modules/
 
-# Referencia al sitemap
-Sitemap: https://tudominio-real.com/sitemap.xml
+Sitemap: https://hermanasmercedariasarroyito.vercel.app/sitemap.xml
