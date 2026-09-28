@@ -853,6 +853,52 @@
 			justify-content: center;
 		}
 
+		.charisma-band {
+			position: relative;
+			overflow: hidden;
+			padding: 54px 24px;
+			color: #ffffff;
+			background: linear-gradient(110deg, #7f0d13 0%, #a51c30 58%, #c85d0b 100%);
+		}
+
+		.charisma-band::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			background: repeating-linear-gradient(135deg, transparent 0 30px, rgba(255, 255, 255, 0.045) 30px 31px);
+		}
+
+		.charisma-band-content {
+			position: relative;
+			z-index: 1;
+			max-width: 1120px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.6fr);
+			gap: 36px;
+			align-items: center;
+		}
+
+		.charisma-band h2 {
+			margin: 0;
+			color: #ffffff;
+			font-size: clamp(1.8rem, 3vw, 2.5rem);
+			line-height: 1.1;
+		}
+
+		.charisma-band p {
+			margin: 0;
+			color: rgba(255, 255, 255, 0.94);
+			font-family: 'ProximaNova', sans-serif;
+			font-size: 1.08rem;
+			line-height: 1.7;
+		}
+
+		.charisma-band strong {
+			color: #fff1b8;
+		}
+
 		.college-container {
 			max-width: 1200px;
 			width: 100%;
@@ -2561,6 +2607,14 @@ display: flex;
 				align-items: flex-start;
 				margin-top: 24px;
 			}
+			.charisma-band {
+				padding: 38px 20px;
+			}
+			.charisma-band-content {
+				grid-template-columns: 1fr;
+				gap: 14px;
+				text-align: center;
+			}
 			.hero-arrow {
 				margin-top: 5px;
 				align-self: flex-start;
@@ -3006,6 +3060,15 @@ color: #db8d16;
 						Descubrí por qué las familias nos eligen
 						<span class="hero-arrow"></span>
 					</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="charisma-band" aria-labelledby="charisma-title">
+			<div class="charisma-band-content">
+				<h2 id="charisma-title">Una educación con identidad y misión</h2>
+				<p>
+					Educamos desde el <strong>carisma mercedario</strong> y apoyamos una educación integral, comprometida con cada persona y su comunidad. Nos guía el legado del <strong>Padre José León Torres</strong>, creador de las Hermanas Mercedarias Terceras del Niño Jesús.
 				</p>
 			</div>
 		</section>
