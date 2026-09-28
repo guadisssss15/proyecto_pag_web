@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="robots" content="index, follow" />
+	<meta name="theme-color" content="#cf0621" />
 	<title>Instituto Nuestra Señora de la Merced | INSM</title>
 	<meta
 		name="description"
@@ -14,6 +16,28 @@
 		property="og:description"
 		content="Comunidad educativa en Arroyito, Córdoba. Formación integral en valores y excelencia académica para todos los niveles educativos."
 	/>
+	<link rel="canonical" href="https://insm.edu.ar/" />
+	
+	<!-- Datos estructurados para organización educativa -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "EducationalOrganization",
+		"name": "Instituto Nuestra Señora de la Merced",
+		"alternateName": "INSM",
+		"description": "Instituto Nuestra Señora de la Merced en Arroyito, Córdoba. Ofrecemos educación integral de calidad desde Nivel Inicial hasta Terciario.",
+		"url": "https://insm.edu.ar",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "9 de Julio 465",
+			"addressLocality": "Arroyito",
+			"addressRegion": "Córdoba",
+			"addressCountry": "AR"
+		},
+		"telephone": "+54 3576 408-967",
+		"foundYear": "1985"
+	}
+	</script>
 	<style>
 		/* --- Fuentes --- */
 		@font-face {
@@ -1104,7 +1128,7 @@
 	text-align: left;
 		}
 
-		.level-info h4 {
+		.level-info h3 {
 			font-size: 3.5em;
 			color: #d60e0e;
 			margin: 0 0 10px 0;
@@ -1284,7 +1308,7 @@
 			font-family: 'ProximaNova', sans-serif;
 		}
 
-		.projects-card h4 {
+		.projects-card h3 {
 			font-size: 2.1em;
 			margin: 0 0 15px 0;
 			font-family: 'Heuristica', serif;
@@ -1443,7 +1467,7 @@
 			font-family: 'ProximaNova', sans-serif;
 		}
 
-		.projects-card h4 {
+		.projects-card h3 {
 			font-size: 1.8em;
 			margin: 0 0 15px 0;
 			font-family: 'Heuristica', serif;
@@ -2618,7 +2642,7 @@ margin: 0 0 10px 0;
 			.contact-home-title {
 				font-size: 2em;
 			}
-			.level-info h4 {
+			.level-info h3 {
 				font-size: 2em;
 			}
 
@@ -2645,9 +2669,9 @@ margin: 0 0 10px 0;
 		.hero-content h1,
 		.college-text h2,
 		.levels-title h3,
-		.level-info h4,
+		.level-info h3,
 		.projects-header h3,
-		.projects-card h4,
+		.projects-card h3,
 		.testimonial-quote,
 		.footer-column h3,
 		.side-menu-header h3 {
@@ -2685,7 +2709,7 @@ margin: 0 0 10px 0;
 
 		.college-text h2,
 		.levels-title h3,
-		.level-info h4,
+		.level-info h3,
 		.projects-header h3 {
 			color: #7B1E3A;
 		}
@@ -2696,7 +2720,7 @@ margin: 0 0 10px 0;
 		}
 
 		.arrow-link,
-		.projects-card h4,
+		.projects-card h3,
 		.testimonial-author,
 		.footer-column h3 {
 color: #db8d16;
@@ -2802,11 +2826,11 @@ color: #db8d16;
 		.section-title h2,
 		.section-title h3,
 		.projects-header h3,
-		.projects-card h4,
+		.projects-card h3,
 		.college-text h2,
 		.college-modal-content h3,
 		.levels-title h3,
-		.level-info h4,
+		.level-info h3,
 		.service-header h3,
 		.contact-home-title,
 		.news-page-section h2,
@@ -2861,7 +2885,7 @@ color: #db8d16;
 		<div class="header-main">
 			<div class="logo">
 				<a href="index.html">
-					<img src="img/favicon.ico" alt="Logo INSM" />
+					<img src="img/favicon.ico" alt="Logo INSM" width="50" height="50" />
 					<span class="brand-text-desktop">Instituto Nuestra Señora de la Merced</span>
 					<span class="brand-text-mobile">INSM</span>
 				</a>
@@ -2880,7 +2904,7 @@ color: #db8d16;
 	<div class="dropdown-menu" id="dropdownMenu">
 		<div class="mobile-menu-header">
 			<div class="mobile-menu-logo">
-				<img src="img/logo.png" alt="Logo INSM" />
+				<img src="img/logo.png" alt="Logo INSM" width="40" height="40" />
 				<span>INSM</span>
 			</div>
 			<button class="close-menu-btn" onclick="toggleMenu()">
@@ -2928,10 +2952,10 @@ color: #db8d16;
 		</div>
 	</div>
 
-	<main>
+	<main role="main">
 		<section class="hero-section">
-			<video class="hero-video" autoplay muted loop playsinline>
-				<source src="vid/Video presentacion.mp4" type="video/mp4" />
+			<video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="img/hero-video-poster.webp">
+				<source src="vid/Video presentacion_opt.mp4" type="video/mp4" />
 				Tu navegador no soporta videos HTML5.
 			</video>
 			<div class="hero-content">
@@ -2980,18 +3004,30 @@ color: #db8d16;
 							alt="Comunidad educativa"
 							data-title="Comunidad educativa"
 							data-description="Nuestra comunidad educativa comparte un espacio de encuentro, aprendizaje y compromiso con los valores mercedarios."
+							width="400"
+							height="300"
+							loading="lazy"
+							decoding="async"
 						/>
 						<img
 							src="img/20250806_092322.jpg"
 							alt="Convivencia"
 							data-title="Convivencia"
 							data-description="Las actividades comunitarias fortalecen la vida escolar, promueven la participación y permiten que cada estudiante se sienta parte de una comunidad comprometida con el respeto, la colaboración y la alegría de aprender juntos."
+							width="400"
+							height="600"
+							loading="lazy"
+							decoding="async"
 						/>
 						<img
 							src="img/Coop_y_ceam2026.png"
 							alt="Cooperativa"
 							data-title="Cooperativa Escolar Mercedaria"
 							data-description="La cooperativa es una experiencia concreta de trabajo colectivo, donde los estudiantes aprenden a organizarse, generar ideas y valorar el esfuerzo compartido como base de la ciudadanía responsable y solidaria."
+							width="400"
+							height="240"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 					<div class="gallery-col col-2">
@@ -3000,18 +3036,30 @@ color: #db8d16;
 							alt="Historia institucional"
 							data-title="Historia institucional"
 							data-description="El pasado de nuestro colegio y su legado mercedario nos acompañan en la construcción de una educación con raíces, identidad y sentido de misión. Cada historia fortalece la continuidad de nuestra propuesta educativa."
+							width="400"
+							height="420"
+							loading="lazy"
+							decoding="async"
 						/>
 						<img
 							src="img/Cooperativa- bolsas.jpg"
 							alt="Cooperativa bolsas"
 							data-title="proyecto escolares"
 							data-description="Los proyectos institucionales promueven la creatividad, la responsabilidad social y la participación activa de la comunidad, conectando la escuela con la vida real y con la necesidad de transformar el entorno desde valores concretos."
+							width="400"
+							height="300"
+							loading="lazy"
+							decoding="async"
 						/>
 						<img
 							src="img/sala2.jpg"
 							alt="Espacios de aprendizaje"
 							data-title="Espacios de aprendizaje"
 							data-description="Nuestros espacios están pensados para acompañar el desarrollo integral de cada estudiante, favoreciendo el trabajo en equipo, la creatividad, la curiosidad y la construcción de aprendizajes significativos."
+							width="400"
+							height="420"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 				</div>
@@ -3034,23 +3082,22 @@ color: #db8d16;
 		<section id="niveles" class="levels-section">
 			<div class="levels-container">
 				<div class="levels-title">
-					<h2>Conocé</h2>
-					<h3>Nuestros Niveles</h3>
+					<h2>Nuestros Niveles</h2>
 				</div>
-				<div class="level-tabs">
-					<button class="level-tab active" data-level="inicial">Inicial</button>
-					<button class="level-tab" data-level="primario">Primario</button>
-					<button class="level-tab" data-level="secundario">Secundario</button>
-					<button class="level-tab" data-level="superior">Superior</button>
+				<div class="level-tabs" role="tablist" aria-label="Niveles educativos">
+					<button class="level-tab active" data-level="inicial" id="inicial-tab" role="tab" aria-selected="true" aria-controls="inicial-content">Inicial</button>
+					<button class="level-tab" data-level="primario" id="primario-tab" role="tab" aria-selected="false" aria-controls="primario-content">Primario</button>
+					<button class="level-tab" data-level="secundario" id="secundario-tab" role="tab" aria-selected="false" aria-controls="secundario-content">Secundario</button>
+					<button class="level-tab" data-level="terciario" id="superior-tab" role="tab" aria-selected="false" aria-controls="superior-content">Superior</button>
 				</div>
-				<div id="levels-content">
-					<div class="level-content active" data-level-content="inicial">
+				<div id="levels-content" role="tabpanel">
+					<div class="level-content active" data-level-content="inicial" id="inicial-content" role="tabpanel" aria-labelledby="inicial-tab">
 						<div class="level-grid">
 							<div class="level-image">
-								<img src="img/Inicial_index.png" alt="Nivel Inicial" />
+								<img src="img/Inicial_index.png" alt="Nivel Inicial" width="600" height="400" loading="lazy" decoding="async" />
 							</div>
 							<div class="level-info">
-								<h4>Inicial</h4>
+								<h3>Inicial</h3>
 								<div class="age">Edades 3-5</div>
 								<p>
 									Acompañamos las primeras experiencias educativas con cuidado, juego y valores.
@@ -3061,13 +3108,13 @@ color: #db8d16;
 							</div>
 						</div>
 					</div>
-					<div class="level-content" data-level-content="primario">
+					<div class="level-content" data-level-content="primario" id="primario-content" role="tabpanel" aria-labelledby="primario-tab">
 						<div class="level-grid">
 							<div class="level-image">
-								<img src="img/IMG-20250414-WA0023.jpg" alt="Nivel Primario" />
+								<img src="img/IMG-20250414-WA0023.jpg" alt="Nivel Primario" width="600" height="400" loading="lazy" decoding="async" />
 							</div>
 							<div class="level-info">
-								<h4>Primario</h4>
+								<h3>Primario</h3>
 								<div class="age">Edades 6-12</div>
 								<p>
 									Educamos integralmente, promoviendo aprendizajes, valores y el desarrollo
@@ -3077,24 +3124,24 @@ color: #db8d16;
 							</div>
 						</div>
 					</div>
-					<div class="level-content" data-level-content="secundario">
+					<div class="level-content" data-level-content="secundario" id="secundario-content" role="tabpanel" aria-labelledby="secundario-tab">
 						<div class="level-grid">
-							<div class="level-image"><img src="img/Foto_secundario.png" alt="Nivel Secundario" /></div>
+							<div class="level-image"><img src="img/Foto_secundario.png" alt="Nivel Secundario" width="600" height="400" loading="lazy" decoding="async" /></div>
 							<div class="level-info">
-								<h4>Secundario</h4>
+								<h3>Secundario</h3>
 								<div class="age">Edades 13-18</div>
 								<p>Formamos jóvenes críticos, responsables y comprometidos con su futuro.</p>
 								<a href="NivelSecundario.html" class="arrow-link">Ver más <i class="fas fa-arrow-right"></i></a>
 							</div>
 						</div>
 					</div>
-					<div class="level-content" data-level-content="terciario">
+					<div class="level-content" data-level-content="terciario" id="superior-content" role="tabpanel" aria-labelledby="superior-tab">
 						<div class="level-grid">
 							<div class="level-image">
-								<img src="img/Superior.jpeg" alt="Nivel Superior" />
+								<img src="img/Superior.jpeg" alt="Nivel Superior" width="600" height="400" loading="lazy" decoding="async" />
 							</div>
 							<div class="level-info">
-								<h4>Superior</h4>
+								<h3>Superior</h3>
 								<div class="age">Formación Profesional</div>
 								<p>Formamos docentes con valores e identidad mercedaria.</p>
 								<a href="NivelTerciario.html" class="arrow-link">Ver más <i class="fas fa-arrow-right"></i></a>
@@ -3102,14 +3149,14 @@ color: #db8d16;
 						</div>
 					</div>
 				</div>
-				<div class="level-controls" id="level-controls">
-					<button id="prev-level" class="testimonial-btn">
+				<div class="level-controls" id="level-controls" role="group" aria-label="Controles de navegación de niveles">
+					<button id="prev-level" class="testimonial-btn" aria-label="Nivel anterior">
 						<i class="fas fa-arrow-left"></i>
 					</button>
-					<button id="pause-level" class="testimonial-btn">
+					<button id="pause-level" class="testimonial-btn" aria-label="Pausar animación">
 						<i class="fas fa-pause"></i>
 					</button>
-					<button id="next-level" class="testimonial-btn">
+					<button id="next-level" class="testimonial-btn" aria-label="Siguiente nivel">
 						<i class="fas fa-arrow-right"></i>
 					</button>
 				</div>
@@ -3211,9 +3258,9 @@ color: #db8d16;
                 </div>
             </div>
             <div class="testimonial-images">
-                <img src="img/usuario_default.png" alt="Testimonio 1" class="testimonial-img" data-testimonial-img="1" />
-                <img src="img/usuario_default.png" alt="Testimonio 2" class="testimonial-img" data-testimonial-img="2" />
-                <img src="img/usuario_default.png" alt="Testimonio 3" class="testimonial-img" data-testimonial-img="3" />
+                <img src="img/usuario_default.png" alt="Testimonio 1" class="testimonial-img" data-testimonial-img="1" width="80" height="80" loading="lazy" decoding="async" />
+                <img src="img/usuario_default.png" alt="Testimonio 2" class="testimonial-img" data-testimonial-img="2" width="80" height="80" loading="lazy" decoding="async" />
+                <img src="img/usuario_default.png" alt="Testimonio 3" class="testimonial-img" data-testimonial-img="3" width="80" height="80" loading="lazy" decoding="async" />
             </div>
         </div>
     </div>
@@ -3223,8 +3270,7 @@ color: #db8d16;
 		<section id="virtual-tour" class="virtual-tour-section">
 			<div class="virtual-tour-container">
 				<div class="levels-title">
-					<h2>UNA PROPUESTA INNOVADORA</h2>
-					<h3>Recorrido Virtual</h3>
+					<h2>Recorrido Virtual</h2>
 				</div>
 
 				<div id="unity-teaser" class="unity-box">
@@ -3568,6 +3614,7 @@ color: #db8d16;
 				currentLevel = index;
 				levelTabs.forEach((tab, i) => {
 					tab.classList.toggle('active', i === index);
+					tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
 				});
 				levelContents.forEach((content, i) => {
 					content.classList.toggle('active', i === index);
@@ -3616,11 +3663,13 @@ color: #db8d16;
 					if (isLevelPlaying) {
 						stopLevelRotation();
 						pauseLevelBtn.innerHTML = '<i class="fas fa-play"></i>';
+						pauseLevelBtn.setAttribute('aria-label', 'Reanudar animación');
 						isLevelPlaying = false;
 					} else {
 						isLevelPlaying = true;
 						startLevelRotation();
 						pauseLevelBtn.innerHTML = '<i class="fas fa-pause"></i>';
+						pauseLevelBtn.setAttribute('aria-label', 'Pausar animación');
 					}
 				});
 			}
@@ -4030,10 +4079,10 @@ color: #db8d16;
 				const safeSummary = processLongWords(summary, '16px Heuristica', Math.max(cardWidthBase, 220));
 
 				card.innerHTML = `
-						<img src="${proj.image || ''}" alt="${proj.title || ''}" loading="lazy">
+						<img src="${proj.image || ''}" alt="${proj.title || ''}" loading="lazy" decoding="async" width="400" height="250">
 					<div class="projects-card-content">
 						<p class="date">${proj.displayDate || ''}</p>
-						<h4>${safeTitle}</h4>
+						<h3>${safeTitle}</h3>
 						<p>${safeSummary}</p>
 					</div>
 				`;
@@ -4212,7 +4261,7 @@ color: #db8d16;
 			});
 		});
 	</script>
-	<script type="module">
+	<script type="module" defer>
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 	import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
