@@ -1,0 +1,16 @@
+# robots.txt para Instituto Nuestra Señora de la Merced
+# ACTUALIZAR DOMINIO REAL DE PRODUCCIÓN
+
+User-agent: *
+Allow: /
+
+# Bloquear acceso a archivos internos
+Disallow: /fonts/
+Disallow: /codigo-otros/
+Disallow: /info/
+Disallow: /templates/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Referencia al sitemap
+Sitemap: https://tudominio-real.com/sitemap.xml
