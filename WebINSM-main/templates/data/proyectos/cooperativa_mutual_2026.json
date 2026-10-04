@@ -1,0 +1,19 @@
+{
+    "hero": {
+        "titleLine1": "Cooperativa y Mutual Escolar",
+        "titleLine2": "Comunidad que se construye con pequeños gestos",
+        "backgroundImage": "../img/Coop_y_ceam2026.png"
+    },
+    "general": {
+        "date": "Julio de 2026",
+        "summary": "Proyecto conjunto de 3.º año para gestionar una cooperativa y mutual escolar y mejorar los espacios compartidos.",
+        "detail": "<h3>Reacondicionamiento del espacio</h3><p>Junto con la Comisión de Mantenimiento, los estudiantes reacomodaron y limpiaron la sala de los elementos de Educación Física. Inflaron y organizaron las pelotas y ordenaron los materiales para que quedaran más accesibles y en mejores condiciones.</p><h3>Medio ambiente y participación</h3><p>Se realizaron ecoladrillos con el propósito de construir un cantero y reciclar plásticos y papeles, brindando un espacio más cómodo en el colegio. También se recogieron propuestas para mejorar los espacios y las condiciones de la institución.</p><h3>Mes de María</h3><p>Los estudiantes de Tercer Año, desde la Mutual y la Cooperativa Escolar, confeccionaron banderines y denarios para compartir con la comunidad.</p><h3>El mensaje de cierre</h3><p>Entre manos que crean, corazones que se encuentran y pequeños gestos de servicio, también se construye comunidad.</p>",
+        "image": "../img/Cooperativaymutual.jpg"
+    },
+    "academic": {
+        "value1": "3.º año A y B",
+        "value2": "Comunidad educativa",
+        "value3": "Cooperativismo y mutualismo",
+        "icon3": "fas fa-hand-holding-usd"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "hero": {
+        "titleLine1": "Modelo ONU 2026",
+        "titleLine2": "Una experiencia que valió la pena",
+        "backgroundImage": "../img/ONU_2026.png"
+    },
+    "general": {
+        "date": "21 al 23 de Agosto de 2026",
+        "summary": "La 26.ª edición del Modelo de Naciones Unidas en San Francisco, Córdoba, fue una experiencia de debate, representación y aprendizaje compartido.",
+        "detail": "Estudiantes de 4.º, 5.º y 6.º año representaron a la República de Corea, el Reino de Dinamarca y ACNUR. Participaron con preparación, compromiso y entusiasmo en una propuesta que les permitió asumir roles, defender posturas y construir acuerdos.",
+        "image": "../img/ONU_2026.png"
+    },
+    "academic": {
+        "value1": "4.º, 5.º y 6.º año",
+        "value2": "Andrea Miretti, Ana Luz Torresi y Sergio Maranzana",
+        "value3": "Debate y relaciones internacionales"
+    }
+}
