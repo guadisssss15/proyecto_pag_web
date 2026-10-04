@@ -22,6 +22,7 @@
 	<meta property="og:image" content="https://hermanasmercedariasarroyito.vercel.app/img/logo.webp" />
 	<link rel="canonical" href="https://hermanasmercedariasarroyito.vercel.app/" />
 	<link rel="preload" as="image" href="img/hero-video-poster.webp" />
+	<link rel="stylesheet" href="responsive.css" />
 	
 	<script type="application/ld+json">
 	{
@@ -2462,14 +2463,12 @@ color: #db8d16;
 			.projects-section,
 			.testimonials-section,
 			.virtual-tour-section,
-			.contact-home-section,
+			.contact-home-section {
+				padding: 80px 20px;
+			}
 			.footer {
-background-color: #c53f3f;
-	color: #ffffff;
-	padding: 80px 20px 20px 20px;
-	font-family: 'ProximaNova', sans-serif;
-	position: relative;
-}
+				padding: 80px 20px 20px;
+			}
 		}
 
 		/* Tablet & Small Desktop (max-width: 992px) */
@@ -2626,14 +2625,21 @@ display: flex;
 			.projects-section,
 			.testimonials-section,
 			.virtual-tour-section,
-			.contact-home-section,
+			.contact-home-section {
+				padding: 80px 20px;
+			}
 			.footer {
-background-color: #c53f3f;
-	color: #ffffff;
-	padding: 80px 20px 20px 20px;
-	font-family: 'ProximaNova', sans-serif;
-	position: relative;
-}
+				padding: 56px 20px 20px;
+			}
+			.footer p {
+				color: #ffffff;
+			}
+			.footer .footer-column h3 {
+				color: #fff1b8 !important;
+			}
+			.footer .footer-bottom-links a {
+				color: #fff1b8;
+			}
 
 			/* Stacked Layouts */
 			.college-container {
@@ -2689,31 +2695,38 @@ background-color: #c53f3f;
 		/* Mobile (max-width: 600px) */
 		@media (max-width: 600px) {
 			.footer-container {
-display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	max-width: 1200px;
-	margin: 0 auto;
-	width: 100%;
-	gap: 30px;
-}
+				display: grid;
+				grid-template-columns: minmax(0, 1fr);
+				gap: 32px;
+			}
+			.footer-column {
+				min-width: 0;
+			}
+			.footer-column-wrapper {
+				max-width: none;
+			}
 			.footer-column h3 {
-color: #db8d16;
-	font-size: 1.4em;
-	margin-bottom: 25px;
-	position: relative;
-	font-weight: normal;
-	font-family: 'Heuristica', serif;
-	white-space: nowrap;
-}
+				white-space: normal;
+				margin-bottom: 18px;
+			}
 			.footer-column ul li {
-margin-bottom: 15px;
-}
+				margin-bottom: 12px;
+			}
 			.contact-info p {
-margin: 0 0 10px 0;
-	line-height: 1.5;
-	white-space: nowrap;
-}
+				white-space: normal;
+			}
+			.footer-bottom-links {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 8px 12px;
+			}
+			.footer-bottom-links a {
+				margin: 0;
+			}
+			.footer-bottom-links > span:not(:first-child) {
+				display: none;
+			}
 		}
 
 		/* Small Mobile (max-width: 480px) */

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="responsive.css" />
     <title>Capacitaciones - INSM</title>
     <style>
         @font-face {
@@ -91,6 +92,14 @@
         .header-main .logo img {
             height: 50px;
             margin-right: 10px;
+        }
+
+        .brand-name-desktop {
+            display: inline;
+        }
+
+        .brand-name-mobile {
+            display: none;
         }
 
         .header-main nav ul {
@@ -372,6 +381,14 @@
                 display: none;
             }
 
+            .brand-name-desktop {
+                display: none;
+            }
+
+            .brand-name-mobile {
+                display: inline;
+            }
+
             .page {
                 padding-left: 16px;
                 padding-right: 16px;
@@ -383,8 +400,9 @@
     <header class="header-main">
         <div class="logo">
             <a href="index.html">
-                <img src="img/Logo-3.png" alt="INSM" />
-                <span>INSM</span>
+                <img src="img/logo.webp" alt="Escudo mercedario" />
+                <span class="brand-name-desktop">Instituto Nuestra Señora de la Merced</span>
+                <span class="brand-name-mobile">INSM</span>
             </a>
         </div>
         <nav>
